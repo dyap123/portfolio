@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ecosystem — Danzel Yap</title>
+<meta name="description" content="Construction PM + AI builder. Building OpenYap, an AI-powered construction intelligence platform, from the LACC CUP Modernization in Los Angeles."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+</head>
+<body>
+
+<canvas id="shader-bg"></canvas>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DIGITAL ARCHITECT</a>
+    <div class="nav-links">
+      <a href="index.html">Journey</a>
+      <a href="ecosystem.html" class="active">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+    </div>
+    <a href="mailto:danzel@webcor.com" class="connect-btn">
+      Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="sector reveal">
+      <span>Operational Sector 01</span>
+      <span class="sector-right">Live · <span data-clock>—</span></span>
+    </div>
+    <h1 class="xl hero-headline reveal delay-1">
+      Building AI <br>
+      <span class="grad" data-edit="hero-headline-2">for the field.</span>
+    </h1>
+    <p class="mt-6 reveal delay-2" style="font-size: clamp(16px, 1.5vw, 20px); color: var(--text-dim); max-width: 620px; line-height: 1.55;" data-edit="hero-sub">
+      I'm Danzel — Project Engineer at Webcor Builders on the $2B LACC CUP Modernization, and the builder behind <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" style="color: var(--primary)">OpenYap</a>, an AI platform for construction PMs. I ship tools that live between a crane and a keyboard.
+    </p>
+    <div class="mt-8 flex gap-3 reveal delay-3" style="flex-wrap: wrap;">
+      <a href="case-studies.html" class="btn primary">
+        <span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies
+      </a>
+      <a href="fieldwork.html" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">architecture</span>Field Work
+      </a>
+      <a href="https://github.com/dyap123" target="_blank" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">code</span>GitHub
+      </a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TELEMETRY MARQUEE -->
+<div class="telemetry">
+  <div class="track">
+    <span class="item"><span class="dot ok"></span><span class="k">SYS_CHECK</span>&nbsp;→&nbsp;nominal</span>
+    <span class="item"><span class="k">LOCATION</span>&nbsp;→&nbsp;LACC · Los Angeles, CA</span>
+    <span class="item"><span class="k">PROJECT</span>&nbsp;→&nbsp;$2B Convention Center Modernization</span>
+    <span class="item"><span class="k">DEPLOYED</span>&nbsp;→&nbsp;6 live web apps</span>
+    <span class="item"><span class="k">AGENTS</span>&nbsp;→&nbsp;15+ AI specialists online</span>
+    <span class="item"><span class="k">EMBEDS_TRACKED</span>&nbsp;→&nbsp;39</span>
+    <span class="item"><span class="dot ok"></span><span class="k">STATUS</span>&nbsp;→&nbsp;shipping</span>
+    <!-- duplicated for seamless loop -->
+    <span class="item"><span class="dot ok"></span><span class="k">SYS_CHECK</span>&nbsp;→&nbsp;nominal</span>
+    <span class="item"><span class="k">LOCATION</span>&nbsp;→&nbsp;LACC · Los Angeles, CA</span>
+    <span class="item"><span class="k">PROJECT</span>&nbsp;→&nbsp;$2B Convention Center Modernization</span>
+    <span class="item"><span class="k">DEPLOYED</span>&nbsp;→&nbsp;6 live web apps</span>
+    <span class="item"><span class="k">AGENTS</span>&nbsp;→&nbsp;15+ AI specialists online</span>
+    <span class="item"><span class="k">EMBEDS_TRACKED</span>&nbsp;→&nbsp;39</span>
+    <span class="item"><span class="dot ok"></span><span class="k">STATUS</span>&nbsp;→&nbsp;shipping</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding: 0;">
+  <div class="stats-row">
+    <div class="stat-cell reveal">
+      <div class="stat-val"><span data-count="2" data-prefix="$" data-suffix="B">$0</span></div>
+      <div class="stat-label">Project Value</div>
+      <div class="stat-sub">LACC CUP Modernization</div>
+    </div>
+    <div class="stat-cell reveal delay-1">
+      <div class="stat-val"><span data-count="15" data-suffix="+">0</span></div>
+      <div class="stat-label">AI Agents Built</div>
+      <div class="stat-sub">Specialists across the stack</div>
+    </div>
+    <div class="stat-cell reveal delay-2">
+      <div class="stat-val"><span data-count="39">0</span></div>
+      <div class="stat-label">Embeds Tracked</div>
+      <div class="stat-sub">Live on CUP Dashboard</div>
+    </div>
+    <div class="stat-cell reveal delay-3">
+      <div class="stat-val"><span data-count="6">0</span></div>
+      <div class="stat-label">Live Web Apps</div>
+      <div class="stat-sub">Production + investor-facing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM BENTO -->
+<section id="projects">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 02 · Ecosystem</span></div>
+        <h2 class="lg">OpenYap <span class="grad">Ecosystem</span></h2>
+        <p class="dim mt-2" style="max-width: 640px;" data-edit="projects-intro">
+          Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and three are live on the public internet.
+        </p>
+      </div>
+      <span class="pill pill-primary">6 DEPLOYED</span>
+    </div>
+
+    <div class="bento">
+
+      <!-- Const-Agent (wide) -->
+      <article class="card b-half project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">network_node</span></div>
+          <div>
+            <div class="title" data-edit="p1-title">Const-Agent</div>
+            <div class="pill pill-primary" style="margin-top: 3px;">CORE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p1-desc">
+          AI PM assistant with 15 specialized agents. Discord + Teams + Web UI. Handles submittals, RFIs, schedule tracking, concrete orders, and document search across 200+ indexed files.
+        </p>
+        <div class="tech"><span>Python</span><span>FastAPI</span><span>Discord.py</span><span>SQLite</span><span>Anthropic</span><span>OpenAI</span></div>
+        <a href="case-studies.html#const-agent" class="arrow-link">Case study</a>
+      </article>
+
+      <!-- CUP Dashboard (wide) -->
+      <article class="card b-half project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">dashboard</span></div>
+          <div>
+            <div class="title" data-edit="p2-title">CUP Dashboard</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p2-desc">
+          Real-time concrete pour tracking. Footing maps with drag-edit, embed verification with long-press checklists, live-pour truck logging, inspection ticker, Firebase sync across devices.
+        </p>
+        <div class="tech"><span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span><span>Apps Script</span></div>
+        <a href="https://dyap123.github.io/cup-dashboard/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+      <!-- OpenYap Roadmap -->
+      <article class="card b-third project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">view_in_ar</span></div>
+          <div>
+            <div class="title" data-edit="p3-title">OpenYap Roadmap</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p3-desc">
+          Investor-facing 3D site. Scroll-driven building assembly, climbing crane, floating node network, glassmorphic agreement panels.
+        </p>
+        <div class="tech"><span>Three.js</span><span>WebGL</span><span>GSAP</span></div>
+        <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+      <!-- Vault Brain -->
+      <article class="card b-third project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">psychology</span></div>
+          <div>
+            <div class="title" data-edit="p4-title">Vault Brain</div>
+            <div class="pill pill-amber" style="margin-top: 3px;">LOCAL</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p4-desc">
+          3D knowledge-graph visualizer for Obsidian. Sprite-based neural net with wikilink edges, voice-enabled Alfred chat, multi-provider AI proxy.
+        </p>
+        <div class="tech"><span>Three.js</span><span>FastAPI</span><span>ElevenLabs</span><span>SQLite</span></div>
+        <a href="case-studies.html#vault-brain" class="arrow-link">Case study</a>
+      </article>
+
+      <!-- Formwork -->
+      <article class="card b-third project-card reveal delay-2">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">savings</span></div>
+          <div>
+            <div class="title" data-edit="p5-title">Formwork</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p5-desc">
+          Budget intelligence for OpenYap itself. Line-item planning per category, stacked compare chart, Three.js formwork lattice. Firebase-synced.
+        </p>
+        <div class="tech"><span>Three.js</span><span>Firebase</span><span>SheetJS</span></div>
+        <a href="https://dyap123.github.io/openyap-budget/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+      <!-- EDM Player -->
+      <article class="card b-half project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">graphic_eq</span></div>
+          <div>
+            <div class="title" data-edit="p6-title">EDM Player (Rave)</div>
+            <div class="pill" style="margin-top: 3px;">APP</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p6-desc">
+          Personal EDM visualizer + yt-dlp downloader. Three.js node formations morph into animated shapes (phoenix, heart, DNA, lightning). Dual-band frequency, drop detection, BPM sync.
+        </p>
+        <div class="tech"><span>Three.js</span><span>Web Audio</span><span>yt-dlp</span><span>PWA</span></div>
+      </article>
+
+      <!-- Family Trip -->
+      <article class="card b-half project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">travel_explore</span></div>
+          <div>
+            <div class="title" data-edit="p7-title">Yap Family Trip</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p7-desc">
+          PWA planner for a 21-person Yap family California trip. Day-by-day itinerary, Google Sheets sync, budget tracker, packing lists, family-visible checklists.
+        </p>
+        <div class="tech"><span>JavaScript</span><span>Sheets API</span><span>PWA</span></div>
+        <a href="https://dyap123.github.io/yap-family-trip/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="stack">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 03 · Stack</span></div>
+        <h2 class="lg">Tech &amp; <span class="grad">Trade</span></h2>
+        <p class="dim mt-2">Languages, AI systems, and construction ops — all in one head.</p>
+      </div>
+    </div>
+    <div class="skills reveal">
+      <div class="skill-col">
+        <h3>Languages · Frameworks</h3>
+        <ul>
+          <li>Python — FastAPI, asyncio</li>
+          <li>JavaScript / TypeScript</li>
+          <li>Three.js · WebGL · GLSL</li>
+          <li>HTML / CSS / Tailwind</li>
+          <li>SQL — SQLite, Postgres</li>
+          <li>C# — Unity</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>AI · Data</h3>
+        <ul>
+          <li>Claude · Anthropic API</li>
+          <li>Codex · GPT · OpenAI</li>
+          <li>MiniMax · Gemini · OpenRouter</li>
+          <li>ElevenLabs TTS · Whisper STT</li>
+          <li>yt-dlp · ffmpeg · Web Audio</li>
+          <li>Firebase RTDB · Google Sheets API</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Construction</h3>
+        <ul>
+          <li>Concrete operations · pour planning</li>
+          <li>RFI · Submittal management</li>
+          <li>Inspection coordination</li>
+          <li>Takeoff · quantity surveys</li>
+          <li>Embed · anchor bolt QC</li>
+          <li>Schedule tracking — P6</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="inner">
+    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
+    <div class="nav-foot">
+      <a href="index.html">Journey</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank">LinkedIn</a>
+      <a href="mailto:danzel@webcor.com">Contact</a>
+    </div>
+    <div class="copyright">© 2026 · DANZEL YAP · LOS ANGELES</div>
+  </div>
+</footer>
+
+<button class="edit-toggle" id="editBtn">✎ Edit</button>
+
+<script src="assets/shell.js"></script>
+</body>
+</html>
