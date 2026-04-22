@@ -1,364 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Danzel Yap — Construction PM & AI Builder</title>
+<title>Danzel Yap — Digital Architect</title>
+<meta name="description" content="Construction PM + AI builder. Building OpenYap, an AI-powered construction intelligence platform, from the LACC CUP Modernization in Los Angeles."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#08080f;--card:rgba(12,12,20,0.85);--card-solid:#0c0c14;
-  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
-  --accent:#9366cc;--accent2:#5b8dd9;--accent-dim:rgba(147,102,204,0.15);
-  --text:#d4d4dc;--text-bright:#eeeef2;--dim:rgba(255,255,255,0.35);
-  --mono:'JetBrains Mono',monospace;--sans:'Inter',system-ui,sans-serif;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-::selection{background:var(--accent);color:#fff}
-
-/* ── Edit mode ── */
-.edit-toggle{position:fixed;bottom:20px;right:20px;z-index:100;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font:12px/1 var(--mono);color:var(--dim);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
-.edit-toggle:hover,.edit-toggle.active{color:var(--accent);border-color:var(--accent)}
-[contenteditable="true"]{outline:1px dashed var(--accent);outline-offset:2px;border-radius:4px}
-
-/* ── Layout ── */
-.container{max-width:1000px;margin:0 auto;padding:0 24px}
-section{padding:80px 0}
-section+section{border-top:1px solid var(--border)}
-
-/* ── Hero ── */
-.hero{padding:120px 0 80px;text-align:center;position:relative}
-.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(147,102,204,0.06) 0%,transparent 70%);pointer-events:none}
-.hero-label{font:700 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-block;padding:6px 14px;border:1px solid var(--accent-dim);border-radius:20px;background:var(--accent-dim)}
-.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text-bright);letter-spacing:-.02em;margin-bottom:12px;line-height:1.1}
-.hero .subtitle{font-size:clamp(16px,2.5vw,20px);color:var(--dim);font-weight:300;max-width:600px;margin:0 auto 32px}
-.hero-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-links a{font:600 13px/1 var(--sans);padding:10px 20px;border-radius:8px;border:1px solid var(--border);color:var(--text);transition:all .2s;background:var(--card)}
-.hero-links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
-.hero-links a.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.hero-links a.primary:hover{background:#a577d6}
-
-/* ── Section headers ── */
-.sh{margin-bottom:40px}
-.sh-label{font:700 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.sh h2{font-size:28px;font-weight:800;color:var(--text-bright);letter-spacing:-.01em}
-.sh p{color:var(--dim);margin-top:6px;font-size:14px}
-
-/* ── About ── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
-.about-text{font-size:15px;line-height:1.8}
-.about-text p+p{margin-top:16px}
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;backdrop-filter:blur(12px)}
-.stat .val{font:800 28px/1 var(--mono);color:var(--accent);margin-bottom:6px}
-.stat .label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
-
-/* ── Projects ── */
-.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:700px){.project-grid{grid-template-columns:1fr}}
-.project{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;backdrop-filter:blur(12px);transition:all .25s}
-.project:hover{border-color:var(--border-hover);transform:translateY(-2px)}
-.project .p-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.project .p-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--accent-dim);flex-shrink:0}
-.project .p-title{font-size:16px;font-weight:700;color:var(--text-bright)}
-.project .p-tag{font:700 9px/1 var(--mono);letter-spacing:.1em;padding:3px 8px;border-radius:4px;background:rgba(91,141,217,0.12);color:var(--accent2);text-transform:uppercase;margin-left:auto}
-.project .p-desc{font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:14px}
-.project .p-tech{display:flex;flex-wrap:wrap;gap:6px}
-.project .p-tech span{font:500 10px/1 var(--mono);padding:4px 8px;border-radius:4px;background:rgba(255,255,255,0.04);color:var(--dim);border:1px solid rgba(255,255,255,0.04)}
-.project .p-link{display:inline-block;margin-top:12px;font:600 12px/1 var(--sans);color:var(--accent2)}
-
-/* ── Construction Work ── */
-.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.work-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .25s;position:relative}
-.work-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.work-card .w-icon{font-size:32px;margin-bottom:10px;opacity:.6}
-.work-card .w-title{font-size:14px;font-weight:600;color:var(--text-bright);margin-bottom:4px}
-.work-card .w-desc{font-size:11px;color:var(--dim)}
-.work-card .w-badge{position:absolute;top:10px;right:10px;font:700 9px/1 var(--mono);padding:3px 6px;border-radius:4px;background:rgba(147,102,204,0.15);color:var(--accent)}
-.work-add{border:2px dashed var(--border);background:transparent;cursor:pointer}
-.work-add:hover{border-color:var(--accent)}
-.work-add .w-icon{opacity:.3}
-
-/* ── Skills ── */
-.skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-@media(max-width:700px){.skills-grid{grid-template-columns:1fr 1fr}}
-.skill-group h3{font:700 11px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.skill-group ul{list-style:none}
-.skill-group li{font-size:13px;color:var(--dim);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
-.skill-group li::before{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:middle}
-
-/* ── Footer ── */
-footer{padding:40px 0;text-align:center;border-top:1px solid var(--border)}
-footer p{font-size:12px;color:var(--dim)}
-footer a{color:var(--accent)}
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 </head>
 <body>
 
-<!-- Hero -->
+<canvas id="shader-bg"></canvas>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DIGITAL ARCHITECT</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+    </div>
+    <a href="mailto:danzel@webcor.com" class="connect-btn">
+      Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-label" data-edit="hero-label">Construction PM & AI Builder</div>
-    <h1 data-edit="hero-name">Danzel Yap</h1>
-    <p class="subtitle" data-edit="hero-sub">Building AI-powered tools for construction project management. Currently at Webcor Builders on the $2B LACC CUP Modernization project in Los Angeles.</p>
-    <div class="hero-links">
-      <a href="#projects" class="primary">View Projects</a>
-      <a href="#work">Construction Work</a>
-      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/danzelyap" target="_blank">LinkedIn</a>
+  <div class="wrap">
+    <div class="sector reveal">
+      <span>Operational Sector 01</span>
+      <span class="sector-right">Live · <span data-clock>—</span></span>
+    </div>
+    <h1 class="xl hero-headline reveal delay-1">
+      Building AI <br>
+      <span class="grad" data-edit="hero-headline-2">for the field.</span>
+    </h1>
+    <p class="mt-6 reveal delay-2" style="font-size: clamp(16px, 1.5vw, 20px); color: var(--text-dim); max-width: 620px; line-height: 1.55;" data-edit="hero-sub">
+      I'm Danzel — Project Engineer at Webcor Builders on the $2B LACC CUP Modernization, and the builder behind <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" style="color: var(--primary)">OpenYap</a>, an AI platform for construction PMs. I ship tools that live between a crane and a keyboard.
+    </p>
+    <div class="mt-8 flex gap-3 reveal delay-3" style="flex-wrap: wrap;">
+      <a href="case-studies.html" class="btn primary">
+        <span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies
+      </a>
+      <a href="fieldwork.html" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">architecture</span>Field Work
+      </a>
+      <a href="https://github.com/dyap123" target="_blank" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">code</span>GitHub
+      </a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn
+      </a>
     </div>
   </div>
 </section>
 
-<!-- About -->
-<section id="about">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">About</div>
-      <h2>Background</h2>
+<!-- TELEMETRY MARQUEE -->
+<div class="telemetry">
+  <div class="track">
+    <span class="item"><span class="dot ok"></span><span class="k">SYS_CHECK</span>&nbsp;→&nbsp;nominal</span>
+    <span class="item"><span class="k">LOCATION</span>&nbsp;→&nbsp;LACC · Los Angeles, CA</span>
+    <span class="item"><span class="k">PROJECT</span>&nbsp;→&nbsp;$2B Convention Center Modernization</span>
+    <span class="item"><span class="k">DEPLOYED</span>&nbsp;→&nbsp;6 live web apps</span>
+    <span class="item"><span class="k">AGENTS</span>&nbsp;→&nbsp;15+ AI specialists online</span>
+    <span class="item"><span class="k">EMBEDS_TRACKED</span>&nbsp;→&nbsp;39</span>
+    <span class="item"><span class="dot ok"></span><span class="k">STATUS</span>&nbsp;→&nbsp;shipping</span>
+    <!-- duplicated for seamless loop -->
+    <span class="item"><span class="dot ok"></span><span class="k">SYS_CHECK</span>&nbsp;→&nbsp;nominal</span>
+    <span class="item"><span class="k">LOCATION</span>&nbsp;→&nbsp;LACC · Los Angeles, CA</span>
+    <span class="item"><span class="k">PROJECT</span>&nbsp;→&nbsp;$2B Convention Center Modernization</span>
+    <span class="item"><span class="k">DEPLOYED</span>&nbsp;→&nbsp;6 live web apps</span>
+    <span class="item"><span class="k">AGENTS</span>&nbsp;→&nbsp;15+ AI specialists online</span>
+    <span class="item"><span class="k">EMBEDS_TRACKED</span>&nbsp;→&nbsp;39</span>
+    <span class="item"><span class="dot ok"></span><span class="k">STATUS</span>&nbsp;→&nbsp;shipping</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section style="padding: 0;">
+  <div class="stats-row">
+    <div class="stat-cell reveal">
+      <div class="stat-val"><span data-count="2" data-prefix="$" data-suffix="B">$0</span></div>
+      <div class="stat-label">Project Value</div>
+      <div class="stat-sub">LACC CUP Modernization</div>
     </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p data-edit="about-1">Project Engineer at Webcor Builders, managing concrete operations on the LACC Convention Center Upgrade Program (CUP). Responsible for foundation pours, embed tracking, inspection coordination, and quality control across four sections of a mass-excavation concrete project.</p>
-        <p data-edit="about-2">Simultaneously building OpenYap — an AI-powered construction intelligence platform. Started as a side project to automate my own workflows, now a full product with 15+ AI agents, real-time dashboards, voice assistant, and takeoff automation. Built entirely in Python, JavaScript, and Three.js.</p>
-      </div>
-      <div class="stat-grid">
-        <div class="stat"><div class="val" data-edit="stat-1-val">$2B</div><div class="label" data-edit="stat-1-label">Project Value</div></div>
-        <div class="stat"><div class="val" data-edit="stat-2-val">15+</div><div class="label" data-edit="stat-2-label">AI Agents Built</div></div>
-        <div class="stat"><div class="val" data-edit="stat-3-val">39</div><div class="label" data-edit="stat-3-label">Embeds Tracked</div></div>
-        <div class="stat"><div class="val" data-edit="stat-4-val">6</div><div class="label" data-edit="stat-4-label">Live Web Apps</div></div>
-      </div>
+    <div class="stat-cell reveal delay-1">
+      <div class="stat-val"><span data-count="15" data-suffix="+">0</span></div>
+      <div class="stat-label">AI Agents Built</div>
+      <div class="stat-sub">Specialists across the stack</div>
+    </div>
+    <div class="stat-cell reveal delay-2">
+      <div class="stat-val"><span data-count="39">0</span></div>
+      <div class="stat-label">Embeds Tracked</div>
+      <div class="stat-sub">Live on CUP Dashboard</div>
+    </div>
+    <div class="stat-cell reveal delay-3">
+      <div class="stat-val"><span data-count="6">0</span></div>
+      <div class="stat-label">Live Web Apps</div>
+      <div class="stat-sub">Production + investor-facing</div>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
+<!-- ECOSYSTEM BENTO -->
 <section id="projects">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Projects</div>
-      <h2>OpenYap Ecosystem</h2>
-      <p>AI-powered tools built for real construction workflows</p>
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 02 · Ecosystem</span></div>
+        <h2 class="lg">OpenYap <span class="grad">Ecosystem</span></h2>
+        <p class="dim mt-2" style="max-width: 640px;" data-edit="projects-intro">
+          Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and three are live on the public internet.
+        </p>
+      </div>
+      <span class="pill pill-primary">6 DEPLOYED</span>
     </div>
-    <div class="project-grid">
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#9881;</div>
-          <div class="p-title" data-edit="p1-title">Const-Agent</div>
-          <span class="p-tag">Core</span>
-        </div>
-        <p class="p-desc" data-edit="p1-desc">AI construction PM assistant with 15 specialized agents. Discord + Teams + Web UI. Handles submittals, RFIs, schedule tracking, concrete orders, and document search across 200+ indexed files.</p>
-        <div class="p-tech"><span>Python</span><span>FastAPI</span><span>Discord.py</span><span>SQLite</span></div>
-      </div>
 
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#9638;</div>
-          <div class="p-title" data-edit="p2-title">CUP Dashboard</div>
-          <span class="p-tag">Live</span>
-        </div>
-        <p class="p-desc" data-edit="p2-desc">Real-time concrete pour tracking dashboard. Footing maps with drag-and-drop editing, embed verification system, live pour view with truck logging, inspection ticker, and Firebase sync.</p>
-        <div class="p-tech"><span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span></div>
-        <a class="p-link" href="https://dyap123.github.io/cup-dashboard/" target="_blank">View Live &#8599;</a>
-      </div>
+    <div class="bento">
 
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#9835;</div>
-          <div class="p-title" data-edit="p3-title">EDM Player (Rave)</div>
-          <span class="p-tag">App</span>
+      <!-- Const-Agent (wide) -->
+      <article class="card b-half project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">network_node</span></div>
+          <div>
+            <div class="title" data-edit="p1-title">Const-Agent</div>
+            <div class="pill pill-primary" style="margin-top: 3px;">CORE</div>
+          </div>
         </div>
-        <p class="p-desc" data-edit="p3-desc">Personal EDM visualizer + YouTube-to-MP3 downloader. Three.js node formations morph into animated shapes (phoenix, heart, DNA, lightning). Dual frequency layers, drop detection, BPM sync.</p>
-        <div class="p-tech"><span>Three.js</span><span>Web Audio</span><span>yt-dlp</span><span>PWA</span></div>
-      </div>
+        <p class="desc" data-edit="p1-desc">
+          AI PM assistant with 15 specialized agents. Discord + Teams + Web UI. Handles submittals, RFIs, schedule tracking, concrete orders, and document search across 200+ indexed files.
+        </p>
+        <div class="tech"><span>Python</span><span>FastAPI</span><span>Discord.py</span><span>SQLite</span><span>Anthropic</span><span>OpenAI</span></div>
+        <a href="case-studies.html#const-agent" class="arrow-link">Case study</a>
+      </article>
 
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#9733;</div>
-          <div class="p-title" data-edit="p4-title">OpenYap Roadmap</div>
-          <span class="p-tag">Live</span>
+      <!-- CUP Dashboard (wide) -->
+      <article class="card b-half project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">dashboard</span></div>
+          <div>
+            <div class="title" data-edit="p2-title">CUP Dashboard</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
         </div>
-        <p class="p-desc" data-edit="p4-desc">3D construction site visualization with scroll-driven building assembly animation. WebGL shader backgrounds, climbing crane, floating node network. Investor pitch site.</p>
-        <div class="p-tech"><span>Three.js</span><span>WebGL</span><span>GSAP</span></div>
-        <a class="p-link" href="https://dyap123.github.io/openyap-roadmap/" target="_blank">View Live &#8599;</a>
-      </div>
+        <p class="desc" data-edit="p2-desc">
+          Real-time concrete pour tracking. Footing maps with drag-edit, embed verification with long-press checklists, live-pour truck logging, inspection ticker, Firebase sync across devices.
+        </p>
+        <div class="tech"><span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span><span>Apps Script</span></div>
+        <a href="https://dyap123.github.io/cup-dashboard/" target="_blank" class="arrow-link">View live</a>
+      </article>
 
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#128065;</div>
-          <div class="p-title" data-edit="p5-title">Vault Brain</div>
-          <span class="p-tag">Local</span>
+      <!-- OpenYap Roadmap -->
+      <article class="card b-third project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">view_in_ar</span></div>
+          <div>
+            <div class="title" data-edit="p3-title">OpenYap Roadmap</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
         </div>
-        <p class="p-desc" data-edit="p5-desc">3D knowledge graph visualizer for Obsidian vaults. Sprite-based neural network with wikilink connections, voice-enabled Alfred chat, multi-provider AI proxy.</p>
-        <div class="p-tech"><span>Three.js</span><span>FastAPI</span><span>ElevenLabs</span><span>SQLite</span></div>
-      </div>
+        <p class="desc" data-edit="p3-desc">
+          Investor-facing 3D site. Scroll-driven building assembly, climbing crane, floating node network, glassmorphic agreement panels.
+        </p>
+        <div class="tech"><span>Three.js</span><span>WebGL</span><span>GSAP</span></div>
+        <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" class="arrow-link">View live</a>
+      </article>
 
-      <div class="project">
-        <div class="p-header">
-          <div class="p-icon">&#128197;</div>
-          <div class="p-title" data-edit="p6-title">Family Trip Planner</div>
-          <span class="p-tag">Live</span>
+      <!-- Vault Brain -->
+      <article class="card b-third project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">psychology</span></div>
+          <div>
+            <div class="title" data-edit="p4-title">Vault Brain</div>
+            <div class="pill pill-amber" style="margin-top: 3px;">LOCAL</div>
+          </div>
         </div>
-        <p class="p-desc" data-edit="p6-desc">PWA trip planner for a 21-person family California trip. Day-by-day itinerary, Google Sheets integration, budget tracker, packing lists.</p>
-        <div class="p-tech"><span>JavaScript</span><span>Google Sheets</span><span>PWA</span></div>
-        <a class="p-link" href="https://dyap123.github.io/yap-family-trip/" target="_blank">View Live &#8599;</a>
-      </div>
+        <p class="desc" data-edit="p4-desc">
+          3D knowledge-graph visualizer for Obsidian. Sprite-based neural net with wikilink edges, voice-enabled Alfred chat, multi-provider AI proxy.
+        </p>
+        <div class="tech"><span>Three.js</span><span>FastAPI</span><span>ElevenLabs</span><span>SQLite</span></div>
+        <a href="case-studies.html#vault-brain" class="arrow-link">Case study</a>
+      </article>
+
+      <!-- Formwork -->
+      <article class="card b-third project-card reveal delay-2">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">savings</span></div>
+          <div>
+            <div class="title" data-edit="p5-title">Formwork</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p5-desc">
+          Budget intelligence for OpenYap itself. Line-item planning per category, stacked compare chart, Three.js formwork lattice. Firebase-synced.
+        </p>
+        <div class="tech"><span>Three.js</span><span>Firebase</span><span>SheetJS</span></div>
+        <a href="https://dyap123.github.io/openyap-budget/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+      <!-- EDM Player -->
+      <article class="card b-half project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">graphic_eq</span></div>
+          <div>
+            <div class="title" data-edit="p6-title">EDM Player (Rave)</div>
+            <div class="pill" style="margin-top: 3px;">APP</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p6-desc">
+          Personal EDM visualizer + yt-dlp downloader. Three.js node formations morph into animated shapes (phoenix, heart, DNA, lightning). Dual-band frequency, drop detection, BPM sync.
+        </p>
+        <div class="tech"><span>Three.js</span><span>Web Audio</span><span>yt-dlp</span><span>PWA</span></div>
+      </article>
+
+      <!-- Family Trip -->
+      <article class="card b-half project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">travel_explore</span></div>
+          <div>
+            <div class="title" data-edit="p7-title">Yap Family Trip</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p7-desc">
+          PWA planner for a 21-person Yap family California trip. Day-by-day itinerary, Google Sheets sync, budget tracker, packing lists, family-visible checklists.
+        </p>
+        <div class="tech"><span>JavaScript</span><span>Sheets API</span><span>PWA</span></div>
+        <a href="https://dyap123.github.io/yap-family-trip/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- Construction Work -->
-<section id="work">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Construction</div>
-      <h2>Field Work</h2>
-      <p data-edit="work-intro">Documentation, catches, and drawings from the LACC CUP project</p>
+<!-- SKILLS -->
+<section id="stack">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 03 · Stack</span></div>
+        <h2 class="lg">Tech &amp; <span class="grad">Trade</span></h2>
+        <p class="dim mt-2">Languages, AI systems, and construction ops — all in one head.</p>
+      </div>
     </div>
-    <div class="work-grid" id="workGrid">
-      <!-- Populated from localStorage or defaults -->
-    </div>
-  </div>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Skills</div>
-      <h2>Tech Stack & Expertise</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h3>Languages & Frameworks</h3>
+    <div class="skills reveal">
+      <div class="skill-col">
+        <h3>Languages · Frameworks</h3>
         <ul>
-          <li>Python (FastAPI, asyncio)</li>
+          <li>Python — FastAPI, asyncio</li>
           <li>JavaScript / TypeScript</li>
-          <li>Three.js / WebGL</li>
+          <li>Three.js · WebGL · GLSL</li>
           <li>HTML / CSS / Tailwind</li>
-          <li>SQL (SQLite, Postgres)</li>
-          <li>C# (Unity)</li>
+          <li>SQL — SQLite, Postgres</li>
+          <li>C# — Unity</li>
         </ul>
       </div>
-      <div class="skill-group">
-        <h3>AI & Data</h3>
+      <div class="skill-col">
+        <h3>AI · Data</h3>
         <ul>
-          <li>Claude / Anthropic API</li>
-          <li>OpenAI / Codex / GPT</li>
-          <li>MiniMax / Gemini</li>
-          <li>ElevenLabs TTS</li>
-          <li>yt-dlp / ffmpeg</li>
-          <li>Web Audio API</li>
+          <li>Claude · Anthropic API</li>
+          <li>Codex · GPT · OpenAI</li>
+          <li>MiniMax · Gemini · OpenRouter</li>
+          <li>ElevenLabs TTS · Whisper STT</li>
+          <li>yt-dlp · ffmpeg · Web Audio</li>
+          <li>Firebase RTDB · Google Sheets API</li>
         </ul>
       </div>
-      <div class="skill-group">
+      <div class="skill-col">
         <h3>Construction</h3>
         <ul>
-          <li>Concrete operations</li>
-          <li>RFI / Submittal management</li>
+          <li>Concrete operations · pour planning</li>
+          <li>RFI · Submittal management</li>
           <li>Inspection coordination</li>
-          <li>Takeoff & quantity surveys</li>
-          <li>Embed / anchor bolt QC</li>
-          <li>Schedule tracking (P6)</li>
+          <li>Takeoff · quantity surveys</li>
+          <li>Embed · anchor bolt QC</li>
+          <li>Schedule tracking — P6</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <p>Danzel Yap &mdash; <a href="mailto:danzel@webcor.com">danzel@webcor.com</a> &mdash; Los Angeles, CA &mdash; 2026</p>
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="inner">
+    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
+    <div class="nav-foot">
+      <a href="index.html">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank">LinkedIn</a>
+      <a href="mailto:danzel@webcor.com">Contact</a>
+    </div>
+    <div class="copyright">© 2026 · DANZEL YAP · LOS ANGELES</div>
   </div>
 </footer>
 
-<!-- Edit toggle -->
-<button class="edit-toggle" id="editBtn" onclick="toggleEdit()">Edit</button>
+<button class="edit-toggle" id="editBtn">✎ Edit</button>
 
-<script>
-// ── Editable text fields (persisted to localStorage) ──
-const STORAGE_KEY = 'portfolio_edits';
-let edits = {};
-try { edits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch {}
-
-// Apply saved edits on load
-document.querySelectorAll('[data-edit]').forEach(el => {
-  const key = el.dataset.edit;
-  if (edits[key]) el.textContent = edits[key];
-});
-
-let editMode = false;
-function toggleEdit() {
-  editMode = !editMode;
-  document.getElementById('editBtn').textContent = editMode ? 'Save' : 'Edit';
-  document.getElementById('editBtn').classList.toggle('active', editMode);
-  document.querySelectorAll('[data-edit]').forEach(el => {
-    el.contentEditable = editMode;
-  });
-  if (!editMode) {
-    // Save all edits
-    document.querySelectorAll('[data-edit]').forEach(el => {
-      edits[el.dataset.edit] = el.textContent;
-    });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
-  }
-}
-
-// ── Construction Work cards (editable list) ──
-const WORK_KEY = 'portfolio_work';
-let workItems = [];
-try { workItems = JSON.parse(localStorage.getItem(WORK_KEY) || '[]'); } catch {}
-
-if (!workItems.length) {
-  workItems = [
-    { title: 'Footing Pour Catches', desc: 'Rebar and formwork inspection catches', file: 'docs/catches.pdf', type: 'PDF' },
-    { title: 'Embed Installation Plan', desc: 'Anchor rod layout and verification', file: 'docs/embeds.pdf', type: 'PDF' },
-    { title: 'Section A Drawings', desc: 'Structural foundation drawings', file: 'docs/drawings-a.pdf', type: 'Drawing' },
-  ];
-}
-
-function renderWork() {
-  const grid = document.getElementById('workGrid');
-  grid.innerHTML = workItems.map((w, i) => `
-    <div class="work-card" onclick="openWork(${i})">
-      <div class="w-icon">${w.type === 'Drawing' ? '&#128209;' : '&#128196;'}</div>
-      <div class="w-title">${w.title}</div>
-      <div class="w-desc">${w.desc}</div>
-      ${w.type ? '<div class="w-badge">' + w.type + '</div>' : ''}
-    </div>
-  `).join('') + `
-    <div class="work-card work-add" onclick="addWork()">
-      <div class="w-icon">+</div>
-      <div class="w-title">Add Item</div>
-      <div class="w-desc">Upload a PDF or link</div>
-    </div>
-  `;
-}
-
-function openWork(i) {
-  const w = workItems[i];
-  if (w.file) window.open(w.file, '_blank');
-}
-
-function addWork() {
-  const title = prompt('Title:');
-  if (!title) return;
-  const desc = prompt('Description:', '');
-  const file = prompt('PDF path (e.g. docs/my-file.pdf):', 'docs/');
-  const type = prompt('Type (PDF, Drawing, Report, Catch):', 'PDF');
-  workItems.push({ title, desc: desc || '', file: file || '', type: type || 'PDF' });
-  localStorage.setItem(WORK_KEY, JSON.stringify(workItems));
-  renderWork();
-}
-
-renderWork();
-</script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

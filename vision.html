@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vision — Danzel Yap</title>
+<meta name="description" content="The OpenYap thesis: bring AI to the construction foreman. Then to the whole field."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+<style>
+  .manifesto {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .manifesto { grid-template-columns: 1fr; } }
+  .phase {
+    background: rgba(27,27,35,0.55); backdrop-filter: blur(18px);
+    border: 1px solid var(--line); border-radius: 4px; padding: 2rem;
+    position: relative; overflow: hidden; min-height: 380px;
+    display: flex; flex-direction: column;
+    transition: border-color .3s, transform .3s;
+  }
+  .phase:hover { border-color: rgba(217,185,255,0.25); transform: translateY(-3px); }
+  .phase::before {
+    content: attr(data-num); position: absolute; top: -20px; right: 16px;
+    font-family: var(--head); font-size: 180px; font-weight: 700; color: var(--accent-soft);
+    line-height: 1; letter-spacing: -0.08em; pointer-events: none;
+  }
+  .phase .label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 8px;
+    position: relative; z-index: 1;
+  }
+  .phase .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--glow); }
+  .phase h3 {
+    font-family: var(--head); font-size: 28px; font-weight: 700; letter-spacing: -0.025em;
+    margin-bottom: 1rem; line-height: 1.1; position: relative; z-index: 1;
+  }
+  .phase p { color: var(--text-dim); font-size: 14.5px; line-height: 1.6; position: relative; z-index: 1; }
+  .phase ul { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+  .phase li { font-family: var(--mono); font-size: 12px; color: var(--text-dim); display: flex; gap: 10px; align-items: flex-start; }
+  .phase li::before { content: "→"; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+  .quote-slab {
+    margin: 6rem 0; padding: 4rem 2.5rem;
+    background: linear-gradient(135deg, rgba(67, 16, 122, 0.35), rgba(14,13,21,0.85));
+    border: 1px solid rgba(217,185,255,0.2); border-radius: 4px;
+    position: relative; overflow: hidden;
+  }
+  .quote-slab::before {
+    content: "“"; position: absolute; top: -40px; left: -10px;
+    font-family: var(--head); font-size: 300px; color: var(--accent-soft); line-height: 1;
+    pointer-events: none;
+  }
+  .quote-slab blockquote {
+    font-family: var(--head); font-size: clamp(22px, 3.2vw, 42px); font-weight: 500;
+    letter-spacing: -0.025em; line-height: 1.15; position: relative; z-index: 1;
+    max-width: 32ch;
+  }
+  .quote-slab cite {
+    display: block; margin-top: 1.5rem; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-style: normal;
+    position: relative; z-index: 1;
+  }
+
+  .principles {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+  }
+  @media (max-width: 700px) { .principles { grid-template-columns: 1fr; } }
+  .principle {
+    display: flex; gap: 1rem; padding: 1.5rem;
+    background: rgba(27,27,35,0.4); border: 1px solid var(--line); border-radius: 4px;
+    transition: all .25s;
+  }
+  .principle:hover { border-color: rgba(217,185,255,0.2); background: rgba(27,27,35,0.6); }
+  .principle .n {
+    font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--primary);
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(217,185,255,0.3);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .principle h4 { font-family: var(--head); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .principle p { font-size: 13.5px; color: var(--text-dim); line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<canvas id="shader-bg"></canvas>
+
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DIGITAL ARCHITECT</a>
+    <div class="nav-links">
+      <a href="index.html">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html" class="active">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+    </div>
+    <a href="mailto:danzel@webcor.com" class="connect-btn">
+      Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+    </a>
+  </div>
+</nav>
+
+<section class="hero" style="padding-top: 9rem; padding-bottom: 4rem;">
+  <div class="wrap">
+    <div class="sector reveal">
+      <span>Operational Sector 03 · Vision</span>
+      <span class="sector-right">INTENT &amp; TRAJECTORY</span>
+    </div>
+    <h1 class="xl reveal delay-1" style="max-width: 20ch;">
+      Every foreman gets a <span class="grad">superpower</span>.
+    </h1>
+    <p class="mt-6 reveal delay-2" style="font-size: clamp(17px, 1.6vw, 22px); color: var(--text-dim); max-width: 720px; line-height: 1.55;" data-edit="vision-lede">
+      Construction built civilization and runs on clipboards. The next decade of this industry belongs to the people who bring AI to the job-trailer, the tailgate meeting, and the pour plan. That's what I'm building.
+    </p>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section>
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Roadmap</span></div>
+        <h2 class="lg">Now · Next · <span class="grad">Later</span></h2>
+        <p class="dim mt-2">Three horizons. Each one ships something real.</p>
+      </div>
+    </div>
+
+    <div class="manifesto">
+
+      <div class="phase reveal" data-num="01">
+        <div class="label">Now · 2025–2026</div>
+        <h3 data-edit="phase1-title">Ship for the <br>team I'm on.</h3>
+        <p data-edit="phase1-body">
+          OpenYap serves the LACC CUP project first. Every agent, every dashboard, every voice command is tested under concrete pressure. If it survives a Monday at Section A, it's ready.
+        </p>
+        <ul>
+          <li data-edit="phase1-b1">Const-Agent in Discord, Teams, and Web UI</li>
+          <li data-edit="phase1-b2">CUP Dashboard live for PMs + foremen</li>
+          <li data-edit="phase1-b3">Formwork for budget &amp; runway</li>
+          <li data-edit="phase1-b4">Alfred voice assistant w/ vault brain</li>
+        </ul>
+      </div>
+
+      <div class="phase reveal delay-1" data-num="02">
+        <div class="label">Next · 2026–2027</div>
+        <h3 data-edit="phase2-title">Open it up to <br>Webcor-wide.</h3>
+        <p data-edit="phase2-body">
+          Multi-project pilots. Formalize agent roles (submittal coordinator, schedule analyst, QA tracker) so any project can spin up an AI team in hours, not quarters. License model TBD.
+        </p>
+        <ul>
+          <li data-edit="phase2-b1">Multi-tenant deployment + SSO</li>
+          <li data-edit="phase2-b2">Role-based agent templates</li>
+          <li data-edit="phase2-b3">Integrations: P6, Procore, Bluebeam</li>
+          <li data-edit="phase2-b4">On-site takeoff by phone camera</li>
+        </ul>
+      </div>
+
+      <div class="phase reveal delay-2" data-num="03">
+        <div class="label">Later · 2028+</div>
+        <h3 data-edit="phase3-title">Every field gets an <br>OpenYap.</h3>
+        <p data-edit="phase3-body">
+          Platform offering for any GC or trade: a configurable agent fabric + dashboards + voice + mobile. Field-first UX. Not another PMIS — the agent layer above it.
+        </p>
+        <ul>
+          <li data-edit="phase3-b1">Agent marketplace for trades</li>
+          <li data-edit="phase3-b2">Offline-first PWA + edge inference</li>
+          <li data-edit="phase3-b3">Open-source the substrate</li>
+          <li data-edit="phase3-b4">Field data → construction LLM</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section>
+  <div class="wrap">
+    <div class="quote-slab reveal">
+      <blockquote data-edit="big-quote">
+        "The winners of the next decade in construction aren't the GCs with the best software licenses. They're the ones whose foremen can talk to their data."
+      </blockquote>
+      <cite>— Thesis</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section>
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Principles</span></div>
+        <h2 class="lg">How I <span class="grad">build</span>.</h2>
+      </div>
+    </div>
+
+    <div class="principles">
+      <div class="principle reveal">
+        <div class="n">01</div>
+        <div>
+          <h4 data-edit="p1-title">Field-first, not feature-first.</h4>
+          <p data-edit="p1-body">If a foreman can't use it with one thumb at 6 AM, it's not done. Every design starts at the tailgate meeting.</p>
+        </div>
+      </div>
+      <div class="principle reveal delay-1">
+        <div class="n">02</div>
+        <div>
+          <h4 data-edit="p2-title">Ship weekly, iterate on the jobsite.</h4>
+          <p data-edit="p2-body">Nothing gets to sit in a branch for a month. Real work runs on the main branch; bugs surface when there's concrete involved.</p>
+        </div>
+      </div>
+      <div class="principle reveal">
+        <div class="n">03</div>
+        <div>
+          <h4 data-edit="p3-title">Own the full stack.</h4>
+          <p data-edit="p3-body">Model → agent → API → UI → deployment. Fewer handoffs means faster field feedback loops.</p>
+        </div>
+      </div>
+      <div class="principle reveal delay-1">
+        <div class="n">04</div>
+        <div>
+          <h4 data-edit="p4-title">Design for the crane operator.</h4>
+          <p data-edit="p4-body">Big type, high contrast, voice-first where it fits. The beautiful polish is a byproduct of making it work with work gloves on.</p>
+        </div>
+      </div>
+      <div class="principle reveal">
+        <div class="n">05</div>
+        <div>
+          <h4 data-edit="p5-title">Dual-use everything.</h4>
+          <p data-edit="p5-body">Each internal tool is designed to eventually become a product. Every dashboard is a demo. Every workflow is a sales deck.</p>
+        </div>
+      </div>
+      <div class="principle reveal delay-1">
+        <div class="n">06</div>
+        <div>
+          <h4 data-edit="p6-title">Keep the humans in the loop.</h4>
+          <p data-edit="p6-body">Agents propose, humans approve. Construction errors cost millions — AI augments the PM, never replaces the judgment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <div class="sector" style="justify-content: center;"><span>Next</span></div>
+    <h2 class="lg mb-6">Want to <span class="grad">work together</span>?</h2>
+    <p class="dim" style="max-width: 600px; margin: 0 auto 2rem;">
+      If you're in construction tech, AI tooling, or just curious what a PM-turned-builder looks like up close — let's talk.
+    </p>
+    <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:danzel@webcor.com" class="btn primary">
+        <span class="material-symbols-outlined" style="font-size:16px">mail</span>Email
+      </a>
+      <a href="case-studies.html" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies
+      </a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank" class="btn">
+        <span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
+    <div class="nav-foot">
+      <a href="index.html">Ecosystem</a>
+      <a href="fieldwork.html">Field Work</a>
+      <a href="vision.html">Vision</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/danzelyap" target="_blank">LinkedIn</a>
+    </div>
+    <div class="copyright">© 2026 · DANZEL YAP · LOS ANGELES</div>
+  </div>
+</footer>
+
+<button class="edit-toggle" id="editBtn">✎ Edit</button>
+
+<script src="assets/shell.js"></script>
+</body>
+</html>
