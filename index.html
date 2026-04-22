@@ -77,6 +77,42 @@
   .story .visual.dual img { transition: transform .5s ease; }
   .story .visual.dual > div:hover img { transform: scale(1.04); }
 
+  .story .visual.quad {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 2px; aspect-ratio: 4/3; padding: 0;
+  }
+  .story .visual.quad > div { position: relative; overflow: hidden; background: var(--surface-0); }
+  .story .visual.quad img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease, filter .4s; filter: grayscale(10%) brightness(0.92); }
+  .story .visual.quad > div:hover img { transform: scale(1.045); filter: grayscale(0%) brightness(1); }
+  .story .visual.quad .tag {
+    position: absolute; left: 8px; top: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 3px 7px; background: rgba(14,13,21,0.72); backdrop-filter: blur(8px);
+    color: var(--primary); border: 1px solid rgba(217,185,255,0.25); border-radius: 3px;
+  }
+
+  .site-strip {
+    margin-top: 1.25rem; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
+  }
+  @media (max-width: 700px) { .site-strip { grid-template-columns: repeat(3, 1fr); } }
+  .site-strip .s {
+    aspect-ratio: 1/1; overflow: hidden; position: relative; border-radius: 2px;
+    background: var(--surface-0); cursor: pointer;
+  }
+  .site-strip .s img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s, filter .4s;
+    filter: grayscale(30%) brightness(0.82) contrast(1.08);
+  }
+  .site-strip .s:hover img { transform: scale(1.08); filter: none; }
+  .site-strip .s .t {
+    position: absolute; inset: auto 0 0 0; padding: 5px 7px;
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text); background: linear-gradient(to top, rgba(14,13,21,0.92), transparent);
+    opacity: 0; transition: opacity .25s;
+  }
+  .site-strip .s:hover .t { opacity: 1; }
+
   .story .visual .placeholder {
     font-family: var(--mono); font-size: 13px; color: var(--muted);
     text-align: center; padding: 2rem; max-width: 60%; line-height: 1.6; z-index: 2; position: relative;
@@ -124,7 +160,7 @@
     box-shadow: 0 0 14px var(--glow);
     transform: translate(-50%, -50%) scale(1.4);
   }
-  .timeline-rail .dot.active::after { opacity: 1; color: var(--primary); }
+  /* Labels only surface on hover — the top-right chip carries the active title. */
   .timeline-rail .dot.passed {
     background: var(--primary-dim); border-color: var(--primary-dim);
   }
@@ -340,7 +376,7 @@
 
 <nav class="topnav">
   <div class="inner">
-    <a href="index.html" class="brand"><span class="dot"></span>DIGITAL ARCHITECT</a>
+    <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
     <div class="nav-links">
       <a href="index.html" class="active">Journey</a>
       <a href="ecosystem.html">Ecosystem</a>
@@ -348,7 +384,7 @@
       <a href="vision.html">Vision</a>
       <a href="case-studies.html">Case Studies</a>
     </div>
-    <a href="mailto:danzel@webcor.com" class="connect-btn">
+    <a href="mailto:dyap123@gmail.com" class="connect-btn">
       Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
     </a>
   </div>
@@ -406,16 +442,11 @@
           <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>Roadmap</a>
         </div>
       </div>
-      <div class="visual">
-        <div class="grid-overlay"></div>
-        <div class="placeholder">
-          <div class="big-icon"><span class="material-symbols-outlined" style="font-size: 64px;">network_node</span></div>
-          <div><strong style="color: var(--text);">OpenYap Ecosystem</strong></div>
-          <div class="mt-2" style="font-size: 11px;">Const-Agent · CUP Dashboard · Vault Brain · Formwork · Roadmap · EDM Player</div>
-          <div class="mt-4" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
-            <span class="pill pill-primary">Python</span><span class="pill pill-primary">Three.js</span><span class="pill pill-primary">Claude</span><span class="pill pill-primary">Codex</span>
-          </div>
-        </div>
+      <div class="visual quad">
+        <div><span class="tag">WeekendAI · Figma</span><img src="assets/photos/demos/1H8ozOr1gqZXNGS0yS9NAUgTi4bwcJd85.jpg" alt="OpenYap UI design in Figma" loading="lazy"/></div>
+        <div><span class="tag">Dual-model routing</span><img src="assets/photos/demos/12Kx3LRxi-H7iB3num8fZg0NpSsA5iGCa.jpg" alt="DeepSeek-R1 vs Qwen side by side" loading="lazy"/></div>
+        <div><span class="tag">DeepSeek-R1</span><img src="assets/photos/demos/14YPjTnTlUdp13IuS0p2LylhYVGBP6H0d.jpg" alt="DeepSeek-R1 response sample" loading="lazy"/></div>
+        <div><span class="tag">Demo</span><img src="assets/photos/demos/1HGQpQeAYE6S22fJjdAF3r24yf7G35OuK.jpg" alt="OpenYap demo interface" loading="lazy"/></div>
       </div>
     </div>
   </div>
@@ -445,16 +476,11 @@
           <div class="fact"><div class="v"><span data-count="127">0</span></div><div class="k">Inspections</div></div>
         </div>
       </div>
-      <div class="visual">
-        <div class="grid-overlay"></div>
-        <div class="placeholder">
-          <div class="big-icon"><span class="material-symbols-outlined" style="font-size: 64px;">domain</span></div>
-          <div><strong style="color: var(--text);">LACC · CUP Modernization</strong></div>
-          <div class="mt-2" style="font-size: 11px;">Los Angeles, CA · concrete ops · embeds · inspections · takeoff · QC</div>
-          <a href="fieldwork.html" class="btn mt-4" style="font-size: 11px; padding: 8px 14px;">
-            <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>Field Work
-          </a>
-        </div>
+      <div class="visual quad">
+        <div><span class="tag">Webcor · basement MEP</span><img src="assets/photos/webcor-skyscraper/11jsaRVog7qwOeC05DSEJ0C5HTQAjOktW.jpg" alt="Conduit runs above basement corridor" loading="lazy"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/13zdUq3PhuiOTeNoBy_MBzASnavdT2qN7.jpg" alt="Webcor jobsite photo" loading="lazy"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/15noh5Gi7vR3F2bFe62qIlM1_n447VAf6.jpg" alt="Webcor jobsite photo" loading="lazy"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/17_p4hqMmY_H89RqvTQraLnkuvdkN5-ZB.jpg" alt="Webcor jobsite photo" loading="lazy"/></div>
       </div>
     </div>
   </div>
@@ -564,7 +590,7 @@
 
         <!-- CTA -->
         <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
-          <a href="mailto:danzel@webcor.com?subject=Construction%20Interview" class="btn primary">
+          <a href="mailto:dyap123@gmail.com?subject=Construction%20Interview" class="btn primary">
             <span class="material-symbols-outlined" style="font-size:16px">record_voice_over</span>Participate in an interview
           </a>
           <a href="https://drive.google.com/drive/folders/18X8QdQ3hundqS9x4O3Pav_A8NCh3L3ZN?usp=sharing" target="_blank" class="btn">
@@ -646,6 +672,16 @@
         </div>
 
         <div id="interviewFiles" class="mt-4"></div>
+
+        <div class="eyebrow mt-6 mb-2" style="color: var(--primary);">Site context · where I was when I recorded</div>
+        <div class="site-strip">
+          <div class="s"><img src="assets/photos/uc-irvine/10bzd0e-E_eQzHOO9qCSZgNef15jteemj.jpg" alt="UC Irvine roof construction" loading="lazy"/><div class="t">UCI · roof</div></div>
+          <div class="s"><img src="assets/photos/uc-irvine/10swqfkNeYUR520CM3OoLmdusxHIGs7qE.jpg" alt="UC Irvine site" loading="lazy"/><div class="t">UCI · site</div></div>
+          <div class="s"><img src="assets/photos/uc-irvine/12JtGvt9bt3mKlr4u9qYYO9SreppqYXeO.jpg" alt="UC Irvine site" loading="lazy"/><div class="t">UCI · site</div></div>
+          <div class="s"><img src="assets/photos/uc-irvine/12oX-ol8zSJ-ZsN5CbB97h93k5TkPrduX.jpg" alt="UC Irvine site" loading="lazy"/><div class="t">UCI · site</div></div>
+          <div class="s"><img src="assets/photos/las-vegas/1tzAzN0y5SVpWsnxd8U_vk4weC1YQp-0d.jpg" alt="Las Vegas finish walk — portrait" loading="lazy"/><div class="t">Vegas · walk</div></div>
+          <div class="s"><img src="assets/photos/las-vegas/1U9fdUt_hGmDQqoJ3wn4s-qvdUFm9r8vM.jpg" alt="Las Vegas stone column" loading="lazy"/><div class="t">Vegas · stone</div></div>
+        </div>
 
         <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: rgba(14,13,21,0.4);">
           <div class="eyebrow mb-1" style="color: var(--muted); font-size: 9px;">Full research archive</div>
@@ -750,7 +786,7 @@
       Every side project was practice for the big one. Want to add the next chapter together?
     </p>
     <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
-      <a href="mailto:danzel@webcor.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+      <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
       <a href="ecosystem.html" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Ecosystem</a>
       <a href="case-studies.html" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
     </div>
@@ -776,9 +812,9 @@
       <a href="vision.html">Vision</a>
       <a href="case-studies.html">Case Studies</a>
       <a href="https://github.com/dyap123" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/danzelyap" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LinkedIn</a>
     </div>
-    <div class="copyright">© 2026 · DANZEL YAP · LOS ANGELES</div>
+    <div class="copyright">© 2026 · DANZEL YAP · LA · <a href="tel:+14083353615" style="color: var(--muted); text-decoration: none;">(408) 335-3615</a> · <a href="mailto:dyap123@gmail.com" style="color: var(--muted); text-decoration: none;">dyap123@gmail.com</a></div>
   </div>
 </footer>
 
