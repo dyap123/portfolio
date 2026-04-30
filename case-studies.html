@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Case Studies — Danzel Yap</title>
-<meta name="description" content="Five deep-dive case studies from the OpenYap ecosystem: Const-Agent, CUP Dashboard, Vault Brain, Formwork, EDM Player."/>
+<meta name="description" content="Everything I shipped in 5 weeks. 14 apps in the OpenYap ecosystem plus games, sheets, and a foundation viewer for the LACC project."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -121,38 +121,63 @@
   <div class="wrap">
     <div class="sector reveal">
       <span>Operational Sector 04 · Case Studies</span>
-      <span class="sector-right">5 DEEP DIVES</span>
+      <span class="sector-right">1 HUB · 5 FLAGSHIPS · 8 SHIPS · 5 WEEKS</span>
     </div>
     <h1 class="xl reveal delay-1" style="max-width: 18ch;">
       How I <span class="grad">built it</span>.
     </h1>
-    <p class="mt-6 reveal delay-2" style="font-size: clamp(16px, 1.5vw, 20px); color: var(--text-dim); max-width: 680px; line-height: 1.55;" data-edit="cs-lede">
-      Five case studies from the OpenYap ecosystem. Each one: what it solves, how I built it, and what broke along the way.
+    <p class="mt-6 reveal delay-2" style="font-size: clamp(16px, 1.5vw, 20px); color: var(--text-dim); max-width: 720px; line-height: 1.55;" data-edit="cs-lede">
+      Everything I shipped between March 27 and today. Fourteen apps in the OpenYap ecosystem — plus a Unity game, foreman sheets, and a public foundation viewer for the LACC board. One launcher pulls them all together.
     </p>
+
+    <!-- Launcher hero — the home for everything -->
+    <section class="launcher-hero reveal delay-3" id="launcher">
+      <div>
+        <div class="head">
+          <span class="num">00</span>
+          <span class="pill pill-primary">HUB</span>
+        </div>
+        <h2 data-edit="launcher-h">OpenYap Launcher — the home screen for fourteen apps.</h2>
+        <p class="tagline" data-edit="launcher-tag">
+          Wangan-OS dashboard. Status pills. Last-touched timestamps. Every project I ship lands here so the team can find it in one click.
+        </p>
+        <a class="cta" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
+          Open the launcher
+          <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+        </a>
+      </div>
+      <div>
+        <!-- DROP: hero.png in assets/photos/case-studies/launcher/ -->
+        <img src="assets/photos/case-studies/launcher/hero.png" alt="OpenYap Launcher dashboard" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </section>
 
     <!-- Index -->
     <div class="cs-index mt-8 reveal delay-3">
-      <a href="#const-agent"><span class="no">01</span><span class="t">Const-Agent</span><span class="s">AI PM with 15 agents across Discord, Teams, Web</span></a>
-      <a href="#cup-dashboard"><span class="no">02</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
-      <a href="#roadmap"><span class="no">03</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
-      <a href="#vault-brain"><span class="no">04</span><span class="t">Vault Brain</span><span class="s">Obsidian neural viz + voice Alfred</span></a>
-      <a href="#formwork"><span class="no">05</span><span class="t">Formwork</span><span class="s">Budget intelligence for OpenYap itself</span></a>
+      <a href="#const-agent"><span class="no">01</span><span class="t">Mr. George</span><span class="s">The const-agent web UI · 17 agents · the brain</span></a>
+      <a href="#command-center"><span class="no">02</span><span class="t">Command Center</span><span class="s">Single-pane PE dashboard · LACC ops</span></a>
+      <a href="#cup-dashboard"><span class="no">03</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
+      <a href="#formwork"><span class="no">04</span><span class="t">Formwork</span><span class="s">Sankey + 3D lattice budget intelligence</span></a>
+      <a href="#roadmap"><span class="no">05</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
+      <a href="#vault-brain"><span class="no">06</span><span class="t">Vault Brain</span><span class="s">Mr. George's library · voice Alfred</span></a>
+      <a href="#todo"><span class="no">07</span><span class="t">Todo</span><span class="s">Tasks + Wasted-Time tracker</span></a>
+      <a href="#lacc-foundation"><span class="no">08</span><span class="t">LACC Foundation</span><span class="s">Public zone-map viewer for the board</span></a>
     </div>
   </div>
 </section>
 
-<!-- CASE 01 — CONST-AGENT -->
+<!-- CASE 01 — MR. GEORGE (Const-Agent web UI) -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="const-agent">
       <div class="lhs">
         <div class="head">
           <span class="num">01</span>
-          <span class="pill pill-primary">CORE</span>
+          <span class="pill pill-primary">FLAGSHIP</span>
         </div>
-        <h2 data-edit="cs1-h">Const-Agent — the PM in my pocket.</h2>
+        <h2 data-edit="cs1-h">Mr. George — the PM in my pocket.</h2>
         <p class="tagline" data-edit="cs1-tag">
-          A 15-agent AI system that reads my emails, writes my submittals, searches 200+ drawings, and pages me on Discord when something breaks.
+          Internally codenamed Mr. George. Seventeen AI agents that read my emails, write my submittals, search 200+ drawings, dispatch to a research panel, and page me on Discord when something breaks. The const-agent web UI is the cockpit.
         </p>
 
         <div class="block">
@@ -165,28 +190,44 @@
         <div class="block">
           <div class="block-label">Approach</div>
           <p data-edit="cs1-approach-1">
-            Built a multi-channel agent framework in Python. The same 15 agents — submittal coordinator, RFI triager, schedule analyst, drawing indexer, takeoff specialist, advisory panel — answer in Discord, Teams, and a dedicated web UI. Each channel routes to the right agent based on the message.
+            Built a multi-channel agent framework in Python. The same 17 agents — submittal coordinator, RFI triager, schedule analyst, drawing indexer, takeoff specialist, tool tracker, foreman roster, advisory panel of five — answer in Discord, Teams, and a dedicated web UI. Each channel routes to the right agent based on the message.
           </p>
           <p data-edit="cs1-approach-2">
-            Model providers are hot-swappable: Anthropic (Claude Opus), OpenAI (Codex via ChatGPT OAuth), MiniMax, Gemini, Ollama for local. If one goes down, the next provider picks up.
+            Model providers are hot-swappable: Anthropic (Claude Opus), OpenAI (Codex via ChatGPT OAuth), MiniMax M2.7, Gemini, Ollama for local. If one goes down, the next provider picks up. Vision is enabled — paste an image directly into Alfred and he'll read it.
           </p>
           <ul>
-            <li data-edit="cs1-a1">Dispatch agent analyzes intent, routes to one of 14 specialists</li>
-            <li data-edit="cs1-a2">Drawing indexer runs pdfplumber + Gemini over 200+ sheet PDFs</li>
-            <li data-edit="cs1-a3">Voice channel via ElevenLabs + Whisper (Alfred)</li>
-            <li data-edit="cs1-a4">macOS Keychain for all provider keys — zero secrets in git</li>
+            <li data-edit="cs1-a1">Dispatch agent analyzes intent, routes to one of 17 specialists</li>
+            <li data-edit="cs1-a2">Advisory panel: 5 research agents + a manager, all with Drive folder routing</li>
+            <li data-edit="cs1-a3">Multi-vault routing — personal brain (192 notes) + project brain (25 LACC notes)</li>
+            <li data-edit="cs1-a4">Sheets create / append / format from chat (Submittal, RFI, Tools, Embed trackers)</li>
+            <li data-edit="cs1-a5">Drawing indexer runs fitz + pdfplumber + Gemini over 200+ sheet PDFs</li>
+            <li data-edit="cs1-a6">Voice channel via ElevenLabs (Daniel / Charlie) + Web Speech API mic</li>
+            <li data-edit="cs1-a7">Tool tracker assets-sync UI shipped today (4/29) — drop a ToolHound xlsx, click Sync</li>
+            <li data-edit="cs1-a8">macOS Keychain for all provider keys — zero secrets in git</li>
           </ul>
+        </div>
+
+        <div class="callout" data-edit="cs1-callout">
+          Every node in the brain is a <strong>markdown file</strong>. Every connection is a <strong>wikilink</strong>. Alfred reads them, links them, and surfaces the right one when you ask. The user authors the brain by editing <code>.md</code> files in Obsidian — the AI is just the librarian.
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-launcher.png · 02-brain.png · 03-tool-tracker.png · 04-alfred.png in assets/photos/case-studies/mr-george/ -->
+          <img src="assets/photos/case-studies/mr-george/01-launcher.png" alt="Mr. George loading screen" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/02-brain.png" alt="Vault brain visualization" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/03-tool-tracker.png" alt="Tool tracker assets-sync UI" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/04-alfred.png" alt="Alfred chat with orbital brain nodes" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="block">
           <div class="block-label">Result</div>
           <p data-edit="cs1-result">
-            Cuts a typical RFI/submittal prep from ~40 minutes to ~6. Drawing-search questions that used to take 10 minutes of sheet-flipping get answered in seconds. The full audit trail lives in SQLite — every question, every response, every tool call.
+            Cuts a typical RFI/submittal prep from ~40 minutes to ~6. Drawing-search questions that used to take 10 minutes of sheet-flipping get answered in seconds. The Tools tab now ingests a ToolHound asset report and reconciles to the Assets sheet in one click. The full audit trail lives in SQLite — every question, every response, every tool call.
           </p>
           <div class="metric-strip">
-            <div><div class="v"><span data-count="15" data-suffix="+">0</span></div><div class="k">AI Agents</div></div>
+            <div><div class="v"><span data-count="17" data-suffix="">0</span></div><div class="k">AI Agents</div></div>
             <div><div class="v"><span data-count="200" data-suffix="+">0</span></div><div class="k">Drawings Indexed</div></div>
-            <div><div class="v"><span data-count="6" data-suffix="×">0</span></div><div class="k">Faster Prep</div></div>
+            <div><div class="v"><span data-count="24000" data-suffix="+">0</span></div><div class="k">Lines of Code</div></div>
           </div>
         </div>
       </div>
@@ -195,17 +236,18 @@
         <div class="panel">
           <h4>Facts</h4>
           <div class="kv"><span class="k">Launched</span><span class="v">2025-11</span></div>
-          <div class="kv"><span class="k">Language</span><span class="v">Python 3.12</span></div>
-          <div class="kv"><span class="k">Runtime</span><span class="v">Local macOS</span></div>
+          <div class="kv"><span class="k">Language</span><span class="v">Python 3.14</span></div>
+          <div class="kv"><span class="k">Runtime</span><span class="v">Local macOS · Tailscale</span></div>
           <div class="kv"><span class="k">Channels</span><span class="v">Discord · Teams · Web</span></div>
-          <div class="kv"><span class="k">Lines</span><span class="v">~24,000</span></div>
+          <div class="kv"><span class="k">Vaults</span><span class="v">2 (personal + project)</span></div>
+          <div class="kv"><span class="k">Lines</span><span class="v">~24,000+</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
           <div class="tech-wrap">
             <span>Python</span><span>FastAPI</span><span>Discord.py</span><span>SQLite</span>
-            <span>Anthropic</span><span>OpenAI</span><span>MiniMax</span><span>Gemini</span>
-            <span>Whisper</span><span>ElevenLabs</span><span>fitz</span>
+            <span>Anthropic</span><span>Codex OAuth</span><span>MiniMax M2.7</span><span>Gemini</span>
+            <span>Whisper</span><span>ElevenLabs</span><span>fitz</span><span>Obsidian</span>
           </div>
         </div>
       </aside>
@@ -213,18 +255,91 @@
   </div>
 </section>
 
-<!-- CASE 02 — CUP DASHBOARD -->
+<!-- CASE 02 — COMMAND CENTER -->
 <section>
   <div class="wrap">
-    <article class="case reveal" id="cup-dashboard">
+    <article class="case reveal" id="command-center">
       <div class="lhs">
         <div class="head">
           <span class="num">02</span>
           <span class="pill">LIVE</span>
         </div>
+        <h2 data-edit="cs2cc-h">Command Center — every Webcor sheet in one tab.</h2>
+        <p class="tagline" data-edit="cs2cc-tag">
+          Single-pane-of-glass for the LACC PE team. Embeds, tools, ACP coordination, submittals, RFIs — every spreadsheet the team tracks, surfaced in one Wangan-OS dashboard.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2cc-problem">
+            The LACC South Hall PE team runs on five different Google Sheets across four tabs apiece. Status is scattered — to know "are we behind on submittals" you open a sheet, scroll, eyeball, repeat for the next thing. Nobody had a default landing page.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2cc-approach-1">
+            Static GitHub Pages SPA. Reads live from every team sheet via Apps Script proxies. Carbon-fiber + cyan neon styling, Chart.js dashboards, drill-down per category. Mobile-friendly so foremen can pull it up in the field.
+          </p>
+          <ul>
+            <li data-edit="cs2cc-a1">Embeds — full LACC Embed Tracker (Detailed Tracker)</li>
+            <li data-edit="cs2cc-a2">Tools — Assets, Transfers, Foremen roster aggregated</li>
+            <li data-edit="cs2cc-a3">ACP Coordination — Vertical Bar (Table B Locations, Pile Types)</li>
+            <li data-edit="cs2cc-a4">Submittals &amp; RFIs — RFI Log, Gap Analysis surfaced</li>
+            <li data-edit="cs2cc-a5">Tachometer glow + carbon-fiber theme — Wangan OS visual language</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-dashboard.png · 02-drill.png in assets/photos/case-studies/command-center/ -->
+          <img src="assets/photos/case-studies/command-center/01-dashboard.png" alt="Command Center dashboard hero" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/command-center/02-drill.png" alt="Command Center drill-down view" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs2cc-result">
+            Featured app on the OpenYap launcher. Replaces the morning "open five tabs" ritual with one URL. Status is at-a-glance — and the rest of the team can see it on their phone when they're not at a desk.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Project</span><span class="v">LACC · 11088.70</span></div>
+          <div class="kv"><span class="k">Sources</span><span class="v">5 sheets aggregated</span></div>
+          <div class="kv"><span class="k">Theme</span><span class="v">Wangan OS</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Chart.js</span><span>Apps Script</span><span>Sheets API</span><span>Tailwind</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/openyap-cc/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 03 — CUP DASHBOARD -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="cup-dashboard">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">03</span>
+          <span class="pill">LIVE</span>
+        </div>
         <h2 data-edit="cs2-h">CUP Dashboard — the job site in your pocket.</h2>
         <p class="tagline" data-edit="cs2-tag">
-          A real-time concrete-pour dashboard for the LACC project. Pour plans, embed tracking, live trucks, inspection ticker — all synced across every device in the field.
+          Real-time concrete-pour platform for the LACC project. Pour plans, embed verification, live trucks, mix designs, inspection ticker, and a camera-driven bulk PDF scanner — all synced across every device in the field.
         </p>
 
         <div class="block">
@@ -237,21 +352,30 @@
         <div class="block">
           <div class="block-label">Approach</div>
           <p data-edit="cs2-approach-1">
-            Static GitHub Pages SPA + Firebase Realtime DB. Everyone in the field sees the same state. Foremen drag footing shapes on the map, long-press embeds to step through a checklist, and tap a truck arriving to log it live.
+            Static GitHub Pages SPA. Pour ticket indexing now uses Drive as the source of truth (we dropped the Firebase write path for tickets — fewer moving parts, audit trail in the sheet). Foremen drag footing shapes on the map, long-press embeds to step through a checklist, tap a truck arriving to log it live, and a new bulk scanner uses the camera + edge detection to ingest multi-page ticket PDFs.
           </p>
           <ul>
             <li data-edit="cs2-a1">Footing map with drag-edit + SVG status dots (green / amber / red-pulse)</li>
-            <li data-edit="cs2-a2">Live Pour tab — donut chart, truck log, inspection ticker</li>
-            <li data-edit="cs2-a3">Embed tracker with 10 CUP embed types (51A – 90A) + long-press checklist</li>
-            <li data-edit="cs2-a4">Apps Script → Sheet write-back for auditability</li>
-            <li data-edit="cs2-a5">Alfred chat embedded in Brain tab — ask the dashboard questions</li>
+            <li data-edit="cs2-a2">Live Pour tab — donut chart, truck log, inspection ticker (?view=live)</li>
+            <li data-edit="cs2-a3">Embed tracker with 10 CUP types (51A–90A) + long-press checklist popup</li>
+            <li data-edit="cs2-a4">Mix design panel — PSI, aggregate, slump, LC3 cement</li>
+            <li data-edit="cs2-a5">Bulk scanner — live camera feed + edge detection for multi-page PDF ingest</li>
+            <li data-edit="cs2-a6">Apps Script → Sheet write-back for auditability</li>
+            <li data-edit="cs2-a7">Alfred chat embedded with embed + mix-design context injection</li>
           </ul>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-dashboard.png · 02-footing-map.png · 03-embed-tracker.png in assets/photos/case-studies/cup-dashboard/ -->
+          <img src="assets/photos/case-studies/cup-dashboard/01-dashboard.png" alt="CUP Dashboard pour overview" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/cup-dashboard/02-footing-map.png" alt="Foundation map with status dots" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/cup-dashboard/03-embed-tracker.png" alt="Embed tracker checklist" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="block">
           <div class="block-label">Result</div>
           <p data-edit="cs2-result">
-            Shipped live to the team. Three sections of pour tracked end-to-end. Inspectors are using it to confirm embed placement without a site visit. Shared with superintendent + project executive.
+            Shipped live to the team. Three sections of pour tracked end-to-end. Inspectors are using it to confirm embed placement without a site visit. Shared with superintendent + project executive. Theme overhaul matched the roadmap site so OpenYap reads as one product family.
           </p>
         </div>
       </div>
@@ -261,15 +385,15 @@
           <h4>Facts</h4>
           <div class="kv"><span class="k">Launched</span><span class="v">2026-02</span></div>
           <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Truth</span><span class="v">Drive (tickets)</span></div>
           <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
-          <div class="kv"><span class="k">Sheet ID</span><span class="v">1fTL_w…H750</span></div>
-          <div class="kv"><span class="k">Project</span><span class="v">LACC CUP</span></div>
+          <div class="kv"><span class="k">Embeds</span><span class="v">51A – 90A (10 types)</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
           <div class="tech-wrap">
             <span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span>
-            <span>Apps Script</span><span>Sheets API</span><span>SVG</span>
+            <span>Apps Script</span><span>Sheets API</span><span>SVG</span><span>Camera API</span>
           </div>
         </div>
         <a class="live" href="https://dyap123.github.io/cup-dashboard/" target="_blank">
@@ -281,18 +405,90 @@
   </div>
 </section>
 
-<!-- CASE 03 — ROADMAP -->
+<!-- CASE 04 — FORMWORK -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="formwork">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">04</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs5-h">Formwork — budget intelligence that understands concrete.</h2>
+        <p class="tagline" data-edit="cs5-tag">
+          OpenYap's own budget tool. Categories are formwork bays. Planned spend pours in as concrete. Line items are studs in the form. Sankey flow, Cmd-K palette, health gauge, 3D lattice front and center.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs5-problem">
+            Running a venture means tracking every dollar of the $1.2M seed across LLC / legal / infra / dev / marketing / ops. Spreadsheets work but don't let you think in line items inside each budget, and they don't show the flow of money. I wanted a construction-native UX for money.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs5-approach">
+            Firebase-backed single-file app. Each category drills into line items with statuses (planned / committed / done). The Plan view toggles between a Sankey flow and a Grid; scenarios let you fork the budget for what-ifs; Cmd-K palette hops to anything; a health gauge surfaces variance against plan in one glance. The Nodes view is a 3D formwork lattice — wireframe bays sized by planned total, concrete fill ∝ actual spend.
+          </p>
+          <ul>
+            <li data-edit="cs5-a1">Sankey Plan view + Flow / Grid mode toggle</li>
+            <li data-edit="cs5-a2">Scenarios — fork the budget, compare side-by-side</li>
+            <li data-edit="cs5-a3">Cmd-K command palette to jump anywhere</li>
+            <li data-edit="cs5-a4">Health gauge — variance against plan, at a glance</li>
+            <li data-edit="cs5-a5">3D formwork lattice (Compare view) and Excel export for compliance</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-sankey.png · 02-lattice.png in assets/photos/case-studies/formwork/ -->
+          <img src="assets/photos/case-studies/formwork/01-sankey.png" alt="Formwork Sankey plan view" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/formwork/02-lattice.png" alt="Formwork 3D lattice compare view" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs5-result">
+            Real-time sync across devices. Renamed from "Lumino" to "Formwork" — the tool's metaphor now matches the ground it's standing on. The board can see budget plans flow as if they were concrete.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
+          <div class="kv"><span class="k">Categories</span><span class="v">8 default</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Three.js</span><span>Firebase</span><span>SheetJS</span><span>Tailwind</span><span>D3-Sankey</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/openyap-budget/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 05 — ROADMAP -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="roadmap">
       <div class="lhs">
         <div class="head">
-          <span class="num">03</span>
+          <span class="num">05</span>
           <span class="pill">LIVE</span>
         </div>
         <h2 data-edit="cs3-h">OpenYap Roadmap — the investor deck as a building.</h2>
         <p class="tagline" data-edit="cs3-tag">
-          A scroll-driven 3D construction site. Each section builds a floor. The crane climbs. Nodes orbit. It's a pitch deck that moves.
+          A scroll-driven 3D construction site. Each section builds a floor. The crane climbs. Nodes orbit. It's a pitch deck that moves — and we ship two themes for two audiences.
         </p>
 
         <div class="block">
@@ -305,20 +501,28 @@
         <div class="block">
           <div class="block-label">Approach</div>
           <p data-edit="cs3-approach">
-            Three.js scene locked behind a WebGL shader background. 45 floors of glass assemble as you scroll, a lattice crane climbs with them, 800 particles drift, 13 material stacks tilt and shadow.
+            Three.js scene locked behind a WebGL shader background. 45 floors of glass assemble as you scroll, a lattice crane climbs with them, 800 particles drift, 13 material stacks tilt and shadow. GPU is auto-detected so the experience scales from a phone to an M3 Max without dropping frames.
           </p>
           <ul>
             <li data-edit="cs3-a1">Scroll position → camera &amp; assembly progress</li>
             <li data-edit="cs3-a2">Aurora shader mesh gradient background</li>
             <li data-edit="cs3-a3">Floating node network (80 nodes, orbital connections)</li>
             <li data-edit="cs3-a4">Glassmorphic agreement panels with floor-highlight on hover</li>
+            <li data-edit="cs3-a5">GPU auto-detection + aggressive perf tuning</li>
+            <li data-edit="cs3-a6"><a href="https://dyap123.github.io/openyap-roadmap/variant.html" target="_blank">Stitch variant</a> — alternate theme for cleaner-skin audiences</li>
           </ul>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-3d-build.png · 02-agreement.png in assets/photos/case-studies/roadmap/ -->
+          <img src="assets/photos/case-studies/roadmap/01-3d-build.png" alt="3D building mid-scroll with crane" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/roadmap/02-agreement.png" alt="Glassmorphic agreement panel" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="block">
           <div class="block-label">Result</div>
           <p data-edit="cs3-result">
-            Shown to the Webcor board. The scroll-to-build animation hit the room hard — feedback was "this feels like the pitch."
+            Shown to the Webcor board. The scroll-to-build animation hit the room hard — feedback was "this feels like the pitch." Hero stats now: $1.2M seed, 1,000%+ ROI, $432M+ Y5 TAM. Two themes deployed (default + Stitch) so we can show whichever fits the room.
           </p>
         </div>
       </div>
@@ -329,7 +533,8 @@
           <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
           <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
           <div class="kv"><span class="k">Floors</span><span class="v">45</span></div>
-          <div class="kv"><span class="k">FPS</span><span class="v">60 (M-series)</span></div>
+          <div class="kv"><span class="k">FPS</span><span class="v">60 · GPU-tuned</span></div>
+          <div class="kv"><span class="k">Themes</span><span class="v">Default + Stitch</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
@@ -346,117 +551,221 @@
   </div>
 </section>
 
-<!-- CASE 04 — VAULT BRAIN -->
+<!-- TIER 2 — Field & companion tools (3 medium cases) -->
 <section>
   <div class="wrap">
-    <article class="case reveal" id="vault-brain">
-      <div class="lhs">
+    <div class="tier2-grid">
+
+      <article class="tier2-card reveal" id="vault-brain">
         <div class="head">
-          <span class="num">04</span>
+          <span class="num">06</span>
           <span class="pill pill-amber">LOCAL</span>
         </div>
-        <h2 data-edit="cs4-h">Vault Brain — my second brain, visualized.</h2>
-        <p class="tagline" data-edit="cs4-tag">
-          A 3D neural network rendered from my Obsidian vault. Every note is a light. Every wikilink is an edge. Alfred sits in the middle, voice-enabled.
+        <h3 data-edit="cs6-h">Vault Brain — Mr. George's library.</h3>
+        <p class="tagline" data-edit="cs6-tag">
+          The technical companion to <a href="#const-agent">Mr. George</a>. A 3D neural network rendered from my Obsidian vault. Every note is a light. Every wikilink is an edge. Alfred sits in the middle, voice-enabled.
         </p>
+        <div class="img-slot">
+          <!-- DROP: 01-brain.png in assets/photos/case-studies/vault-brain/ -->
+          <img src="assets/photos/case-studies/vault-brain/01-brain.png" alt="Vault brain visualization" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <ul>
+          <li data-edit="cs6-a1">FastAPI proxy parses wikilinks, serves node + edge JSON</li>
+          <li data-edit="cs6-a2">Sprite-based light nodes with additive blending — no bloom, cleaner</li>
+          <li data-edit="cs6-a3">ElevenLabs Charlie via proxy + Web Speech API mic</li>
+          <li data-edit="cs6-a4">Persistent SQLite chat history at <code>~/.vault-brain/</code></li>
+          <li data-edit="cs6-a5"><code>alfred</code> CLI — launch / status / set-key</li>
+        </ul>
+        <div class="links">
+          <a href="#const-agent">↑ Mr. George</a>
+          <a href="https://github.com/dyap123" target="_blank">Repo</a>
+        </div>
+      </article>
 
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs4-problem">
-            Obsidian's built-in graph view is flat, small, and doesn't feel like knowledge. I wanted something that felt like a mind — glowing, alive, interrogable.
-          </p>
+      <article class="tier2-card reveal" id="todo">
+        <div class="head">
+          <span class="num">07</span>
+          <span class="pill">LIVE</span>
         </div>
+        <h3 data-edit="cs7-h">Todo — tasks plus a Wasted-Time tab.</h3>
+        <p class="tagline" data-edit="cs7-tag">
+          A task tracker with a lane for time-wasted. Every task can flag the minutes it cost vs. delivered. We measure what we kill, not just what we ship.
+        </p>
+        <div class="img-slot">
+          <!-- DROP: 01-tasks.png in assets/photos/case-studies/todo/ -->
+          <img src="assets/photos/case-studies/todo/01-tasks.png" alt="OpenYap Todo task list" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <ul>
+          <li data-edit="cs7-a1">Per-task time-waste flagger — log the minutes it actually cost</li>
+          <li data-edit="cs7-a2">Wasted standalone top-level tab with its own add form</li>
+          <li data-edit="cs7-a3">Stats sub-tabs — what got done, what stalled</li>
+          <li data-edit="cs7-a4">Static GitHub Pages SPA — no server, instant load</li>
+        </ul>
+        <div class="links">
+          <a href="https://dyap123.github.io/openyap-todo/" target="_blank">Open ↗</a>
+        </div>
+      </article>
 
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs4-approach">
-            FastAPI proxy reads the vault, parses wikilinks, serves node + edge JSON. Three.js renders sprite-based lights with additive blending (no bloom — cleaner). Boot animation builds the brain node-by-node. Alfred chat streams responses through Codex/Claude/MiniMax; persistent SQLite chat history.
-          </p>
+      <article class="tier2-card reveal" id="lacc-foundation">
+        <div class="head">
+          <span class="num">08</span>
+          <span class="pill">LIVE</span>
         </div>
+        <h3 data-edit="cs8-h">LACC Foundation Viewer — public zone map.</h3>
+        <p class="tagline" data-edit="cs8-tag">
+          Interactive Zone 0 → A/B/C/D site map for the LACC South Hall foundation. Hover a polygon, see live state. Click to edit. Alfred chat injects the active state into every prompt.
+        </p>
+        <div class="img-slot">
+          <!-- DROP: 01-zone-map.png in assets/photos/case-studies/lacc-foundation/ -->
+          <img src="assets/photos/case-studies/lacc-foundation/01-zone-map.png" alt="LACC Foundation zone map" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <ul>
+          <li data-edit="cs8-a1">Glassmorphic zone polygons + pulse animations on active state</li>
+          <li data-edit="cs8-a2">Synthesized SVG site plan — replaced the PDF screenshot we had</li>
+          <li data-edit="cs8-a3">Apps Script back-end with Script Properties for the spreadsheet ID</li>
+          <li data-edit="cs8-a4">MiniMax Alfred chat with live foundation state injected per request</li>
+        </ul>
+        <div class="links">
+          <a href="https://dyap123.github.io/lacc-foundation/" target="_blank">Open ↗</a>
+        </div>
+      </article>
 
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs4-result">
-            192-note personal vault and 25-note project vault both render. ENHANCE mode boosts importance-based sizing. Used daily as the control surface for my second brain.
-          </p>
-        </div>
-      </div>
-
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Vaults</span><span class="v">2 × Obsidian</span></div>
-          <div class="kv"><span class="k">Nodes</span><span class="v">192 / 25</span></div>
-          <div class="kv"><span class="k">Voice</span><span class="v">ElevenLabs</span></div>
-          <div class="kv"><span class="k">Runtime</span><span class="v">Local port 8889</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>Three.js</span><span>FastAPI</span><span>SQLite</span><span>ElevenLabs</span><span>Web Speech</span>
-          </div>
-        </div>
-      </aside>
-    </article>
+    </div>
   </div>
 </section>
 
-<!-- CASE 05 — FORMWORK -->
+<!-- TIER 3 — Foreman & ops sheets (paired) -->
 <section>
   <div class="wrap">
-    <article class="case reveal" id="formwork">
-      <div class="lhs">
-        <div class="head">
-          <span class="num">05</span>
-          <span class="pill">LIVE</span>
-        </div>
-        <h2 data-edit="cs5-h">Formwork — budget intelligence that understands concrete.</h2>
-        <p class="tagline" data-edit="cs5-tag">
-          OpenYap's own budget tool. Categories are formwork bays. Planned spend pours in as concrete. Line items are studs in the form. Three.js lattice front and center.
-        </p>
-
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs5-problem">
-            Running a venture means tracking every dollar of the $1.2M seed across LLC / legal / infra / dev / marketing / ops. Spreadsheets work but don't let you think in line items inside each budget. I wanted a construction-native UX for money.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs5-approach">
-            Firebase-backed single-file app. Each category has drill-in line items with statuses (planned / committed / done). New Compare view: stacked-area plan flow, side-by-side category variance, flat cross-category line-item list. Nodes view is a 3D formwork lattice — wireframe bays sized by planned total, concrete fill ∝ actual spend.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs5-result">
-            Ships real-time sync across my devices. Excel export for compliance. Renamed from "Lumino" to "Formwork" — now the tool's metaphor matches the ground it's standing on.
-          </p>
-        </div>
+    <div class="paired reveal" id="foreman-tools">
+      <div class="head">
+        <span class="num">09</span>
+        <span class="pill pill-amber">FIELD</span>
       </div>
+      <h2 data-edit="cs9-h">Cost Codes + Foreman Posters — for the field, on paper.</h2>
+      <p class="tagline" data-edit="cs9-tag">
+        AI in the office, English-and-Spanish print on the jobsite. Two small sheets that make sure what's on the laptop reaches the wall.
+      </p>
 
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
-          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
-          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
-          <div class="kv"><span class="k">Categories</span><span class="v">8 default</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>Three.js</span><span>Firebase</span><span>SheetJS</span><span>Tailwind</span>
+      <div class="paired-grid">
+        <div class="item">
+          <h4>Cost Codes</h4>
+          <p data-edit="cs9-cc">
+            Bilingual cost-code reference for foremen. 11×17 print sheets, English + Spanish columns, editable code list, PCI fallback. Replaces the laminated cheat-sheet that nobody could find when they needed it.
+          </p>
+          <div class="img-slot">
+            <!-- DROP: 01-print.png in assets/photos/case-studies/cost-codes/ -->
+            <img src="assets/photos/case-studies/cost-codes/01-print.png" alt="Cost Codes 11x17 print layout" loading="lazy" onerror="this.style.display='none'">
           </div>
         </div>
-        <a class="live" href="https://dyap123.github.io/openyap-budget/" target="_blank">
-          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
-          View Live
+        <div class="item">
+          <h4>Foreman Posters</h4>
+          <p data-edit="cs9-fp">
+            Chat-driven poster designer. Pick a template — cost codes, JHA, plan-of-the-day, incentives — fill in the fields, or converse with Codex to shape the HTML. Print tabloid 11×17, download as <code>.html</code>. The foreman gets a poster in five minutes instead of a meeting.
+          </p>
+          <div class="img-slot">
+            <!-- DROP: 01-design.png in assets/photos/case-studies/foreman-posters/ -->
+            <img src="assets/photos/case-studies/foreman-posters/01-design.png" alt="Foreman Posters designer" loading="lazy" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RAPID SHIPS — compact card grid -->
+<section>
+  <div class="wrap">
+    <div class="rapid-section reveal">
+      <span class="label">Rapid Ships · 5 Weeks</span>
+      <h3>Shorter case files — same shipping pace.</h3>
+      <div class="rapid-grid">
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">Hand Lab</span><span class="pill pill-amber">LOCAL</span></div>
+          <div class="img-slot">
+            <!-- DROP: hand-lab.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/hand-lab.png" alt="Hand Lab" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-handlab">Gesture-controlled vault brain. Pinch to select, orbit with your palm. The vault, but operated like Iron Man's UI.</p>
+          <div class="meta"><span>2026-04-15</span></div>
+        </article>
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">Family Trip</span><span class="pill">LIVE</span></div>
+          <div class="img-slot">
+            <!-- DROP: family-trip.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/family-trip.png" alt="Family Trip PWA" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-trip">Tan family California trip planner. Itinerary + Drive sync + glassmorphic rebrand. Kids can tap their day, parents can edit on the go.</p>
+          <div class="meta"><span>2026-04-28</span><a href="https://dyap123.github.io/yap-family-trip/" target="_blank">Open ↗</a></div>
+        </article>
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">Social</span><span class="pill pill-amber">LOCAL</span></div>
+          <div class="img-slot">
+            <!-- DROP: social.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/social.png" alt="OpenYap Social" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-social">Social media manager. TikTok, YouTube Shorts, Instagram. Auto-clip, trending scraper, brain page with Alfred brainstorm.</p>
+          <div class="meta"><span>Next.js + FastAPI</span></div>
+        </article>
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">Footing Fighter</span><span class="pill pill-amber">UNITY</span></div>
+          <div class="img-slot">
+            <!-- DROP: footing-fighter.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/footing-fighter.png" alt="Footing Fighter game" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-ff">Unity 6 brawler set on the LACC South Hall foundation. You fight the embeds and pile caps until the convention center is built.</p>
+          <div class="meta"><span>Unity 6 · URP · C#</span></div>
+        </article>
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">SmartRock Monitor</span><span class="pill pill-amber">LOCAL</span></div>
+          <div class="img-slot">
+            <!-- DROP: smartrock.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/smartrock.png" alt="SmartRock cooling forecast chart" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-smartrock">Newton's-cooling blanket-pull forecast for LACC pours. Sheet-driven, replaced the live poller. Tells you when concrete temperature crosses the spec.</p>
+          <div class="meta"><span>2026-04-28</span></div>
+        </article>
+
+        <article class="rapid-card">
+          <div class="top"><span class="t">CS2 Investor</span><span class="pill pill-amber">DRAFT</span></div>
+          <div class="img-slot">
+            <!-- DROP: cs2.png in assets/photos/case-studies/rapid-ships/ -->
+            <img src="assets/photos/case-studies/rapid-ships/cs2.png" alt="CS2 Investor SPA" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="desc" data-edit="rs-cs2">CS2 skin portfolio analyzer. Firebase RTDB (shared with CUP), MiniMax analysis, Skinport / CSFloat prices, CSFloat inspect. Built, smoke-tested, not deployed.</p>
+          <div class="meta"><span>2026-04-15</span></div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- DELIVERABLES strip -->
+    <div class="deliverables reveal" id="deliverables">
+      <span class="label">Deliverables · OpenYap Legal</span>
+      <h3>Documents that go with the apps.</h3>
+      <div class="deliv-grid">
+        <a class="deliv-card" href="https://github.com/dyap123" target="_blank" data-edit="dlv-bp-href">
+          <span class="t" data-edit="dlv-bp-t">OpenYap Business Plan 2026Q2</span>
+          <span class="s" data-edit="dlv-bp-s">5-phase roadmap, dual financial projections, CA compliance calendar</span>
+          <span class="lk">Read →</span>
         </a>
-      </aside>
-    </article>
+        <a class="deliv-card" href="https://github.com/dyap123" target="_blank" data-edit="dlv-nda-href">
+          <span class="t" data-edit="dlv-nda-t">NDA v2 + Addendum A</span>
+          <span class="s" data-edit="dlv-nda-s">Process protection on top of existing NDA — product + process coverage</span>
+          <span class="lk">Read →</span>
+        </a>
+        <a class="deliv-card" href="https://github.com/dyap123" target="_blank" data-edit="dlv-consent-href">
+          <span class="t" data-edit="dlv-consent-t">LACC Data Usage Consent</span>
+          <span class="s" data-edit="dlv-consent-s">Data authorization form for LACC project artifacts used in OpenYap training</span>
+          <span class="lk">Read →</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
