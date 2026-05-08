@@ -146,50 +146,69 @@
     .proj-showcase .mt-card { flex: 0 0 280px; }
   }
 
-  /* Phone-mockup visual (CH 08 Yap Family Trip showcase) */
-  .visual.phone-mockup {
-    aspect-ratio: 4/3; padding: 1.5rem 1rem 1.25rem;
-    background: radial-gradient(circle at 50% 35%, rgba(255,46,136,0.14), rgba(8,2,15,0.95) 65%), #0a0612;
-    position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
+  /* Project collage (CH 08) — Pinterest-style varied tiles */
+  .proj-collage {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 92px;
+    gap: 8px;
+    margin-top: 2rem;
   }
-  .visual.phone-mockup .phone-glow {
-    position: absolute; inset: 0; pointer-events: none; z-index: 1;
-    background:
-      radial-gradient(ellipse at 28% 30%, rgba(255,46,136,0.10), transparent 50%),
-      radial-gradient(ellipse at 78% 72%, rgba(150,90,255,0.10), transparent 55%);
+  .proj-collage .tile {
+    position: relative; overflow: hidden; border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface-0);
+    text-decoration: none;
+    display: block;
   }
-  .visual.phone-mockup .phone {
-    position: relative; z-index: 2;
-    height: 100%; aspect-ratio: 9/19.5;
-    border-radius: 26px;
-    background: #000;
-    border: 7px solid #16101e;
-    box-shadow:
-      0 28px 64px rgba(255,46,136,0.20),
-      0 16px 38px rgba(0,0,0,0.65),
-      inset 0 0 0 1px rgba(255,255,255,0.05);
-    overflow: hidden;
-  }
-  .visual.phone-mockup .phone img {
+  .proj-collage .tile img {
     width: 100%; height: 100%; object-fit: cover; display: block;
-    filter: none;  /* override .story .visual img grayscale */
+    filter: grayscale(15%) brightness(0.9);
+    transition: filter .35s ease, transform .55s ease;
   }
-  .visual.phone-mockup .pill {
-    position: absolute; top: 14px; right: 16px; z-index: 3;
-    font-family: var(--mono); font-size: 9px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 4px 9px;
-    background: rgba(255,46,136,0.18);
-    color: #ff8eb9;
-    border: 1px solid rgba(255,46,136,0.40);
-    border-radius: 999px;
+  .proj-collage .tile:hover { border-color: var(--primary-dim); }
+  .proj-collage .tile:hover img { filter: none; transform: scale(1.045); }
+  .proj-collage .tile .tag {
+    position: absolute; bottom: 8px; left: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    padding: 4px 8px; background: rgba(14,13,21,0.82);
+    color: var(--primary); border: 1px solid rgba(217,185,255,0.25);
+    border-radius: 3px; backdrop-filter: blur(8px);
   }
-  .visual.phone-mockup .label {
-    position: absolute; bottom: 14px; left: 16px; z-index: 3;
-    font-family: var(--mono); font-size: 9px;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+  /* Tile placement — 6 cols × 6 rows */
+  .proj-collage .t-trip       { grid-column: span 2; grid-row: span 4; }
+  .proj-collage .t-george     { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-cup        { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-foundation { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-roadmap    { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-launcher   { grid-column: span 4; grid-row: span 2; }
+  .proj-collage .t-cc         { grid-column: span 1; grid-row: span 2; }
+  .proj-collage .t-tools      { grid-column: span 1; grid-row: span 2; }
+  .proj-collage .t-cc img,
+  .proj-collage .t-tools img  { object-fit: cover; }
+  /* Posters are portrait — frame their tiles to suit */
+  .proj-collage .t-cc, .proj-collage .t-tools {
+    background: linear-gradient(135deg, rgba(217,185,255,0.06), rgba(11,10,18,0.55));
+  }
+  .proj-collage .t-trip img { object-position: center top; }
+
+  @media (max-width: 880px) {
+    .proj-collage { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 88px; }
+    .proj-collage .t-trip       { grid-column: span 2; grid-row: span 4; }
+    .proj-collage .t-george     { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-cup        { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-foundation { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-roadmap    { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-launcher   { grid-column: span 4; grid-row: span 2; }
+    .proj-collage .t-cc         { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-tools      { grid-column: span 2; grid-row: span 2; }
+  }
+  @media (max-width: 520px) {
+    .proj-collage { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 96px; }
+    .proj-collage .tile { grid-column: span 1 !important; grid-row: span 2 !important; }
+    .proj-collage .t-trip { grid-column: span 2 !important; grid-row: span 4 !important; }
+    .proj-collage .t-launcher { grid-column: span 2 !important; }
   }
 
   /* Print poster pair — pulled out of the horizontal scroll for full portrait visibility */
@@ -1024,83 +1043,54 @@
 <!-- 08 · JUST GETTING STARTED -->
 <section id="future" data-ch="08" data-title="Just Getting Started">
   <div class="wrap">
-    <div class="story reveal">
-      <div class="copy">
-        <div class="tag">Chapter 08 · What we can do now</div>
-        <span class="mag-badge mb-4"><span class="material-symbols-outlined">rocket_launch</span>WE ARE JUST GETTING STARTED</span>
-        <h2>Just <span class="grad">getting started.</span></h2>
-        <p data-edit="future-p1">
-          The eight chapters above weren't the destination. They were the runway. With OpenYap on a real jobsite, the loop has gotten short enough that a new tool can go from "PM mentioned a problem on Friday" to "shipping into the trailer Monday."
-        </p>
-        <p data-edit="future-p2">
-          The latest example: a <strong>concrete-ticket pipeline</strong> that ingests every truck ticket, normalizes the mix data, validates against the day's pour plan, and flags discrepancies before the slab is closed. Not a vendor demo — running on Section A this quarter. The same pattern works for material delivery, time tracking, embed inventory, inspection logging, anything the trailer touches.
-        </p>
-        <p data-edit="future-p3">
-          Where this goes next: more agents trained on the field's actual language. More posters in trailers that don't have wifi. More tools that work with gloves on. More crews that walk away from a 12-hour day with paperwork already done. <strong style="color: var(--text);">We are just getting started.</strong>
-        </p>
-        <p data-edit="future-p4">
-          The same stack already runs outside construction. <a href="https://dyap123.github.io/yap-family-trip/index-v2.html" target="_blank" style="color: var(--primary); text-decoration: underline; text-decoration-color: rgba(255,46,136,0.4); text-underline-offset: 3px;">Yap Family Trip</a> is a 13-day California app for 17 cousins, parents, and aunties — bilingual EN/中文, Firebase-backed, MiniMax assistant on the bottom-right, manager mode for the trip leads. Built in a weekend. Different domain, identical loop.
-        </p>
+    <div class="reveal">
+      <div class="tag">Chapter 08 · What we can do now</div>
+      <span class="mag-badge mb-4"><span class="material-symbols-outlined">rocket_launch</span>WE ARE JUST GETTING STARTED</span>
+      <h2>Just <span class="grad">getting started.</span></h2>
+      <p data-edit="future-p1" style="max-width: 64ch; font-size: 16px; line-height: 1.65;">
+        The loop is short enough now that a problem mentioned Friday ships into the trailer Monday. Same toolkit — fourteen apps deep, running outside construction too.
+      </p>
+    </div>
+
+    <div class="proj-collage reveal">
+      <a class="tile t-trip" href="https://dyap123.github.io/yap-family-trip/index-v2.html" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/family-trip-splash.png" alt="Yap Family Trip app" loading="lazy" data-edit-img="coll-trip"/>
+        <span class="tag">Yap Family Trip · 雅家</span>
+      </a>
+      <a class="tile t-george" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/06-projects/mr-george-main.png" alt="Mr. George agent" loading="lazy" data-edit-img="coll-george"/>
+        <span class="tag">Mr. George · agent</span>
+      </a>
+      <a class="tile t-cup" href="https://dyap123.github.io/cup-dashboard/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-cup-dash.png" alt="CUP Dashboard live" loading="lazy" data-edit-img="coll-cup"/>
+        <span class="tag">CUP Dashboard</span>
+      </a>
+      <a class="tile t-foundation" href="https://dyap123.github.io/lacc-foundation/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-foundation.png" alt="LACC Foundation map" loading="lazy" data-edit-img="coll-foundation"/>
+        <span class="tag">LACC Foundation</span>
+      </a>
+      <a class="tile t-roadmap" href="https://dyap123.github.io/openyap-roadmap/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-roadmap.png" alt="OpenYap roadmap" loading="lazy" data-edit-img="coll-roadmap"/>
+        <span class="tag">OpenYap Roadmap</span>
+      </a>
+      <a class="tile t-launcher" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-launcher.png" alt="OpenYap Launcher hub" loading="lazy" data-edit-img="coll-launcher"/>
+        <span class="tag">OpenYap Launcher · 14 apps</span>
+      </a>
+      <div class="tile t-cc">
+        <img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-codes poster" loading="lazy" data-edit-img="coll-cc"/>
+        <span class="tag">Cost codes · 11×17</span>
       </div>
-      <div class="visual phone-mockup">
-        <div class="phone-glow"></div>
-        <span class="pill">LIVE · 雅家</span>
-        <div class="phone">
-          <img src="assets/photos/journey/08-future/family-trip-splash.png" alt="Yap Family Trip app splash screen" loading="lazy" data-edit-img="future-trip"/>
-        </div>
-        <span class="label">YAP FAMILY · CALIFORNIA · 2026</span>
+      <div class="tile t-tools">
+        <img src="assets/photos/journey/06-projects/poster-tools.png" alt="Foreman tools poster" loading="lazy" data-edit-img="coll-tools"/>
+        <span class="tag">Tools · 11×17</span>
       </div>
     </div>
 
-    <div class="mini-timeline-wrap reveal">
-      <div class="mini-timeline-head">
-        <div>
-          <div class="eyebrow" data-edit="future-eyebrow">What we can do now</div>
-          <h3 data-edit="future-h">Capabilities live this quarter.</h3>
-        </div>
-      </div>
-      <div class="mini-timeline">
-        <div class="mt-card">
-          <div class="thumb" style="background: rgba(217,185,255,0.06); display: flex; align-items: center; justify-content: center; padding: 2rem;">
-            <span class="material-symbols-outlined" style="font-size: 56px; color: var(--primary);">receipt_long</span>
-          </div>
-          <div class="meta">
-            <div class="date" data-edit="future-1-date">Concrete-ticket pipeline · live</div>
-            <div class="caption" data-edit="future-1-cap">Truck ticket → mix validation → flag</div>
-            <div class="sub" data-edit="future-1-sub">Every concrete truck ticket parsed, mix data normalized, validated against the day's pour plan. Discrepancies flagged before the slab closes.</div>
-          </div>
-        </div>
-        <div class="mt-card">
-          <div class="thumb" style="background: rgba(217,185,255,0.06); display: flex; align-items: center; justify-content: center; padding: 2rem;">
-            <span class="material-symbols-outlined" style="font-size: 56px; color: var(--primary);">smart_toy</span>
-          </div>
-          <div class="meta">
-            <div class="date" data-edit="future-2-date">Voice agent · field native</div>
-            <div class="caption" data-edit="future-2-cap">Foreman talks, system logs</div>
-            <div class="sub" data-edit="future-2-sub">Walk-and-talk inspection logging. Voice-first because gloves don't type. Spanish out of the box.</div>
-          </div>
-        </div>
-        <div class="mt-card">
-          <div class="thumb" style="background: rgba(217,185,255,0.06); display: flex; align-items: center; justify-content: center; padding: 2rem;">
-            <span class="material-symbols-outlined" style="font-size: 56px; color: var(--primary);">print</span>
-          </div>
-          <div class="meta">
-            <div class="date" data-edit="future-3-date">More posters</div>
-            <div class="caption" data-edit="future-3-cap">Trailer-wall references</div>
-            <div class="sub" data-edit="future-3-sub">Cost codes + tools shipped. Next: rebar laps, embed types, pre-pour checklists. Always 11×17 bilingual.</div>
-          </div>
-        </div>
-        <div class="mt-card">
-          <div class="thumb" style="background: rgba(217,185,255,0.06); display: flex; align-items: center; justify-content: center; padding: 2rem;">
-            <span class="material-symbols-outlined" style="font-size: 56px; color: var(--primary);">model_training</span>
-          </div>
-          <div class="meta">
-            <div class="date" data-edit="future-4-date">Spec-trained agents</div>
-            <div class="caption" data-edit="future-4-cap">The drawings know the rules</div>
-            <div class="sub" data-edit="future-4-sub">Agents trained on the actual project specs and submittals. Not a generic LLM — the one that knows this jobsite.</div>
-          </div>
-        </div>
-      </div>
+    <div class="reveal mt-8 flex gap-3" style="flex-wrap: wrap; justify-content: center;">
+      <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>All apps · Launcher</a>
+      <a href="case-studies.html" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+      <a href="mailto:dyap123@gmail.com" class="btn"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
     </div>
 
   </div>
