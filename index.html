@@ -135,14 +135,48 @@
   .field-clip-row .meta p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
   @media (max-width: 720px) { .field-clip-row { grid-template-columns: 1fr; gap: 0.75rem; } }
 
-  .mt-card .thumb.poster {
-    background: linear-gradient(135deg, rgba(217,185,255,0.06), rgba(11,10,18,0.6));
-    display: flex; align-items: center; justify-content: center;
+  /* Bigger project showcase cards (CH 06) — applied via .proj-showcase parent */
+  .proj-showcase .mini-timeline { gap: 1.25rem; padding-bottom: 2rem; }
+  .proj-showcase .mt-card { flex: 0 0 360px; }
+  .proj-showcase .mt-card .thumb { aspect-ratio: 16 / 11; }
+  .proj-showcase .mt-card .meta { padding: 1rem 1.1rem 1.1rem; gap: 0.4rem; }
+  .proj-showcase .mt-card .caption { font-size: 16px; line-height: 1.3; }
+  .proj-showcase .mt-card .sub { font-size: 12.5px; line-height: 1.55; }
+  @media (max-width: 720px) {
+    .proj-showcase .mt-card { flex: 0 0 280px; }
   }
-  .mt-card .thumb.poster img {
-    width: auto; max-width: 100%; height: 100%;
-    object-fit: contain; padding: 8px 4px;
+
+  /* Print poster pair — pulled out of the horizontal scroll for full portrait visibility */
+  .poster-pair {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+    margin-top: 0.5rem;
   }
+  .poster-card {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 1.5rem; align-items: start;
+  }
+  .poster-frame {
+    aspect-ratio: 11 / 17; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 4px;
+    background: linear-gradient(135deg, rgba(217,185,255,0.05), rgba(11,10,18,0.55));
+    padding: 14px 12px;
+    box-shadow: 0 16px 44px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(217,185,255,0.06);
+  }
+  .poster-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .poster-card .date {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--primary);
+    font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .poster-card .caption {
+    font-family: var(--head); font-weight: 700; font-size: 16px; line-height: 1.3;
+    color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.6rem;
+  }
+  .poster-card .sub {
+    font-size: 13px; color: var(--text-dim); line-height: 1.6;
+  }
+  @media (max-width: 900px) { .poster-pair { grid-template-columns: 1fr; gap: 2rem; } }
+  @media (max-width: 600px) { .poster-card { grid-template-columns: 1fr; gap: 0.85rem; } }
 
   .site-strip {
     margin-top: 1.25rem; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
@@ -462,7 +496,7 @@
       <a href="#robotics"  class="chapter-chip"><span class="num">01</span><span class="yr">2014</span>Robotics</a>
       <a href="#keyboards" class="chapter-chip"><span class="num">02</span><span class="yr">2018</span>Keyboard Business</a>
       <a href="#fsae"      class="chapter-chip"><span class="num">03</span><span class="yr">2018–22</span>CPP FSAE</a>
-      <a href="#clune"     class="chapter-chip"><span class="num">04</span><span class="yr">2022</span>Clune · AI Seed</a>
+      <a href="#clune"     class="chapter-chip"><span class="num">04</span><span class="yr">2024</span>Clune · AI Seed</a>
       <a href="#tour"      class="chapter-chip"><span class="num">05</span><span class="yr">2024–25</span>Pitch Tour</a>
       <a href="#webcor"    class="chapter-chip"><span class="num">06</span><span class="yr">2025–Now</span>Webcor + OpenYap</a>
       <a href="#field"     class="chapter-chip"><span class="num">07</span><span class="yr">Now</span>Field Experience</a>
@@ -534,6 +568,27 @@
   </div>
 </section>
 
+<!-- Photography · interlude before CH 03 -->
+<section id="photo" data-title="Photography">
+  <div class="wrap">
+    <div class="mini-timeline-wrap reveal">
+      <div class="mini-timeline-head">
+        <div>
+          <div class="eyebrow" data-edit="photo-closer-eyebrow">Photography · since 2019</div>
+          <h3 data-edit="photo-closer-h">Composition under constraint.</h3>
+        </div>
+        <a href="https://dsyap.myportfolio.com/work" target="_blank" class="btn">
+          <span class="material-symbols-outlined" style="font-size:14px">collections</span>Full archive
+        </a>
+      </div>
+      <p class="dim" style="font-size: 13.5px; line-height: 1.6; max-width: 64ch; margin-bottom: 1rem;" data-edit="photo-closer-p">
+        Photography taught me what to include and what to leave out. The same instinct shapes every interface I draw now. A small selection — the full archive lives on Adobe Portfolio.
+      </p>
+      <div class="site-strip" id="gallery"></div>
+    </div>
+  </div>
+</section>
+
 <!-- 03 · CPP FSAE -->
 <section id="fsae" data-ch="03" data-title="CPP FSAE · Suspension">
   <div class="wrap">
@@ -570,7 +625,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 04 · Clune Construction Internship · 2022–23</div>
+        <div class="tag">Chapter 04 · Clune Construction Internship · 2024</div>
         <h2><span class="grad">Clune internship</span> — AI seed.</h2>
         <p data-edit="clune-p1">
           First time on a real construction site. <strong>Clune Construction</strong> — high-end commercial interiors, tight schedules, no slack for paperwork drift. The internship was supposed to teach me how a project actually moves. It did. It also taught me how much of a PE's day is information shuffling that no one is paid to redesign.
@@ -590,7 +645,7 @@
       </div>
       <div class="visual dual">
         <div><span class="tag">Clune · onsite</span><img src="assets/photos/journey/04-clune/clune-1.jpg" alt="Clune Construction internship" loading="lazy" data-edit-img="clune-1"/></div>
-        <div><span class="tag">Clune · 2022</span><img src="assets/photos/journey/04-clune/clune-2.jpg" alt="Clune Construction internship" loading="lazy" data-edit-img="clune-2"/></div>
+        <div><span class="tag">Clune · 2024</span><img src="assets/photos/journey/04-clune/clune-2.jpg" alt="Clune Construction internship" loading="lazy" data-edit-img="clune-2"/></div>
       </div>
     </div>
   </div>
@@ -767,7 +822,7 @@
     </div>
 
     <!-- Project showcase — what's actually shipped -->
-    <div class="mini-timeline-wrap reveal">
+    <div class="mini-timeline-wrap proj-showcase reveal">
       <div class="mini-timeline-head">
         <div>
           <div class="eyebrow" data-edit="proj-eyebrow">OpenYap suite · what's running</div>
@@ -822,24 +877,30 @@
           </div>
         </div>
 
-        <div class="mt-card">
-          <div class="thumb poster"><img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-code reference poster" loading="lazy" data-edit-img="proj-poster-cc"/></div>
-          <div class="meta">
+      </div>
+
+      <!-- Print posters — pulled out of the horizontal scroll, shown at proper portrait scale -->
+      <div class="poster-pair">
+        <div class="poster-card">
+          <div class="poster-frame">
+            <img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-code reference poster" loading="lazy" data-edit-img="proj-poster-cc"/>
+          </div>
+          <div class="poster-meta">
             <div class="date" data-edit="proj-cc-date">Foreman cost codes · 11×17</div>
-            <div class="caption" data-edit="proj-cc-cap">Print catches up to digital</div>
+            <div class="caption" data-edit="proj-cc-cap">Print catches up to digital.</div>
             <div class="sub" data-edit="proj-cc-sub">Bilingual cost-code reference taped up in every trailer. Printable from the web tool, edited live by the office team. The bottom corner has a phone number for codes that aren't on the sheet yet.</div>
           </div>
         </div>
-
-        <div class="mt-card">
-          <div class="thumb poster"><img src="assets/photos/journey/06-projects/poster-tools.png" alt="Foreman tools count poster" loading="lazy" data-edit-img="proj-poster-tools"/></div>
-          <div class="meta">
+        <div class="poster-card">
+          <div class="poster-frame">
+            <img src="assets/photos/journey/06-projects/poster-tools.png" alt="Foreman tools count poster" loading="lazy" data-edit-img="proj-poster-tools"/>
+          </div>
+          <div class="poster-meta">
             <div class="date" data-edit="proj-tools-poster-date">Tools count · 11×17</div>
-            <div class="caption" data-edit="proj-tools-poster-cap">Wall-mounted inventory</div>
+            <div class="caption" data-edit="proj-tools-poster-cap">Wall-mounted inventory.</div>
             <div class="sub" data-edit="proj-tools-poster-sub">Bilingual tool-count reference. "Lost a tool?" workflow printed at the bottom — same data backs the in-app tool tracker.</div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -849,16 +910,36 @@
 <!-- 07 · FIELD EXPERIENCE -->
 <section id="field" data-ch="07" data-title="Field Experience">
   <div class="wrap">
+    <!-- Lead-in: Olympic & Hill walk-around -->
     <div class="story reveal">
       <div class="copy">
         <div class="tag">Chapter 07 · Field Experience · Now</div>
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">directions_walk</span>Olympic & Hill</span>
+        <h2><span class="grad">Olympic & Hill</span> walk-around.</h2>
+        <p data-edit="oh-p1">
+          Before the deck became a daily routine, I walked the Olympic & Hill site to scope the work. Pacing the perimeter at ground level changes how you sequence pours — the geometry stops being a PDF and starts being a puzzle of crane reach, traffic flow, and pour windows.
+        </p>
+        <p data-edit="oh-p2">
+          The walk on the right is exactly what it looks like — boots on the dirt, no slides. The kind of context that makes the office decisions cheaper a week later.
+        </p>
+      </div>
+      <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
+        <video controls preload="metadata" poster="assets/photos/journey/07-field/olympic-hill-walk-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="olympic-hill-walk">
+          <source src="assets/photos/journey/07-field/olympic-hill-walk.mp4" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+
+    <!-- Field experience proper -->
+    <div class="story reveal" style="margin-top: 4rem;">
+      <div class="copy">
         <span class="mag-badge mb-4"><span class="material-symbols-outlined">construction</span>On the deck</span>
         <h2><span class="grad">Field experience.</span></h2>
         <p data-edit="field-p1">
           The point of staying on a real jobsite isn't just the day job — it's that every tool I build gets its first run here. Walking pours at 5 AM. Marking embeds. Coordinating subs. Operating heavy equipment when the moment calls for it. None of the OpenYap tooling would exist if I weren't standing on the deck the morning it had to work.
         </p>
         <p data-edit="field-p2">
-          The clip on the right is the excavator — operating heavy equipment in the dirt instead of from a desk. Below, in the strip, the Olympic & Hill walk-around. The rest are everyday Webcor field hours, not curated jobsite portfolio shots.
+          The clip on the right is the excavator — the day the desk traded for a cab. The photos below are everyday Webcor field hours, not curated jobsite portfolio shots.
         </p>
       </div>
       <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
@@ -879,19 +960,6 @@
         <div><span class="tag">Olympic & Hill</span><img src="assets/photos/journey/07-field/olympic-hill-1.jpg" alt="Olympic and Hill walk-around" loading="lazy" data-edit-img="field-1"/></div>
         <div><span class="tag">Webcor · field</span><img src="assets/photos/journey/07-field/webcor-field-1.jpg" alt="Webcor field hours" loading="lazy" data-edit-img="field-2"/></div>
         <div><span class="tag">Webcor · field</span><img src="assets/photos/journey/07-field/webcor-field-2.jpg" alt="Webcor field hours" loading="lazy" data-edit-img="field-3"/></div>
-      </div>
-
-      <div class="field-clip-row">
-        <div class="frame">
-          <video preload="metadata" poster="assets/photos/journey/07-field/webcor-field-poster.jpg" data-edit-video="webcor-clip" controls>
-            <source src="assets/photos/journey/07-field/webcor-field.mp4" type="video/mp4"/>
-          </video>
-        </div>
-        <div class="meta">
-          <div class="eyebrow" data-edit="walk-eyebrow">Olympic & Hill · walk-around</div>
-          <h4 data-edit="walk-h">The walk we did.</h4>
-          <p data-edit="walk-p">Different day, same site. Pacing the perimeter to scope the next pour. The kind of context that makes the office decisions cheaper a week later.</p>
-        </div>
       </div>
 
       <div class="site-strip" style="margin-top: 1.5rem;">
@@ -980,23 +1048,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Slim photography closer — no full gallery, just a curated strip -->
-    <div class="mini-timeline-wrap reveal" style="margin-top: 3rem;">
-      <div class="mini-timeline-head">
-        <div>
-          <div class="eyebrow" data-edit="photo-closer-eyebrow">Photography · since 2019</div>
-          <h3 data-edit="photo-closer-h">Composition under constraint.</h3>
-        </div>
-        <a href="https://dsyap.myportfolio.com/work" target="_blank" class="btn">
-          <span class="material-symbols-outlined" style="font-size:14px">collections</span>Full archive
-        </a>
-      </div>
-      <p class="dim" style="font-size: 13.5px; line-height: 1.6; max-width: 64ch; margin-bottom: 1rem;" data-edit="photo-closer-p">
-        Photography taught me what to include and what to leave out. The same instinct shapes every interface I draw now. A small selection — the full archive lives on Adobe Portfolio.
-      </p>
-      <div class="site-strip" id="gallery"></div>
     </div>
 
   </div>
