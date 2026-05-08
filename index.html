@@ -146,6 +146,52 @@
     .proj-showcase .mt-card { flex: 0 0 280px; }
   }
 
+  /* Phone-mockup visual (CH 08 Yap Family Trip showcase) */
+  .visual.phone-mockup {
+    aspect-ratio: 4/3; padding: 1.5rem 1rem 1.25rem;
+    background: radial-gradient(circle at 50% 35%, rgba(255,46,136,0.14), rgba(8,2,15,0.95) 65%), #0a0612;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .visual.phone-mockup .phone-glow {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background:
+      radial-gradient(ellipse at 28% 30%, rgba(255,46,136,0.10), transparent 50%),
+      radial-gradient(ellipse at 78% 72%, rgba(150,90,255,0.10), transparent 55%);
+  }
+  .visual.phone-mockup .phone {
+    position: relative; z-index: 2;
+    height: 100%; aspect-ratio: 9/19.5;
+    border-radius: 26px;
+    background: #000;
+    border: 7px solid #16101e;
+    box-shadow:
+      0 28px 64px rgba(255,46,136,0.20),
+      0 16px 38px rgba(0,0,0,0.65),
+      inset 0 0 0 1px rgba(255,255,255,0.05);
+    overflow: hidden;
+  }
+  .visual.phone-mockup .phone img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: none;  /* override .story .visual img grayscale */
+  }
+  .visual.phone-mockup .pill {
+    position: absolute; top: 14px; right: 16px; z-index: 3;
+    font-family: var(--mono); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 4px 9px;
+    background: rgba(255,46,136,0.18);
+    color: #ff8eb9;
+    border: 1px solid rgba(255,46,136,0.40);
+    border-radius: 999px;
+  }
+  .visual.phone-mockup .label {
+    position: absolute; bottom: 14px; left: 16px; z-index: 3;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
   /* Print poster pair — pulled out of the horizontal scroll for full portrait visibility */
   .poster-pair {
     display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
@@ -490,7 +536,7 @@
       The <span class="grad">journey.</span>
     </h1>
     <p class="journey-intro reveal delay-2 mt-6" data-edit="journey-intro">
-      Eight chapters, in order. Robotics → keyboard business → CPP FSAE → Clune internship → AI in construction interviews → Webcor + OpenYap → field experience → just getting started. <strong style="color: var(--text);">We are just getting started.</strong>
+      Eight chapters, in order. Robotics → keyboard business → photography → CPP FSAE → Clune internship → AI in construction interviews → Webcor + OpenYap → field experience → just getting started. <strong style="color: var(--text);">We are just getting started.</strong>
     </p>
     <div class="chapters reveal delay-3">
       <a href="#robotics"  class="chapter-chip"><span class="num">01</span><span class="yr">2014</span>Robotics</a>
@@ -992,10 +1038,17 @@
         <p data-edit="future-p3">
           Where this goes next: more agents trained on the field's actual language. More posters in trailers that don't have wifi. More tools that work with gloves on. More crews that walk away from a 12-hour day with paperwork already done. <strong style="color: var(--text);">We are just getting started.</strong>
         </p>
+        <p data-edit="future-p4">
+          The same stack already runs outside construction. <a href="https://dyap123.github.io/yap-family-trip/index-v2.html" target="_blank" style="color: var(--primary); text-decoration: underline; text-decoration-color: rgba(255,46,136,0.4); text-underline-offset: 3px;">Yap Family Trip</a> is a 13-day California app for 17 cousins, parents, and aunties — bilingual EN/中文, Firebase-backed, MiniMax assistant on the bottom-right, manager mode for the trip leads. Built in a weekend. Different domain, identical loop.
+        </p>
       </div>
-      <div class="visual">
-        <div class="grid-overlay"></div>
-        <img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-code reference poster" loading="lazy" data-edit-img="future-poster"/>
+      <div class="visual phone-mockup">
+        <div class="phone-glow"></div>
+        <span class="pill">LIVE · 雅家</span>
+        <div class="phone">
+          <img src="assets/photos/journey/08-future/family-trip-splash.png" alt="Yap Family Trip app splash screen" loading="lazy" data-edit-img="future-trip"/>
+        </div>
+        <span class="label">YAP FAMILY · CALIFORNIA · 2026</span>
       </div>
     </div>
 
