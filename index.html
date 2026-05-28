@@ -503,6 +503,37 @@
 </head>
 <body>
 
+<!--
+  ============================================================================
+  SESSION HANDOFF  ·  2026-05-27  (pick up here on desktop Claude Code session)
+  ============================================================================
+  DONE this session (in results.html — the "Results" tab):
+    1. Beam AI kill bumped $70K -> $75K (headline metric strip + Beam card).
+    2. Tool Tracker card rebuilt as a BEFORE -> AFTER showcase of the Mr. George
+       app use case. New CSS lives in the <style> block of results.html (.ba*).
+         - AFTER image already wired: assets/photos/journey/06-projects/mr-george-tools.png
+         - BEFORE image is a PLACEHOLDER (dashed "DROP IMAGE" frame) until you add it.
+
+  TODO on desktop:
+    A. Drop the BEFORE image into slot  data-edit-img="results-tools-before"
+       -> expected file: assets/photos/journey/06-projects/toolhound-before.png
+       -> content: ToolHound screenshot + the messy stack of printed count sheets.
+       (Use the editor: `python3 edit_server.py` then http://localhost:9090, or
+        just drop the file at that path and reload.)
+    B. (optional) Swap the AFTER shot via data-edit-img="results-tools-after"
+       if you have a cleaner Tools-tab screenshot than mr-george-tools.png.
+    C. Fill the real Tool Tracker savings number — replace the "$—" / TBD in
+       slot data-edit="results-tools-savings" once the recovery figure is in.
+
+  New edit slots added to results.html (text via data-edit, images via data-edit-img):
+    results-tools-before (img) · results-tools-after (img)
+    results-tools-before-cap · results-tools-after-cap (captions)
+
+  GIT: results.html is still UNTRACKED + index/ecosystem/vision modified and
+       NOT pushed yet. `git add results.html && git commit && git push` when ready.
+  ============================================================================
+-->
+
 <canvas id="shader-bg"></canvas>
 
 <!-- SCROLL FX: Timeline rail -->
@@ -534,6 +565,7 @@
     <div class="nav-links">
       <a href="index.html" class="active">Journey</a>
       <a href="ecosystem.html">Ecosystem</a>
+      <a href="results.html">Results</a>
       <a href="vision.html">Vision</a>
     </div>
     <a href="mailto:dyap123@gmail.com" class="connect-btn">

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Results — Danzel Yap</title>
+<meta name="description" content="Hard, dollar-figure results from AI tools shipped into a live construction PM workflow." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+<style>
+  /* Results-page specifics — small additions; bulk of styling reuses .card / .metric-strip / .pill */
+  .result-card { position: relative; padding: 28px; }
+  .result-card .savings {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: clamp(40px, 5.5vw, 64px); line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #d9b9ff 0%, #a78bfa 60%, #7c3aed 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 14px 0 4px;
+  }
+  .result-card .savings-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(217, 185, 255, 0.55);
+  }
+  .result-card .mechanism {
+    margin-top: 18px; padding-top: 18px;
+    border-top: 1px solid rgba(217, 185, 255, 0.08);
+    display: grid; grid-template-columns: auto 1fr; gap: 10px 14px;
+    font-size: 13px; color: rgba(220, 215, 230, 0.72); line-height: 1.55;
+  }
+  .result-card .mechanism .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(217, 185, 255, 0.45);
+    padding-top: 2px;
+  }
+  .results-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 880px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+  .result-card.full { grid-column: 1 / -1; }
+  .placeholder-flag {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #f59e0b; padding: 3px 8px; border-radius: 999px;
+    background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.20);
+  }
+  .results-note {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: rgba(220, 215, 230, 0.45); letter-spacing: 0.04em;
+    border-left: 2px solid rgba(217, 185, 255, 0.20);
+    padding: 10px 14px; margin-top: 28px;
+    background: rgba(217, 185, 255, 0.02);
+  }
+  /* Before / After comparison (tool tracker showcase) */
+  .ba { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start;
+        gap: 16px; margin: 22px 0 4px; }
+  @media (max-width: 720px) {
+    .ba { grid-template-columns: 1fr; }
+    .ba-arrow { transform: rotate(90deg); }
+  }
+  .ba figure { margin: 0; }
+  .ba-tag { display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px; margin-bottom: 8px; }
+  .ba-tag-before { color: #f59e0b; background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.22); }
+  .ba-tag-after { color: #a78bfa; background: rgba(167,139,250,0.10);
+    border: 1px solid rgba(167,139,250,0.28); }
+  .ba-frame { position: relative; aspect-ratio: 16 / 10; border-radius: 8px;
+    overflow: hidden; border: 1px solid rgba(217,185,255,0.12);
+    background: rgba(217,185,255,0.02); }
+  .ba-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ba-ph { display: none; position: absolute; inset: 0; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px; text-align: center;
+    padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.05em; color: rgba(220,215,230,0.5); }
+  .ba-frame.empty { border-style: dashed; }
+  .ba-frame.empty .ba-ph { display: flex; }
+  .ba-arrow { font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 28px; color: rgba(217,185,255,0.5); align-self: center; }
+  .ba-cap { margin-top: 9px; font-size: 12px; line-height: 1.5;
+    color: rgba(220,215,230,0.62); }
+</style>
+</head>
+<body>
+
+<canvas id="shader-bg"></canvas>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
+    <div class="nav-links">
+      <a href="index.html">Journey</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="results.html" class="active">Results</a>
+      <a href="vision.html">Vision</a>
+    </div>
+    <a href="mailto:dyap123@gmail.com" class="connect-btn">
+      Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="sector reveal">
+      <span>Operational Sector 03 · Results</span>
+      <span class="sector-right">Live · <span data-clock>—</span></span>
+    </div>
+    <h1 class="xl hero-headline reveal delay-1">
+      Hard <span class="grad">dollars</span>,<br>
+      not slideware.
+    </h1>
+    <p class="dim reveal delay-2" style="max-width: 640px; margin-top: 18px;">
+      Each tool here was shipped into a live construction PM workflow on a $2B job
+      at the LA Convention Center expansion. The numbers below are field-measured,
+      not modeled — tracked against the workflow each tool replaced.
+    </p>
+
+    <!-- HEADLINE METRIC STRIP -->
+    <div class="metric-strip reveal delay-3" style="margin-top: 36px;">
+      <div>
+        <div class="v">
+          <span data-count="75" data-prefix="$" data-suffix="K+">$0</span>
+        </div>
+        <div class="k">Verified Savings · YTD</div>
+      </div>
+      <div>
+        <div class="v"><span data-count="3" data-suffix="">0</span></div>
+        <div class="k">Tools In Production</div>
+      </div>
+      <div>
+        <div class="v"><span data-count="12" data-suffix="+">0</span></div>
+        <div class="k">More Shipping This Quarter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS DETAIL -->
+<section style="padding: 80px 0 120px;">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 03A · Receipts</span></div>
+        <h2 class="lg">Shipped, <span class="grad">measured</span>, banked.</h2>
+        <p class="dim mt-2" style="max-width: 640px;">
+          Three case studies. Each one paid for itself in weeks. More are queued —
+          we'll add receipts as they clear.
+        </p>
+      </div>
+      <span class="pill pill-primary">3 LIVE</span>
+    </div>
+
+    <div class="results-grid">
+
+      <!-- 1. BEAM AI — the verified one -->
+      <article class="card result-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">stop_circle</span></div>
+          <div>
+            <div class="title">Beam AI Kill Decision</div>
+            <div class="pill pill-primary" style="margin-top: 3px;">VERIFIED</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="results-beam-desc">
+          A vendor was pitching us a $75K/yr beam-detail AI tool. I built the
+          decision matrix, ran the bake-off against our in-house dispatch agents,
+          and showed leadership the cost-per-detail math. Tool was killed before
+          contract signature.
+        </p>
+        <div class="savings-label">Annual budget protected</div>
+        <div class="savings"><span data-count="75" data-prefix="$" data-suffix="K">$0</span></div>
+        <div class="mechanism">
+          <span class="label">Mechanism</span>
+          <span>Vendor evaluation + in-house alternative + cost-per-output benchmark.</span>
+          <span class="label">When</span>
+          <span data-edit="results-beam-when">Board review · Q1 2026</span>
+          <span class="label">Replaced by</span>
+          <span>OpenYap dispatch agents (existing infra, $0 marginal cost).</span>
+        </div>
+      </article>
+
+      <!-- 2. TOOL TRACKER — Mr. George (before/after) -->
+      <article class="card result-card reveal full">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">build</span></div>
+          <div>
+            <div class="title">Tool Tracker · Mr. George</div>
+            <div class="pill pill-primary" style="margin-top: 3px;">DEPLOYED</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="results-tools-desc">
+          A use case shipped inside the Mr. George app: an Assets-as-truth tool
+          registry with alias resolution, an assignment log, and a "verified on
+          site" checklist that flags missing or mis-tagged tools before they walk
+          off the job. It replaced ToolHound exports stapled to a stack of printed
+          count sheets — the old way lost ~65 tools across the previous cycle.
+        </p>
+
+        <!-- BEFORE / AFTER -->
+        <div class="ba">
+          <figure>
+            <span class="ba-tag ba-tag-before">Before</span>
+            <div class="ba-frame">
+              <img alt="ToolHound export + printed tool-count sheets"
+                   data-edit-img="results-tools-before"
+                   src="assets/photos/journey/06-projects/toolhound-before.png"
+                   onerror="this.style.display='none'; this.closest('.ba-frame').classList.add('empty');">
+              <div class="ba-ph">
+                <span class="material-symbols-outlined" style="font-size:30px; color:rgba(245,158,11,0.6)">print</span>
+                ToolHound export + printed count sheets
+                <span class="placeholder-flag">DROP IMAGE</span>
+              </div>
+            </div>
+            <div class="ba-cap" data-edit="results-tools-before-cap">
+              ToolHound printouts taped to the trailer wall — re-keyed by hand and
+              out of date the moment they printed.
+            </div>
+          </figure>
+
+          <span class="ba-arrow">&rarr;</span>
+
+          <figure>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-frame">
+              <img alt="Mr. George in-app tool tracker"
+                   data-edit-img="results-tools-after"
+                   src="assets/photos/journey/06-projects/mr-george-tools.png"
+                   onerror="this.style.display='none'; this.closest('.ba-frame').classList.add('empty');">
+              <div class="ba-ph">
+                <span class="material-symbols-outlined" style="font-size:30px; color:rgba(167,139,250,0.6)">build</span>
+                Mr. George · Tools tab
+                <span class="placeholder-flag">DROP IMAGE</span>
+              </div>
+            </div>
+            <div class="ba-cap" data-edit="results-tools-after-cap">
+              One live registry — Assets-as-truth, alias resolution, on-site
+              verification. No re-keying, no paper.
+            </div>
+          </figure>
+        </div>
+
+        <div class="savings-label" style="margin-top: 20px;">Verified Recovery</div>
+        <div class="savings">
+          <span data-edit="results-tools-savings">$—</span>
+          <span class="placeholder-flag" style="vertical-align: middle; margin-left: 8px;">TBD</span>
+        </div>
+        <div class="mechanism">
+          <span class="label">Mechanism</span>
+          <span>Recovered tool count × replacement cost + reclaimed PM hours / week.</span>
+          <span class="label">Live at</span>
+          <span>Tools tab · Mr. George web UI (LACC superintendent crew)</span>
+          <span class="label">Status</span>
+          <span data-edit="results-tools-status">Field data being aggregated — give me the receipts and I'll wire them in.</span>
+        </div>
+      </article>
+
+      <!-- 3. POUR TRACKER -->
+      <article class="card result-card reveal full">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">water_drop</span></div>
+          <div>
+            <div class="title">CUP Pour Dashboard</div>
+            <div class="pill pill-primary" style="margin-top: 3px;">DEPLOYED</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="results-pour-desc">
+          Live pour-day command center: footing maps with concrete fill cycling,
+          truck logger, embed verification, mix-design tracking, and a
+          dual-projection sequence dashboard the team watches in real time.
+          Replaced paper logs + scattered text threads + after-the-fact reconciliation.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 6px;">
+          <div>
+            <div class="savings-label">Cost-of-rework avoided · YTD</div>
+            <div class="savings">
+              <span data-edit="results-pour-savings">$—</span>
+              <span class="placeholder-flag" style="vertical-align: middle; margin-left: 8px;">TBD</span>
+            </div>
+          </div>
+          <div class="mechanism" style="margin-top: 0;">
+            <span class="label">Mechanism</span>
+            <span>Caught embed misses + over-pours before placement; reduced concrete waste per truck.</span>
+            <span class="label">Live at</span>
+            <span><a href="https://dyap123.github.io/cup-dashboard/" target="_blank" class="arrow-link" style="display:inline">dyap123.github.io/cup-dashboard ↗</a></span>
+            <span class="label">Status</span>
+            <span data-edit="results-pour-status">Tracking concrete-yard reconciliation against the live truck log. Drop me the variance number when you have it.</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="results-note">
+      // Numbers marked <strong style="color:#f59e0b">TBD</strong> are placeholders.
+      Hand me the field-measured figures and I'll swap them in. Verified receipts
+      bank-roll the case for the next round of build-vs-buy calls.
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S NEXT -->
+<section style="padding: 0 0 100px;">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Operational Sector 03B · In Flight</span></div>
+        <h2 class="lg">Next <span class="grad">receipts</span> incoming.</h2>
+        <p class="dim mt-2" style="max-width: 640px;">
+          Tools already in users' hands — savings calc landing as the field data settles.
+        </p>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <article class="card project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">description</span></div>
+          <div>
+            <div class="title">Submittal / RFI Auto-Package</div>
+            <div class="pill" style="margin-top: 3px; background: rgba(245,158,11,0.10); color: #f59e0b; border-color: rgba(245,158,11,0.25);">MEASURING</div>
+          </div>
+        </div>
+        <p class="desc">PM agent assembles transmittal cover + revision PDFs + log update in one shot. Tracking time-per-package against the manual baseline.</p>
+      </article>
+
+      <article class="card project-card reveal">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">picture_as_pdf</span></div>
+          <div>
+            <div class="title">Concrete Takeoff Pipeline</div>
+            <div class="pill" style="margin-top: 3px; background: rgba(245,158,11,0.10); color: #f59e0b; border-color: rgba(245,158,11,0.25);">MEASURING</div>
+          </div>
+        </div>
+        <p class="desc">3-step extract (classify → extract → review) on bid drawings. Tracking estimator hours saved per takeoff package.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script src="assets/shell.js"></script>
+</body>
+</html>
