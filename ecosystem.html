@@ -139,9 +139,14 @@
       <a href="ecosystem.html" class="active">Ecosystem</a>
       <a href="vision.html">Vision</a>
     </div>
-    <a href="mailto:dyap123@gmail.com" class="connect-btn">
-      Connect <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
-    </a>
+    <details class="connect">
+      <summary class="connect-btn">Connect <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></summary>
+      <div class="connect-menu">
+        <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank" rel="noopener"><span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn</a>
+        <a href="tel:+14083353615"><span class="material-symbols-outlined" style="font-size:16px">call</span>(408) 335-3615</a>
+        <a href="mailto:dyap123@gmail.com"><span class="material-symbols-outlined" style="font-size:16px">mail</span>dyap123@gmail.com</a>
+      </div>
+    </details>
   </div>
 </nav>
 
@@ -231,10 +236,10 @@
         <div class="sector"><span>Operational Sector 02 · Ecosystem</span></div>
         <h2 class="lg">OpenYap <span class="grad">Ecosystem</span></h2>
         <p class="dim mt-2" style="max-width: 640px;" data-edit="projects-intro">
-          Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and ten are live on the public internet.
+          Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and eleven are live on the public internet.
         </p>
       </div>
-      <span class="pill pill-primary">10 LIVE</span>
+      <span class="pill pill-primary">11 LIVE</span>
     </div>
 
     <div class="bento">
@@ -366,49 +371,49 @@
         <a href="https://dyap123.github.io/tool-tracker/" target="_blank" class="arrow-link">View live</a>
       </article>
 
-      <!-- Break Lab -->
+      <!-- OpenBreak -->
       <article class="card b-third project-card reveal delay-1">
         <div class="head">
           <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">science</span></div>
           <div>
-            <div class="title" data-edit="p9-title">Break Lab</div>
+            <div class="title" data-edit="p9-title">OpenBreak</div>
             <div class="pill" style="margin-top: 3px;">LIVE</div>
           </div>
         </div>
         <p class="desc" data-edit="p9-desc">
-          Replaces the cylinder-break spreadsheet. Mix design auto-fills f'c and slump, pour → break entry, strength charts, xlsx/PDF export, and a lab leaderboard. Alfred chat built in.
+          Concrete cylinder-break logger. Pick a mix (strength color-coded), log 7/28/56/90-day breaks with live %f'c + ASTM C39, a shared crew leaderboard, and a Mission Control AI chat. Firebase backend.
         </p>
         <div class="tech"><span>JavaScript</span><span>Firebase</span><span>Chart.js</span><span>jsPDF</span></div>
         <a href="https://dyap123.github.io/concrete-breaks/" target="_blank" class="arrow-link">View live</a>
       </article>
 
-      <!-- Foreman Attendance -->
+      <!-- Foreman Sign-In -->
       <article class="card b-third project-card reveal delay-2">
         <div class="head">
-          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">badge</span></div>
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">how_to_reg</span></div>
           <div>
-            <div class="title" data-edit="p10-title">Foreman Attendance</div>
+            <div class="title" data-edit="p10-title">Foreman Sign-In</div>
             <div class="pill" style="margin-top: 3px;">LIVE</div>
           </div>
         </div>
         <p class="desc" data-edit="p10-desc">
-          Daily sign-in PWA replacing the paper subcontractor sheet. SignaturePad capture, jsPDF export, Apple share-sheet handoff, light/dark + EN/ES toggles, and a PIN-gated manager view.
+          Daily attendance for the Webcor Concrete foreman crew at LACC. Name picker, signature capture, weekly PDF export, Apple share sheet, bilingual EN/ES, and light/dark.
         </p>
         <div class="tech"><span>JavaScript</span><span>Firebase</span><span>jsPDF</span><span>PWA</span></div>
         <a href="https://dyap123.github.io/foreman-attendance/" target="_blank" class="arrow-link">View live</a>
       </article>
 
-      <!-- OpenEmbed -->
+      <!-- EmbedYap -->
       <article class="card b-third project-card reveal">
         <div class="head">
-          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">pin_drop</span></div>
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">push_pin</span></div>
           <div>
-            <div class="title" data-edit="p11-title">OpenEmbed</div>
+            <div class="title" data-edit="p11-title">EmbedYap</div>
             <div class="pill" style="margin-top: 3px;">LIVE</div>
           </div>
         </div>
         <p class="desc" data-edit="p11-desc">
-          Interactive plan-map embed-install tracker. Computer-vision + OCR pulls hundreds of pins and type labels off SME PDFs; color-coded install status, RFI attach, inventory, and a crew leaderboard with manager markup tools.
+          Interactive LACC embed-install tracker. Pan/zoom plan map with color-coded anchor-bolt pins, marquee multi-select, manager markup tools (box/polygon, reshape, undo), an editable grid, RFI attach, dashboard + inventory with Excel/PDF export, and a crew leaderboard. Firebase backend.
         </p>
         <div class="tech"><span>React</span><span>Firebase</span><span>OpenCV</span><span>Python</span></div>
         <a href="https://dyap123.github.io/embed-tracker/" target="_blank" class="arrow-link">View live</a>
@@ -459,6 +464,22 @@
         </p>
         <div class="tech"><span>JavaScript</span><span>GitHub Pages</span></div>
         <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="arrow-link">View live</a>
+      </article>
+
+      <!-- OpenPour -->
+      <article class="card b-half project-card reveal delay-1">
+        <div class="head">
+          <div class="icon"><span class="material-symbols-outlined" style="font-size:22px">foundation</span></div>
+          <div>
+            <div class="title" data-edit="p15-title">OpenPour</div>
+            <div class="pill" style="margin-top: 3px;">LIVE</div>
+          </div>
+        </div>
+        <p class="desc" data-edit="p15-desc">
+          Concrete pour simulator. Voxel formwork (1 block = 1 ft³), a real pump fleet with line-pressure derate, form-pressure blowouts, and auto-pour footing-to-footing with backcheck validation. CPU-optimized Three.js.
+        </p>
+        <div class="tech"><span>Three.js</span><span>WebGL</span><span>JavaScript</span></div>
+        <a href="https://dyap123.github.io/pour-sim/" target="_blank" class="arrow-link">View live</a>
       </article>
 
     </div>
