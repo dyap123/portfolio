@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ecosystem — Danzel Yap</title>
-<meta name="description" content="The OpenYap ecosystem — live apps, deep-dive case studies, and the field work behind them, built from the LACC CUP Modernization in Los Angeles."/>
+<meta name="description" content="Case studies from the OpenYap ecosystem: Command Center, CUP Dashboard, EmbedYap, Tool Tracker, SuperYap, and Mr. George — production apps built with Python, OpenCV, JavaScript, Firebase, and LLM agents, running daily on the $2B LA Convention Center expansion."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -135,6 +135,7 @@
       <a href="index.html">Journey</a>
       <a href="ecosystem.html" class="active">Ecosystem</a>
       <a href="vision.html">Vision</a>
+      <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
     </div>
     <details class="connect">
       <summary class="connect-btn">Connect <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></summary>
@@ -159,7 +160,7 @@
       <span class="grad" data-edit="hero-headline-2">for the field.</span>
     </h1>
     <p class="mt-6 reveal delay-2" style="font-size: clamp(16px, 1.5vw, 20px); color: var(--text-dim); max-width: 620px; line-height: 1.55;" data-edit="hero-sub">
-      I'm Danzel — Project Engineer at Webcor Builders on the $2B LACC CUP Modernization, and the builder behind <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" style="color: var(--primary)">OpenYap</a>, an AI platform for construction PMs. I ship tools that live between a crane and a keyboard.
+      I'm Danzel — Project Engineer at Webcor Builders on the $2B LACC CUP Modernization, and the builder behind <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" style="color: var(--primary)">OpenYap</a>, an AI platform for construction PMs. I ship tools that live between a crane and a keyboard — and they save each project engineer about a day a week.
     </p>
     <div class="mt-8 flex gap-3 reveal delay-3" style="flex-wrap: wrap;">
       <a href="#case-studies" class="btn primary">
@@ -233,7 +234,7 @@
         <div class="sector"><span>Sheet S-201 · App Schedule — Ecosystem</span></div>
         <h2 class="lg">OpenYap <span class="grad">Ecosystem</span></h2>
         <p class="dim mt-2" style="max-width: 640px;" data-edit="projects-intro">
-          Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and seventeen are live on the public internet.
+          Four core apps run the deck — schedule, pours, embeds, tools — and one hub ties them into a single operating picture. Everything else orbits them. Each was built for a problem someone hit on this jobsite; seventeen are live on the public internet.
         </p>
       </div>
       <span class="pill pill-primary" data-ann="box" data-ann-color="#E8541F" data-ann-delay="500">17 LIVE</span>
@@ -568,26 +569,419 @@
 
     <!-- Index -->
     <div class="cs-index mt-8 reveal delay-2">
-      <a href="#const-agent"><span class="no">01</span><span class="t">Mr. George</span><span class="s">The const-agent web UI · 17 agents · the brain</span></a>
-      <a href="#command-center"><span class="no">02</span><span class="t">Command Center</span><span class="s">Role-aware consolidation hub · LACC ops</span></a>
-      <a href="#cup-dashboard"><span class="no">03</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
-      <a href="#formwork"><span class="no">04</span><span class="t">Formwork</span><span class="s">Sankey + 3D lattice budget intelligence</span></a>
-      <a href="#roadmap"><span class="no">05</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
-      <a href="#superyap"><span class="no">05.1</span><span class="t">SuperYap</span><span class="s">Look-ahead builder · superintendent suite</span></a>
-      <a href="#vault-brain"><span class="no">06</span><span class="t">Vault Brain</span><span class="s">Mr. George's library · voice Alfred</span></a>
-      <a href="#todo"><span class="no">07</span><span class="t">Todo</span><span class="s">Tasks + Wasted-Time tracker</span></a>
-      <a href="#lacc-foundation"><span class="no">08</span><span class="t">LACC Foundation</span><span class="s">Public zone-map viewer for the board</span></a>
+      <a href="#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">Role-aware map of the whole jobsite</span></a>
+      <a href="#cup-dashboard"><span class="no">02 · Core</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
+      <a href="#embedyap"><span class="no">03 · Core</span><span class="t">EmbedYap</span><span class="s">299 embeds extracted with CV, tracked as pins</span></a>
+      <a href="#tool-tracker"><span class="no">04 · Core</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry · ~65 lost tools fixed</span></a>
+      <a href="#superyap"><span class="no">05 · Core</span><span class="t">SuperYap</span><span class="s">Look-ahead builder · working-day engine</span></a>
+      <a href="#const-agent"><span class="no">06 · The Brain</span><span class="t">Mr. George</span><span class="s">LLM agents · RFI prep 40&rarr;6 min</span></a>
+      <a href="#formwork"><span class="no">07</span><span class="t">Formwork</span><span class="s">Sankey + 3D lattice budget intelligence</span></a>
+      <a href="#roadmap"><span class="no">08</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
+      <a href="#vault-brain"><span class="no">09</span><span class="t">Vault Brain</span><span class="s">Mr. George's library · voice Alfred</span></a>
+      <a href="#todo"><span class="no">10</span><span class="t">Todo</span><span class="s">Tasks + Wasted-Time tracker</span></a>
+      <a href="#lacc-foundation"><span class="no">11</span><span class="t">LACC Foundation</span><span class="s">Public zone-map viewer for the board</span></a>
     </div>
   </div>
 </section>
 
-<!-- CASE 01 — MR. GEORGE (Const-Agent web UI) -->
+<!-- CASE 01 — COMMAND CENTER -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="command-center">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">01</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs2cc-h">Command Center — the whole jobsite on one sheet.</h2>
+        <p class="tagline" data-edit="cs2cc-tag">
+          The consolidation hub for the LACC concrete team. One role-aware map that unifies CUP footings and EmbedYap pins, plus RFIs, inspections, schedule, tools, and crew — rebuilt in June 2026 from a read-only sheet mirror into the team's operating picture.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2cc-problem">
+            The ecosystem got big. Each tool solved its own problem, but the superintendent's actual question — "what's ready for inspection, where are the embeds on F21, who's on site today" — crossed four apps. And the original Command Center only mirrored spreadsheets; it couldn't answer, only display.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2cc-approach-1">
+            Full rebuild as a consolidation hub. Still a static GitHub Pages SPA, but now reading the live Firebase namespaces of CUP, EmbedYap, Tool Tracker, and SuperYap — writing only to its own. Role-gated by Firebase Auth (Admin › Super › PM › PE, 2FA on Admin) with a global edit lock, so view-only is the default on every field device.
+          </p>
+          <ul>
+            <li data-edit="cs2cc-a1">The Map — footings + embeds + pours + RFI zones + markups as toggleable layers on one pan/zoom canvas</li>
+            <li data-edit="cs2cc-a2">RFIs — drag-and-drop a PDF, it links to Drive and pins to its map zone</li>
+            <li data-edit="cs2cc-a3">Inspections — Ready → Pass/Fail sign-off stages that log who marked ready</li>
+            <li data-edit="cs2cc-a4">Schedule — Excel import/export, synced to SuperYap's look-ahead</li>
+            <li data-edit="cs2cc-a5">Live tools + crew pulled from the shared Firebase, role-filtered per tab</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block-label">The workspace</div>
+          <p data-edit="cs2cc-workspace">
+            Nine views behind one login — <span class="mono" style="font-size: 12.5px; letter-spacing: 0.06em; color: var(--primary);">DASHBOARD · THE MAP (LIVE) · SCHEDULE · INVENTORY · RFIS · POURS · SUBMITTALS · ATTENDANCE · ADMIN</span>. It's a true central workplace: the day starts here, and the other apps became its deep-edit tools. Click a footing on the Map and CUP opens to that pour; click an embed and EmbedYap opens to that pin.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-dashboard.png · 02-drill.png in assets/photos/case-studies/command-center/ -->
+          <img src="assets/photos/case-studies/command-center/01-dashboard.png" alt="Command Center dashboard hero" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/command-center/02-drill.png" alt="Command Center drill-down view" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs2cc-result">
+            The featured tile on the launcher and the morning tailgate's one URL. The superintendent sees his layers, the PM sees her RFIs, the PE edits data — same map, different permissions. The original sheet-mirror version is preserved as a legacy tile.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Rebuilt</span><span class="v">2026-06</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Roles</span><span class="v">Admin › Super › PM › PE</span></div>
+          <div class="kv"><span class="k">Map layers</span><span class="v">6 toggleable</span></div>
+          <div class="kv"><span class="k">Reads</span><span class="v">4 app namespaces</span></div>
+        </div>
+        <div class="panel">
+          <h4>Role matrix</h4>
+          <div class="kv"><span class="k">Admin</span><span class="v">Full edit · users · 2FA</span></div>
+          <div class="kv"><span class="k">Super</span><span class="v">Schedule · Tools · Crew</span></div>
+          <div class="kv"><span class="k">PM</span><span class="v">RFIs · Submittals · Inspections</span></div>
+          <div class="kv"><span class="k">PE</span><span class="v">Data · Zones · Pours · Tools</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase RTDB</span><span>Firebase Auth</span><span>SheetJS</span><span>Apps Script</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/command-center/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 02 — CUP DASHBOARD -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="cup-dashboard">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">02</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs2-h">CUP Dashboard — a real-time view of the pour from any device.</h2>
+        <p class="tagline" data-edit="cs2-tag">
+          Real-time concrete-pour platform for the LACC project. Pour plans, embed verification, live trucks, mix designs, inspection ticker, and a camera-driven bulk PDF scanner — all synced across every device in the field.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2-problem">
+            On a pour day you have 50+ moving parts: concrete trucks arriving, rebar placement status, embeds to verify, inspectors to coordinate, and a PM chewing through a printed footing map. The existing tools were: a spreadsheet, a clipboard, and walkie-talkies.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2-approach-1">
+            Static GitHub Pages SPA. Pour ticket indexing now uses Drive as the source of truth (we dropped the Firebase write path for tickets — fewer moving parts, audit trail in the sheet). Foremen drag footing shapes on the map, long-press embeds to step through a checklist, tap a truck arriving to log it live, and a new bulk scanner uses the camera + edge detection to ingest multi-page ticket PDFs.
+          </p>
+          <ul>
+            <li data-edit="cs2-a1">Footing map with drag-edit + SVG status dots (green / amber / red-pulse)</li>
+            <li data-edit="cs2-a2">Live Pour tab — donut chart, truck log, inspection ticker (?view=live)</li>
+            <li data-edit="cs2-a3">Embed tracker with 10 CUP types (51A–90A) + long-press checklist popup</li>
+            <li data-edit="cs2-a4">Mix design panel — PSI, aggregate, slump, LC3 cement</li>
+            <li data-edit="cs2-a5">Bulk scanner — live camera feed + edge detection for multi-page PDF ingest</li>
+            <li data-edit="cs2-a6">Apps Script → Sheet write-back for auditability</li>
+            <li data-edit="cs2-a7">Alfred chat embedded with embed + mix-design context injection</li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-dashboard.png · 02-footing-map.png · 03-embed-tracker.png in assets/photos/case-studies/cup-dashboard/ -->
+          <img src="assets/photos/case-studies/cup-dashboard/01-dashboard.png" alt="CUP Dashboard pour overview" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/cup-dashboard/02-footing-map.png" alt="Foundation map with status dots" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/cup-dashboard/03-embed-tracker.png" alt="Embed tracker checklist" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs2-ties">
+            SuperYap's look-ahead feeds the pour dates; EmbedYap's install states surface on each footing's pre-pour checklist; Command Center mirrors the whole footing map as the base layer of its unified view.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs2-result">
+            Three sections of pour tracked end-to-end, live on the trailer iPad every morning. Inspectors confirm embed placement without a site visit, and the superintendent and project executive read pour status off the same screen the foremen update.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-02</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Truth</span><span class="v">Drive (tickets)</span></div>
+          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
+          <div class="kv"><span class="k">Embeds</span><span class="v">51A – 90A (10 types)</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span>
+            <span>Apps Script</span><span>Sheets API</span><span>SVG</span><span>Camera API</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/cup-dashboard/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 03 — EMBEDYAP -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="embedyap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">03</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-ey-h">EmbedYap — <span class="grad">299 embeds</span>, zero guesswork.</h2>
+        <p class="tagline" data-edit="cs-ey-tag">
+          Every anchor bolt and knife plate in the foundation, extracted from the plan PDFs with computer vision and tracked as live pins on a pan/zoom map. Miss an embed before a pour and you're coring concrete; EmbedYap exists so that never happens.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-ey-problem">
+            The embed plan was a PDF, a highlighter, and somebody's memory. 299 embeds across 75 types had to be installed in the right footing before each pour — and a missed one isn't a redo, it's a core drill through cured structural concrete with an engineer's sign-off. Status lived in whoever walked the deck last.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Build</div>
+          <p data-edit="cs-ey-build">
+            A Python + OpenCV pipeline reads the structural plan PDFs — classifying the orange install dots and OCR-ing the red type labels — and seeds Firebase with 299 georeferenced pins across 75 embed types. The front end renders them on a pan/zoom canvas map: green installed, red to-install, amber next in sequence, blue knife plates. Originally React; I later ported it to a tiny vanilla-JS runtime — same UX, no framework, no build step, faster on trailer iPads.
+          </p>
+          <ul>
+            <li data-edit="cs-ey-a1">CV/OCR extraction: plan PDF &rarr; classified pins, no hand-plotting</li>
+            <li data-edit="cs-ey-a2">Canvas-rendered pins with marquee multi-select and manager markup tools</li>
+            <li data-edit="cs-ey-a3">RFI attach on any pin — the drawing question travels with the embed</li>
+            <li data-edit="cs-ey-a4">Dashboard, inventory, Excel/PDF export, and a crew leaderboard</li>
+            <li data-edit="cs-ey-a5">React &rarr; vanilla runtime migration cut load time on field devices</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-ey-ties">
+            Command Center reads the pin namespace and layers every embed onto the unified map; clicking a pin there deep-links back into EmbedYap for the heavy edits. CUP's pour checklists reference the same install states.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-ey-result">
+            Embed status stopped being tribal knowledge. The pre-pour walk is a filter ("show me red pins in F21"), the leaderboard made installs a competition, and no embed has been cored out since it shipped.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Pins tracked</span><span class="v">299 · 75 types</span></div>
+          <div class="kv"><span class="k">Extraction</span><span class="v">OpenCV + OCR from plan PDFs</span></div>
+          <div class="kv"><span class="k">Runtime</span><span class="v">Vanilla JS · no build step</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Python</span><span>OpenCV</span><span>JavaScript</span><span>Canvas API</span><span>Firebase RTDB</span><span>SheetJS</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/embed-tracker/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 04 — TOOL TRACKER -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="tool-tracker">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">04</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-tt-h">Tool Tracker — the conex <span class="grad">stopped lying.</span></h2>
+        <p class="tagline" data-edit="cs-tt-tag">
+          An Assets-as-truth equipment registry for the field: orders, receiving, per-foreman checklists, a lost-tool log, and on-site verification. The workflow it replaced — ToolHound exports stapled to printed count sheets — lost roughly 65 tools in a single cycle.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-tt-problem">
+            Tool accountability ran on printouts taped to the trailer wall: a ToolHound export, re-keyed by hand, out of date the moment it printed. Tools moved between the conex, the deck, and foremen's trucks all day; the paper never followed. Across the previous cycle, about 65 tools simply disappeared — replacement cost plus the PM hours spent hunting them.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Build</div>
+          <p data-edit="cs-tt-build">
+            A Firebase-backed registry where the Assets list is the single source of truth. ToolHound CSV/PDF imports reconcile against it with alias resolution (the same drill has four names in four systems); assignments log who has what; a "verified on site" checklist catches missing or mis-tagged tools before they walk. The same data drives a printable bilingual 11&times;17 count poster for the trailer wall — print catching up to digital instead of fighting it.
+          </p>
+          <ul>
+            <li data-edit="cs-tt-a1">Assets-as-truth registry with alias resolution across import formats</li>
+            <li data-edit="cs-tt-a2">Orders &amp; receiving flow — new tools enter the registry, not a spreadsheet</li>
+            <li data-edit="cs-tt-a3">Per-foreman 11&times;17 checklists, bilingual EN/ES, printed from live data</li>
+            <li data-edit="cs-tt-a4">Lost-tool log with an all-time count and value-on-site rollups</li>
+            <li data-edit="cs-tt-a5">On-site verification writes back to the sheet — the audit is the workflow</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-tt-ties">
+            Command Center's Inventory view and SuperYap's Tools tab both read this registry live — the superintendent sees the same asset truth next to the schedule that needs it.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-tt-result">
+            The ~65-tools-per-cycle bleed stopped: every tool now has a holder, a location, and a verification date. The count that used to take a morning of walking with a clipboard is a filter and a printout.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Baseline</span><span class="v">~65 tools lost / cycle</span></div>
+          <div class="kv"><span class="k">Imports</span><span class="v">ToolHound CSV/PDF + alias resolution</span></div>
+          <div class="kv"><span class="k">Output</span><span class="v">Bilingual 11&times;17 posters</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase RTDB</span><span>SheetJS</span><span>pdf.js</span><span>Tailwind</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/tool-tracker/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 05 — SUPERYAP -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="superyap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">05</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-sy-h">SuperYap — the superintendent's <span class="grad">whole week on one sheet.</span></h2>
+        <p class="tagline" data-edit="cs-sy-tag">
+          The superintendent suite: a three-week look-ahead builder plus live Attendance and Tools tabs, reading the same shared Firebase as the rest of the set. The schedule that used to take an afternoon now regenerates in minutes.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-sy-problem">
+            The look-ahead is the superintendent's core artifact — the sheet that tells forty people what happens for the next three weeks. Ours was redrawn by hand in Excel every week: chained dates recomputed manually, weekends and holidays skipped by eye, then an hour of formatting to match the Webcor standard before it could go on the wall.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs-sy-approach">
+            A schedule builder that thinks in working days. Activities chain off each other or take manual dates; change one duration and everything downstream recomputes, skipping weekends and holidays automatically. Repeating pour cycles drop in with one Insert Cycle click, and activities link to their CUP pours so schedule and field status agree.
+          </p>
+          <ul>
+            <li data-edit="cs-sy-a1">Chained or manual dating with a working-day engine (weekends + holidays skipped)</li>
+            <li data-edit="cs-sy-a2">Insert Cycle — a whole repeating pour sequence added in one action</li>
+            <li data-edit="cs-sy-a3">One-click export to the Webcor-format look-ahead: PDF for the wall, Excel for the PMs</li>
+            <li data-edit="cs-sy-a4">Attendance tab reads Foreman Sign-In live — who's on site today, not last week</li>
+            <li data-edit="cs-sy-a5">Tools tab reads Tool Tracker assets — the conex inventory next to the schedule that needs it</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-sy-ties">
+            Schedule activities link to CUP pours, Command Center syncs the look-ahead as the project's schedule truth, and the Attendance and Tools tabs read Foreman Sign-In and Tool Tracker live.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-sy-result">
+            The weekly afternoon of Excel surgery is gone. The look-ahead prints in the Webcor format the office expects, and the superintendent edits dates instead of redrawing sheets.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-06</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Tabs</span><span class="v">Schedule · Attendance · Tools</span></div>
+          <div class="kv"><span class="k">Exports</span><span class="v">PDF + XLSX · Webcor format</span></div>
+          <div class="kv"><span class="k">Links to</span><span class="v">CUP pours · shared Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase</span><span>SheetJS</span><span>jsPDF</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/look-ahead/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 06 — MR. GEORGE (Const-Agent web UI) -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="const-agent">
       <div class="lhs">
         <div class="head">
-          <span class="num">01</span>
+          <span class="num">06</span>
           <span class="pill pill-primary">FLAGSHIP</span>
         </div>
         <h2 data-edit="cs1-h">Mr. George — a project-engineer assistant on every channel I work in.</h2>
@@ -670,177 +1064,13 @@
   </div>
 </section>
 
-<!-- CASE 02 — COMMAND CENTER -->
-<section>
-  <div class="wrap">
-    <article class="case reveal" id="command-center">
-      <div class="lhs">
-        <div class="head">
-          <span class="num">02</span>
-          <span class="pill">LIVE</span>
-        </div>
-        <h2 data-edit="cs2cc-h">Command Center — the whole jobsite on one sheet.</h2>
-        <p class="tagline" data-edit="cs2cc-tag">
-          The consolidation hub for the LACC concrete team. One role-aware map that unifies CUP footings and EmbedYap pins, plus RFIs, inspections, schedule, tools, and crew — rebuilt in June 2026 from a read-only sheet mirror into the team's operating picture.
-        </p>
-
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs2cc-problem">
-            The ecosystem got big. Each tool solved its own problem, but the superintendent's actual question — "what's ready for inspection, where are the embeds on F21, who's on site today" — crossed four apps. And the original Command Center only mirrored spreadsheets; it couldn't answer, only display.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs2cc-approach-1">
-            Full rebuild as a consolidation hub. Still a static GitHub Pages SPA, but now reading the live Firebase namespaces of CUP, EmbedYap, Tool Tracker, and SuperYap — writing only to its own. Role-gated by Firebase Auth (Admin › Super › PM › PE, 2FA on Admin) with a global edit lock, so view-only is the default on every field device.
-          </p>
-          <ul>
-            <li data-edit="cs2cc-a1">The Map — footings + embeds + pours + RFI zones + markups as toggleable layers on one pan/zoom canvas</li>
-            <li data-edit="cs2cc-a2">RFIs — drag-and-drop a PDF, it links to Drive and pins to its map zone</li>
-            <li data-edit="cs2cc-a3">Inspections — Ready → Pass/Fail sign-off stages that log who marked ready</li>
-            <li data-edit="cs2cc-a4">Schedule — Excel import/export, synced to SuperYap's look-ahead</li>
-            <li data-edit="cs2cc-a5">Live tools + crew pulled from the shared Firebase, role-filtered per tab</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <div class="block-label">The workspace</div>
-          <p data-edit="cs2cc-workspace">
-            Nine views behind one login — <span class="mono" style="font-size: 12.5px; letter-spacing: 0.06em; color: var(--primary);">DASHBOARD · THE MAP (LIVE) · SCHEDULE · INVENTORY · RFIS · POURS · SUBMITTALS · ATTENDANCE · ADMIN</span>. It's a true central workplace: the day starts here, and the other apps became its deep-edit tools. Click a footing on the Map and CUP opens to that pour; click an embed and EmbedYap opens to that pin.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <!-- DROP: 01-dashboard.png · 02-drill.png in assets/photos/case-studies/command-center/ -->
-          <img src="assets/photos/case-studies/command-center/01-dashboard.png" alt="Command Center dashboard hero" loading="lazy" onerror="this.style.display='none'">
-          <img src="assets/photos/case-studies/command-center/02-drill.png" alt="Command Center drill-down view" loading="lazy" onerror="this.style.display='none'">
-        </div>
-
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs2cc-result">
-            The featured tile on the launcher and the morning tailgate's one URL. The superintendent sees his layers, the PM sees her RFIs, the PE edits data — same map, different permissions. The original sheet-mirror version is preserved as a legacy tile.
-          </p>
-        </div>
-      </div>
-
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Rebuilt</span><span class="v">2026-06</span></div>
-          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
-          <div class="kv"><span class="k">Roles</span><span class="v">Admin › Super › PM › PE</span></div>
-          <div class="kv"><span class="k">Map layers</span><span class="v">6 toggleable</span></div>
-          <div class="kv"><span class="k">Reads</span><span class="v">4 app namespaces</span></div>
-        </div>
-        <div class="panel">
-          <h4>Role matrix</h4>
-          <div class="kv"><span class="k">Admin</span><span class="v">Full edit · users · 2FA</span></div>
-          <div class="kv"><span class="k">Super</span><span class="v">Schedule · Tools · Crew</span></div>
-          <div class="kv"><span class="k">PM</span><span class="v">RFIs · Submittals · Inspections</span></div>
-          <div class="kv"><span class="k">PE</span><span class="v">Data · Zones · Pours · Tools</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>JavaScript</span><span>Firebase RTDB</span><span>Firebase Auth</span><span>SheetJS</span><span>Apps Script</span>
-          </div>
-        </div>
-        <a class="live" href="https://dyap123.github.io/command-center/" target="_blank">
-          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
-          View Live
-        </a>
-      </aside>
-    </article>
-  </div>
-</section>
-
-<!-- CASE 03 — CUP DASHBOARD -->
-<section>
-  <div class="wrap">
-    <article class="case reveal" id="cup-dashboard">
-      <div class="lhs">
-        <div class="head">
-          <span class="num">03</span>
-          <span class="pill">LIVE</span>
-        </div>
-        <h2 data-edit="cs2-h">CUP Dashboard — a real-time view of the pour from any device.</h2>
-        <p class="tagline" data-edit="cs2-tag">
-          Real-time concrete-pour platform for the LACC project. Pour plans, embed verification, live trucks, mix designs, inspection ticker, and a camera-driven bulk PDF scanner — all synced across every device in the field.
-        </p>
-
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs2-problem">
-            On a pour day you have 50+ moving parts: concrete trucks arriving, rebar placement status, embeds to verify, inspectors to coordinate, and a PM chewing through a printed footing map. The existing tools were: a spreadsheet, a clipboard, and walkie-talkies.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs2-approach-1">
-            Static GitHub Pages SPA. Pour ticket indexing now uses Drive as the source of truth (we dropped the Firebase write path for tickets — fewer moving parts, audit trail in the sheet). Foremen drag footing shapes on the map, long-press embeds to step through a checklist, tap a truck arriving to log it live, and a new bulk scanner uses the camera + edge detection to ingest multi-page ticket PDFs.
-          </p>
-          <ul>
-            <li data-edit="cs2-a1">Footing map with drag-edit + SVG status dots (green / amber / red-pulse)</li>
-            <li data-edit="cs2-a2">Live Pour tab — donut chart, truck log, inspection ticker (?view=live)</li>
-            <li data-edit="cs2-a3">Embed tracker with 10 CUP types (51A–90A) + long-press checklist popup</li>
-            <li data-edit="cs2-a4">Mix design panel — PSI, aggregate, slump, LC3 cement</li>
-            <li data-edit="cs2-a5">Bulk scanner — live camera feed + edge detection for multi-page PDF ingest</li>
-            <li data-edit="cs2-a6">Apps Script → Sheet write-back for auditability</li>
-            <li data-edit="cs2-a7">Alfred chat embedded with embed + mix-design context injection</li>
-          </ul>
-        </div>
-
-        <div class="gallery">
-          <!-- DROP: 01-dashboard.png · 02-footing-map.png · 03-embed-tracker.png in assets/photos/case-studies/cup-dashboard/ -->
-          <img src="assets/photos/case-studies/cup-dashboard/01-dashboard.png" alt="CUP Dashboard pour overview" loading="lazy" onerror="this.style.display='none'">
-          <img src="assets/photos/case-studies/cup-dashboard/02-footing-map.png" alt="Foundation map with status dots" loading="lazy" onerror="this.style.display='none'">
-          <img src="assets/photos/case-studies/cup-dashboard/03-embed-tracker.png" alt="Embed tracker checklist" loading="lazy" onerror="this.style.display='none'">
-        </div>
-
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs2-result">
-            Shipped live to the team. Three sections of pour tracked end-to-end. Inspectors are using it to confirm embed placement without a site visit. Shared with superintendent + project executive. Theme overhaul matched the roadmap site so OpenYap reads as one product family.
-          </p>
-        </div>
-      </div>
-
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Launched</span><span class="v">2026-02</span></div>
-          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
-          <div class="kv"><span class="k">Truth</span><span class="v">Drive (tickets)</span></div>
-          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
-          <div class="kv"><span class="k">Embeds</span><span class="v">51A – 90A (10 types)</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span>
-            <span>Apps Script</span><span>Sheets API</span><span>SVG</span><span>Camera API</span>
-          </div>
-        </div>
-        <a class="live" href="https://dyap123.github.io/cup-dashboard/" target="_blank">
-          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
-          View Live
-        </a>
-      </aside>
-    </article>
-  </div>
-</section>
-
-<!-- CASE 04 — FORMWORK -->
+<!-- CASE 07 — FORMWORK -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="formwork">
       <div class="lhs">
         <div class="head">
-          <span class="num">04</span>
+          <span class="num">07</span>
           <span class="pill">LIVE</span>
         </div>
         <h2 data-edit="cs5-h">Formwork — a budget tool built around the way construction teams already think.</h2>
@@ -906,13 +1136,13 @@
   </div>
 </section>
 
-<!-- CASE 05 — ROADMAP -->
+<!-- CASE 08 — ROADMAP -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="roadmap">
       <div class="lhs">
         <div class="head">
-          <span class="num">05</span>
+          <span class="num">08</span>
           <span class="pill">LIVE</span>
         </div>
         <h2 data-edit="cs3-h">OpenYap Roadmap — the investor deck as a building.</h2>
@@ -980,73 +1210,6 @@
   </div>
 </section>
 
-<!-- CASE 05.1 — SUPERYAP (inserted sheet) -->
-<section>
-  <div class="wrap">
-    <article class="case reveal" id="superyap">
-      <div class="lhs">
-        <div class="head">
-          <span class="num">05.1</span>
-          <span class="pill">LIVE</span>
-        </div>
-        <h2 data-edit="cs-sy-h">SuperYap — the superintendent's <span class="grad">whole week on one sheet.</span></h2>
-        <p class="tagline" data-edit="cs-sy-tag">
-          The superintendent suite: a three-week look-ahead builder plus live Attendance and Tools tabs, reading the same shared Firebase as the rest of the set. The schedule that used to take an afternoon now regenerates in minutes.
-        </p>
-
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs-sy-problem">
-            The look-ahead is the superintendent's core artifact — the sheet that tells forty people what happens for the next three weeks. Ours was redrawn by hand in Excel every week: chained dates recomputed manually, weekends and holidays skipped by eye, then an hour of formatting to match the Webcor standard before it could go on the wall.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs-sy-approach">
-            A schedule builder that thinks in working days. Activities chain off each other or take manual dates; change one duration and everything downstream recomputes, skipping weekends and holidays automatically. Repeating pour cycles drop in with one Insert Cycle click, and activities link to their CUP pours so schedule and field status agree.
-          </p>
-          <ul>
-            <li data-edit="cs-sy-a1">Chained or manual dating with a working-day engine (weekends + holidays skipped)</li>
-            <li data-edit="cs-sy-a2">Insert Cycle — a whole repeating pour sequence added in one action</li>
-            <li data-edit="cs-sy-a3">One-click export to the Webcor-format look-ahead: PDF for the wall, Excel for the PMs</li>
-            <li data-edit="cs-sy-a4">Attendance tab reads Foreman Sign-In live — who's on site today, not last week</li>
-            <li data-edit="cs-sy-a5">Tools tab reads Tool Tracker assets — the conex inventory next to the schedule that needs it</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs-sy-result">
-            The weekly afternoon of Excel surgery is gone. The look-ahead prints in the Webcor format the office expects, Command Center syncs it as the project's schedule truth, and the superintendent edits dates instead of redrawing sheets.
-          </p>
-        </div>
-      </div>
-
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Launched</span><span class="v">2026-06</span></div>
-          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
-          <div class="kv"><span class="k">Tabs</span><span class="v">Schedule · Attendance · Tools</span></div>
-          <div class="kv"><span class="k">Exports</span><span class="v">PDF + XLSX · Webcor format</span></div>
-          <div class="kv"><span class="k">Links to</span><span class="v">CUP pours · shared Firebase</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>JavaScript</span><span>Firebase</span><span>SheetJS</span><span>jsPDF</span>
-          </div>
-        </div>
-        <a class="live" href="https://dyap123.github.io/look-ahead/" target="_blank">
-          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
-          View Live
-        </a>
-      </aside>
-    </article>
-  </div>
-</section>
-
 <!-- TIER 2 — Field & companion tools (3 medium cases) -->
 <section>
   <div class="wrap">
@@ -1054,7 +1217,7 @@
 
       <article class="tier2-card reveal" id="vault-brain">
         <div class="head">
-          <span class="num">06</span>
+          <span class="num">09</span>
           <span class="pill pill-amber">LOCAL</span>
         </div>
         <h3 data-edit="cs6-h">Vault Brain — Mr. George's library.</h3>
@@ -1080,7 +1243,7 @@
 
       <article class="tier2-card reveal" id="todo">
         <div class="head">
-          <span class="num">07</span>
+          <span class="num">10</span>
           <span class="pill">LIVE</span>
         </div>
         <h3 data-edit="cs7-h">Todo — tasks plus a Wasted-Time tab.</h3>
@@ -1104,7 +1267,7 @@
 
       <article class="tier2-card reveal" id="lacc-foundation">
         <div class="head">
-          <span class="num">08</span>
+          <span class="num">11</span>
           <span class="pill">LIVE</span>
         </div>
         <h3 data-edit="cs8-h">LACC Foundation Viewer — public zone map.</h3>

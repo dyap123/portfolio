@@ -66,6 +66,11 @@ img { max-width: 100%; display: block; }
 /* Retired WebGL canvas slot — keep inert if present */
 #shader-bg { display: none; }
 
+/* Grid children default to min-width:auto, which lets auto-fit fact grids
+   (min-content = every cell on one row) blow out the page on phones. */
+.story > *, .interview-layout > *, .case > *, .fw-bays > * { min-width: 0; }
+@media (max-width: 720px) { html, body { overflow-x: hidden; } }
+
 /* Faint drafting grid over the paper */
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
@@ -236,6 +241,93 @@ nav.topnav .inner {
 }
 .stamp.wip { border-color: var(--secondary); color: var(--secondary); }
 .stamp.wip > span { border-color: var(--secondary); }
+
+/* ════════════════════ THE SYSTEM — flow diagram ════════════════════ */
+.flow {
+  display: grid; grid-template-columns: minmax(0, 5fr) 72px minmax(0, 4fr);
+  align-items: center; margin-top: 2.5rem;
+}
+.flow-sources { display: grid; gap: 14px; }
+.flow-node {
+  border: 1.5px solid var(--ink); background: var(--surface-0);
+  padding: 16px 20px; position: relative;
+}
+.flow-node .mark {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  color: var(--primary); font-weight: 600; text-transform: uppercase;
+}
+.flow-node .t {
+  font-family: var(--head); font-weight: 700; font-size: 17px;
+  color: var(--ink); letter-spacing: -0.01em; margin: 3px 0 4px;
+}
+.flow-node .r { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; }
+.flow-node::after {
+  content: "→"; position: absolute; right: -52px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 22px; color: var(--primary); font-weight: 700;
+}
+.flow-hub {
+  border: 2.5px solid var(--primary); background: var(--accent-soft);
+  padding: 26px 26px 22px; position: relative;
+}
+.flow-hub .mark {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  color: var(--primary); font-weight: 600; text-transform: uppercase;
+}
+.flow-hub .t {
+  font-family: var(--head); font-weight: 700; font-size: 26px;
+  color: var(--ink); letter-spacing: -0.015em; margin: 4px 0 8px;
+}
+.flow-hub .r { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+.flow-hub .roles {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(30,75,143,0.25);
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--primary);
+}
+@media (max-width: 880px) {
+  .flow { grid-template-columns: 1fr; gap: 40px; }
+  .flow-node::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -34px; transform: translateX(-50%); }
+  .flow-sources { gap: 40px; }
+  .flow > .flow-mid { display: none; }
+}
+
+/* Receipt card — the beam kill */
+.receipt {
+  margin-top: 2.5rem; border: 1.5px solid var(--ink); background: var(--surface-0);
+  display: grid; grid-template-columns: 3fr 2fr; gap: 0;
+}
+@media (max-width: 880px) { .receipt { grid-template-columns: 1fr; } }
+.receipt .story { padding: 2rem 2.25rem; }
+.receipt .story h3 {
+  font-family: var(--head); font-weight: 700; font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: -0.015em; color: var(--ink); margin-bottom: 0.75rem;
+}
+.receipt .story p { font-size: 15px; line-height: 1.7; color: var(--text); max-width: 60ch; }
+.receipt .mech {
+  margin-top: 1.25rem; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px;
+  font-size: 13px; color: var(--text-dim); line-height: 1.55;
+}
+.receipt .mech .label {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); padding-top: 3px;
+}
+.receipt .tally {
+  border-left: 1.5px solid var(--ink); padding: 2rem;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 10px;
+  position: relative; background: var(--surface-1);
+}
+@media (max-width: 880px) { .receipt .tally { border-left: none; border-top: 1.5px solid var(--ink); } }
+.receipt .tally .k {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+}
+.receipt .tally .v {
+  font-family: var(--head); font-weight: 700; font-size: clamp(48px, 5vw, 72px);
+  line-height: 1; letter-spacing: -0.02em; color: var(--stamp-red);
+}
+.stamp.void { border-color: var(--stamp-red); color: var(--stamp-red); transform: rotate(-7deg); }
+.stamp.void > span { border-color: var(--stamp-red); }
+@media (max-width: 720px) {
+  .stamp > span { white-space: normal; line-height: 1.5; }
+}
 
 /* ════════════════════ TELEMETRY MARQUEE → PLOT LOG ════════════════════ */
 .telemetry {
