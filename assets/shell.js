@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════
-// STRUCTURAL SYNTHESIS — shared shell
-// shader ambient bg · scroll reveal · counters · edit · nav · clock
+// THE DRAWING SET — shared shell
+// scroll reveal · counters · edit · nav · clock
 // ═══════════════════════════════════════════════════
 
 (function () {
@@ -93,8 +93,9 @@
     });
   }
 
-  // ─── Three.js ambient shader background ───
+  // ─── Three.js ambient shader background (retired with the Drawing Set reskin) ───
   function initShaderBg() {
+    return;
     const canvas = document.getElementById('shader-bg');
     if (!canvas || typeof THREE === 'undefined') return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -231,15 +232,6 @@
       else if (!frame) { lastTime = performance.now(); tick(); }
     });
     tick();
-  }
-
-  // Three.js lazy-inits once loaded
-  if (typeof THREE !== 'undefined') initShaderBg();
-  else {
-    const chk = setInterval(() => {
-      if (typeof THREE !== 'undefined') { clearInterval(chk); initShaderBg(); }
-    }, 80);
-    setTimeout(() => clearInterval(chk), 6000);
   }
 
   // ─── Terminal typewriter effect ───

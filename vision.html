@@ -10,21 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 <style>
   /* vertical timeline rails — mirrored on both sides for symmetry */
   .roadmap { position: relative; margin-top: 2rem; padding: 0 3rem; }
   /* dim tracks */
   .roadmap::before, .roadmap::after {
     content: ""; position: absolute; top: 10px; bottom: 10px; width: 2px;
-    background: rgba(217,185,255,0.12);
+    background: rgba(30,75,143,0.12);
   }
   .roadmap::before { left: 13px; }
   .roadmap::after  { right: 13px; }
   /* bright, scroll-driven fills that track your progress down the page */
   .roadmap-fill {
     position: absolute; top: 10px; width: 2px; height: 0;
-    background: linear-gradient(to bottom, rgba(217,185,255,0.25), var(--primary));
+    background: linear-gradient(to bottom, rgba(30,75,143,0.25), var(--primary));
     box-shadow: 0 0 12px var(--glow); border-radius: 2px; z-index: 1; will-change: height;
   }
   .roadmap-fill.left  { left: 13px; }
@@ -37,8 +36,8 @@
 
   .phase {
     position: relative;
-    background-color: rgba(27,27,35,0.6);
-    background-image: linear-gradient(105deg, rgba(20,19,28,0.96) 40%, rgba(20,19,28,0.70) 100%), var(--phase-bg, none);
+    background-color: rgba(251,250,247,0.6);
+    background-image: linear-gradient(105deg, rgba(245,243,238,0.96) 40%, rgba(245,243,238,0.78) 100%), var(--phase-bg, none);
     background-repeat: no-repeat, no-repeat;
     background-position: center, right center;
     background-size: cover, cover;
@@ -47,15 +46,15 @@
     margin-bottom: 1.5rem;
     transition: border-color .3s, transform .3s, box-shadow .3s;
   }
-  .phase:hover { border-color: rgba(217,185,255,0.35); transform: translateY(-3px); box-shadow: 0 16px 38px -20px var(--glow); }
+  .phase:hover { border-color: rgba(30,75,143,0.35); transform: translateY(-3px); box-shadow: 0 16px 38px -20px var(--glow); }
   /* big watermark number — brightens when its phase is active */
   .phase::after {
     content: attr(data-num); position: absolute; top: -18px; right: 18px;
-    font-family: var(--head); font-size: 150px; font-weight: 700; color: var(--accent-soft);
+    font-family: var(--head); font-size: 150px; font-weight: 700; color: rgba(26,25,21,0.06);
     line-height: 1; letter-spacing: -0.08em; pointer-events: none; z-index: 0;
-    transition: filter .6s ease; filter: brightness(0.8);
+    transition: color .6s ease;
   }
-  .phase.in-view::after { filter: brightness(1.5); }
+  .phase.in-view::after { color: rgba(30,75,143,0.14); }
   @media (max-width: 700px) { .phase::after { font-size: 90px; right: 8px; } }
 
   .phase .label {
@@ -78,8 +77,8 @@
 
   .quote-slab {
     margin: 6rem 0; padding: 4rem 2.5rem;
-    background: linear-gradient(135deg, rgba(67, 16, 122, 0.35), rgba(14,13,21,0.85));
-    border: 1px solid rgba(217,185,255,0.2); border-radius: 4px;
+    background: linear-gradient(135deg, rgba(30,75,143,0.10), rgba(251,250,247,0.85));
+    border: 1px solid rgba(30,75,143,0.2); border-radius: 4px;
     position: relative; overflow: hidden;
   }
   .quote-slab::before {
@@ -104,13 +103,13 @@
   @media (max-width: 700px) { .principles { grid-template-columns: 1fr; } }
   .principle {
     display: flex; gap: 1rem; padding: 1.5rem;
-    background: rgba(27,27,35,0.4); border: 1px solid var(--line); border-radius: 4px;
+    background: rgba(251,250,247,0.4); border: 1px solid var(--line); border-radius: 4px;
     transition: all .25s;
   }
-  .principle:hover { border-color: rgba(217,185,255,0.2); background: rgba(27,27,35,0.6); }
+  .principle:hover { border-color: rgba(30,75,143,0.2); background: rgba(251,250,247,0.6); }
   .principle .n {
     font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--primary);
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(217,185,255,0.3);
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(30,75,143,0.3);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .principle h4 { font-family: var(--head); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -119,21 +118,19 @@
   /* Why now — reasoning inflection */
   .shift-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem; align-items: stretch; }
   @media (max-width: 820px) { .shift-grid { grid-template-columns: 1fr; } .shift-arrow { transform: rotate(90deg); } }
-  .shift-card { background: rgba(27,27,35,0.55); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; }
-  .shift-card.accent { border-color: rgba(217,185,255,0.3); background: linear-gradient(135deg, rgba(67,16,122,0.3), rgba(27,27,35,0.6)); }
+  .shift-card { background: rgba(251,250,247,0.55); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; }
+  .shift-card.accent { border-color: rgba(30,75,143,0.3); background: linear-gradient(135deg, rgba(30,75,143,0.08), rgba(251,250,247,0.6)); }
   .shift-card .tagk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
   .shift-card.accent .tagk { color: var(--primary); }
   .shift-card h4 { font-family: var(--head); font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; line-height: 1.15; }
   .shift-card p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
   .shift-arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); }
   .shift-arrow .material-symbols-outlined { font-size: 32px; }
-  .whynow-close { margin-top: 2rem; padding: 1.85rem 2rem; border-left: 3px solid var(--primary); background: rgba(27,27,35,0.4); border-radius: 0 4px 4px 0; }
+  .whynow-close { margin-top: 2rem; padding: 1.85rem 2rem; border-left: 3px solid var(--primary); background: rgba(251,250,247,0.4); border-radius: 0 4px 4px 0; }
   .whynow-close p { font-family: var(--head); font-size: clamp(17px, 2vw, 23px); font-weight: 500; line-height: 1.42; color: var(--text); max-width: 66ch; }
 </style>
 </head>
 <body>
-
-<canvas id="shader-bg"></canvas>
 
 <nav class="topnav">
   <div class="inner">
@@ -160,8 +157,8 @@
 <section style="padding-top: 9rem;">
   <div class="wrap">
     <div class="sector reveal">
-      <span>Operational Sector 03 · Vision</span>
-      <span class="sector-right">INTENT &amp; TRAJECTORY</span>
+      <span>Sheet A-301 · Vision — Intent &amp; Trajectory</span>
+      <span class="sector-right">ISSUED FOR REVIEW</span>
     </div>
     <div class="mt-6 mb-8 reveal delay-1">
       <div class="sector"><span>Roadmap</span></div>
@@ -349,24 +346,19 @@
 
 <footer class="foot">
   <div class="inner">
-    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
-    <div class="nav-foot">
-      
-      <a href="index.html">Journey</a>
-      <a href="ecosystem.html">Ecosystem</a>
-      <a href="vision.html">Vision</a>
-      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LinkedIn</a>
-    
-    </div>
-    <div class="copyright">© 2026 · DANZEL YAP · LA · <a href="tel:+14083353615" style="color: var(--muted); text-decoration: none;">(408) 335-3615</a> · <a href="mailto:dyap123@gmail.com" style="color: var(--muted); text-decoration: none;">dyap123@gmail.com</a></div>
+    <div class="tb-cell"><span class="k">Project</span><span class="v">CAREER — DANZEL YAP</span></div>
+    <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
+    <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
+    <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html">G-001 JOURNEY</a> · <a href="ecosystem.html">S-201 ECOSYSTEM</a></span></div>
+    <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
+    <div class="tb-sheet"><span class="k">Sheet</span><span class="v">A-301</span></div>
   </div>
 </footer>
 
 <button class="edit-toggle" id="editBtn">✎ Edit</button>
 
 <script src="assets/shell.js"></script>
-<script src="assets/editor.js"></script>
 <script>
 /* Roadmap timeline effects: light up nodes on view + scroll-driven rail fill */
 (function () {

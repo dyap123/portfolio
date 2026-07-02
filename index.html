@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 <style>
   .journey-intro {
     max-width: 720px; font-size: clamp(16px, 1.5vw, 20px);
@@ -20,15 +19,15 @@
   .chapter-chip {
     padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--text-dim); background: rgba(27,27,35,0.5); cursor: pointer; transition: all .2s;
+    color: var(--text-dim); background: rgba(251,250,247,0.5); cursor: pointer; transition: all .2s;
     display: inline-flex; align-items: center; gap: 8px;
   }
   .chapter-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
   .chapter-chip .yr { color: var(--primary); font-weight: 700; }
   .chapter-chip .num {
-    width: 18px; height: 18px; border-radius: 50%; background: rgba(217,185,255,0.12);
+    width: 18px; height: 18px; border-radius: 50%; background: rgba(30,75,143,0.12);
     display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: var(--primary);
-    border: 1px solid rgba(217,185,255,0.3);
+    border: 1px solid rgba(30,75,143,0.3);
   }
 
   .story {
@@ -53,12 +52,12 @@
     gap: 1px; background: var(--line); border-radius: 3px; overflow: hidden;
     margin-top: 1.5rem; max-width: 640px;
   }
-  .story .copy .fact { padding: 0.9rem 1rem; background: rgba(14,13,21,0.5); }
+  .story .copy .fact { padding: 0.9rem 1rem; background: rgba(251,250,247,0.5); }
   .story .copy .fact .v { font-family: var(--head); font-size: 20px; font-weight: 700; color: var(--primary); letter-spacing: -0.02em; }
   .story .copy .fact .k { font-family: var(--mono); font-size: 9.5px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
 
   .story .visual {
-    background: rgba(27,27,35,0.55); backdrop-filter: blur(14px);
+    background: rgba(251,250,247,0.55); backdrop-filter: blur(14px);
     border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
     aspect-ratio: 4/3; position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -68,8 +67,8 @@
   .story .visual .grid-overlay {
     position: absolute; inset: 0; pointer-events: none; z-index: 1;
     background:
-      linear-gradient(rgba(217,185,255,0.04) 1px, transparent 1px) 0 0 / 36px 36px,
-      linear-gradient(90deg, rgba(217,185,255,0.04) 1px, transparent 1px) 0 0 / 36px 36px;
+      linear-gradient(rgba(30,75,143,0.04) 1px, transparent 1px) 0 0 / 36px 36px,
+      linear-gradient(90deg, rgba(30,75,143,0.04) 1px, transparent 1px) 0 0 / 36px 36px;
   }
   .story .visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%) brightness(0.94); }
   .story .visual.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; aspect-ratio: 21/10; padding: 0; }
@@ -87,14 +86,14 @@
   .story .visual.quad .tag {
     position: absolute; left: 8px; top: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 3px 7px; background: rgba(14,13,21,0.72); backdrop-filter: blur(8px);
-    color: var(--primary); border: 1px solid rgba(217,185,255,0.25); border-radius: 3px;
+    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
   }
 
   .visual.trio {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
     aspect-ratio: 12/5; padding: 0;
-    background: rgba(27,27,35,0.55); border: 1px solid var(--line); border-radius: 4px;
+    background: rgba(251,250,247,0.55); border: 1px solid var(--line); border-radius: 4px;
     overflow: hidden;
   }
   .visual.trio > div { position: relative; overflow: hidden; background: var(--surface-0); }
@@ -107,8 +106,8 @@
   .visual.trio .tag {
     position: absolute; left: 8px; top: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 3px 7px; background: rgba(14,13,21,0.72); backdrop-filter: blur(8px);
-    color: var(--primary); border: 1px solid rgba(217,185,255,0.25); border-radius: 3px;
+    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
   }
   @media (max-width: 700px) {
     .visual.trio { grid-template-columns: 1fr 1fr; aspect-ratio: 4/3; }
@@ -172,8 +171,8 @@
     position: absolute; bottom: 8px; left: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; font-weight: 700;
-    padding: 4px 8px; background: rgba(14,13,21,0.82);
-    color: var(--primary); border: 1px solid rgba(217,185,255,0.25);
+    padding: 4px 8px; background: rgba(251,250,247,0.82);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25);
     border-radius: 3px; backdrop-filter: blur(8px);
   }
   /* Tile placement — 6 cols × 6 rows */
@@ -190,7 +189,7 @@
   .proj-collage .t-cc,
   .proj-collage .t-thermal,
   .proj-collage .t-tools {
-    background: linear-gradient(135deg, rgba(217,185,255,0.06), rgba(11,10,18,0.55));
+    background: linear-gradient(135deg, rgba(30,75,143,0.06), rgba(251,250,247,0.55));
   }
   .proj-collage .t-trip img { object-position: center top; }
 
@@ -224,9 +223,9 @@
   .poster-frame {
     aspect-ratio: 11 / 17; overflow: hidden;
     border: 1px solid var(--line); border-radius: 4px;
-    background: linear-gradient(135deg, rgba(217,185,255,0.05), rgba(11,10,18,0.55));
+    background: linear-gradient(135deg, rgba(30,75,143,0.05), rgba(251,250,247,0.55));
     padding: 12px 10px;
-    box-shadow: 0 16px 44px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(217,185,255,0.06);
+    box-shadow: 0 16px 44px rgba(26,25,21,0.15), inset 0 0 0 1px rgba(30,75,143,0.06);
   }
   .poster-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .poster-card .date {
@@ -260,7 +259,7 @@
   .site-strip .s .t {
     position: absolute; inset: auto 0 0 0; padding: 5px 7px;
     font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--text); background: linear-gradient(to top, rgba(14,13,21,0.92), transparent);
+    color: var(--text); background: linear-gradient(to top, rgba(251,250,247,0.92), transparent);
     opacity: 0; transition: opacity .25s;
   }
   .site-strip .s:hover .t { opacity: 1; }
@@ -276,8 +275,8 @@
   .mag-badge {
     display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--primary-deep); background: linear-gradient(135deg, var(--primary), var(--primary-dim));
-    padding: 4px 10px; border-radius: 999px; font-weight: 700;
+    color: var(--bg); background: var(--primary);
+    padding: 4px 10px; border-radius: 0; font-weight: 700;
   }
   .mag-badge .material-symbols-outlined { font-size: 13px; }
 
@@ -320,7 +319,7 @@
   /* ════════════════ SCROLL FX #2: STICKY CHAPTER CHIP ════════════════ */
   .chapter-chip-float {
     position: fixed; top: 96px; right: 24px; z-index: 36;
-    padding: 10px 16px; background: rgba(14,13,21,0.88);
+    padding: 10px 16px; background: rgba(251,250,247,0.88);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--line-strong); border-radius: 999px;
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
@@ -348,11 +347,11 @@
     font-family: var(--head); font-weight: 900;
     font-size: clamp(180px, 28vw, 420px); letter-spacing: -0.08em; line-height: 0.82;
     color: transparent;
-    -webkit-text-stroke: 1.2px rgba(217,185,255,0.22);
-    text-stroke: 1.2px rgba(217,185,255,0.22);
+    -webkit-text-stroke: 1.2px rgba(30,75,143,0.22);
+    text-stroke: 1.2px rgba(30,75,143,0.22);
     pointer-events: none; user-select: none;
     opacity: 0; transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
   }
   .chapter-watermark.visible { opacity: 1; }
   .chapter-watermark.flip { opacity: 0; transform: scale(1.08) rotate(-3deg); }
@@ -366,7 +365,7 @@
 
   .progress-rail {
     margin-top: 1.75rem;
-    padding: 1.25rem; background: rgba(27,27,35,0.55); border: 1px solid var(--line);
+    padding: 1.25rem; background: rgba(251,250,247,0.55); border: 1px solid var(--line);
     border-radius: 4px; max-width: 640px;
   }
   .progress-rail .pr-head {
@@ -392,10 +391,10 @@
   }
   .pill-grid .p {
     font-family: var(--mono); font-size: 11px; padding: 5px 10px; border-radius: 3px;
-    background: rgba(27,27,35,0.6); border: 1px solid var(--line); color: var(--text-dim);
+    background: rgba(251,250,247,0.6); border: 1px solid var(--line); color: var(--text-dim);
     transition: all .2s;
   }
-  .pill-grid .p:hover { border-color: rgba(217,185,255,0.25); color: var(--primary); }
+  .pill-grid .p:hover { border-color: rgba(30,75,143,0.25); color: var(--primary); }
   .pill-grid .p.anon { color: var(--muted); font-style: italic; }
 
   .roles-block { margin-top: 1.5rem; max-width: 640px; }
@@ -410,10 +409,10 @@
   }
   .insight {
     display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 14px 16px;
-    background: rgba(27,27,35,0.5); border: 1px solid var(--line); border-left: 3px solid var(--primary);
+    background: rgba(251,250,247,0.5); border: 1px solid var(--line); border-left: 3px solid var(--primary);
     border-radius: 3px; transition: all .25s;
   }
-  .insight:hover { border-color: rgba(217,185,255,0.25); border-left-color: var(--primary); transform: translateX(3px); }
+  .insight:hover { border-color: rgba(30,75,143,0.25); border-left-color: var(--primary); transform: translateX(3px); }
   .insight .n {
     font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--primary); padding-top: 2px;
   }
@@ -424,14 +423,14 @@
 
   .interview-tile {
     display: flex; gap: 1rem; padding: 1.25rem;
-    background: rgba(27,27,35,0.5); backdrop-filter: blur(14px);
+    background: rgba(251,250,247,0.5); backdrop-filter: blur(14px);
     border: 1px solid var(--line); border-radius: 4px;
     transition: all .25s;
   }
-  .interview-tile:hover { border-color: rgba(217,185,255,0.25); transform: translateY(-2px); }
+  .interview-tile:hover { border-color: rgba(30,75,143,0.25); transform: translateY(-2px); }
   .interview-tile .avatar {
     width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(217,185,255,0.08); border: 1px solid var(--line);
+    background: rgba(30,75,143,0.08); border: 1px solid var(--line);
     display: flex; align-items: center; justify-content: center;
     color: var(--primary); flex-shrink: 0;
   }
@@ -458,7 +457,7 @@
   .gallery .thumb:hover img { filter: none; transform: scale(1.04); }
   .gallery .thumb::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(135deg, rgba(217,185,255,0.08), transparent 50%);
+    background: linear-gradient(135deg, rgba(30,75,143,0.08), transparent 50%);
     opacity: 0; transition: opacity .3s;
   }
   .gallery .thumb:hover::after { opacity: 1; }
@@ -472,11 +471,11 @@
   .lightbox img {
     max-width: 92vw; max-height: 86vh; object-fit: contain;
     border: 1px solid var(--line-strong); border-radius: 3px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    box-shadow: 0 30px 80px rgba(26,25,21,0.2);
   }
   .lightbox-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(27,27,35,0.6); backdrop-filter: blur(10px);
+    background: rgba(251,250,247,0.6); backdrop-filter: blur(10px);
     border: 1px solid var(--line-strong); color: var(--text);
     width: 48px; height: 48px; border-radius: 50%;
     font-size: 20px; cursor: pointer; transition: all .2s;
@@ -502,8 +501,6 @@
 </style>
 </head>
 <body>
-
-<canvas id="shader-bg"></canvas>
 
 <!-- SCROLL FX: Timeline rail -->
 <nav class="timeline-rail" aria-label="Chapter navigator">
@@ -551,12 +548,13 @@
 <section class="hero" style="padding-top: 9rem; padding-bottom: 4rem;">
   <div class="wrap">
     <div class="sector reveal">
-      <span>Operational Sector 01 · Journey</span>
+      <span>Sheet G-001 · Cover — The Journey</span>
       <span class="sector-right">CHRONOLOGICAL · 2014 → NOW</span>
     </div>
     <h1 class="xl reveal delay-1" style="max-width: 22ch;">
       The <span class="grad">journey.</span>
     </h1>
+    <div class="stamp reveal delay-2" style="margin-top: 1.75rem;"><span>Issued for Construction</span></div>
     <p class="journey-intro reveal delay-2 mt-6" data-edit="journey-intro">
       Eight chapters, in order. Robotics → keyboard business → photography → CPP FSAE → Clune internship → AI in construction interviews → Webcor + OpenYap → field experience → just getting started. <strong style="color: var(--text);">We are just getting started.</strong>
     </p>
@@ -578,7 +576,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 01 · Robotics · 2014 · CowTech FRC</div>
+        <div class="tag">Sheet G-101 · Chapter 01 — Robotics · 2014 · CowTech FRC</div>
         <h2><span class="grad">Robotics.</span></h2>
         <p data-edit="robotics-p1">
           High school. <strong><a href="https://www.facebook.com/cowtechfrc/" target="_blank">CowTech FRC</a></strong> — small-town FIRST Robotics team, almost no budget. Other teams arrived at regionals with aluminum chassis and CNC'd parts. We built our competition robot mostly out of <em>wood</em>: hand-cut plywood frame, bolt-together joints, zip ties holding pneumatics in place.
@@ -608,7 +606,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 02 · Keyboard Business · Danzel's Keyboard</div>
+        <div class="tag">Sheet G-102 · Chapter 02 — Keyboard Business · Danzel's Keyboard</div>
         <h2><span class="grad">Keyboard business.</span></h2>
         <p data-edit="kb-p1">
           The first thing I built and sold for money. <strong>Danzel's Keyboard</strong> started in late high school — soldering Cherry switches into hot-swap PCBs at the kitchen table, posting builds on r/MechanicalKeyboards, taking commissions through Discord. Every build was bespoke: switch type, keycap profile, sound dampening, lubed stabs, custom case, RGB underglow if you wanted it.
@@ -662,7 +660,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 03 · Cal Poly Pomona FSAE Electric · 2018–22</div>
+        <div class="tag">Sheet G-103 · Chapter 03 — CPP FSAE Electric · 2018–22</div>
         <h2><span class="grad">CPP FSAE</span> — suspension lead.</h2>
         <p data-edit="fsae-p1">
           At <strong>Cal Poly Pomona</strong> I joined the Formula SAE Electric team — a student-run program building a fully electric open-wheel race car from scratch. I led <strong>suspension</strong>: a-arm geometry, uprights, shock mounting, hub bearings, camber/caster setup, corner compliance testing.
@@ -693,7 +691,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 04 · Clune Construction Internship · 2024</div>
+        <div class="tag">Sheet G-104 · Chapter 04 — Clune Internship · 2024</div>
         <h2><span class="grad">Clune internship</span> — AI seed.</h2>
         <p data-edit="clune-p1">
           First time on a real construction site. <strong>Clune Construction</strong> — high-end commercial interiors, tight schedules, no slack for paperwork drift. The internship was supposed to teach me how a project actually moves. It did. It also taught me how much of a PE's day is information shuffling that no one is paid to redesign.
@@ -725,7 +723,7 @@
     <div class="reveal">
       <div class="tag" style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 8px;">
         <span style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 6px var(--glow);"></span>
-        Chapter 05 · AI in Construction Interviews · 2024–25
+        Sheet G-105 · Chapter 05 — AI in Construction Interviews · 2024–25
       </div>
       <span class="mag-badge mb-4"><span class="material-symbols-outlined">record_voice_over</span>The interview tour</span>
       <h2 class="lg">AI in construction <span class="grad">interviews.</span></h2>
@@ -841,7 +839,7 @@
           <div class="s" style="aspect-ratio: 4/3;"><img src="assets/photos/journey/05-interviews/uci-2.jpg" alt="UC Irvine site walk" loading="lazy" data-edit-img="uci-new-2"/><div class="t">UCI · site</div></div>
         </div>
 
-        <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: rgba(14,13,21,0.4);">
+        <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: rgba(251,250,247,0.4);">
           <div class="eyebrow mb-1" style="color: var(--muted); font-size: 9px;">CPP office award</div>
           <p class="dim" style="font-size: 11.5px; line-height: 1.5;" data-edit="cpp-office-note">
             CPP awarded me an office on campus to keep building. The buildout never completed, but the offer was the signal — the idea had legs. Soon after, I joined Webcor.
@@ -857,7 +855,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Foundations · Hands-On ML · 2024–25</div>
+        <div class="tag">Ref G-105.1 · Foundations — Hands-On ML · 2024–25</div>
         <span class="mag-badge mb-4"><span class="material-symbols-outlined">menu_book</span>The ML groundwork</span>
         <h2>Learning what's <span class="grad">under the hood.</span></h2>
         <p data-edit="ml-p1">
@@ -879,7 +877,7 @@
       </div>
       <div class="visual" style="display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
         <figure style="margin:0; max-width: 360px; width:100%;">
-          <img src="assets/photos/journey/ml-book/cover.jpg" alt="Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd Edition — Aurélien Géron" loading="lazy" data-edit-img="ml-cover" style="width:100%; border-radius:6px; border:1px solid rgba(217,185,255,0.25); box-shadow: 0 24px 60px rgba(0,0,0,0.5);" onerror="this.style.display='none'">
+          <img src="assets/photos/journey/ml-book/cover.jpg" alt="Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd Edition — Aurélien Géron" loading="lazy" data-edit-img="ml-cover" style="width:100%; border-radius:6px; border:1px solid rgba(30,75,143,0.25); box-shadow: 0 24px 60px rgba(26,25,21,0.15);" onerror="this.style.display='none'">
           <figcaption class="mono" style="font-size: 10.5px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; text-align:center; margin-top: 12px;">O'Reilly · 3rd Edition · Aurélien Géron</figcaption>
         </figure>
       </div>
@@ -892,7 +890,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Site walk · 2024–25 · before the deck</div>
+        <div class="tag">Ref G-105.2 · Site Walk — Olympic & Hill · 2024–25</div>
         <span class="mag-badge mb-4"><span class="material-symbols-outlined">directions_walk</span>Olympic & Hill</span>
         <h2><span class="grad">Olympic & Hill</span> walk-around.</h2>
         <p data-edit="oh-p1">
@@ -903,7 +901,7 @@
         </p>
       </div>
       <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
-        <video controls preload="metadata" poster="assets/photos/journey/07-field/olympic-hill-walk-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="olympic-hill-walk">
+        <video controls preload="none" poster="assets/photos/journey/07-field/olympic-hill-walk-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="olympic-hill-walk">
           <source src="assets/photos/journey/07-field/olympic-hill-walk.mp4" type="video/mp4"/>
         </video>
       </div>
@@ -916,7 +914,7 @@
   <div class="wrap">
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 06 · Webcor + OpenYap · 2025 – present</div>
+        <div class="tag">Sheet G-106 · Chapter 06 — Webcor + OpenYap · 2025 – present</div>
         <span class="mag-badge mb-4"><span class="material-symbols-outlined">stars</span>Day job + the suite</span>
         <h2>Webcor + <span class="grad">OpenYap.</span></h2>
         <p data-edit="webcor-p1">
@@ -1050,7 +1048,7 @@
     <!-- Field experience proper -->
     <div class="story reveal">
       <div class="copy">
-        <div class="tag">Chapter 07 · Field Experience · Now</div>
+        <div class="tag">Sheet G-107 · Chapter 07 — Field Experience · Now</div>
         <span class="mag-badge mb-4"><span class="material-symbols-outlined">construction</span>On the deck</span>
         <h2><span class="grad">Field experience.</span></h2>
         <p data-edit="field-p1">
@@ -1061,7 +1059,7 @@
         </p>
       </div>
       <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
-        <video controls preload="metadata" poster="assets/photos/journey/07-field/excavator-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="excavator">
+        <video controls preload="none" poster="assets/photos/journey/07-field/excavator-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="excavator">
           <source src="assets/photos/journey/07-field/excavator.mp4" type="video/mp4"/>
         </video>
       </div>
@@ -1097,7 +1095,7 @@
 <section id="future" data-ch="08" data-title="Just Getting Started">
   <div class="wrap">
     <div class="reveal">
-      <div class="tag">Chapter 08 · What we can do now</div>
+      <div class="tag">Sheet G-108 · Chapter 08 — Just Getting Started</div>
       <span class="mag-badge mb-4"><span class="material-symbols-outlined">rocket_launch</span>WE ARE JUST GETTING STARTED</span>
       <h2>Just <span class="grad">getting started.</span></h2>
       <p data-edit="future-p1" style="max-width: 64ch; font-size: 16px; line-height: 1.65;">
@@ -1180,15 +1178,13 @@
 
 <footer class="foot">
   <div class="inner">
-    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
-    <div class="nav-foot">
-      <a href="index.html">Journey</a>
-      <a href="ecosystem.html">Ecosystem</a>
-      <a href="vision.html">Vision</a>
-      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LinkedIn</a>
-    </div>
-    <div class="copyright">© 2026 · DANZEL YAP · LA · <a href="tel:+14083353615" style="color: var(--muted); text-decoration: none;">(408) 335-3615</a> · <a href="mailto:dyap123@gmail.com" style="color: var(--muted); text-decoration: none;">dyap123@gmail.com</a></div>
+    <div class="tb-cell"><span class="k">Project</span><span class="v">CAREER — DANZEL YAP</span></div>
+    <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
+    <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
+    <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="ecosystem.html">S-201 ECOSYSTEM</a> · <a href="vision.html">A-301 VISION</a></span></div>
+    <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
+    <div class="tb-sheet"><span class="k">Sheet</span><span class="v">G-001</span></div>
   </div>
 </footer>
 
@@ -1371,6 +1367,5 @@ window.addEventListener('load',   () => { placeDots(); onScroll(); });
 placeDots();
 onScroll();
 </script>
-<script src="assets/editor.js"></script>
 </body>
 </html>
