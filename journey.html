@@ -1,14 +1,1454 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
 <meta charset="UTF-8">
-<title>Journey — Danzel Yap</title>
-<meta http-equiv="refresh" content="0; url=./">
-<link rel="canonical" href="./">
-<style>body{background:#0e0d15;color:#e4e1ec;font-family:system-ui,sans-serif;padding:3rem;text-align:center}a{color:#d9b9ff}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Journey — Danzel Yap</title>
+<meta name="description" content="Danzel Yap — Project Engineer at Webcor on the $2B LA Convention Center expansion and builder of OpenYap: 17 live production apps (Python, FastAPI, JavaScript, Firebase, Three.js, LLM agents) that save every project engineer about a day a week. Portfolio, case studies, and resume."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Danzel Yap",
+  "jobTitle": "Project Engineer & Software Builder",
+  "worksFor": { "@type": "Organization", "name": "Webcor Builders" },
+  "url": "https://dyap123.github.io/portfolio/",
+  "email": "mailto:dyap123@gmail.com",
+  "telephone": "+1-408-335-3615",
+  "sameAs": [
+    "https://github.com/dyap123",
+    "https://www.linkedin.com/in/danzel-yap-3ab435243/"
+  ],
+  "knowsAbout": ["Python", "FastAPI", "JavaScript", "React", "Firebase", "Three.js", "LLM agents", "AI in construction", "Concrete operations", "RFIs and submittals", "Quantity takeoff"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .journey-intro {
+    max-width: 720px; font-size: clamp(16px, 1.5vw, 20px);
+    color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem;
+  }
+  .chapters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+  .chapter-chip {
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-dim); background: rgba(251,250,247,0.5); cursor: pointer; transition: all .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .chapter-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+  .chapter-chip .yr { color: var(--primary); font-weight: 700; }
+  .chapter-chip .num {
+    width: 18px; height: 18px; border-radius: 50%; background: rgba(30,75,143,0.12);
+    display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: var(--primary);
+    border: 1px solid rgba(30,75,143,0.3);
+  }
+
+  .story {
+    display: grid; grid-template-columns: 5fr 4fr; gap: 3rem; align-items: start;
+    scroll-margin-top: 120px;
+  }
+  @media (max-width: 1000px) { .story { grid-template-columns: 1fr; gap: 2rem; } }
+  .story .copy h2 {
+    font-family: var(--head); font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+    letter-spacing: -0.035em; line-height: 1.0; margin-bottom: 1rem;
+  }
+  .story .copy .tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .story .copy .tag::before { content: ""; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 6px var(--glow); }
+  .story .copy p {
+    color: var(--text); font-size: 15.5px; line-height: 1.7; margin-bottom: 1rem; max-width: 62ch;
+  }
+  .story .copy .facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1px; background: var(--line); border-radius: 3px; overflow: hidden;
+    margin-top: 1.5rem; max-width: 640px;
+  }
+  .story .copy .fact { padding: 0.9rem 1rem; background: rgba(251,250,247,0.5); }
+  .story .copy .fact .v { font-family: var(--head); font-size: 20px; font-weight: 700; color: var(--primary); letter-spacing: -0.02em; }
+  .story .copy .fact .k { font-family: var(--mono); font-size: 9.5px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
+
+  .story .visual {
+    background: rgba(251,250,247,0.55); backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+    aspect-ratio: 4/3; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    will-change: transform;
+    transition: transform 0.12s linear;
+  }
+  .story .visual .grid-overlay {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background:
+      linear-gradient(rgba(30,75,143,0.04) 1px, transparent 1px) 0 0 / 36px 36px,
+      linear-gradient(90deg, rgba(30,75,143,0.04) 1px, transparent 1px) 0 0 / 36px 36px;
+  }
+  .story .visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%) brightness(0.94); }
+  .story .visual.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; aspect-ratio: 21/10; padding: 0; }
+  .story .visual.dual > div { position: relative; overflow: hidden; }
+  .story .visual.dual img { transition: transform .5s ease; }
+  .story .visual.dual > div:hover img { transform: scale(1.04); }
+
+  .story .visual.quad {
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 2px; aspect-ratio: 4/3; padding: 0;
+  }
+  .story .visual.quad > div { position: relative; overflow: hidden; background: var(--surface-0); }
+  .story .visual.quad img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease, filter .4s; filter: grayscale(10%) brightness(0.92); }
+  .story .visual.quad > div:hover img { transform: scale(1.045); filter: grayscale(0%) brightness(1); }
+  .story .visual.quad .tag {
+    position: absolute; left: 8px; top: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
+  }
+
+  .visual.trio {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    aspect-ratio: 12/5; padding: 0;
+    background: rgba(251,250,247,0.55); border: 1px solid var(--line); border-radius: 4px;
+    overflow: hidden;
+  }
+  .visual.trio > div { position: relative; overflow: hidden; background: var(--surface-0); }
+  .visual.trio img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .55s ease, filter .4s;
+    filter: grayscale(10%) brightness(0.92);
+  }
+  .visual.trio > div:hover img { transform: scale(1.045); filter: grayscale(0%) brightness(1); }
+  .visual.trio .tag {
+    position: absolute; left: 8px; top: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
+  }
+  @media (max-width: 700px) {
+    .visual.trio { grid-template-columns: 1fr 1fr; aspect-ratio: 4/3; }
+    .visual.trio > div:nth-child(3) { display: none; }
+  }
+
+  .field-clip-row {
+    display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 1.5rem; align-items: center; margin-top: 1.5rem;
+  }
+  .field-clip-row .frame {
+    aspect-ratio: 16/9; overflow: hidden; border-radius: 4px;
+    border: 1px solid var(--line); background: #000;
+  }
+  .field-clip-row .frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .field-clip-row .meta .eyebrow {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--primary); margin-bottom: 0.5rem;
+  }
+  .field-clip-row .meta h4 {
+    font-family: var(--head); font-size: 18px; font-weight: 700; line-height: 1.3;
+    color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.01em;
+  }
+  .field-clip-row .meta p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
+  @media (max-width: 720px) { .field-clip-row { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+  /* Bigger project showcase cards (CH 06) — applied via .proj-showcase parent */
+  .proj-showcase .mini-timeline { gap: 1.25rem; padding-bottom: 2rem; }
+  .proj-showcase .mt-card { flex: 0 0 360px; }
+  .proj-showcase .mt-card .thumb { aspect-ratio: 16 / 11; }
+  .proj-showcase .mt-card .meta { padding: 1rem 1.1rem 1.1rem; gap: 0.4rem; }
+  .proj-showcase .mt-card .caption { font-size: 16px; line-height: 1.3; }
+  .proj-showcase .mt-card .sub { font-size: 12.5px; line-height: 1.55; }
+  @media (max-width: 720px) {
+    .proj-showcase .mt-card { flex: 0 0 280px; }
+  }
+
+  /* Project collage (CH 08) — Pinterest-style varied tiles */
+  .proj-collage {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 92px;
+    gap: 8px;
+    margin-top: 2rem;
+  }
+  .proj-collage .tile {
+    position: relative; overflow: hidden; border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface-0);
+    text-decoration: none;
+    display: block;
+  }
+  .proj-collage .tile img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(15%) brightness(0.9);
+    transition: filter .35s ease, transform .55s ease;
+  }
+  .proj-collage .tile:hover { border-color: var(--primary-dim); }
+  .proj-collage .tile:hover img { filter: none; transform: scale(1.045); }
+  .proj-collage .tile .tag {
+    position: absolute; bottom: 8px; left: 8px; z-index: 2;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    padding: 4px 8px; background: rgba(251,250,247,0.82);
+    color: var(--primary); border: 1px solid rgba(30,75,143,0.25);
+    border-radius: 3px; backdrop-filter: blur(8px);
+  }
+  /* Tile placement — 6 cols × 6 rows */
+  .proj-collage .t-trip       { grid-column: span 2; grid-row: span 4; }
+  .proj-collage .t-george     { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-cup        { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-foundation { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-roadmap    { grid-column: span 2; grid-row: span 2; }
+  .proj-collage .t-launcher   { grid-column: span 3; grid-row: span 2; }
+  .proj-collage .t-cc         { grid-column: span 1; grid-row: span 2; }
+  .proj-collage .t-thermal    { grid-column: span 1; grid-row: span 2; }
+  .proj-collage .t-tools      { grid-column: span 1; grid-row: span 2; }
+  /* Posters are portrait — give them a soft frame so they don't get crushed */
+  .proj-collage .t-cc,
+  .proj-collage .t-thermal,
+  .proj-collage .t-tools {
+    background: linear-gradient(135deg, rgba(30,75,143,0.06), rgba(251,250,247,0.55));
+  }
+  .proj-collage .t-trip img { object-position: center top; }
+
+  @media (max-width: 880px) {
+    .proj-collage { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 88px; }
+    .proj-collage .t-trip       { grid-column: span 2; grid-row: span 4; }
+    .proj-collage .t-george     { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-cup        { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-foundation { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-roadmap    { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-launcher   { grid-column: span 4; grid-row: span 2; }
+    .proj-collage .t-cc         { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-thermal    { grid-column: span 2; grid-row: span 2; }
+    .proj-collage .t-tools      { grid-column: span 4; grid-row: span 2; }
+  }
+  @media (max-width: 520px) {
+    .proj-collage { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 96px; }
+    .proj-collage .tile { grid-column: span 1 !important; grid-row: span 2 !important; }
+    .proj-collage .t-trip { grid-column: span 2 !important; grid-row: span 4 !important; }
+    .proj-collage .t-launcher { grid-column: span 2 !important; }
+  }
+
+  /* Print poster set — full portrait visibility, frame on top + copy below */
+  .poster-pair {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    margin-top: 0.5rem;
+  }
+  .poster-card {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .poster-frame {
+    aspect-ratio: 11 / 17; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 4px;
+    background: linear-gradient(135deg, rgba(30,75,143,0.05), rgba(251,250,247,0.55));
+    padding: 12px 10px;
+    box-shadow: 0 16px 44px rgba(26,25,21,0.15), inset 0 0 0 1px rgba(30,75,143,0.06);
+  }
+  .poster-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .poster-card .date {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--primary);
+    font-weight: 700; margin-bottom: 0.4rem;
+  }
+  .poster-card .caption {
+    font-family: var(--head); font-weight: 700; font-size: 15px; line-height: 1.3;
+    color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.5rem;
+  }
+  .poster-card .sub {
+    font-size: 12.5px; color: var(--text-dim); line-height: 1.55;
+  }
+  @media (max-width: 900px) { .poster-pair { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .site-strip {
+    margin-top: 1.25rem; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
+  }
+  @media (max-width: 700px) { .site-strip { grid-template-columns: repeat(3, 1fr); } }
+  .site-strip .s {
+    aspect-ratio: 1/1; overflow: hidden; position: relative; border-radius: 2px;
+    background: var(--surface-0); cursor: pointer;
+  }
+  .site-strip .s img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s, filter .4s;
+    filter: grayscale(30%) brightness(0.82) contrast(1.08);
+  }
+  .site-strip .s:hover img { transform: scale(1.08); filter: none; }
+  .site-strip .s .t {
+    position: absolute; inset: auto 0 0 0; padding: 5px 7px;
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text); background: linear-gradient(to top, rgba(251,250,247,0.92), transparent);
+    opacity: 0; transition: opacity .25s;
+  }
+  .site-strip .s:hover .t { opacity: 1; }
+
+  .story .visual .placeholder {
+    font-family: var(--mono); font-size: 13px; color: var(--muted);
+    text-align: center; padding: 2rem; max-width: 60%; line-height: 1.6; z-index: 2; position: relative;
+  }
+  .story .visual .big-icon {
+    font-size: 64px; color: var(--primary); opacity: 0.5; margin-bottom: 1rem;
+  }
+
+  .mag-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bg); background: var(--primary);
+    padding: 4px 10px; border-radius: 0; font-weight: 700;
+  }
+  .mag-badge .material-symbols-outlined { font-size: 13px; }
+
+  /* ════════════════ SCROLL FX #1: TIMELINE RAIL ════════════════ */
+  .timeline-rail {
+    position: fixed; left: 28px; top: 120px; bottom: 120px; width: 2px;
+    background: var(--line); z-index: 35; pointer-events: none;
+  }
+  @media (max-width: 960px) { .timeline-rail { display: none; } }
+  .timeline-rail .fill {
+    position: absolute; top: 0; left: 0; width: 100%; height: 0%;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-dim));
+    transition: height 0.12s linear;
+    box-shadow: 0 0 10px var(--glow);
+  }
+  .timeline-rail .dot {
+    position: absolute; left: 50%; transform: translate(-50%, -50%);
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--surface-2); border: 1.5px solid var(--line-strong);
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    pointer-events: auto; cursor: pointer; text-decoration: none;
+  }
+  .timeline-rail .dot::after {
+    content: attr(data-title); position: absolute; left: 22px; top: 50%;
+    transform: translateY(-50%); font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; opacity: 0; transition: all .25s; pointer-events: none;
+  }
+  .timeline-rail .dot:hover::after { opacity: 1; color: var(--primary); }
+  .timeline-rail .dot.active {
+    background: var(--primary); border-color: var(--primary);
+    box-shadow: 0 0 14px var(--glow);
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+  /* Labels only surface on hover — the top-right chip carries the active title. */
+  .timeline-rail .dot.passed {
+    background: var(--primary-dim); border-color: var(--primary-dim);
+  }
+
+  /* ════════════════ SCROLL FX #2: STICKY CHAPTER CHIP ════════════════ */
+  .chapter-chip-float {
+    position: fixed; top: 96px; right: 24px; z-index: 36;
+    padding: 10px 16px; background: rgba(251,250,247,0.88);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--line-strong); border-radius: 999px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text);
+    display: inline-flex; align-items: center; gap: 10px;
+    opacity: 0; transform: translateY(-8px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .chapter-chip-float.visible { opacity: 1; transform: translateY(0); }
+  .chapter-chip-float .ch { color: var(--primary); font-weight: 700; }
+  .chapter-chip-float .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--primary);
+    box-shadow: 0 0 6px var(--glow); animation: chipPulse 2s ease-in-out infinite;
+  }
+  @keyframes chipPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @media (max-width: 700px) { .chapter-chip-float { display: none; } }
+
+  /* ════════════════ SCROLL FX #3: PINNED WATERMARK NUMBER ════════════════ */
+  .chapter-watermark {
+    position: fixed; bottom: 4vh; right: 3vw; z-index: -1;
+    font-family: var(--head); font-weight: 900;
+    font-size: clamp(180px, 28vw, 420px); letter-spacing: -0.08em; line-height: 0.82;
+    color: transparent;
+    -webkit-text-stroke: 1.2px rgba(30,75,143,0.22);
+    text-stroke: 1.2px rgba(30,75,143,0.22);
+    pointer-events: none; user-select: none;
+    opacity: 0; transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+    mix-blend-mode: multiply;
+  }
+  .chapter-watermark.visible { opacity: 1; }
+  .chapter-watermark.flip { opacity: 0; transform: scale(1.08) rotate(-3deg); }
+  @media (max-width: 700px) { .chapter-watermark { display: none; } }
+
+  /* ════════════════ INTERVIEWS CHAPTER (expanded) ════════════════ */
+  .interview-layout {
+    display: grid; grid-template-columns: 5fr 4fr; gap: 3rem;
+  }
+  @media (max-width: 1000px) { .interview-layout { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .progress-rail {
+    margin-top: 1.75rem;
+    padding: 1.25rem; background: rgba(251,250,247,0.55); border: 1px solid var(--line);
+    border-radius: 4px; max-width: 640px;
+  }
+  .progress-rail .pr-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px;
+  }
+  .progress-rail .pr-head .count { color: var(--primary); font-weight: 700; }
+  .progress-rail .bar {
+    height: 6px; background: var(--surface-0); border-radius: 999px; overflow: hidden; position: relative;
+  }
+  .progress-rail .bar .f {
+    position: absolute; inset: 0 auto 0 0; width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dim));
+    box-shadow: 0 0 10px var(--glow);
+    transition: width 1.8s cubic-bezier(.22,.8,.3,1);
+  }
+  .progress-rail.in-view .bar .f { width: var(--pct, 24%); }
+  .progress-rail .note { margin-top: 8px; font-size: 11.5px; color: var(--text-dim); font-family: var(--mono); letter-spacing: 0.05em; }
+
+  .pill-grid {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+  }
+  .pill-grid .p {
+    font-family: var(--mono); font-size: 11px; padding: 5px 10px; border-radius: 3px;
+    background: rgba(251,250,247,0.6); border: 1px solid var(--line); color: var(--text-dim);
+    transition: all .2s;
+  }
+  .pill-grid .p:hover { border-color: rgba(30,75,143,0.25); color: var(--primary); }
+  .pill-grid .p.anon { color: var(--muted); font-style: italic; }
+
+  .roles-block { margin-top: 1.5rem; max-width: 640px; }
+  .roles-block h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 6px; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .roles-block h4::before { content: ""; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 6px var(--glow); }
+
+  .insights {
+    margin-top: 1.75rem; display: flex; flex-direction: column; gap: 10px; max-width: 640px;
+  }
+  .insight {
+    display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 14px 16px;
+    background: rgba(251,250,247,0.5); border: 1px solid var(--line); border-left: 3px solid var(--primary);
+    border-radius: 3px; transition: all .25s;
+  }
+  .insight:hover { border-color: rgba(30,75,143,0.25); border-left-color: var(--primary); transform: translateX(3px); }
+  .insight .n {
+    font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--primary); padding-top: 2px;
+  }
+  .insight .body h5 {
+    font-family: var(--head); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px;
+  }
+  .insight .body p { font-size: 13.5px; color: var(--text-dim); line-height: 1.55; max-width: 56ch; }
+
+  .interview-tile {
+    display: flex; gap: 1rem; padding: 1.25rem;
+    background: rgba(251,250,247,0.5); backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 4px;
+    transition: all .25s;
+  }
+  .interview-tile:hover { border-color: rgba(30,75,143,0.25); transform: translateY(-2px); }
+  .interview-tile .avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(30,75,143,0.08); border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary); flex-shrink: 0;
+  }
+  .interview-tile h4 { font-family: var(--head); font-size: 15px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .interview-tile .role { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+  .interview-tile p { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
+  .interview-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+  /* Photo gallery */
+  .gallery {
+    display: grid; gap: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  @media (min-width: 1200px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+  .gallery .thumb {
+    aspect-ratio: 16/9; overflow: hidden; cursor: pointer;
+    background: var(--surface-0); border-radius: 2px; position: relative;
+  }
+  .gallery .thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s ease, filter .4s;
+    filter: grayscale(20%) brightness(0.88) contrast(1.08);
+  }
+  .gallery .thumb:hover img { filter: none; transform: scale(1.04); }
+  .gallery .thumb::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(135deg, rgba(30,75,143,0.08), transparent 50%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .gallery .thumb:hover::after { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 200; background: rgba(5,4,10,0.96);
+    backdrop-filter: blur(20px); display: none; align-items: center; justify-content: center;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 86vh; object-fit: contain;
+    border: 1px solid var(--line-strong); border-radius: 3px;
+    box-shadow: 0 30px 80px rgba(26,25,21,0.2);
+  }
+  .lightbox-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(251,250,247,0.6); backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong); color: var(--text);
+    width: 48px; height: 48px; border-radius: 50%;
+    font-size: 20px; cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-arrow:hover { border-color: var(--primary); color: var(--primary); }
+  .lightbox-arrow.prev { left: 20px; }
+  .lightbox-arrow.next { right: 20px; }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 20px;
+    background: transparent; color: var(--text); border: none;
+    font-size: 28px; cursor: pointer; transition: all .2s;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-close:hover { color: var(--primary); background: var(--accent-soft); }
+  .lightbox-count {
+    position: absolute; top: 24px; left: 24px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .lightbox-count b { color: var(--primary); font-weight: 700; }
+</style>
 </head>
 <body>
-<p>Journey moved to the homepage.</p>
-<p><a href="./">Continue →</a></p>
+
+<!-- SCROLL FX: Timeline rail -->
+<nav class="timeline-rail" aria-label="Chapter navigator">
+  <div class="fill" id="rail-fill"></div>
+  <a class="dot" href="#robotics"    data-ch="01" data-title="Robotics · CowTech FRC"></a>
+  <a class="dot" href="#keyboards"   data-ch="02" data-title="Keyboard Business"></a>
+  <a class="dot" href="#fsae"        data-ch="03" data-title="CPP FSAE · Suspension"></a>
+  <a class="dot" href="#clune"       data-ch="04" data-title="Clune · AI Seed"></a>
+  <a class="dot" href="#tour"        data-ch="05" data-title="AI × Construction Pitch Tour"></a>
+  <a class="dot" href="#webcor"      data-ch="06" data-title="Webcor + OpenYap Suite"></a>
+  <a class="dot" href="#field"       data-ch="07" data-title="Field Experience"></a>
+  <a class="dot" href="#future"      data-ch="08" data-title="Just Getting Started"></a>
+</nav>
+
+<!-- SCROLL FX: Sticky chapter chip -->
+<div class="chapter-chip-float" id="chapter-chip">
+  <span class="dot"></span>
+  <span class="ch">CH 01</span>
+  <span class="title">Robotics · CowTech FRC</span>
+</div>
+
+<!-- SCROLL FX: Pinned watermark number -->
+<div class="chapter-watermark" id="watermark">01</div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
+    <div class="nav-links">
+      <a href="index.html">About</a>
+      <a href="journey.html" class="active">Journey</a>
+      <a href="vision.html">Vision</a>
+      <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
+    </div>
+    <details class="connect">
+      <summary class="connect-btn">Connect <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></summary>
+      <div class="connect-menu">
+        <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank" rel="noopener"><span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn</a>
+        <a href="tel:+14083353615"><span class="material-symbols-outlined" style="font-size:16px">call</span>(408) 335-3615</a>
+        <a href="mailto:dyap123@gmail.com"><span class="material-symbols-outlined" style="font-size:16px">mail</span>dyap123@gmail.com</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<!-- COVER SHEET -->
+<section class="sheet-sec" style="padding-top: 7.5rem;">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head">
+        <span class="no">G-100</span>
+        <span class="t">Cover — The Journey of Danzel Yap</span>
+        <span class="meta">Rev △2 · Chronological · 2014 → Now</span>
+      </div>
+      <div class="cover-grid">
+        <div class="cover-left">
+          <h1 class="cover-title">The <span class="grad">journey.</span></h1>
+          <div class="stamp" style="margin-top: 1.5rem;"><span>Issued for Construction</span></div>
+          <p class="journey-intro mt-6" data-edit="journey-pitch-v2">
+            I'm a Project Engineer on the <strong>$2B</strong> LA Convention Center expansion who ships production software. <strong data-ann="highlight" data-ann-delay="700">Seventeen live apps</strong> my crew opens every morning — Python, JavaScript, Firebase, LLM agents — saving each project engineer <strong data-ann="highlight" data-ann-delay="1200">about a day a week</strong>. My vendor evaluation saved the company a $75K/yr contract — the need was already covered by tools I'd built in-house. The chapters in the index are how I got here. <strong style="color: var(--text);">We are just getting started.</strong>
+          </p>
+          <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
+            <a href="index.html#system" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">account_tree</span>The system</a>
+            <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" class="btn"><span class="material-symbols-outlined" style="font-size:16px">description</span>Résumé</a>
+          </div>
+        </div>
+        <aside class="cover-index">
+          <div class="ci-head">Drawing Index</div>
+          <div class="ci-div" style="border-top:none; margin-top:0;">General — The Journey</div>
+          <a href="#robotics"><span class="no">G-101</span><span class="t">Robotics</span><span class="yr">2014</span></a>
+          <a href="#keyboards"><span class="no">G-102</span><span class="t">Keyboard Business</span><span class="yr">2018</span></a>
+          <a href="#fsae"><span class="no">G-103</span><span class="t">CPP FSAE Electric</span><span class="yr">2018–22</span></a>
+          <a href="#clune"><span class="no">G-104</span><span class="t">Clune · AI Seed</span><span class="yr">2024</span></a>
+          <a href="#tour"><span class="no">G-105</span><span class="t">Interview Tour</span><span class="yr">2024–25</span></a>
+          <a href="#webcor"><span class="no">G-106</span><span class="t">Webcor + OpenYap</span><span class="yr">2025–Now</span></a>
+          <a href="#field"><span class="no">G-107</span><span class="t">Field Experience</span><span class="yr">Now</span></a>
+          <a href="#future"><span class="no">G-108</span><span class="t">Just Getting Started</span><span class="yr">Future</span></a>
+          <div class="ci-div">Structural — The Work</div>
+          <a href="index.html#system"><span class="no">S-000</span><span class="t">The System</span><span class="yr">4 apps + hub</span></a>
+          <a href="index.html#case-studies"><span class="no">S-201</span><span class="t">The Work</span><span class="yr">17 live</span></a>
+          <a href="vision.html"><span class="no">A-301</span><span class="t">The Vision</span><span class="yr">4 phases</span></a>
+        </aside>
+      </div>
+      <div class="cover-data">
+        <div class="cd"><span class="v"><span data-count="75" data-prefix="$" data-suffix="K">$0</span></span><span class="k">Annual cost avoided</span><span class="s">Vendor evaluation · board review</span></div>
+        <div class="cd"><span class="v">~1 day/wk</span><span class="k">Saved per project engineer</span><span class="s">Across the whole suite</span></div>
+        <div class="cd"><span class="v"><span data-count="17">0</span></span><span class="k">Live production apps</span><span class="s">Used daily on a $2B jobsite</span></div>
+        <div class="cd"><span class="v">40&rarr;6 min</span><span class="k">RFI &amp; submittal prep</span><span class="s">Mr. George — the agent</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · ROBOTICS -->
+<section id="robotics" class="sheet-sec" data-ch="01" data-title="Robotics · CowTech FRC">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-101</span><span class="t">Chapter 01 — Robotics</span><span class="meta">2014 · CowTech FRC</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <h2><span class="grad">Robotics.</span></h2>
+        <p data-edit="robotics-p1">
+          High school. <strong><a href="https://www.facebook.com/cowtechfrc/" target="_blank">CowTech FRC</a></strong> — small-town FIRST Robotics team, almost no budget. Other teams arrived at regionals with aluminum chassis and CNC'd parts. We built our competition robot mostly out of <em>wood</em>: hand-cut plywood frame, bolt-together joints, zip ties holding pneumatics in place.
+        </p>
+        <p data-edit="robotics-p2">
+          The wooden robot worked, against the odds. Without budget for raw stock, every part had to earn its place on the chassis. That season is where I learned to iterate fast and let go of ideas that weren't carrying weight.
+        </p>
+        <p data-edit="robotics-p3">
+          The same instinct shows up now whenever a foreman tells me a feature doesn't work at 6 AM with one gloved thumb. The fix is almost never to add more — it's to take something out.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v">FRC</div><div class="k">Division</div></div>
+          <div class="fact"><div class="v">Wood</div><div class="k">Primary material</div></div>
+          <div class="fact"><div class="v">Ship cheap</div><div class="k">Lesson #1</div></div>
+        </div>
+      </div>
+      <div class="visual dual">
+        <div><img src="assets/photos/cowtech-team.jpg" alt="CowTech FRC team photo" data-edit-img="cowtech-team" loading="lazy"/></div>
+        <div><img src="assets/photos/cowtech-robot.jpg" alt="Our wooden competition robot" data-edit-img="cowtech-robot" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · KEYBOARD BUSINESS -->
+<section id="keyboards" class="sheet-sec" data-ch="02" data-title="Keyboard Business">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-102</span><span class="t">Chapter 02 — Keyboard Business</span><span class="meta">Danzel’s Keyboard</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <h2><span class="grad">Keyboard business.</span></h2>
+        <p data-edit="kb-p1">
+          The first thing I built and sold for money. <strong>Danzel's Keyboard</strong> started in late high school — soldering Cherry switches into hot-swap PCBs at the kitchen table, posting builds on r/MechanicalKeyboards, taking commissions through Discord. Every build was bespoke: switch type, keycap profile, sound dampening, lubed stabs, custom case, RGB underglow if you wanted it.
+        </p>
+        <p data-edit="kb-p2">
+          Cyberboard R4 "Gangstar Purple Thoughts" was the build that actually pushed me to figure out my margins. BOM math, drop-shipping, customs forms, returns. Selling to a hobbyist niche where the customer already knew exactly what they wanted is a fast way to learn what good documentation looks like — every build came with a wiring diagram and a typing-test video before it shipped.
+        </p>
+        <p data-edit="kb-p3">
+          Lesson from this era: if you can't explain the build to the customer in one paragraph, the product isn't done yet. That rule still runs every OpenYap tool.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v">Solder</div><div class="k">Hot-swap PCB</div></div>
+          <div class="fact"><div class="v">Drop-ship</div><div class="k">Operations</div></div>
+          <div class="fact"><div class="v">Niche</div><div class="k">Demanding customer</div></div>
+          <div class="fact"><div class="v">Ship a product</div><div class="k">Lesson #2</div></div>
+        </div>
+      </div>
+      <div class="visual quad">
+        <div><span class="tag">Danzel's Keyboard</span><img src="assets/photos/journey/02-keyboards/danzels-keyboard.png" alt="Danzel's Keyboard custom build" loading="lazy" data-edit-img="kb-1"/></div>
+        <div><span class="tag">Cyberboard R4 · 1</span><img src="assets/photos/journey/02-keyboards/cyberboard-r4-1.webp" alt="Cyberboard R4 Gangstar Purple Thoughts" loading="lazy" data-edit-img="kb-2"/></div>
+        <div><span class="tag">Cyberboard R4 · 2</span><img src="assets/photos/journey/02-keyboards/cyberboard-r4-2.webp" alt="Cyberboard R4 detail" loading="lazy" data-edit-img="kb-3"/></div>
+        <div><span class="tag">Danzel's Keyboard</span><img src="assets/photos/journey/02-keyboards/danzels-keyboard.png" alt="Danzel's Keyboard hero" loading="lazy" data-edit-img="kb-4"/></div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photography · interlude before CH 03 -->
+<section id="photo" class="sheet-sec" data-title="Photography">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-102.1</span><span class="t">Ref — Photography</span><span class="meta">Since 2019</span></div>
+      <div class="sheet-body">
+    <div class="mini-timeline-wrap reveal">
+      <div class="mini-timeline-head">
+        <div>
+          <div class="eyebrow" data-edit="photo-closer-eyebrow">Photography · since 2019</div>
+          <h3 data-edit="photo-closer-h">Composition under constraint.</h3>
+        </div>
+        <a href="https://dsyap.myportfolio.com/work" target="_blank" class="btn">
+          <span class="material-symbols-outlined" style="font-size:14px">collections</span>Full archive
+        </a>
+      </div>
+      <p class="dim" style="font-size: 13.5px; line-height: 1.6; max-width: 64ch; margin-bottom: 1rem;" data-edit="photo-closer-p">
+        Photography taught me what to include and what to leave out. The same instinct shapes every interface I draw now. A small selection — the full archive lives on Adobe Portfolio.
+      </p>
+      <div class="site-strip" id="gallery"></div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · CPP FSAE -->
+<section id="fsae" class="sheet-sec" data-ch="03" data-title="CPP FSAE · Suspension">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-103</span><span class="t">Chapter 03 — CPP FSAE Electric</span><span class="meta">2018–22 · Suspension Lead</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <h2><span class="grad">CPP FSAE</span> — suspension lead.</h2>
+        <p data-edit="fsae-p1">
+          At <strong>Cal Poly Pomona</strong> I joined the Formula SAE Electric team — a student-run program building a fully electric open-wheel race car from scratch. I led <strong>suspension</strong>: a-arm geometry, uprights, shock mounting, hub bearings, camber/caster setup, corner compliance testing.
+        </p>
+        <p data-edit="fsae-p2">
+          This was CPP's first electric race car, which meant no prior-year chassis to steal from. We had to design for an unusual weight balance — battery pack dominating mass — and translate that into geometry that wouldn't wash out under cornering. Endless FEA iterations, CAD reviews, bolt-torque specs, tire data studies.
+        </p>
+        <p data-edit="fsae-p3">
+          Building a race car runs on the same loop as shipping software — design, build, test, fix — except a missed tolerance means walking home from Michigan instead of redeploying. That season taught me to find the weakest part of any system first, and to stay honest about what I'd actually verified versus what I'd assumed.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v">1st</div><div class="k">EV for CPP</div></div>
+          <div class="fact"><div class="v">Suspension</div><div class="k">My subsystem</div></div>
+          <div class="fact"><div class="v">FSAE</div><div class="k">Formula Student</div></div>
+          <div class="fact"><div class="v">Ship safe</div><div class="k">Lesson #3</div></div>
+        </div>
+      </div>
+      <div class="visual">
+        <div class="grid-overlay"></div>
+        <img src="assets/photos/journey/03-fsae/fsae.jpg" alt="CPP FSAE Electric — suspension subsystem" data-edit-img="fsae-1" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · CLUNE — AI SEED -->
+<section id="clune" class="sheet-sec" data-ch="04" data-title="Clune · AI Seed">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-104</span><span class="t">Chapter 04 — Clune Internship</span><span class="meta">2024 · The AI Seed</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <h2><span class="grad">Clune internship</span> — AI seed.</h2>
+        <p data-edit="clune-p1">
+          First time on a real construction site. <strong>Clune Construction</strong> — high-end commercial interiors, tight schedules, no slack for paperwork drift. The internship was supposed to teach me how a project actually moves. It did. It also taught me how much of a PE's day is information shuffling that no one is paid to redesign.
+        </p>
+        <p data-edit="clune-p2">
+          Submittals queued behind one engineer's inbox. RFIs answered three days later because someone had to walk three drawings to find the right detail. Schedule slips that no model would have caught. By the end of the summer, the idea was concrete: <em>most of this is pattern matching that an AI could do faster than a human, if someone bothered to wire it up.</em>
+        </p>
+        <p data-edit="clune-p3">
+          That's the seed every chapter after this is about cashing in. The next two years I'd spend asking working construction professionals if the idea held water — and then quietly building the first version on weekends.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v">Intern</div><div class="k">First site exposure</div></div>
+          <div class="fact"><div class="v">Submittals</div><div class="k">First bottleneck spotted</div></div>
+          <div class="fact"><div class="v">RFI</div><div class="k">Response-time gap</div></div>
+          <div class="fact"><div class="v">Idea</div><div class="k">AI in construction</div></div>
+        </div>
+      </div>
+      <div class="visual dual">
+        <div><span class="tag">Clune · onsite</span><img src="assets/photos/journey/04-clune/clune-1.jpg" alt="Clune Construction internship" loading="lazy" data-edit-img="clune-1"/></div>
+        <div><span class="tag">Clune · 2024</span><img src="assets/photos/journey/04-clune/clune-2.jpg" alt="Clune Construction internship" loading="lazy" data-edit-img="clune-2"/></div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · AI × CONSTRUCTION PITCH TOUR -->
+<section id="tour" class="sheet-sec" data-ch="05" data-title="AI × Construction Pitch Tour">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-105</span><span class="t">Chapter 05 — AI × Construction Interviews</span><span class="meta">2024–25 · 30+ Conversations</span></div>
+      <div class="sheet-body">
+    <div class="reveal">
+      <span class="mag-badge mb-4"><span class="material-symbols-outlined">record_voice_over</span>The interview tour</span>
+      <h2 class="lg">AI in construction <span class="grad">interviews.</span></h2>
+    </div>
+
+    <div class="interview-layout mt-8">
+      <div class="reveal">
+        <p style="color: var(--text); font-size: 15.5px; line-height: 1.7; max-width: 62ch;" data-edit="tour-p1">
+          Started as a Cal Poly Pomona research project in <strong>February 2025</strong>: interview construction professionals about how they actually use AI — not how vendors say they should. Walked into a <strong>Webcor</strong> SF skyscraper interview, then chained walks across <strong>Las Vegas</strong> casino projects (Resorts World, Gentle Monster, Mirage, Durango), <strong>UC Irvine</strong>, then more SoCal and San Diego sites. Every conversation reshaped what was worth building.
+        </p>
+        <p class="mt-4" style="color: var(--text); font-size: 15.5px; line-height: 1.7; max-width: 62ch;" data-edit="tour-p2">
+          CPP <strong>awarded me an office</strong> on campus to keep building the idea. The buildout never finished — the offer mattered more than the room. By the end of 2025 the research had compounded into a working system, and the next step was to take it to a real $2B jobsite.
+        </p>
+
+        <!-- Progress bar — conversations vs documentation -->
+        <div class="progress-rail" data-progress>
+          <div class="pr-head">
+            <span>Conversations held · documentation backlog</span>
+            <span class="count"><span data-edit="int-count">30+</span> held · <span data-edit="int-target">6</span> written up</span>
+          </div>
+          <div class="bar"><div class="f" style="--pct: 20%"></div></div>
+          <div class="note" data-edit="int-note">Active · opened Feb 2025 · most sessions still in raw notes and voice memos. Writeups lag because the next walk usually beats the last one to the calendar.</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="facts" style="margin-top: 1.5rem;">
+          <div class="fact"><div class="v"><span data-count="30" data-suffix="+">0</span></div><div class="k">Conversations</div></div>
+          <div class="fact"><div class="v"><span data-count="5">0</span></div><div class="k">Cities walked</div></div>
+          <div class="fact"><div class="v"><span data-count="70" data-suffix="min">0</span></div><div class="k">Avg session</div></div>
+          <div class="fact"><div class="v">Feb 2025</div><div class="k">Opened</div></div>
+        </div>
+
+        <!-- Locations -->
+        <div class="roles-block">
+          <h4 data-edit="loc-h">Where the conversations happened</h4>
+          <div class="pill-grid">
+            <span class="p">Webcor · SF skyscraper</span>
+            <span class="p">Las Vegas · Resorts World</span>
+            <span class="p">Las Vegas · Gentle Monster</span>
+            <span class="p">Las Vegas · Mirage</span>
+            <span class="p">Las Vegas · Durango</span>
+            <span class="p">UCI · Irvine</span>
+            <span class="p">San Diego · multiple sites</span>
+            <span class="p">Cal Poly Pomona</span>
+          </div>
+        </div>
+
+        <!-- Insights — pulled directly from transcripts -->
+        <div class="insights">
+          <div class="insight">
+            <div class="n">01</div>
+            <div class="body">
+              <h5 data-edit="ins1-h">Most of the learning happens on site, not in school.</h5>
+              <p data-edit="ins1-b">A Webcor PE with a CM degree from Purdue: <em>"My college experience was a mile wide and an inch deep. I didn't know any of the formwork systems, the sequences, the concrete pumping logistics. In almost two years at Webcor I've learned twice as much as in four years of college."</em></p>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="n">02</div>
+            <div class="body">
+              <h5 data-edit="ins2-h">AI literacy is being set peer-to-peer, not by the curriculum.</h5>
+              <p data-edit="ins2-b">The same engineer: <em>"There was no professors talking about it. Nothing at the school… I only started using it because classmates were."</em></p>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="n">03</div>
+            <div class="body">
+              <h5 data-edit="ins3-h">Office and field adopt at very different speeds.</h5>
+              <p data-edit="ins3-b">A Cal Poly computational designer: <em>"You have superintendents who are super good at what they do on site but want nothing to do with computers. And project managers in the office who love new technology. Same company, two different worlds."</em></p>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="n">04</div>
+            <div class="body">
+              <h5 data-edit="ins4-h">Saving each role ten minutes a day.</h5>
+              <p data-edit="ins4-b"><em>"Even if it's as small as 10 minutes a day, 10 minutes a day adds up over months — that's a lot of money and time saved."</em> Every OpenYap tool has to clear that bar before it ships.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="n">05</div>
+            <div class="body">
+              <h5 data-edit="ins5-h">Translation is unpaid work that the foreman absorbs.</h5>
+              <p data-edit="ins5-b">A large share of LA-area crews speak Spanish as their first language. Every cost-code list, inspection checklist, and RFI reply gets translated in real time by the foreman, or it gets followed only halfway. Every OpenYap sheet now ships in English and Spanish from the start.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
+          <a href="mailto:dyap123@gmail.com?subject=Construction%20Interview" class="btn primary">
+            <span class="material-symbols-outlined" style="font-size:16px">record_voice_over</span>Participate in an interview
+          </a>
+          <a href="https://drive.google.com/drive/folders/18X8QdQ3hundqS9x4O3Pav_A8NCh3L3ZN?usp=sharing" target="_blank" class="btn">
+            <span class="material-symbols-outlined" style="font-size:16px">folder_shared</span>Transcript library
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: site-walk visuals -->
+      <aside class="reveal delay-1">
+        <div class="eyebrow mb-2" style="color: var(--primary);">Las Vegas · job walks</div>
+        <div class="site-strip">
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-resorts-world-1.jpg" alt="Resorts World walk" loading="lazy" data-edit-img="vegas-rw-1"/><div class="t">Resorts World</div></div>
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-resorts-world-2.jpg" alt="Resorts World walk" loading="lazy" data-edit-img="vegas-rw-2"/><div class="t">Resorts World</div></div>
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-gentle-monster.jpg" alt="Gentle Monster site" loading="lazy" data-edit-img="vegas-gm"/><div class="t">Gentle Monster</div></div>
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-mirage.jpg" alt="Mirage site" loading="lazy" data-edit-img="vegas-mirage"/><div class="t">Mirage</div></div>
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-durango-1.jpg" alt="Durango walk" loading="lazy" data-edit-img="vegas-d-1"/><div class="t">Durango</div></div>
+          <div class="s"><img src="assets/photos/journey/05-interviews/vegas-durango-2.jpg" alt="Durango walk" loading="lazy" data-edit-img="vegas-d-2"/><div class="t">Durango</div></div>
+        </div>
+
+        <div class="eyebrow mt-4 mb-2" style="color: var(--primary);">UC Irvine · context</div>
+        <div class="site-strip" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="s" style="aspect-ratio: 4/3;"><img src="assets/photos/journey/05-interviews/uci-1.jpg" alt="UC Irvine site walk" loading="lazy" data-edit-img="uci-new-1"/><div class="t">UCI · site</div></div>
+          <div class="s" style="aspect-ratio: 4/3;"><img src="assets/photos/journey/05-interviews/uci-2.jpg" alt="UC Irvine site walk" loading="lazy" data-edit-img="uci-new-2"/><div class="t">UCI · site</div></div>
+        </div>
+
+        <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: rgba(251,250,247,0.4);">
+          <div class="eyebrow mb-1" style="color: var(--muted); font-size: 9px;">CPP office award</div>
+          <p class="dim" style="font-size: 11.5px; line-height: 1.5;" data-edit="cpp-office-note">
+            CPP awarded me an office on campus to keep building. The buildout never completed, but the offer was the signal — the idea had legs. Soon after, I joined Webcor.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERLUDE · Hands-On Machine Learning (the ML groundwork, after the interview tour) -->
+<section id="ml-book" class="sheet-sec" data-title="Hands-On Machine Learning">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-105.1</span><span class="t">Ref — Hands-On Machine Learning</span><span class="meta">Géron · 2024–25</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">menu_book</span>The ML groundwork</span>
+        <h2>Learning what's <span class="grad">under the hood.</span></h2>
+        <p data-edit="ml-p1">
+          Wiring LLMs into a jobsite is easy to fake and hard to do well. So I worked through Aurélien Géron's <em>Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow</em> — the classical half (regression, decision trees, SVMs, ensembles, dimensionality reduction) and the deep half (neural nets, CNNs, sequence models, transformers, and getting a model into production).
+        </p>
+        <p data-edit="ml-p2">
+          It's the difference between calling an API and understanding why a model answers the way it does — where it will be confident, and where it will quietly be wrong. That's what lets me pick the right-sized model for each OpenYap agent instead of reaching for the biggest one, and recognize when a problem doesn't need an LLM at all.
+        </p>
+        <div class="pill-grid" style="margin-top: 1.5rem;">
+          <span class="p">Regression</span>
+          <span class="p">SVMs</span>
+          <span class="p">Ensembles</span>
+          <span class="p">Neural nets</span>
+          <span class="p">CNNs</span>
+          <span class="p">Transformers</span>
+          <span class="p">Keras / TF</span>
+          <span class="p">Deployment</span>
+        </div>
+      </div>
+      <div class="visual" style="display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
+        <figure style="margin:0; max-width: 360px; width:100%;">
+          <img src="assets/photos/journey/ml-book/cover.jpg" alt="Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, 3rd Edition — Aurélien Géron" loading="lazy" data-edit-img="ml-cover" style="width:100%; border-radius:6px; border:1px solid rgba(30,75,143,0.25); box-shadow: 0 24px 60px rgba(26,25,21,0.15);" onerror="this.style.display='none'">
+          <figcaption class="mono" style="font-size: 10.5px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; text-align:center; margin-top: 12px;">O'Reilly · 3rd Edition · Aurélien Géron</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERLUDE · Olympic & Hill walk-around (interview-era site walk, before LACC) -->
+<section id="olympic-hill" class="sheet-sec" data-title="Olympic & Hill Walk-around">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-105.2</span><span class="t">Ref — Olympic & Hill Walk-Around</span><span class="meta">2024–25</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">directions_walk</span>Olympic & Hill</span>
+        <h2><span class="grad">Olympic & Hill</span> walk-around.</h2>
+        <p data-edit="oh-p1">
+          Around the same stretch as the interview tour, I walked the Olympic & Hill site to scope the work — before any deck became a daily routine. Pacing the perimeter at ground level changes how you sequence pours — the geometry stops being a PDF and starts being a puzzle of crane reach, traffic flow, and pour windows.
+        </p>
+        <p data-edit="oh-p2">
+          The walk on the right is exactly what it looks like — boots on the dirt, no slides. The kind of context that made the LACC office decisions cheaper a year later.
+        </p>
+      </div>
+      <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
+        <video controls preload="none" poster="assets/photos/journey/07-field/olympic-hill-walk-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="olympic-hill-walk">
+          <source src="assets/photos/journey/07-field/olympic-hill-walk.mp4" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · WEBCOR + OPENYAP -->
+<section id="webcor" class="sheet-sec" data-ch="06" data-title="Webcor + OpenYap Suite">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-106</span><span class="t">Chapter 06 — Webcor + OpenYap</span><span class="meta">2025 – Present</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">stars</span>Day job + the suite</span>
+        <h2>Webcor + <span class="grad">OpenYap.</span></h2>
+        <p data-edit="webcor-p1">
+          Full-time Project Engineer at <strong>Webcor Builders</strong> on the <strong>LACC Convention Center Upgrade Program</strong> — a $2 billion modernization of the Los Angeles Convention Center. I run concrete operations across four sections: foundation pours, embed tracking, inspection coordination, takeoff, QC.
+        </p>
+        <p data-edit="webcor-p2">
+          On top of the day job, OpenYap. Started with a single Telegram bot that nobody asked for, then a Discord agent the team actually used, then <strong>Mr. George</strong> (the construction agent), then <strong>CUP Dashboard</strong> (live pour tracking, footing maps, embed verification), then <strong>Command Center</strong> — a role-aware hub that puts the footing map, embeds, RFIs, inspections, schedule, and crew on one screen — with a launcher now tying 23 internal apps together. Every tool ships against the same constraint: a foreman has to be able to operate it during a 6 AM tailgate meeting, gloves on, with the sun in his eyes. The suite now saves each project engineer about a day a week.
+        </p>
+        <p data-edit="webcor-p3">
+          The jobsite is unforgiving in a way office software never is. There are no rollbacks once a pour has started. The wrong reading at the wrong moment can cost six figures. That pressure is what keeps these tools honest.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v" data-ann="circle" data-ann-delay="1700"><span data-count="2" data-prefix="$" data-suffix="B">$0</span></div><div class="k">Project value</div></div>
+          <div class="fact"><div class="v"><span data-count="23">0</span></div><div class="k">Apps in launcher</div></div>
+          <div class="fact"><div class="v"><span data-count="15" data-suffix="+">0</span></div><div class="k">AI agents</div></div>
+          <div class="fact"><div class="v"><span data-count="6" data-suffix="×">0</span></div><div class="k">Faster prep</div></div>
+        </div>
+        <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
+          <a href="ecosystem.html#case-studies" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+          <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Launcher</a>
+          <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>Roadmap</a>
+        </div>
+      </div>
+      <div class="visual quad">
+        <div><span class="tag">Webcor · basement MEP</span><img src="assets/photos/webcor-skyscraper/11jsaRVog7qwOeC05DSEJ0C5HTQAjOktW.jpg" alt="Conduit runs above basement corridor" loading="lazy" data-edit-img="webcor-1"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/13zdUq3PhuiOTeNoBy_MBzASnavdT2qN7.jpg" alt="Webcor jobsite photo" loading="lazy" data-edit-img="webcor-2"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/15noh5Gi7vR3F2bFe62qIlM1_n447VAf6.jpg" alt="Webcor jobsite photo" loading="lazy" data-edit-img="webcor-3"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/webcor-skyscraper/17_p4hqMmY_H89RqvTQraLnkuvdkN5-ZB.jpg" alt="Webcor jobsite photo" loading="lazy" data-edit-img="webcor-4"/></div>
+      </div>
+    </div>
+
+    <!-- Project showcase — what's actually shipped -->
+    <div class="mini-timeline-wrap proj-showcase reveal">
+      <div class="mini-timeline-head">
+        <div>
+          <div class="eyebrow" data-edit="proj-eyebrow">OpenYap suite · what's running</div>
+          <h3 data-edit="proj-h">Six tools the crew actually opens.</h3>
+        </div>
+        <p class="lede" data-edit="proj-lede">Each card is a real project deployed on the LACC site. Telegram bot for daily flow, Discord agents for coordination, Mr. George for the construction questions, CUP for pours, posters for the trailer wall.</p>
+      </div>
+      <div class="mini-timeline">
+
+        <div class="mt-card">
+          <div class="thumb"><img src="assets/photos/journey/06-projects/mr-george-main.png" alt="Mr. George main screen" loading="lazy" data-edit-img="proj-george-1"/></div>
+          <div class="meta">
+            <div class="date" data-edit="proj-george-date">Mr. George · agent</div>
+            <div class="caption" data-edit="proj-george-cap">The construction PM agent</div>
+            <div class="sub" data-edit="proj-george-sub">Submittal coordinator, RFI triager, schedule analyst, drawing indexer. Lives in Discord + Teams + the web UI. Foremen started using it without being told to.</div>
+          </div>
+        </div>
+
+        <div class="mt-card">
+          <div class="thumb"><img src="assets/photos/journey/06-projects/mr-george-takeoff.png" alt="Mr. George takeoff tool" loading="lazy" data-edit-img="proj-george-2"/></div>
+          <div class="meta">
+            <div class="date" data-edit="proj-takeoff-date">Mr. George · takeoff</div>
+            <div class="caption" data-edit="proj-takeoff-cap">Takeoff specialist</div>
+            <div class="sub" data-edit="proj-takeoff-sub">Drop a drawing PDF, get the quantities back. Fast enough that estimators check Mr. George before manual takeoff.</div>
+          </div>
+        </div>
+
+        <div class="mt-card">
+          <div class="thumb"><img src="assets/photos/journey/06-projects/mr-george-tools.png" alt="Mr. George tools page" loading="lazy" data-edit-img="proj-george-3"/></div>
+          <div class="meta">
+            <div class="date" data-edit="proj-tools-date">Mr. George · tools</div>
+            <div class="caption" data-edit="proj-tools-cap">Field tool tracker</div>
+            <div class="sub" data-edit="proj-tools-sub">Inventory + checkout + lost-tool reporting. Doubles as the source of truth for the printable tools poster.</div>
+          </div>
+        </div>
+
+        <div class="mt-card">
+          <div class="thumb"><img src="assets/photos/journey/06-projects/cup-1.png" alt="CUP Pour Dashboard" loading="lazy" data-edit-img="proj-cup-1"/></div>
+          <div class="meta">
+            <div class="date" data-edit="proj-cup1-date">CUP Dashboard</div>
+            <div class="caption" data-edit="proj-cup1-cap">Live pour tracking</div>
+            <div class="sub" data-edit="proj-cup1-sub">Pour-by-pour status, footing map, embed verification. Runs on the trailer iPad. First tool the team opens each morning.</div>
+          </div>
+        </div>
+
+        <div class="mt-card">
+          <div class="thumb"><img src="assets/photos/journey/06-projects/cup-2.png" alt="CUP Dashboard footing map" loading="lazy" data-edit-img="proj-cup-2"/></div>
+          <div class="meta">
+            <div class="date" data-edit="proj-cup2-date">CUP · footing map</div>
+            <div class="caption" data-edit="proj-cup2-cap">Visual pour layout</div>
+            <div class="sub" data-edit="proj-cup2-sub">Each footing rendered live with its mix, embeds, and inspection state. Tap to mark, drag to reorder.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Print posters — pulled out of the horizontal scroll, shown at proper portrait scale -->
+      <div class="poster-pair">
+        <div class="poster-card">
+          <div class="poster-frame">
+            <img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-code reference poster" loading="lazy" data-edit-img="proj-poster-cc"/>
+          </div>
+          <div class="poster-meta">
+            <div class="date" data-edit="proj-cc-date">Foreman cost codes · 11×17</div>
+            <div class="caption" data-edit="proj-cc-cap">Print catches up to digital.</div>
+            <div class="sub" data-edit="proj-cc-sub">Bilingual cost-code reference taped up in every trailer. Printable from the web tool, edited live by the office team. The bottom corner has a phone number for codes that aren't on the sheet yet.</div>
+          </div>
+        </div>
+        <div class="poster-card">
+          <div class="poster-frame">
+            <img src="assets/photos/journey/06-projects/poster-tools.png" alt="Foreman tools count poster" loading="lazy" data-edit-img="proj-poster-tools"/>
+          </div>
+          <div class="poster-meta">
+            <div class="date" data-edit="proj-tools-poster-date">Tools count · 11×17</div>
+            <div class="caption" data-edit="proj-tools-poster-cap">Wall-mounted inventory.</div>
+            <div class="sub" data-edit="proj-tools-poster-sub">Bilingual tool-count reference. "Lost a tool?" workflow printed at the bottom — same data backs the in-app tool tracker.</div>
+          </div>
+        </div>
+        <div class="poster-card">
+          <div class="poster-frame">
+            <img src="assets/photos/journey/06-projects/poster-thermal.png" alt="Thermal control pour-day checklist poster" loading="lazy" data-edit-img="proj-poster-thermal"/>
+          </div>
+          <div class="poster-meta">
+            <div class="date" data-edit="proj-thermal-date">Thermal control · 11×17</div>
+            <div class="caption" data-edit="proj-thermal-cap">Pour-day checklist.</div>
+            <div class="sub" data-edit="proj-thermal-sub">ACI 207 mass-concrete trigger conditions, insulation R-values, and the field decisions that have to happen before the first truck arrives. Lives next to the cost-codes sheet on the trailer wall.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · FIELD EXPERIENCE -->
+<section id="field" class="sheet-sec" data-ch="07" data-title="Field Experience">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-107</span><span class="t">Chapter 07 — Field Experience</span><span class="meta">Now · LACC</span></div>
+      <div class="sheet-body">
+    <!-- Field experience proper -->
+    <div class="story reveal">
+      <div class="copy">
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">construction</span>On the deck</span>
+        <h2><span class="grad">Field experience.</span></h2>
+        <p data-edit="field-p1">
+          The point of staying on a real jobsite isn't just the day job — it's that every tool I build gets its first run here. Walking pours at 5 AM. Marking embeds. Coordinating subs. Operating heavy equipment when the moment calls for it. None of the OpenYap tooling would exist if I weren't standing on the deck the morning it had to work.
+        </p>
+        <p data-edit="field-p2">
+          The clip on the right is the excavator — the day the desk traded for a cab. The photos below are everyday Webcor field hours, not curated jobsite portfolio shots.
+        </p>
+      </div>
+      <div class="visual" style="aspect-ratio: 16/9; padding: 0;">
+        <video controls preload="none" poster="assets/photos/journey/07-field/excavator-poster.jpg" style="width:100%; height:100%; object-fit:cover;" data-edit-video="excavator">
+          <source src="assets/photos/journey/07-field/excavator.mp4" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+
+    <div class="mini-timeline-wrap reveal">
+      <div class="mini-timeline-head">
+        <div>
+          <div class="eyebrow" data-edit="field-strip-eyebrow">Field hours · Olympic + LACC</div>
+          <h3 data-edit="field-strip-h">Walking-distance shots, not drone footage.</h3>
+        </div>
+      </div>
+      <div class="visual trio" style="margin-top: 0.5rem;">
+        <div><span class="tag">Olympic & Hill</span><img src="assets/photos/journey/07-field/olympic-hill-1.jpg" alt="Olympic and Hill walk-around" loading="lazy" data-edit-img="field-1"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/journey/07-field/webcor-field-1.jpg" alt="Webcor field hours" loading="lazy" data-edit-img="field-2"/></div>
+        <div><span class="tag">Webcor · field</span><img src="assets/photos/journey/07-field/webcor-field-2.jpg" alt="Webcor field hours" loading="lazy" data-edit-img="field-3"/></div>
+      </div>
+
+      <div class="site-strip" style="margin-top: 1.5rem;">
+        <div class="s"><img src="assets/photos/webcor-skyscraper/18SJTuy5eSxn80MWFlJ4QHcR9awmS-he6.jpg" alt="LACC formwork" loading="lazy"/><div class="t">Formwork</div></div>
+        <div class="s"><img src="assets/photos/webcor-skyscraper/1c2UCPPZp01QYuZe1wOds11jbzkc9_kXB.jpg" alt="LACC rebar" loading="lazy"/><div class="t">Rebar</div></div>
+        <div class="s"><img src="assets/photos/webcor-skyscraper/1DAR6kBvZbyx5I6ZYGJ1oRlNg5QVyxz-P.jpg" alt="LACC prep" loading="lazy"/><div class="t">Prep</div></div>
+        <div class="s"><img src="assets/photos/webcor-skyscraper/1dBAi6alKLmApg9UJMDkzgZGUnyIqxYF_.jpg" alt="LACC embeds" loading="lazy"/><div class="t">Embeds</div></div>
+        <div class="s"><img src="assets/photos/webcor-skyscraper/1fV498BsH95spxWkx04bdiBFHpi6BuIQL.jpg" alt="LACC inspection" loading="lazy"/><div class="t">Inspection</div></div>
+        <div class="s"><img src="assets/photos/webcor-skyscraper/1GnwGCMpLc1rpmiXQ_8jhf_PAVt_BRNLz.jpg" alt="LACC pour day" loading="lazy"/><div class="t">Pour day</div></div>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · JUST GETTING STARTED -->
+<section id="future" class="sheet-sec" data-ch="08" data-title="Just Getting Started">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-108</span><span class="t">Chapter 08 — Just Getting Started</span><span class="meta">Future</span></div>
+      <div class="sheet-body">
+    <div class="reveal">
+      <span class="mag-badge mb-4"><span class="material-symbols-outlined">rocket_launch</span>WE ARE JUST GETTING STARTED</span>
+      <h2>Just <span class="grad">getting started.</span></h2>
+      <p data-edit="future-p1" style="max-width: 64ch; font-size: 16px; line-height: 1.65;">
+        The loop is short enough now that a problem mentioned Friday ships into the trailer Monday — hear it at the tailgate, build it that night, watch a foreman use it at 6 AM. It's the most fun I've ever had building anything, and the thing I want to do at whatever scale comes next.
+      </p>
+    </div>
+
+    <div class="proj-collage reveal">
+      <a class="tile t-trip" href="https://dyap123.github.io/yap-family-trip/index-v2.html" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/family-trip-splash.png" alt="Yap Family Trip app" loading="lazy" data-edit-img="coll-trip"/>
+        <span class="tag">Yap Family Trip · 雅家</span>
+      </a>
+      <a class="tile t-george" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/06-projects/mr-george-main.png" alt="Mr. George agent" loading="lazy" data-edit-img="coll-george"/>
+        <span class="tag">Mr. George · agent</span>
+      </a>
+      <a class="tile t-cup" href="https://dyap123.github.io/cup-dashboard/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-cup-dash.png" alt="CUP Dashboard live" loading="lazy" data-edit-img="coll-cup"/>
+        <span class="tag">CUP Dashboard</span>
+      </a>
+      <a class="tile t-foundation" href="https://dyap123.github.io/lacc-foundation/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-foundation.png" alt="LACC Foundation map" loading="lazy" data-edit-img="coll-foundation"/>
+        <span class="tag">LACC Foundation</span>
+      </a>
+      <a class="tile t-roadmap" href="https://dyap123.github.io/openyap-roadmap/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-roadmap.png" alt="OpenYap roadmap" loading="lazy" data-edit-img="coll-roadmap"/>
+        <span class="tag">OpenYap Roadmap</span>
+      </a>
+      <a class="tile t-launcher" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
+        <img src="assets/photos/journey/08-future/proj-launcher.png" alt="OpenYap Launcher hub" loading="lazy" data-edit-img="coll-launcher"/>
+        <span class="tag">OpenYap Launcher · 23 apps</span>
+      </a>
+      <div class="tile t-cc">
+        <img src="assets/photos/journey/06-projects/poster-cost-codes.png" alt="Foreman cost-codes poster" loading="lazy" data-edit-img="coll-cc"/>
+        <span class="tag">Cost codes · 11×17</span>
+      </div>
+      <div class="tile t-thermal">
+        <img src="assets/photos/journey/06-projects/poster-thermal.png" alt="Thermal control checklist poster" loading="lazy" data-edit-img="coll-thermal"/>
+        <span class="tag">Thermal control · 11×17</span>
+      </div>
+      <div class="tile t-tools">
+        <img src="assets/photos/journey/06-projects/poster-tools.png" alt="Foreman tools poster" loading="lazy" data-edit-img="coll-tools"/>
+        <span class="tag">Tools · 11×17</span>
+      </div>
+    </div>
+
+    <div class="reveal mt-8 flex gap-3" style="flex-wrap: wrap; justify-content: center;">
+      <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>All apps · Launcher</a>
+      <a href="ecosystem.html#case-studies" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+      <a href="mailto:dyap123@gmail.com" class="btn"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <h2 class="lg mb-6">We are <span class="grad">just getting started.</span></h2>
+    <p class="dim" style="max-width: 580px; margin: 0 auto 2rem;">
+      If any of this overlaps with what you're building — concrete operations, AI in construction, or anything else field-first — I'd like to hear about it.
+    </p>
+    <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+      <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Launcher</a>
+      <a href="ecosystem.html#case-studies" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-count"><b id="lb-cur">1</b> / <span id="lb-total">18</span></div>
+  <button class="lightbox-arrow prev" onclick="navLightbox(-1)">←</button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lightbox-arrow next" onclick="navLightbox(1)">→</button>
+</div>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="tb-cell"><span class="k">Project</span><span class="v">CAREER — DANZEL YAP</span></div>
+    <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
+    <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
+    <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html#case-studies">S-201 THE WORK</a> · <a href="vision.html">A-301 VISION</a></span></div>
+    <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
+    <div class="tb-sheet"><span class="k">Sheet</span><span class="v">G-100</span></div>
+  </div>
+</footer>
+
+<button class="edit-toggle" id="editBtn">✎ Edit</button>
+
+<script src="assets/shell.js"></script>
+<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js" defer></script>
+<script src="assets/annotate.js" defer></script>
+<script>
+// ═════════════════════════════════════════
+//  PHOTO GALLERY + LIGHTBOX
+// ═════════════════════════════════════════
+let photos = [];
+let lbIdx = 0;
+async function loadPhotos() {
+  try {
+    const res = await fetch('assets/photos/manifest.json');
+    photos = await res.json();
+  } catch { return; }
+  // Slim closer — show only 8 hand-picked shots, not the full archive
+  photos = photos.slice(0, 8);
+  const grid = document.getElementById('gallery');
+  if (!grid) return;
+  grid.innerHTML = photos.map((p, i) => `
+    <div class="s" onclick="openLightbox(${i})" style="cursor: pointer;">
+      <img src="assets/photos/${p.id}.jpg" alt="" loading="lazy"/>
+      <div class="t">View</div>
+    </div>
+  `).join('');
+  document.getElementById('lb-total').textContent = photos.length;
+}
+function openLightbox(i) {
+  lbIdx = i;
+  document.getElementById('lb-img').src = `assets/photos/${photos[i].id}.jpg`;
+  document.getElementById('lb-cur').textContent = i + 1;
+  document.getElementById('lightbox').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function navLightbox(delta) {
+  lbIdx = (lbIdx + delta + photos.length) % photos.length;
+  document.getElementById('lb-img').src = `assets/photos/${photos[lbIdx].id}.jpg`;
+  document.getElementById('lb-cur').textContent = lbIdx + 1;
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('show')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+loadPhotos();
+
+// Auto-render interview files if manifest exists
+fetch('assets/interviews/manifest.json').then(r => r.ok ? r.json() : []).then(list => {
+  if (!list || !list.length) return;
+  const host = document.getElementById('interviewFiles');
+  if (!host) return;
+  host.innerHTML = `<div class="eyebrow mb-2" style="color: var(--primary);">Recordings</div>` +
+    list.map(f => {
+      const ext = (f.file || '').split('.').pop().toLowerCase();
+      if (['mp4','mov','webm'].includes(ext)) {
+        return `<div class="mt-2"><div class="mono" style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.15em">${f.title || f.file}</div><video controls preload="metadata" style="width:100%;max-height:240px;border:1px solid var(--line);border-radius:3px;background:#000"><source src="assets/interviews/${f.file}"></video></div>`;
+      }
+      if (['mp3','m4a','wav'].includes(ext)) {
+        return `<div class="mt-2"><div class="mono" style="font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.15em">${f.title || f.file}</div><audio controls preload="metadata" style="width:100%"><source src="assets/interviews/${f.file}"></audio></div>`;
+      }
+      return `<a href="assets/interviews/${f.file}" target="_blank" class="btn mt-2" style="font-size:11px;padding:6px 10px">${f.title || f.file}</a>`;
+    }).join('');
+}).catch(() => {});
+
+// (Old FSAE auto-swap removed — image is now embedded directly in CH 03 markup.)
+
+// ═════════════════════════════════════════
+//  SCROLL FX: rail + chip + watermark + parallax
+// ═════════════════════════════════════════
+const railFill = document.getElementById('rail-fill');
+const railDots = document.querySelectorAll('.timeline-rail .dot');
+const chip     = document.getElementById('chapter-chip');
+const watermark= document.getElementById('watermark');
+const chapters = Array.from(document.querySelectorAll('section[data-ch]'));
+const visuals  = document.querySelectorAll('.story .visual');
+
+let currentCh = null;
+let pendingRaf = false;
+
+// Place dots on the rail at each section's doc-scroll percentage
+function placeDots() {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (docH <= 0) return;
+  railDots.forEach(dot => {
+    const id = dot.getAttribute('href').slice(1);
+    const sec = document.getElementById(id);
+    if (!sec) return;
+    const targetScroll = sec.offsetTop - 100; // match scroll-margin
+    const pct = Math.max(0, Math.min(100, (targetScroll / docH) * 100));
+    dot.style.top = pct + '%';
+  });
+}
+
+function flipWatermark(newNum) {
+  if (!watermark) return;
+  watermark.classList.add('flip');
+  watermark.classList.add('visible');
+  setTimeout(() => {
+    watermark.textContent = newNum;
+    watermark.classList.remove('flip');
+  }, 280);
+}
+
+function onScroll() {
+  if (pendingRaf) return;
+  pendingRaf = true;
+  requestAnimationFrame(() => {
+    pendingRaf = false;
+
+    // Rail fill
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(1, Math.max(0, window.scrollY / docH));
+    if (railFill) railFill.style.height = (progress * 100) + '%';
+
+    // Find active chapter (one whose center is closest to viewport center)
+    let bestCh = null;
+    let bestDist = Infinity;
+    const vpCenter = window.innerHeight * 0.38;
+    chapters.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.bottom < 60 || rect.top > window.innerHeight - 60) return;
+      const secCenter = (rect.top + rect.bottom) / 2;
+      const dist = Math.abs(secCenter - vpCenter);
+      if (dist < bestDist) { bestDist = dist; bestCh = sec; }
+    });
+
+    if (bestCh && bestCh !== currentCh) {
+      currentCh = bestCh;
+      const ch = bestCh.dataset.ch;
+      const title = bestCh.dataset.title;
+
+      // Update chip
+      if (chip) {
+        chip.querySelector('.ch').textContent = 'CH ' + ch;
+        chip.querySelector('.title').textContent = title;
+      }
+
+      // Update watermark with flip
+      if (watermark && watermark.textContent !== ch) flipWatermark(ch);
+
+      // Update rail dots
+      railDots.forEach(d => {
+        d.classList.toggle('active', d.dataset.ch === ch);
+        d.classList.toggle('passed', parseInt(d.dataset.ch, 10) < parseInt(ch, 10));
+      });
+    }
+
+    // Show chip + watermark once we're past the hero
+    const pastHero = window.scrollY > 360;
+    if (chip) chip.classList.toggle('visible', pastHero && currentCh);
+    if (watermark) watermark.classList.toggle('visible', pastHero && currentCh);
+
+    // Parallax on visuals — shift left/right as they pass through viewport
+    visuals.forEach(v => {
+      const rect = v.getBoundingClientRect();
+      const vpC = window.innerHeight / 2;
+      const dist = (rect.top + rect.height / 2 - vpC) / window.innerHeight;
+      const px = Math.max(-36, Math.min(36, -dist * 48));
+      v.style.transform = `translateX(${px}px)`;
+    });
+
+    // Progress-bar reveal when in view
+    document.querySelectorAll('[data-progress]').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 80) el.classList.add('in-view');
+    });
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', () => { placeDots(); onScroll(); });
+window.addEventListener('load',   () => { placeDots(); onScroll(); });
+placeDots();
+onScroll();
+</script>
 </body>
 </html>

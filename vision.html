@@ -4,27 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vision — Danzel Yap</title>
-<meta name="description" content="The OpenYap thesis: bring AI to the construction foreman. Then to the whole field."/>
+<meta name="description" content="Why Danzel Yap builds: field-first software for the people the software industry forgot — construction crews, project engineers, and the next generation of builders. Bilingual by default, measured in hours given back, proven on a $2B jobsite."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 <style>
   /* vertical timeline rails — mirrored on both sides for symmetry */
   .roadmap { position: relative; margin-top: 2rem; padding: 0 3rem; }
   /* dim tracks */
   .roadmap::before, .roadmap::after {
     content: ""; position: absolute; top: 10px; bottom: 10px; width: 2px;
-    background: rgba(217,185,255,0.12);
+    background: rgba(30,75,143,0.12);
   }
   .roadmap::before { left: 13px; }
   .roadmap::after  { right: 13px; }
   /* bright, scroll-driven fills that track your progress down the page */
   .roadmap-fill {
     position: absolute; top: 10px; width: 2px; height: 0;
-    background: linear-gradient(to bottom, rgba(217,185,255,0.25), var(--primary));
+    background: linear-gradient(to bottom, rgba(30,75,143,0.25), var(--primary));
     box-shadow: 0 0 12px var(--glow); border-radius: 2px; z-index: 1; will-change: height;
   }
   .roadmap-fill.left  { left: 13px; }
@@ -37,8 +36,8 @@
 
   .phase {
     position: relative;
-    background-color: rgba(27,27,35,0.6);
-    background-image: linear-gradient(105deg, rgba(20,19,28,0.96) 40%, rgba(20,19,28,0.70) 100%), var(--phase-bg, none);
+    background-color: rgba(251,250,247,0.6);
+    background-image: linear-gradient(105deg, rgba(245,243,238,0.96) 40%, rgba(245,243,238,0.78) 100%), var(--phase-bg, none);
     background-repeat: no-repeat, no-repeat;
     background-position: center, right center;
     background-size: cover, cover;
@@ -47,15 +46,15 @@
     margin-bottom: 1.5rem;
     transition: border-color .3s, transform .3s, box-shadow .3s;
   }
-  .phase:hover { border-color: rgba(217,185,255,0.35); transform: translateY(-3px); box-shadow: 0 16px 38px -20px var(--glow); }
+  .phase:hover { border-color: rgba(30,75,143,0.35); transform: translateY(-3px); box-shadow: 0 16px 38px -20px var(--glow); }
   /* big watermark number — brightens when its phase is active */
   .phase::after {
     content: attr(data-num); position: absolute; top: -18px; right: 18px;
-    font-family: var(--head); font-size: 150px; font-weight: 700; color: var(--accent-soft);
+    font-family: var(--head); font-size: 150px; font-weight: 700; color: rgba(26,25,21,0.06);
     line-height: 1; letter-spacing: -0.08em; pointer-events: none; z-index: 0;
-    transition: filter .6s ease; filter: brightness(0.8);
+    transition: color .6s ease;
   }
-  .phase.in-view::after { filter: brightness(1.5); }
+  .phase.in-view::after { color: rgba(30,75,143,0.14); }
   @media (max-width: 700px) { .phase::after { font-size: 90px; right: 8px; } }
 
   .phase .label {
@@ -78,8 +77,8 @@
 
   .quote-slab {
     margin: 6rem 0; padding: 4rem 2.5rem;
-    background: linear-gradient(135deg, rgba(67, 16, 122, 0.35), rgba(14,13,21,0.85));
-    border: 1px solid rgba(217,185,255,0.2); border-radius: 4px;
+    background: linear-gradient(135deg, rgba(30,75,143,0.10), rgba(251,250,247,0.85));
+    border: 1px solid rgba(30,75,143,0.2); border-radius: 4px;
     position: relative; overflow: hidden;
   }
   .quote-slab::before {
@@ -104,13 +103,13 @@
   @media (max-width: 700px) { .principles { grid-template-columns: 1fr; } }
   .principle {
     display: flex; gap: 1rem; padding: 1.5rem;
-    background: rgba(27,27,35,0.4); border: 1px solid var(--line); border-radius: 4px;
+    background: rgba(251,250,247,0.4); border: 1px solid var(--line); border-radius: 4px;
     transition: all .25s;
   }
-  .principle:hover { border-color: rgba(217,185,255,0.2); background: rgba(27,27,35,0.6); }
+  .principle:hover { border-color: rgba(30,75,143,0.2); background: rgba(251,250,247,0.6); }
   .principle .n {
     font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--primary);
-    width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(217,185,255,0.3);
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(30,75,143,0.3);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .principle h4 { font-family: var(--head); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -119,31 +118,29 @@
   /* Why now — reasoning inflection */
   .shift-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem; align-items: stretch; }
   @media (max-width: 820px) { .shift-grid { grid-template-columns: 1fr; } .shift-arrow { transform: rotate(90deg); } }
-  .shift-card { background: rgba(27,27,35,0.55); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; }
-  .shift-card.accent { border-color: rgba(217,185,255,0.3); background: linear-gradient(135deg, rgba(67,16,122,0.3), rgba(27,27,35,0.6)); }
+  .shift-card { background: rgba(251,250,247,0.55); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 4px; padding: 1.75rem; }
+  .shift-card.accent { border-color: rgba(30,75,143,0.3); background: linear-gradient(135deg, rgba(30,75,143,0.08), rgba(251,250,247,0.6)); }
   .shift-card .tagk { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
   .shift-card.accent .tagk { color: var(--primary); }
   .shift-card h4 { font-family: var(--head); font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; line-height: 1.15; }
   .shift-card p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; }
   .shift-arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); }
   .shift-arrow .material-symbols-outlined { font-size: 32px; }
-  .whynow-close { margin-top: 2rem; padding: 1.85rem 2rem; border-left: 3px solid var(--primary); background: rgba(27,27,35,0.4); border-radius: 0 4px 4px 0; }
+  .whynow-close { margin-top: 2rem; padding: 1.85rem 2rem; border-left: 3px solid var(--primary); background: rgba(251,250,247,0.4); border-radius: 0 4px 4px 0; }
   .whynow-close p { font-family: var(--head); font-size: clamp(17px, 2vw, 23px); font-weight: 500; line-height: 1.42; color: var(--text); max-width: 66ch; }
 </style>
 </head>
 <body>
 
-<canvas id="shader-bg"></canvas>
-
 <nav class="topnav">
   <div class="inner">
     <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
     <div class="nav-links">
+      <a href="index.html">About</a>
+      <a href="journey.html">Journey</a>
       
-      <a href="index.html">Journey</a>
-      <a href="ecosystem.html">Ecosystem</a>
       <a href="vision.html" class="active">Vision</a>
-    
+      <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
     </div>
     <details class="connect">
       <summary class="connect-btn">Connect <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></summary>
@@ -160,13 +157,13 @@
 <section style="padding-top: 9rem;">
   <div class="wrap">
     <div class="sector reveal">
-      <span>Operational Sector 03 · Vision</span>
-      <span class="sector-right">INTENT &amp; TRAJECTORY</span>
+      <span>Sheet A-301 · Vision — Why I Build</span>
+      <span class="sector-right">ISSUED FOR REVIEW</span>
     </div>
     <div class="mt-6 mb-8 reveal delay-1">
-      <div class="sector"><span>Roadmap</span></div>
-      <h1 class="lg">Pour the foundation. Then <span class="grad">scale it</span>.</h1>
-      <p class="dim mt-2">From a PE on the deck to an AI layer for the whole industry — four phases, each earned by the one before it.</p>
+      <div class="sector"><span>Why I build</span></div>
+      <h1 class="lg">I build things <span class="grad">people actually use</span>.</h1>
+      <p class="dim mt-2">A wooden robot, a soldering iron, a race car, twenty-three apps on a jobsite. The through-line has never changed: find someone whose day is harder than it needs to be, and build until it isn't.</p>
     </div>
 
     <div class="roadmap">
@@ -174,59 +171,59 @@
       <div class="roadmap-fill left" aria-hidden="true"></div>
       <div class="roadmap-fill right" aria-hidden="true"></div>
 
-      <div class="phase reveal" data-num="00" style="--phase-bg: url('assets/photos/journey/06-projects/cup-1.png')">
-        <div class="label" data-edit="phase0-label">Now · 2025–2026 · As a PE</div>
-        <h3 data-edit="phase0-title">Pour the foundation.</h3>
+      <div class="phase reveal" data-num="01" style="--phase-bg: url('assets/photos/journey/06-projects/cup-1.png')">
+        <div class="label" data-edit="phase0-label">Impact 01 · The crew</div>
+        <h3 data-edit="phase0-title">The people the software industry forgot.</h3>
         <p data-edit="phase0-body">
-          Right now I'm a project engineer on the $2B LACC CUP build — and that's where the foundation gets poured. Not just concrete, but proof. Every custom tool I make gets its first run on this jobsite, and if it survives a Monday morning at Section A, it has earned the right to go further.
+          Construction crews are some of the least-served users in software — most tools they're handed were designed for an office they never sit in. Every OpenYap app is built the other way around: operable with one gloved thumb, in the sun, at 6 AM. And because translation is unpaid work a foreman absorbs, every sheet ships bilingual EN/ES from day one.
         </p>
         <ul>
-          <li data-edit="phase0-b1">Concrete pour tracker, live on the deck</li>
-          <li data-edit="phase0-b2">Const-Agent across Discord, Teams, Web UI</li>
-          <li data-edit="phase0-b3">Dashboards + Formwork for the team</li>
-          <li data-edit="phase0-b4">Credibility banked, one pour at a time</li>
+          <li data-edit="phase0-b1">Foreman-first design — gloves on, sun in your eyes</li>
+          <li data-edit="phase0-b2">Bilingual EN/ES standard, not an afterthought</li>
+          <li data-edit="phase0-b3">Print and digital in sync — the trailer wall counts too</li>
+          <li data-edit="phase0-b4">Tools people adopt without being told to</li>
         </ul>
       </div>
 
-      <div class="phase reveal delay-1" data-num="01" style="--phase-bg: url('assets/photos/journey/06-projects/mr-george-main.png')">
-        <div class="label" data-edit="phase1-label">Phase 01 · 1–2 years · Director of AI</div>
-        <h3 data-edit="phase1-title">Earn the seat. Learn the company.</h3>
+      <div class="phase reveal delay-1" data-num="02" style="--phase-bg: url('assets/photos/journey/06-projects/mr-george-main.png')">
+        <div class="label" data-edit="phase1-label">Impact 02 · The team</div>
+        <h3 data-edit="phase1-title">A day a week, given back.</h3>
         <p data-edit="phase1-body">
-          Step into a Director of AI role — or a seat under Webcor's technology arm — to build trust and learn how the company actually runs. Go cross-project and into the field at Parnassus, GCON, even Obayashi, to see both sides. Then use AI to bridge the field and the technology arm, lifting efficiency on every project we touch.
+          The suite saves each project engineer about a day a week of re-keying, hunting, and formatting. That's not an efficiency metric to me — it's afternoons that go to actual engineering, mentoring, or getting home before dark. Good software's most honest impact is measured in someone else's hours.
         </p>
         <ul>
-          <li data-edit="phase1-b1">Cross-project field time: Parnassus · GCON · Obayashi</li>
-          <li data-edit="phase1-b2">Bridge the field ↔ the technology arm with AI</li>
-          <li data-edit="phase1-b3">Clean up our data — never scammed by a vendor again</li>
-          <li data-edit="phase1-b4">Harden cybersecurity by mastering the CMiC database</li>
+          <li data-edit="phase1-b1">~1 day/week back per PE, field-measured</li>
+          <li data-edit="phase1-b2">RFI prep 40 → 6 minutes</li>
+          <li data-edit="phase1-b3">The weekly look-ahead: an afternoon → minutes</li>
+          <li data-edit="phase1-b4">$75K/yr in vendor costs avoided through careful evaluation</li>
         </ul>
       </div>
 
-      <div class="phase reveal delay-2" data-num="02" style="--phase-bg: url('assets/photos/journey/08-future/proj-launcher.png')">
-        <div class="label" data-edit="phase2-label">Phase 02 · The AI arm · Equity</div>
-        <h3 data-edit="phase2-title">Stand up the Webcor AI arm.</h3>
+      <div class="phase reveal delay-2" data-num="03" style="--phase-bg: url('assets/photos/cowtech-team.jpg')">
+        <div class="label" data-edit="phase2-label">Impact 03 · The next generation</div>
+        <h3 data-edit="phase2-title">Paying the wooden robot forward.</h3>
         <p data-edit="phase2-body">
-          With results proven, ask to lead a dedicated AI branch of Webcor — a separate arm, with equity. Inside it we build the Webcor bubble: a contained, self-improving AI ecosystem, proven end-to-end inside a single GC before it goes anywhere else.
+          I exist as a builder because a small-town robotics team let a kid hand-cut plywood into a competition robot. So I taught K–12 robotics and STEM at STEM Center USA through early 2026 — same loop, smaller hands: give someone a real problem, real tools, and the confidence that they're allowed to build the fix themselves.
         </p>
         <ul>
-          <li data-edit="phase2-b1">A separate AI branch — with equity</li>
-          <li data-edit="phase2-b2">The "Webcor bubble," proven inside one GC</li>
-          <li data-edit="phase2-b3">Custom-built solutions + Claude where it fits</li>
-          <li data-edit="phase2-b4">A repeatable playbook, not a one-off</li>
+          <li data-edit="phase2-b1">K–12 robotics &amp; STEM instruction · STEM Center USA</li>
+          <li data-edit="phase2-b2">FIRST Robotics roots — CowTech FRC alum</li>
+          <li data-edit="phase2-b3">Teaching the loop: problem → build → test → again</li>
+          <li data-edit="phase2-b4">The best tool I can hand a kid is permission to build</li>
         </ul>
       </div>
 
-      <div class="phase reveal delay-3" data-num="03" style="--phase-bg: url('assets/photos/journey/08-future/proj-roadmap.png')">
-        <div class="label" data-edit="phase3-label">Phase 03 · Expand outward</div>
-        <h3 data-edit="phase3-title">GCON → Obayashi → the industry.</h3>
+      <div class="phase reveal delay-3" data-num="04" style="--phase-bg: url('assets/photos/journey/08-future/proj-launcher.png')">
+        <div class="label" data-edit="phase3-label">Impact 04 · The industry</div>
+        <h3 data-edit="phase3-title">Prove the field deserves great software.</h3>
         <p data-edit="phase3-body">
-          Once the bubble holds, expand it — first to GCON, then up to our parent Obayashi, then to the rest of the construction industry. The whole point isn't a moonshot. It's survival, and stable, compounding growth — built on a foundation already poured.
+          Construction builds the physical world and runs on some of the oldest workflows in it. I want my career — wherever it goes — to keep proving that field-first, AI-native software makes jobs safer, faster, and more humane. The playbook I'm building on one $2B jobsite is a playbook for every under-served industry that works with its hands.
         </p>
         <ul>
-          <li data-edit="phase3-b1">GCON first — the nearest neighbor</li>
-          <li data-edit="phase3-b2">Then Obayashi, the parent company</li>
-          <li data-edit="phase3-b3">Then the broader construction industry</li>
-          <li data-edit="phase3-b4">Thesis: survival + stable growth</li>
+          <li data-edit="phase3-b1">Field-first AI as the default, not the demo</li>
+          <li data-edit="phase3-b2">Safety and quality rise when status is visible</li>
+          <li data-edit="phase3-b3">One jobsite proven → any jobsite possible</li>
+          <li data-edit="phase3-b4">Hands-on industries deserve first-class tools</li>
         </ul>
       </div>
 
@@ -319,7 +316,7 @@
 
     <div class="whynow-close reveal">
       <p data-edit="whynow-close">
-        This is the inflection — slowly but surely, AI is crossing from a party trick into something that can carry real weight on a real project. Most of the industry is still bolting last year's autocomplete onto a dashboard. I've spent the journey on the other path: in the field every day, grounded in the actual machine learning instead of just the API, and shipping reasoning-driven tools that already hold up on a $2B job. That's why <span class="grad">the time is now — and why I'm ready to be Webcor's AI director.</span>
+        This is the inflection — slowly but surely, AI is crossing from a party trick into something that can carry real weight on a real project. Most of the industry is still bolting last year's autocomplete onto a dashboard. I've spent the journey on the other path: in the field every day, grounded in the actual machine learning instead of just the API, and shipping reasoning-driven tools that already hold up on a $2B job. That's why <span class="grad">the time is now — and why I'm all-in on building for the people the software industry forgot.</span>
       </p>
     </div>
   </div>
@@ -349,24 +346,21 @@
 
 <footer class="foot">
   <div class="inner">
-    <div class="brand-foot">STRUCTURAL SYNTHESIS</div>
-    <div class="nav-foot">
-      
-      <a href="index.html">Journey</a>
-      <a href="ecosystem.html">Ecosystem</a>
-      <a href="vision.html">Vision</a>
-      <a href="https://github.com/dyap123" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LinkedIn</a>
-    
-    </div>
-    <div class="copyright">© 2026 · DANZEL YAP · LA · <a href="tel:+14083353615" style="color: var(--muted); text-decoration: none;">(408) 335-3615</a> · <a href="mailto:dyap123@gmail.com" style="color: var(--muted); text-decoration: none;">dyap123@gmail.com</a></div>
+    <div class="tb-cell"><span class="k">Project</span><span class="v">CAREER — DANZEL YAP</span></div>
+    <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
+    <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
+    <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="journey.html">G-100 JOURNEY</a> · <a href="index.html#case-studies">S-201 THE WORK</a></span></div>
+    <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
+    <div class="tb-sheet"><span class="k">Sheet</span><span class="v">A-301</span></div>
   </div>
 </footer>
 
 <button class="edit-toggle" id="editBtn">✎ Edit</button>
 
 <script src="assets/shell.js"></script>
-<script src="assets/editor.js"></script>
+<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js" defer></script>
+<script src="assets/annotate.js" defer></script>
 <script>
 /* Roadmap timeline effects: light up nodes on view + scroll-driven rail fill */
 (function () {
