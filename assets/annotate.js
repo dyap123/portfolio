@@ -36,10 +36,7 @@
   }
 
   function init() {
-    // every accented heading gets the reviewer's blue underline unless it opted into something else
-    document.querySelectorAll('h1 .grad, h2 .grad').forEach(function (el) {
-      if (!el.dataset.ann) el.dataset.ann = 'underline';
-    });
+    // marks are hand-placed only (data-ann) — structural rules belong to the sheet chrome, not the pen
     var els = document.querySelectorAll('[data-ann]');
     if (!els.length) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

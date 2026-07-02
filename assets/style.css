@@ -242,6 +242,90 @@ nav.topnav .inner {
 .stamp.wip { border-color: var(--secondary); color: var(--secondary); }
 .stamp.wip > span { border-color: var(--secondary); }
 
+/* ════════════════════ SHEETS — every section is a drawing ════════════════════ */
+.sheet {
+  border: 1.5px solid var(--ink); background: var(--surface-0);
+  box-shadow: 6px 6px 0 rgba(26,25,21,0.06);
+}
+.sheet-head {
+  display: flex; align-items: center; gap: 0;
+  border-bottom: 1.5px solid var(--ink); background: var(--surface-1);
+}
+.sheet-head .no {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--bg); background: var(--ink); padding: 11px 16px; white-space: nowrap;
+}
+.sheet-head .t {
+  font-family: var(--head); font-weight: 700; font-size: 13.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink); padding: 11px 18px;
+}
+.sheet-head .meta {
+  margin-left: auto; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); padding: 11px 18px;
+  border-left: 1px solid var(--line-strong); white-space: nowrap;
+}
+.sheet-body { padding: 2.5rem; }
+@media (max-width: 720px) {
+  .sheet-body { padding: 1.25rem; }
+  .sheet-head .meta { display: none; }
+  .sheet-head .t { font-size: 11.5px; }
+}
+/* sheets replace open-canvas sections — tighten the outer rhythm */
+section.sheet-sec { padding: 2.2rem 0; }
+@media (min-width: 1024px) { section.sheet-sec { padding: 2.6rem 0; } }
+
+/* ── Cover sheet (homepage hero) ── */
+.cover-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 0; }
+@media (max-width: 1000px) { .cover-grid { grid-template-columns: 1fr; } }
+.cover-left { padding: 3rem 3rem 2.5rem; }
+@media (max-width: 720px) { .cover-left { padding: 1.5rem 1.25rem; } }
+.cover-title {
+  font-family: var(--head); font-weight: 700; letter-spacing: -0.03em; line-height: 0.95;
+  font-size: clamp(44px, 6.2vw, 96px); text-transform: uppercase; color: var(--ink);
+}
+.cover-index {
+  border-left: 1.5px solid var(--ink); display: flex; flex-direction: column;
+  background: var(--surface-0);
+}
+@media (max-width: 1000px) { .cover-index { border-left: none; border-top: 1.5px solid var(--ink); } }
+.cover-index .ci-head {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--bg); background: var(--ink); padding: 12px 20px;
+}
+.cover-index a {
+  display: flex; align-items: baseline; gap: 14px; padding: 9px 20px;
+  border-top: 1px solid var(--line); color: var(--text); transition: background .15s;
+}
+.cover-index a:first-of-type { border-top: none; }
+.cover-index a:hover { background: var(--accent-soft); color: var(--primary); }
+.cover-index a .no { font-family: var(--mono); font-size: 10.5px; color: var(--primary); font-weight: 600; letter-spacing: 0.06em; min-width: 52px; }
+.cover-index a .t  { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; }
+.cover-index a .yr { margin-left: auto; font-family: var(--mono); font-size: 9.5px; color: var(--muted); }
+.cover-index .ci-div {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); padding: 8px 20px 4px; border-top: 1.5px solid var(--ink); margin-top: auto;
+}
+.cover-index .ci-div:first-of-type { margin-top: 0; }
+/* key data row along the cover's bottom edge */
+.cover-data {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1.5px solid var(--ink);
+}
+@media (max-width: 900px) { .cover-data { grid-template-columns: repeat(2, 1fr); } }
+.cover-data .cd {
+  padding: 18px 20px 16px; border-left: 1px solid var(--line-strong);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.cover-data .cd:first-child { border-left: none; }
+@media (max-width: 900px) { .cover-data .cd:nth-child(3) { border-left: none; border-top: 1px solid var(--line-strong); } .cover-data .cd:nth-child(4) { border-top: 1px solid var(--line-strong); } }
+.cover-data .v { font-family: var(--head); font-weight: 700; font-size: clamp(24px, 2.4vw, 34px); color: var(--primary); letter-spacing: -0.01em; line-height: 1.05; }
+.cover-data .k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.cover-data .s { font-size: 11.5px; color: var(--text-dim); }
+
+/* ecosystem case studies read as framed detail sheets */
+.case { border: 1.5px solid var(--ink); background: var(--surface-0); padding: 2.5rem; box-shadow: 6px 6px 0 rgba(26,25,21,0.06); }
+@media (max-width: 720px) { .case { padding: 1.25rem; } }
+
 /* ════════════════════ THE SYSTEM — flow diagram ════════════════════ */
 .flow {
   display: grid; grid-template-columns: minmax(0, 5fr) 72px minmax(0, 4fr);
