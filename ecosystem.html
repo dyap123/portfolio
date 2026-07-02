@@ -203,7 +203,7 @@
 <section style="padding: 0;">
   <div class="stats-row">
     <div class="stat-cell reveal">
-      <div class="stat-val"><span data-count="2" data-prefix="$" data-suffix="B">$0</span></div>
+      <div class="stat-val" data-ann="circle" data-ann-delay="1700"><span data-count="2" data-prefix="$" data-suffix="B">$0</span></div>
       <div class="stat-label">Project Value</div>
       <div class="stat-sub">LACC CUP Modernization</div>
     </div>
@@ -236,7 +236,7 @@
           Every tool below was built to solve a real construction-PM problem first, then generalized. Most ship to my team, and seventeen are live on the public internet.
         </p>
       </div>
-      <span class="pill pill-primary">17 LIVE</span>
+      <span class="pill pill-primary" data-ann="box" data-ann-color="#E8541F" data-ann-delay="500">17 LIVE</span>
     </div>
 
     <div class="bento">
@@ -541,7 +541,7 @@
           Everything I shipped between March 27 and today. Twenty-three apps in the OpenYap ecosystem — plus a Unity game, foreman sheets, and a public foundation viewer for the LACC board. One launcher pulls them all together.
         </p>
       </div>
-      <span class="pill pill-primary">1 HUB · 5 FLAGSHIPS · 8 SHIPS</span>
+      <span class="pill pill-primary">1 HUB · 6 FLAGSHIPS · 8 SHIPS</span>
     </div>
 
     <!-- Launcher hero — the home for everything -->
@@ -573,6 +573,7 @@
       <a href="#cup-dashboard"><span class="no">03</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
       <a href="#formwork"><span class="no">04</span><span class="t">Formwork</span><span class="s">Sankey + 3D lattice budget intelligence</span></a>
       <a href="#roadmap"><span class="no">05</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
+      <a href="#superyap"><span class="no">05.1</span><span class="t">SuperYap</span><span class="s">Look-ahead builder · superintendent suite</span></a>
       <a href="#vault-brain"><span class="no">06</span><span class="t">Vault Brain</span><span class="s">Mr. George's library · voice Alfred</span></a>
       <a href="#todo"><span class="no">07</span><span class="t">Todo</span><span class="s">Tasks + Wasted-Time tracker</span></a>
       <a href="#lacc-foundation"><span class="no">08</span><span class="t">LACC Foundation</span><span class="s">Public zone-map viewer for the board</span></a>
@@ -704,6 +705,13 @@
           </ul>
         </div>
 
+        <div class="block">
+          <div class="block-label">The workspace</div>
+          <p data-edit="cs2cc-workspace">
+            Nine views behind one login — <span class="mono" style="font-size: 12.5px; letter-spacing: 0.06em; color: var(--primary);">DASHBOARD · THE MAP (LIVE) · SCHEDULE · INVENTORY · RFIS · POURS · SUBMITTALS · ATTENDANCE · ADMIN</span>. It's a true central workplace: the day starts here, and the other apps became its deep-edit tools. Click a footing on the Map and CUP opens to that pour; click an embed and EmbedYap opens to that pin.
+          </p>
+        </div>
+
         <div class="gallery">
           <!-- DROP: 01-dashboard.png · 02-drill.png in assets/photos/case-studies/command-center/ -->
           <img src="assets/photos/case-studies/command-center/01-dashboard.png" alt="Command Center dashboard hero" loading="lazy" onerror="this.style.display='none'">
@@ -726,6 +734,13 @@
           <div class="kv"><span class="k">Roles</span><span class="v">Admin › Super › PM › PE</span></div>
           <div class="kv"><span class="k">Map layers</span><span class="v">6 toggleable</span></div>
           <div class="kv"><span class="k">Reads</span><span class="v">4 app namespaces</span></div>
+        </div>
+        <div class="panel">
+          <h4>Role matrix</h4>
+          <div class="kv"><span class="k">Admin</span><span class="v">Full edit · users · 2FA</span></div>
+          <div class="kv"><span class="k">Super</span><span class="v">Schedule · Tools · Crew</span></div>
+          <div class="kv"><span class="k">PM</span><span class="v">RFIs · Submittals · Inspections</span></div>
+          <div class="kv"><span class="k">PE</span><span class="v">Data · Zones · Pours · Tools</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
@@ -957,6 +972,73 @@
           </div>
         </div>
         <a class="live" href="https://dyap123.github.io/openyap-roadmap/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 05.1 — SUPERYAP (inserted sheet) -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="superyap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">05.1</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-sy-h">SuperYap — the superintendent's <span class="grad">whole week on one sheet.</span></h2>
+        <p class="tagline" data-edit="cs-sy-tag">
+          The superintendent suite: a three-week look-ahead builder plus live Attendance and Tools tabs, reading the same shared Firebase as the rest of the set. The schedule that used to take an afternoon now regenerates in minutes.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-sy-problem">
+            The look-ahead is the superintendent's core artifact — the sheet that tells forty people what happens for the next three weeks. Ours was redrawn by hand in Excel every week: chained dates recomputed manually, weekends and holidays skipped by eye, then an hour of formatting to match the Webcor standard before it could go on the wall.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs-sy-approach">
+            A schedule builder that thinks in working days. Activities chain off each other or take manual dates; change one duration and everything downstream recomputes, skipping weekends and holidays automatically. Repeating pour cycles drop in with one Insert Cycle click, and activities link to their CUP pours so schedule and field status agree.
+          </p>
+          <ul>
+            <li data-edit="cs-sy-a1">Chained or manual dating with a working-day engine (weekends + holidays skipped)</li>
+            <li data-edit="cs-sy-a2">Insert Cycle — a whole repeating pour sequence added in one action</li>
+            <li data-edit="cs-sy-a3">One-click export to the Webcor-format look-ahead: PDF for the wall, Excel for the PMs</li>
+            <li data-edit="cs-sy-a4">Attendance tab reads Foreman Sign-In live — who's on site today, not last week</li>
+            <li data-edit="cs-sy-a5">Tools tab reads Tool Tracker assets — the conex inventory next to the schedule that needs it</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs-sy-result">
+            The weekly afternoon of Excel surgery is gone. The look-ahead prints in the Webcor format the office expects, Command Center syncs it as the project's schedule truth, and the superintendent edits dates instead of redrawing sheets.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-06</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Tabs</span><span class="v">Schedule · Attendance · Tools</span></div>
+          <div class="kv"><span class="k">Exports</span><span class="v">PDF + XLSX · Webcor format</span></div>
+          <div class="kv"><span class="k">Links to</span><span class="v">CUP pours · shared Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase</span><span>SheetJS</span><span>jsPDF</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/look-ahead/" target="_blank">
           <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
           View Live
         </a>
@@ -1409,6 +1491,8 @@
 <button class="edit-toggle" id="editBtn">✎ Edit</button>
 
 <script src="assets/shell.js"></script>
+<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js" defer></script>
+<script src="assets/annotate.js" defer></script>
 <script>
 // Local doc-list add/remove (persisted) — for the Embed Installation Plan bay
 const DOC_KEY = 'fieldwork_docs_v1';
