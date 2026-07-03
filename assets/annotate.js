@@ -19,7 +19,7 @@
     'strike-through': '#B3261E'
   };
 
-  var marks = []; // drawn annotations, kept for resize redraw
+  var marks = []; // { el, ann, key } — drawn annotations, watched for drift
 
   function configFor(el, instant) {
     var type = el.dataset.ann || 'underline';
@@ -35,15 +35,21 @@
     };
   }
 
+  // document-space fingerprint of where the element sits
+  function posKey(el) {
+    var r = el.getBoundingClientRect();
+    return Math.round(r.left + window.pageXOffset) + ',' +
+           Math.round(r.top + window.pageYOffset) + ',' +
+           Math.round(r.width) + ',' + Math.round(r.height);
+  }
+
   // rough-notation measures the element once at draw time; if the element is
   // still mid-reveal-transform or its counter is still ticking, the mark lands
   // off the text. Wait until the document-space rect holds still.
   function whenSettled(el, cb) {
     var last = null, still = 0, t0 = performance.now();
     (function tick() {
-      var r = el.getBoundingClientRect();
-      var key = Math.round(r.left) + ',' + Math.round(r.top + window.pageYOffset) + ',' +
-                Math.round(r.width) + ',' + Math.round(r.height);
+      var key = posKey(el);
       still = (key === last) ? still + 1 : 0;
       last = key;
       if (still >= 3 || performance.now() - t0 > 2500) return cb();
@@ -58,24 +64,43 @@
     setTimeout(function () {
       whenSettled(el, function () {
         var a = window.RoughNotation.annotate(el, configFor(el, instant));
-        marks.push({ el: el, ann: a });
         a.show();
+        marks.push({ el: el, ann: a, key: posKey(el) });
+        watch();
       });
     }, delay);
   }
 
-  // reflow moves the text out from under the SVG — redraw in place
+  // ── self-heal: late font swaps, image loads, or content edits can move the
+  // text out from under an already-drawn SVG. Re-check anchors for a while
+  // after each draw (and on resize) and redraw any mark whose text moved.
+  function heal() {
+    marks.forEach(function (m) {
+      if (!document.contains(m.el)) return;
+      var key = posKey(m.el);
+      if (key === m.key) return;
+      m.ann.remove();
+      m.ann = window.RoughNotation.annotate(m.el, configFor(m.el, true));
+      m.ann.show();
+      m.key = posKey(m.el);
+    });
+  }
+
+  var watchUntil = 0, watchTimer = null;
+  function watch() {
+    watchUntil = performance.now() + 12000; // keep checking ~12s past the last draw
+    if (watchTimer) return;
+    watchTimer = setInterval(function () {
+      heal();
+      if (performance.now() > watchUntil) { clearInterval(watchTimer); watchTimer = null; }
+    }, 800);
+  }
+
   var resizeTimer;
   window.addEventListener('resize', function () {
     if (!marks.length) return;
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      marks.forEach(function (m) {
-        m.ann.remove();
-        m.ann = window.RoughNotation.annotate(m.el, configFor(m.el, true));
-        m.ann.show();
-      });
-    }, 200);
+    resizeTimer = setTimeout(heal, 200);
   });
 
   function init() {
@@ -97,11 +122,11 @@
   }
 
   function start() {
-    // web fonts reflow the text after load — never measure against fallback metrics
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
-    else init();
+    // full load + fonts: never measure text against metrics that will change
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(init);
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-  else start();
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
 })();
