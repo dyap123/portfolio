@@ -19,21 +19,64 @@
     'strike-through': '#B3261E'
   };
 
-  function annotate(el) {
-    if (!window.RoughNotation || el.__annotated) return;
-    el.__annotated = true;
+  var marks = []; // drawn annotations, kept for resize redraw
+
+  function configFor(el, instant) {
     var type = el.dataset.ann || 'underline';
-    var a = window.RoughNotation.annotate(el, {
+    return {
       type: type,
       color: el.dataset.annColor || COLORS[type] || '#1E4B8F',
       strokeWidth: 2.5,
       padding: type === 'circle' ? 10 : 5,
       iterations: 2,
       animationDuration: 900,
+      animate: !instant,
       multiline: true
-    });
-    setTimeout(function () { a.show(); }, parseInt(el.dataset.annDelay || '150', 10));
+    };
   }
+
+  // rough-notation measures the element once at draw time; if the element is
+  // still mid-reveal-transform or its counter is still ticking, the mark lands
+  // off the text. Wait until the document-space rect holds still.
+  function whenSettled(el, cb) {
+    var last = null, still = 0, t0 = performance.now();
+    (function tick() {
+      var r = el.getBoundingClientRect();
+      var key = Math.round(r.left) + ',' + Math.round(r.top + window.pageYOffset) + ',' +
+                Math.round(r.width) + ',' + Math.round(r.height);
+      still = (key === last) ? still + 1 : 0;
+      last = key;
+      if (still >= 3 || performance.now() - t0 > 2500) return cb();
+      requestAnimationFrame(tick);
+    })();
+  }
+
+  function annotate(el, instant) {
+    if (!window.RoughNotation || el.__annotated) return;
+    el.__annotated = true;
+    var delay = instant ? 0 : parseInt(el.dataset.annDelay || '150', 10);
+    setTimeout(function () {
+      whenSettled(el, function () {
+        var a = window.RoughNotation.annotate(el, configFor(el, instant));
+        marks.push({ el: el, ann: a });
+        a.show();
+      });
+    }, delay);
+  }
+
+  // reflow moves the text out from under the SVG — redraw in place
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    if (!marks.length) return;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      marks.forEach(function (m) {
+        m.ann.remove();
+        m.ann = window.RoughNotation.annotate(m.el, configFor(m.el, true));
+        m.ann.show();
+      });
+    }, 200);
+  });
 
   function init() {
     // marks are hand-placed only (data-ann) — structural rules belong to the sheet chrome, not the pen
@@ -41,13 +84,10 @@
     if (!els.length) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       // static markup, no draw-in
-      els.forEach(function (el) {
-        el.dataset.annDelay = '0';
-        annotate(el);
-      });
+      els.forEach(function (el) { annotate(el, true); });
       return;
     }
-    if (!('IntersectionObserver' in window)) { els.forEach(annotate); return; }
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { annotate(el); }); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { annotate(e.target); io.unobserve(e.target); }
@@ -56,6 +96,12 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  function start() {
+    // web fonts reflow the text after load — never measure against fallback metrics
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+    else init();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 })();
