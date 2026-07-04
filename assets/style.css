@@ -337,6 +337,16 @@ section.sheet-sec { padding: 2.2rem 0; }
   .cs-index a:first-child { border-top: none; }
 }
 
+/* variant: each row carries an app screenshot */
+.cs-index.with-thumbs a { grid-template-columns: 96px 1fr 156px; align-items: center; }
+.cs-index.with-thumbs a .th { grid-column: 3; grid-row: 1 / 3; }
+.cs-index.with-thumbs a .th img {
+  display: block; width: 100%; height: 88px; object-fit: cover;
+  border: 1px solid var(--ink); transition: border-color .2s;
+}
+.cs-index.with-thumbs a:hover .th img { border-color: var(--primary); }
+@media (max-width: 560px) { .cs-index.with-thumbs a { grid-template-columns: 96px 1fr; } .cs-index.with-thumbs a .th { display: none; } }
+
 /* key data row along the cover's bottom edge */
 .cover-data {
   display: grid; grid-template-columns: repeat(4, 1fr);
