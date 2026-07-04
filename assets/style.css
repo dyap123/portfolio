@@ -354,8 +354,55 @@ section.sheet-sec { padding: 2.2rem 0; }
 .cover-data .s { font-size: 11.5px; color: var(--text-dim); }
 
 /* ecosystem case studies read as framed detail sheets */
-.case { border: 1.5px solid var(--ink); background: var(--surface-0); padding: 2.5rem; box-shadow: 6px 6px 0 rgba(26,25,21,0.06); }
+.case {
+  border: 1.5px solid var(--ink); background: var(--surface-0); padding: 2.5rem;
+  box-shadow: 6px 6px 0 rgba(26,25,21,0.06);
+  display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 2.75rem;
+}
+@media (max-width: 960px) { .case { grid-template-columns: 1fr; gap: 1.5rem; } }
 @media (max-width: 720px) { .case { padding: 1.25rem; } }
+
+.case .head { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.case .head .num {
+  font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--primary);
+  border: 1.5px solid rgba(30,75,143,0.4); padding: 3px 9px; letter-spacing: 0.08em;
+}
+.case h2 { letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.case .tagline { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; max-width: 62ch; }
+
+.case .block { margin-top: 1.9rem; }
+.case .block-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--primary);
+  padding-bottom: 0.4rem; margin-bottom: 0.65rem; border-bottom: 1px solid var(--line);
+}
+.case .block p { font-size: 14.5px; line-height: 1.65; max-width: 68ch; }
+.case .block ul { list-style: none; margin-top: 0.7rem; display: grid; gap: 8px; }
+.case .block li { font-size: 13.5px; color: var(--text-dim); line-height: 1.5; display: flex; gap: 10px; }
+.case .block li::before { content: "→"; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+/* right rail — title-block fact panels */
+.case .rhs { display: flex; flex-direction: column; gap: 1rem; align-self: start; position: sticky; top: 90px; }
+.case .panel { border: 1px solid var(--line-strong); background: var(--surface-1); padding: 1.1rem 1.25rem; }
+.case .panel h4 {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;
+}
+.case .kv { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 12.5px; }
+.case .kv .k { color: var(--muted); flex-shrink: 0; }
+.case .kv .v { color: var(--text); text-align: right; }
+.case .tech-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.case .tech-wrap span {
+  font-family: var(--mono); font-size: 11px; padding: 4px 9px;
+  border: 1px solid var(--line-strong); background: var(--surface-0); color: var(--text-dim);
+}
+.case .live {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 14px; border: 1.5px solid var(--ink); background: var(--ink); color: var(--bg);
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; transition: background .2s, border-color .2s;
+}
+.case .live:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
 
 /* ════════════════════ THE SYSTEM — flow diagram ════════════════════ */
 .flow {
@@ -867,9 +914,10 @@ footer.foot .tb-sheet .v {
 /* Image gallery inside a case study */
 .gallery {
   margin: 2rem 0 1rem;
-  display: grid; gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: center;
 }
+.gallery img { flex: 1 1 260px; max-width: 640px; min-width: 0; object-fit: contain; }
 .gallery img {
   width: 100%; height: auto; border-radius: 0; border: 1px solid var(--ink);
   display: block; transition: border-color .25s, transform .25s;

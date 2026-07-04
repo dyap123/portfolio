@@ -456,29 +456,6 @@
   .interview-tile p { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
   .interview-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 
-  /* Photo gallery */
-  .gallery {
-    display: grid; gap: 6px;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-  @media (min-width: 1200px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
-  .gallery .thumb {
-    aspect-ratio: 16/9; overflow: hidden; cursor: pointer;
-    background: var(--surface-0); border-radius: 2px; position: relative;
-  }
-  .gallery .thumb img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform .4s ease, filter .4s;
-    filter: grayscale(20%) brightness(0.88) contrast(1.08);
-  }
-  .gallery .thumb:hover img { filter: none; transform: scale(1.04); }
-  .gallery .thumb::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(135deg, rgba(30,75,143,0.08), transparent 50%);
-    opacity: 0; transition: opacity .3s;
-  }
-  .gallery .thumb:hover::after { opacity: 1; }
-
   /* Lightbox */
   .lightbox {
     position: fixed; inset: 0; z-index: 200; background: rgba(5,4,10,0.96);
@@ -677,44 +654,22 @@
         <div class="sector"><span>Sheet S-202 · Details — Case Studies</span></div>
         <h2 class="lg">How I <span class="grad">built it</span>.</h2>
         <p class="dim mt-2" style="max-width: 720px;" data-edit="cs-lede">
-          The Core Five in depth — the hub, the pour tracker, the embed map, the tool registry, the schedule builder — plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
+          The Core Five in depth — the pour tracker, the embed map, the tool registry, the schedule builder, and the hub that ties them together — plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
         </p>
       </div>
-      <span class="pill pill-primary">1 HUB · 6 FLAGSHIPS · 8 SHIPS</span>
+      <span class="pill pill-primary">5 CORE APPS · 1 AGENT</span>
     </div>
 
-    <!-- Launcher hero — the home for everything -->
-    <section class="launcher-hero reveal delay-1" id="launcher">
-      <div>
-        <div class="head">
-          <span class="num">00</span>
-          <span class="pill pill-primary">HUB</span>
-        </div>
-        <h2 data-edit="launcher-h">OpenYap Launcher — the home screen for twenty-three apps.</h2>
-        <p class="tagline" data-edit="launcher-tag">
-          A single dashboard with status pills and last-touched timestamps for every app in the OpenYap ecosystem — rebuilt in June with the Aurora tile grid. The team has one URL to remember instead of twenty-three.
-        </p>
-        <a class="cta" href="https://dyap123.github.io/openyap-launcher/" target="_blank" rel="noopener">
-          Open the launcher
-          <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span>
-        </a>
-      </div>
-      <div>
-        <!-- DROP: hero.png in assets/photos/case-studies/launcher/ -->
-        <img src="assets/photos/case-studies/launcher/hero.png" alt="OpenYap Launcher dashboard" loading="lazy" onerror="this.style.display='none'">
-      </div>
-    </section>
-
     <!-- Index -->
-    <div class="cs-index mt-8 reveal delay-2">
-      <a href="#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">Role-aware map of the whole jobsite</span></a>
-      <a href="#cup-dashboard"><span class="no">02 · Core</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking + embed verification</span></a>
-      <a href="#embedyap"><span class="no">03 · Core</span><span class="t">EmbedYap</span><span class="s">299 embeds extracted with CV, tracked as pins</span></a>
-      <a href="#tool-tracker"><span class="no">04 · Core</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry · ~65 lost tools fixed</span></a>
-      <a href="#superyap"><span class="no">05 · Core</span><span class="t">SuperYap</span><span class="s">Look-ahead builder · working-day engine</span></a>
-      <a href="#const-agent"><span class="no">06 · The Brain</span><span class="t">Mr. George</span><span class="s">LLM agents · RFI prep 40&rarr;6 min</span></a>
-      <a href="#formwork"><span class="no">07</span><span class="t">Formwork</span><span class="s">Sankey + 3D lattice budget intelligence</span></a>
-      <a href="#roadmap"><span class="no">08</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site + scroll-built skyline</span></a>
+    <div class="cs-index mt-8 reveal delay-1">
+      <a href="#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">Every layer of the jobsite on one role-aware map</span></a>
+      <a href="#cup-dashboard"><span class="no">02 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour-day tracking — footing map, trucks, checklists</span></a>
+      <a href="#embedyap"><span class="no">03 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds pulled from the plans by CV, tracked as live pins</span></a>
+      <a href="#tool-tracker"><span class="no">04 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — stopped the ~65-lost-tools bleed</span></a>
+      <a href="#superyap"><span class="no">05 · Schedule</span><span class="t">SuperYap</span><span class="s">The superintendent's look-ahead builder · Webcor exports</span></a>
+      <a href="#const-agent"><span class="no">06 · The Agent</span><span class="t">Mr. George</span><span class="s">LLM agents · RFI &amp; submittal prep 40&rarr;6 min</span></a>
+      <a href="#formwork"><span class="no">07 · Side Build</span><span class="t">Formwork</span><span class="s">Budget intelligence — Sankey flows + 3D lattice</span></a>
+      <a href="#roadmap"><span class="no">08 · Side Build</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site with a scroll-built skyline</span></a>
       
       
       
