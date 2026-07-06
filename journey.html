@@ -298,7 +298,9 @@
   .mag-badge .material-symbols-outlined { font-size: 13px; }
 
   /* ════════════════ SCROLL FX #1: TIMELINE RAIL ════════════════ */
-  .timeline-rail {
+  /* Retired: the new horizontal header timeline replaces this left rail. */
+  .timeline-rail { display: none !important; }
+  .timeline-rail-legacy {
     position: fixed; left: 28px; top: 120px; bottom: 120px; width: 2px;
     background: var(--line); z-index: 35; pointer-events: none;
   }
@@ -515,6 +517,42 @@
     color: var(--muted); text-transform: uppercase;
   }
   .lightbox-count b { color: var(--primary); font-weight: 700; }
+
+  /* ── Journey header — horizontal chapter timeline (distinct from About) ── */
+  .jrn-header { padding: 2.75rem 2.75rem 0; }
+  @media (max-width: 720px) { .jrn-header { padding: 1.5rem 1.25rem 0; } }
+  .jrn-lead { max-width: 720px; margin-bottom: 2.5rem; }
+  .jrn-timeline {
+    display: flex; border-top: 2px solid var(--ink); overflow-x: auto;
+    scrollbar-width: thin; scrollbar-color: var(--primary-dim) transparent;
+  }
+  .jrn-timeline::-webkit-scrollbar { height: 5px; }
+  .jrn-timeline::-webkit-scrollbar-thumb { background: var(--primary-dim); }
+  .jt-node {
+    flex: 1 0 auto; min-width: 128px; padding: 1.15rem 1.15rem 1.6rem;
+    border-right: 1px solid var(--line); position: relative; color: var(--text);
+    transition: background .2s;
+  }
+  .jt-node:last-child { border-right: none; }
+  .jt-node::before {
+    content: ""; position: absolute; top: -8px; left: 1.15rem; width: 13px; height: 13px;
+    background: var(--surface-0); border: 2.5px solid var(--primary); border-radius: 50%; transition: all .2s;
+  }
+  .jt-node.on::before, .jt-node:hover::before { background: var(--secondary); border-color: var(--secondary); }
+  .jt-node:hover { background: var(--accent-soft); }
+  .jt-node .yr { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--primary); }
+  .jt-node .t { display: block; font-family: var(--head); font-weight: 600; font-size: 14.5px; color: var(--ink); margin-top: 7px; line-height: 1.2; letter-spacing: -0.01em; }
+  .jt-node:hover .t { color: var(--primary); }
+
+  /* ── Interview stats — clean bordered stat row ── */
+  .interview-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line-strong); border: 1.5px solid var(--ink); margin: 1.75rem 0 0.5rem;
+  }
+  @media (max-width: 560px) { .interview-stats { grid-template-columns: repeat(2, 1fr); } }
+  .interview-stats .istat { background: var(--surface-0); padding: 1.1rem 1.15rem; display: flex; flex-direction: column; gap: 6px; }
+  .interview-stats .v { font-family: var(--head); font-weight: 700; font-size: clamp(26px, 3vw, 34px); color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+  .interview-stats .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -527,7 +565,7 @@
   <a class="dot" href="#fsae"        data-ch="03" data-title="CPP FSAE · Suspension"></a>
   <a class="dot" href="#clune"       data-ch="04" data-title="Clune · AI Seed"></a>
   <a class="dot" href="#tour"        data-ch="05" data-title="AI × Construction Pitch Tour"></a>
-  <a class="dot" href="#webcor"      data-ch="06" data-title="Webcor + OpenYap Suite"></a>
+  <a class="dot" href="#webcor"      data-ch="06" data-title="Webcor"></a>
   <a class="dot" href="#field"       data-ch="07" data-title="Field Experience"></a>
   <a class="dot" href="#future"      data-ch="08" data-title="Just Getting Started"></a>
 </nav>
@@ -547,8 +585,8 @@
     <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
     <div class="nav-links">
       <a href="index.html">About</a>
+      <a href="projects.html">Projects</a>
       <a href="journey.html" class="active">Journey</a>
-      <a href="vision.html">Vision</a>
       <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
     </div>
     <details class="connect">
@@ -568,43 +606,27 @@
     <div class="sheet reveal">
       <div class="sheet-head">
         <span class="no">G-100</span>
-        <span class="t">Cover — The Journey of Danzel Yap</span>
-        <span class="meta">Rev △2 · Chronological · 2014 → Now</span>
+        <span class="t">The Journey — 2014 → Now</span>
+        <span class="meta">Chronological · One builder, a decade of builds</span>
       </div>
-      <div class="cover-grid">
-        <div class="cover-left">
-          <h1 class="cover-title">The <span class="grad">journey.</span></h1>
-          <div class="stamp" style="margin-top: 1.5rem;"><span>Issued for Construction</span></div>
-          <p class="journey-intro mt-6" data-edit="journey-pitch-v2">
-            I'm a Project Engineer on the <strong>$2B</strong> LA Convention Center expansion who ships production software. <strong>Five live apps</strong> my crew opens every morning — tool tracking, embeds, scheduling, pours, one command center — saving each project engineer <strong>about a day a week</strong>. My vendor evaluation saved the company a $75K/yr contract — the need was already covered by tools I'd built in-house. The chapters in the index are how I got here. <strong style="color: var(--text);">We are just getting started.</strong>
+      <div class="jrn-header">
+        <div class="jrn-lead">
+          <div class="sector"><span>The Journey</span></div>
+          <h1 class="cover-title" data-motion="hero">A decade of <span class="grad">building things.</span></h1>
+          <p class="journey-intro mt-4" data-edit="journey-lead">
+            A wooden robot, a soldering iron, a race car, a five-app suite on a $2B jobsite. The through-line has never changed: find someone whose day is harder than it needs to be, and build until it isn't. Here's how I got here — one chapter at a time.
           </p>
-          <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
-            <a href="index.html#system" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">account_tree</span>The system</a>
-            <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" class="btn"><span class="material-symbols-outlined" style="font-size:16px">description</span>Résumé</a>
-          </div>
         </div>
-        <aside class="cover-index">
-          <div class="ci-head">Drawing Index</div>
-          <div class="ci-div" style="border-top:none; margin-top:0;">General — The Journey</div>
-          <a href="#robotics"><span class="no">G-101</span><span class="t">Robotics</span><span class="yr">2014</span></a>
-          <a href="#keyboards"><span class="no">G-102</span><span class="t">Keyboard Business</span><span class="yr">2018</span></a>
-          <a href="#fsae"><span class="no">G-103</span><span class="t">CPP FSAE Electric</span><span class="yr">2018–22</span></a>
-          <a href="#clune"><span class="no">G-104</span><span class="t">Clune · AI Seed</span><span class="yr">2024</span></a>
-          <a href="#tour"><span class="no">G-105</span><span class="t">Interview Tour</span><span class="yr">2024–25</span></a>
-          <a href="#webcor"><span class="no">G-106</span><span class="t">Webcor + OpenYap</span><span class="yr">2025–Now</span></a>
-          <a href="#field"><span class="no">G-107</span><span class="t">Field Experience</span><span class="yr">Now</span></a>
-          <a href="#future"><span class="no">G-108</span><span class="t">Where I'm At Now</span><span class="yr">The Suite</span></a>
-          <div class="ci-div">Structural — The Work</div>
-          <a href="index.html#system"><span class="no">S-000</span><span class="t">The System</span><span class="yr">4 apps + hub</span></a>
-          <a href="index.html#case-studies"><span class="no">S-201</span><span class="t">The Work</span><span class="yr">5 core apps</span></a>
-          <a href="vision.html"><span class="no">A-301</span><span class="t">The Vision</span><span class="yr">4 phases</span></a>
-        </aside>
-      </div>
-      <div class="cover-data">
-        <div class="cd"><span class="v"><span data-count="75" data-prefix="$" data-suffix="K">$0</span></span><span class="k">Annual cost avoided</span><span class="s">Vendor evaluation · board review</span></div>
-        <div class="cd"><span class="v">~1 day/wk</span><span class="k">Saved per project engineer</span><span class="s">Across the whole suite</span></div>
-        <div class="cd"><span class="v"><span data-count="5">0</span></span><span class="k">Core field apps</span><span class="s">Used daily on a $2B jobsite</span></div>
-        <div class="cd"><span class="v">40&rarr;6 min</span><span class="k">RFI &amp; submittal prep</span><span class="s">Mr. George — the agent</span></div>
+        <div class="jrn-timeline" data-motion-stagger>
+          <a href="#robotics" class="jt-node"><span class="yr">2014</span><span class="t">Robotics</span></a>
+          <a href="#keyboards" class="jt-node"><span class="yr">2018</span><span class="t">Keyboards</span></a>
+          <a href="#fsae" class="jt-node"><span class="yr">2018–22</span><span class="t">CPP FSAE</span></a>
+          <a href="#clune" class="jt-node"><span class="yr">2024</span><span class="t">Clune · AI seed</span></a>
+          <a href="#tour" class="jt-node"><span class="yr">2024–25</span><span class="t">Research walks</span></a>
+          <a href="#webcor" class="jt-node"><span class="yr">2025</span><span class="t">Webcor</span></a>
+          <a href="#field" class="jt-node"><span class="yr">Now</span><span class="t">In the field</span></a>
+          <a href="#future" class="jt-node on"><span class="yr">Next</span><span class="t">Just getting started</span></a>
+        </div>
       </div>
     </div>
   </div>
@@ -755,16 +777,16 @@
           First time on a real construction site. <strong>Clune Construction</strong> — high-end commercial interiors, tight schedules, no slack for paperwork drift. The internship was supposed to teach me how a project actually moves. It did. It also taught me how much of a PE's day is information shuffling that no one is paid to redesign.
         </p>
         <p data-edit="clune-p2">
-          Submittals queued behind one engineer's inbox. RFIs answered three days later because someone had to walk three drawings to find the right detail. Schedule slips that no model would have caught. By the end of the summer, the idea was concrete: <em>most of this is pattern matching that an AI could do faster than a human, if someone bothered to wire it up.</em>
+          The work was real. I processed submittals and wrote my first RFIs on the <strong>Winston &amp; Strawn</strong> office remodel in San Francisco, leveled subcontractor bids on tile and framing for the four-story <strong>Skadden</strong> ground-up in Palo Alto, walked the job with subs, and watched a <strong>Menlo Park fertility center</strong> close out — demo turning to framing turning to drywall. Underneath all of it: submittals queued behind one inbox, RFIs answered three days late because someone had to walk three drawings to find a detail. <em>Most of it was pattern matching that an AI could do faster, if someone bothered to wire it up.</em>
         </p>
         <p data-edit="clune-p3">
           That's the seed every chapter after this is about cashing in. The next two years I'd spend asking working construction professionals if the idea held water — and then quietly building the first version on weekends.
         </p>
         <div class="facts">
-          <div class="fact"><div class="v">Intern</div><div class="k">First site exposure</div></div>
-          <div class="fact"><div class="v">Submittals</div><div class="k">First bottleneck spotted</div></div>
-          <div class="fact"><div class="v">RFI</div><div class="k">Response-time gap</div></div>
-          <div class="fact"><div class="v">Idea</div><div class="k">AI in construction</div></div>
+          <div class="fact"><div class="v">SF Bay Area</div><div class="k">Clune · PM intern · 2024</div></div>
+          <div class="fact"><div class="v">First RFIs</div><div class="k">Winston &amp; Strawn remodel</div></div>
+          <div class="fact"><div class="v">Bid leveling</div><div class="k">Skadden · tile &amp; framing</div></div>
+          <div class="fact"><div class="v">Closeout</div><div class="k">Menlo Park fertility center</div></div>
         </div>
       </div>
       <div class="visual dual">
@@ -791,31 +813,31 @@
     <div class="interview-layout mt-8">
       <div class="reveal">
         <p style="color: var(--text); font-size: 15.5px; line-height: 1.7; max-width: 62ch;" data-edit="tour-p1">
-          Started as a Cal Poly Pomona research project in <strong>February 2025</strong>: interview construction professionals about how they actually use AI — not how vendors say they should. Walked into a <strong>Webcor</strong> SF skyscraper interview, then chained walks across <strong>Las Vegas</strong> casino projects (Resorts World, Gentle Monster, Mirage, Durango), <strong>UC Irvine</strong>, then more SoCal and San Diego sites. Every conversation reshaped what was worth building.
+          Started as a Cal Poly Pomona research project in <strong>February 2025</strong>: interview construction professionals about how they actually use AI — not how vendors say they should. The walks did double duty as an education. With <strong>Webcor</strong> I walked <strong>UCI Mesa Court Expansion</strong>, <strong>Olympic &amp; Hill</strong>, and <strong>Peak Plaza Apartments</strong>; in <strong>Las Vegas</strong> I saw Gentle Monster's finished retail buildout with Shaw Lundquist, learned <strong>grade matching</strong> on the Durango casino interior, and got the real story behind Resorts World — restaurant fire permits gating the opening, and a facade meant to be gold until Wynn sued over the look. Every conversation reshaped what was worth building.
         </p>
         <p class="mt-4" style="color: var(--text); font-size: 15.5px; line-height: 1.7; max-width: 62ch;" data-edit="tour-p2">
           CPP <strong>awarded me an office</strong> on campus to keep building the idea. The buildout never finished — the offer mattered more than the room. By the end of 2025 the research had compounded into a working system, and the next step was to take it to a real $2B jobsite.
         </p>
 
         <!-- Stats -->
-        <div class="facts" style="margin-top: 1.5rem;">
-          <div class="fact"><div class="v"><span data-count="30" data-suffix="+">0</span></div><div class="k">Conversations</div></div>
-          <div class="fact"><div class="v"><span data-count="5">0</span></div><div class="k">Cities walked</div></div>
-          <div class="fact"><div class="v"><span data-count="70" data-suffix="min">0</span></div><div class="k">Avg session</div></div>
-          <div class="fact"><div class="v">Feb 2025</div><div class="k">Opened</div></div>
+        <div class="interview-stats">
+          <div class="istat"><span class="v"><span data-count="30" data-suffix="+">0</span></span><span class="k">Conversations</span></div>
+          <div class="istat"><span class="v"><span data-count="5">0</span></span><span class="k">Cities walked</span></div>
+          <div class="istat"><span class="v"><span data-count="70" data-suffix="min">0</span></span><span class="k">Avg session</span></div>
+          <div class="istat"><span class="v">FEB 2025</span><span class="k">Kicked off</span></div>
         </div>
 
         <!-- Locations -->
         <div class="roles-block">
-          <h4 data-edit="loc-h">Where the conversations happened</h4>
+          <h4 data-edit="loc-h">Jobs I walked · sites I saw</h4>
           <div class="pill-grid">
+            <span class="p">UCI Mesa Court · Webcor</span>
+            <span class="p">Olympic &amp; Hill · Webcor</span>
+            <span class="p">Peak Plaza Apts · Webcor</span>
+            <span class="p">Gentle Monster · Shaw Lundquist</span>
+            <span class="p">Durango · Las Vegas</span>
+            <span class="p">Resorts World · Las Vegas</span>
             <span class="p">Webcor · SF skyscraper</span>
-            <span class="p">Las Vegas · Resorts World</span>
-            <span class="p">Las Vegas · Gentle Monster</span>
-            <span class="p">Las Vegas · Mirage</span>
-            <span class="p">Las Vegas · Durango</span>
-            <span class="p">UCI · Irvine</span>
-            <span class="p">San Diego · multiple sites</span>
             <span class="p">Cal Poly Pomona</span>
           </div>
         </div>
@@ -841,6 +863,13 @@
             <div class="body">
               <h5 data-edit="ins5-h">Translation is unpaid work that the foreman absorbs.</h5>
               <p data-edit="ins5-b">A large share of LA-area crews speak Spanish as their first language. Every cost-code list, inspection checklist, and RFI reply gets translated in real time by the foreman, or it gets followed only halfway. Every OpenYap sheet now ships in English and Spanish from the start.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <div class="n">04</div>
+            <div class="body">
+              <h5 data-edit="ins6-h">The best lessons came from the walls, not the slides.</h5>
+              <p data-edit="ins6-b">Durango taught me <em>grade matching</em> — how two floor systems reconcile when they meet at different elevations. Resorts World taught me how a restaurant's fire permits can gate an opening, and how a facade meant to be gold turned into a lawsuit when Wynn claimed the look. You don't get that from a webinar.</p>
             </div>
           </div>
         </div>
@@ -955,15 +984,15 @@
 </section>
 
 <!-- 06 · WEBCOR + OPENYAP -->
-<section id="webcor" class="sheet-sec" data-ch="06" data-title="Webcor + OpenYap Suite">
+<section id="webcor" class="sheet-sec" data-ch="06" data-title="Webcor">
   <div class="wrap">
     <div class="sheet">
-      <div class="sheet-head"><span class="no">G-106</span><span class="t">Chapter 06 — Webcor + OpenYap</span><span class="meta">2025 – Present</span></div>
+      <div class="sheet-head"><span class="no">G-106</span><span class="t">Chapter 06 — Webcor</span><span class="meta">2025 – Present</span></div>
       <div class="sheet-body">
     <div class="story reveal">
       <div class="copy">
-        <span class="mag-badge mb-4"><span class="material-symbols-outlined">stars</span>Day job + the suite</span>
-        <h2>Webcor + <span class="grad">OpenYap.</span></h2>
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">stars</span>The day job + the suite</span>
+        <h2>The <span class="grad">Webcor</span> era.</h2>
         <p data-edit="webcor-p1">
           Full-time Project Engineer at <strong>Webcor Builders</strong> on the <strong>LACC Convention Center Upgrade Program</strong> — a $2 billion modernization of the Los Angeles Convention Center. I run concrete operations across four sections: foundation pours, embed tracking, inspection coordination, takeoff, QC.
         </p>
@@ -980,7 +1009,7 @@
           <div class="fact"><div class="v"><span data-count="6" data-suffix="×">0</span></div><div class="k">Faster prep</div></div>
         </div>
         <div class="mt-6 flex gap-3" style="flex-wrap: wrap;">
-          <a href="index.html#case-studies" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+          <a href="projects.html#cs" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
           <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Launcher</a>
           <a href="https://dyap123.github.io/openyap-roadmap/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>Roadmap</a>
         </div>
@@ -997,10 +1026,10 @@
     <div class="mini-timeline-wrap proj-showcase reveal">
       <div class="mini-timeline-head">
         <div>
-          <div class="eyebrow" data-edit="proj-eyebrow">OpenYap suite · what's running</div>
-          <h3 data-edit="proj-h">Six tools the crew actually opens.</h3>
+          <div class="eyebrow" data-edit="proj-eyebrow">The beta era · learning to ship</div>
+          <h3 data-edit="proj-h">Where I learned to deploy.</h3>
         </div>
-        <p class="lede" data-edit="proj-lede">Each card is a real project deployed on the LACC site. Telegram bot for daily flow, Discord agents for coordination, Mr. George for the construction questions, CUP for pours, posters for the trailer wall.</p>
+        <p class="lede" data-edit="proj-lede">These were the beta versions — the first builds I tested on a live jobsite to figure out how to actually ship software to the field. A Telegram bot, Discord agents, the first Mr. George, an early CUP dashboard, trailer posters. Rough, but they taught me what survives 6 AM. The polished apps they became live on the <a href="projects.html#cs">Projects page</a>.</p>
       </div>
       <div class="mini-timeline">
 
@@ -1215,7 +1244,7 @@
 
     <div class="reveal mt-8 flex gap-3" style="flex-wrap: wrap; justify-content: center;">
       <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>All apps · Launcher</a>
-      <a href="index.html#case-studies" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+      <a href="projects.html#cs" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
       <a href="mailto:dyap123@gmail.com" class="btn"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
     </div>
 
@@ -1235,7 +1264,7 @@
     <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
       <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
       <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Launcher</a>
-      <a href="index.html#case-studies" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
+      <a href="projects.html#cs" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
     </div>
   </div>
 </section>
@@ -1255,7 +1284,7 @@
     <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
     <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
     <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
-    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html#case-studies">S-201 THE WORK</a> · <a href="vision.html">A-301 VISION</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html">G-001 ABOUT</a> · <a href="projects.html">C-000 CONSTRUCTION</a> · <a href="projects.html#cs">SOFTWARE</a></span></div>
     <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
     <div class="tb-sheet"><span class="k">Sheet</span><span class="v">G-100</span></div>
   </div>
@@ -1264,6 +1293,7 @@
 <button class="edit-toggle" id="editBtn">✎ Edit</button>
 
 <script src="assets/shell.js"></script>
+<script type="module" src="assets/motion.js"></script>
 <script>
 // ═════════════════════════════════════════
 //  PHOTO GALLERY + LIGHTBOX

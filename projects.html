@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Construction — Danzel Yap · LACC Expansion</title>
+<meta name="description" content="Construction projects — Danzel Yap, Project Engineer at Webcor on the $2B LA Convention Center Expansion (Future Vision 2029). The live foundation plan — 500+ footings and grade beams, 79 gridlines — drawn from real coordinates as a year of pours plays back."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0..1,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ── C-000 hero — scroll-scrubbed construction sequence ── */
+  .hero-scroll { position: relative; height: 340vh; }
+  .hero-sticky { position: sticky; top: 78px; padding: 1.5rem 1.75rem 1.25rem; }
+  .hero-title-row { display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .hero-title-row h1 { font-family: var(--head); font-weight: 700; letter-spacing: -0.025em; line-height: 1; font-size: clamp(26px, 3.2vw, 44px); color: var(--ink); }
+  .hero-title-row .lede { font-size: 13.5px; color: var(--text-dim); max-width: 52ch; }
+
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 272px; gap: 1.25rem; align-items: stretch; }
+
+  .hero-stage {
+    position: relative; height: min(64vh, 600px); overflow: hidden;
+    border: 1.5px solid var(--ink); background: var(--surface-0);
+    background-image:
+      linear-gradient(rgba(30,75,143,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,75,143,0.045) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  #laccPlan { width: 100%; height: 100%; display: block; }
+  /* plan-view linework is shared in style.css (.lacc-plan …) */
+
+  .hud {
+    position: absolute; left: 14px; bottom: 12px; z-index: 3;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    color: var(--muted); text-transform: uppercase;
+    background: rgba(251,250,247,0.88); border: 1px solid var(--line-strong);
+    padding: 7px 12px; display: inline-flex; gap: 10px; align-items: baseline;
+  }
+  .hud b { color: var(--primary); font-size: 15px; letter-spacing: 0; }
+  .hud .hud-date { color: var(--ink); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; min-width: 11ch; }
+  .hud .sep { width: 1px; align-self: stretch; background: var(--line-strong); }
+
+  .legend {
+    position: absolute; right: 14px; bottom: 12px; z-index: 3;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+    color: var(--muted); text-transform: uppercase;
+    background: rgba(251,250,247,0.88); border: 1px solid var(--line-strong);
+    padding: 6px 10px; display: inline-flex; gap: 12px; align-items: center;
+  }
+  .legend i { display: inline-block; width: 9px; height: 9px; margin-right: 5px; vertical-align: -1px; }
+  .legend .l-plan i { border: 1.5px solid rgba(26,25,21,0.55); background: transparent; }
+  .legend .l-pour i { background: var(--primary); }
+  .legend .l-cup i { background: var(--secondary); }
+  .legend .l-beam i { width: 12px; height: 4px; background: rgba(30,75,143,0.55); }
+
+  .stage-stamp { position: absolute; z-index: 3; opacity: 0; }
+  .stage-stamp .stamp { transform: rotate(-5deg) scale(0.82); }
+  #cupStamp { left: 8%; top: 30%; }
+  #cupStamp .stamp, #cupStamp .stamp > span { border-color: var(--approve); color: var(--approve); }
+
+  .scroll-hint {
+    margin-top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; align-items: center;
+  }
+  .scroll-hint::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  /* milestone rail */
+  .m-rail-wrap { display: flex; flex-direction: column; border: 1.5px solid var(--ink); background: var(--surface-0); }
+  .m-rail-head {
+    font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--bg); background: var(--ink); padding: 10px 14px;
+  }
+  .m-rail { list-style: none; display: flex; flex-direction: column; flex: 1; }
+  .m-rail li {
+    display: flex; gap: 10px; align-items: baseline; padding: 11px 14px; flex: 1;
+    border-top: 1px solid var(--line); font-family: var(--mono); font-size: 10.5px;
+    color: var(--muted);
+    transition: background .25s, color .25s, box-shadow .25s, transform .4s var(--spring);
+  }
+  .m-rail li.on { transform: translateX(3px); }
+  .m-rail li:first-child { border-top: none; }
+  .m-rail li .no { color: var(--primary); font-weight: 700; min-width: 20px; }
+  .m-rail li .t { letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.45; }
+  .m-rail li .d { margin-left: auto; font-size: 9px; white-space: nowrap; padding-left: 8px; }
+  .m-rail li.done { color: var(--text-dim); }
+  .m-rail li.on { background: var(--accent-soft); color: var(--ink); box-shadow: inset 3px 0 0 var(--primary); }
+  .m-rail li.on .d { color: var(--primary); }
+
+  @media (max-height: 760px) and (min-width: 861px) {
+    .hero-stage { height: 54vh; }
+    .hero-title-row .lede { display: none; }
+  }
+  @media (max-width: 860px) {
+    .hero-scroll { height: auto; }
+    .hero-sticky { position: static; padding: 1rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-stage { height: max(62vw, 340px); }
+    .scroll-hint { display: none; }
+    #laccPlan .glb { font-size: 44px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll { height: auto; }
+    .hero-sticky { position: static; }
+    .scroll-hint { display: none; }
+  }
+
+  /* ── C-102 role + C-103 log, side by side ── */
+  .role-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); gap: 1.75rem; align-items: start; }
+  @media (max-width: 900px) { .role-grid { grid-template-columns: 1fr; } }
+  /* role-main borrows .case inner styles but not its container box/grid */
+  .role-grid .role-main.case { display: block; padding: 0; border: none; box-shadow: none; background: none; }
+  .role-main .tagline { font-size: 15.5px; color: var(--text-dim); line-height: 1.6; max-width: 60ch; }
+  .role-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.6rem; }
+  @media (max-width: 560px) { .role-facts { grid-template-columns: 1fr; } }
+  .role-log { position: sticky; top: 90px; }
+  @media (max-width: 900px) { .role-log { position: static; } }
+
+  /* ── C-103 milestone log (fits the 400px role sidebar) ── */
+  .m-log { border: 1.5px solid var(--ink); background: var(--surface-0); }
+  .m-log .row {
+    display: grid; grid-template-columns: 26px minmax(0, 1fr) auto;
+    gap: 9px; align-items: center; padding: 11px 13px; border-top: 1px solid var(--line);
+  }
+  .m-log .row:first-child { border-top: none; background: var(--surface-1); border-bottom: 1.5px solid var(--ink); }
+  .m-log .row.hd span { font-family: var(--mono); font-size: 8.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .m-log .no { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--primary); align-self: start; }
+  .m-log .t { font-size: 12.5px; color: var(--text); line-height: 1.35; display: block; }
+  .m-log .d { font-family: var(--mono); font-size: 9px; letter-spacing: 0.05em; color: var(--primary); display: block; margin-top: 3px; }
+  .m-log .row > :last-child { align-self: start; }
+
+  /* ── C-201 project register ── */
+  .register { border: 1.5px solid var(--ink); background: var(--surface-0); }
+  .register .row {
+    display: grid; grid-template-columns: 40px 118px minmax(0, 1fr) 104px 118px;
+    gap: 14px; align-items: center; padding: 12px 18px; border-top: 1px solid var(--line);
+  }
+  .register .row:first-child { border-top: none; background: var(--surface-1); border-bottom: 1.5px solid var(--ink); }
+  .register .row.hd span { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .register .no { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--primary); }
+  /* thumbnail cell */
+  .register .th { position: relative; width: 118px; height: 72px; border: 1px solid var(--ink); overflow: hidden; background: var(--surface-1); }
+  .register .th img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .register .row:hover .th img { transform: scale(1.05); }
+  .register .th .ph-ico { position: absolute; inset: 0; z-index: 0; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 22px; }
+  .register .th.ph { border-style: dashed; }
+  .register .pj .t { font-family: var(--head); font-weight: 600; font-size: 15px; color: var(--ink); display: block; }
+  .register .pj .t a { color: var(--ink); }
+  .register .pj .t a:hover { color: var(--primary); }
+  .register .pj .r { font-size: 12px; color: var(--text-dim); margin-top: 3px; display: block; line-height: 1.4; }
+  .register .y { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); }
+  .register .row.reserved { opacity: 0.55; }
+  .register .row.reserved .t { font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  /* phase subheader rows */
+  .register .row.grp {
+    grid-template-columns: 110px 1fr; gap: 14px; align-items: baseline;
+    background: var(--surface-2); padding: 9px 18px; border-top: 1.5px solid var(--ink);
+  }
+  .register .row.grp .gk { font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em; color: var(--primary); }
+  .register .row.grp .gt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+  .register .pill { align-self: center; }
+  @media (max-width: 780px) {
+    .register .row { grid-template-columns: 32px 84px minmax(0, 1fr) 104px; }
+    .register .row > .y { display: none; }
+    .register .th { width: 84px; height: 54px; }
+  }
+
+  /* ── Construction / Software toggle (prominent, invites the click) ── */
+  .proj-toggle-sec { padding-top: 7rem; padding-bottom: 0.5rem; }
+  .proj-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .proj-header h1 { margin-top: 0.25rem; }
+  .proj-toggle-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .proj-toggle-hint {
+    font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--secondary-dim); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .proj-toggle-hint .material-symbols-outlined { font-size: 15px; }
+  .proj-toggle { display: inline-flex; border: 2px solid var(--ink); background: var(--surface-0); box-shadow: 6px 6px 0 rgba(26,25,21,0.18); }
+  .pt-btn {
+    font-family: var(--mono); font-size: 13.5px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 15px 28px; background: transparent; border: none;
+    color: var(--text-dim); cursor: pointer; transition: background .2s, color .2s;
+    border-right: 2px solid var(--ink); display: inline-flex; align-items: center; gap: 10px;
+  }
+  .pt-btn .material-symbols-outlined { font-size: 19px; }
+  .pt-btn:last-child { border-right: none; }
+  .pt-btn.active { background: var(--ink); color: var(--bg); }
+  .pt-btn:not(.active) { animation: ptbeckon 2.2s ease-in-out infinite; }
+  .pt-btn:not(.active):hover { background: var(--secondary); color: #fff; animation: none; }
+  @keyframes ptbeckon { 0%, 100% { background: transparent; } 50% { background: rgba(232,84,31,0.12); } }
+  @media (prefers-reduced-motion: reduce) { .pt-btn:not(.active) { animation: none; } }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  @media (max-width: 700px) {
+    .proj-header { flex-direction: column; align-items: stretch; gap: 1.25rem; }
+    .proj-toggle-wrap { align-items: stretch; }
+    .proj-toggle { width: 100%; }
+    .pt-btn { flex: 1; justify-content: center; padding: 15px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="inner">
+    <a href="index.html" class="brand"><span class="dot"></span>DANZEL YAP</a>
+    <div class="nav-links">
+      <a href="index.html">About</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="journey.html">Journey</a>
+      <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
+    </div>
+    <details class="connect">
+      <summary class="connect-btn">Connect <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></summary>
+      <div class="connect-menu">
+        <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank" rel="noopener"><span class="material-symbols-outlined" style="font-size:16px">hub</span>LinkedIn</a>
+        <a href="tel:+14083353615"><span class="material-symbols-outlined" style="font-size:16px">call</span>(408) 335-3615</a>
+        <a href="mailto:dyap123@gmail.com"><span class="material-symbols-outlined" style="font-size:16px">mail</span>dyap123@gmail.com</a>
+      </div>
+    </details>
+  </div>
+</nav>
+
+<!-- PROJECTS — CONSTRUCTION / SOFTWARE TOGGLE -->
+<section class="proj-toggle-sec">
+  <div class="wrap">
+    <div class="proj-header reveal">
+      <div>
+        <div class="sector"><span>Projects · Two Sides of the Build</span></div>
+        <h1 class="lg">The <span class="grad">work</span>.</h1>
+        <p class="dim mt-2" style="max-width: 60ch;">Two sides of the same builder — the concrete I pour on a $2B jobsite, and the software I ship for the crews who build it.</p>
+      </div>
+      <div class="proj-toggle-wrap">
+        <span class="proj-toggle-hint"><span class="material-symbols-outlined">touch_app</span> Two sides of me — switch anytime</span>
+        <div class="proj-toggle" role="tablist" aria-label="Project type">
+          <button class="pt-btn active" data-tab="construction" role="tab" aria-selected="true"><span class="material-symbols-outlined">construction</span>Construction</button>
+          <button class="pt-btn" data-tab="cs" role="tab" aria-selected="false"><span class="material-symbols-outlined">terminal</span>Software</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="tab-construction" class="tab-panel active">
+
+
+<!-- C-000 — CONSTRUCTION SEQUENCE (animated hero) -->
+<section class="sheet-sec" id="sequence">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head">
+        <span class="no">C-000</span>
+        <span class="t">LACC Expansion — Construction Sequence</span>
+        <span class="meta">Real foundation data · Scroll to build · Rev △0</span>
+      </div>
+      <div class="hero-scroll" id="heroScroll">
+        <div class="hero-sticky">
+          <div class="hero-title-row">
+            <h1>One building, <span class="grad">block by block.</span></h1>
+            <p class="lede" data-edit="c000-lede">The plan below is not an illustration — it is my live LACC Expansion foundation map: 79 gridlines, 500+ footings and grade beams, real coordinates, synced from the tool I run on site. Scroll, and a year of pours plays back.</p>
+          </div>
+          <div class="hero-grid">
+            <div>
+              <div class="hero-stage" id="heroStage">
+                <svg id="laccPlan" class="lacc-plan" preserveAspectRatio="xMidYMid meet"></svg>
+                <div class="hud"><span class="hud-date" id="hudDate">2025</span><span class="sep"></span><span>Poured</span><b id="footCount">0</b><span>/ <span id="footTotal">553</span></span></div>
+                <div class="legend"><span class="l-plan"><i></i>Laid out</span><span class="l-pour"><i></i>Poured</span><span class="l-cup"><i></i>CUP</span><span class="l-beam"><i></i>Grade beam</span></div>
+                <div class="stage-stamp" id="cupStamp"><div class="stamp"><span>CUP Foundations — Complete 5.29.26</span></div></div>
+              </div>
+              <div class="scroll-hint">Keep scrolling — schedule → layout &amp; sequencing → takeoffs → embeds &amp; QC → foundations pouring to Aug 2026</div>
+            </div>
+            <aside class="m-rail-wrap">
+              <div class="m-rail-head">Construction Sequence</div>
+              <ol class="m-rail" id="mRail"></ol>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C-101 — PROJECT DATA -->
+<section class="sheet-sec" id="project-data">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head">
+        <span class="no">C-101</span>
+        <span class="t">Project Data — Future Vision 2029</span>
+        <span class="meta">LA Convention Center Expansion &amp; Modernization</span>
+      </div>
+      <div class="sheet-body">
+        <p class="dim" style="max-width: 72ch; font-size: 15.5px; line-height: 1.7;" data-edit="c101-scope">
+          The LA Convention Center Expansion &amp; Modernization — "Future Vision 2029" — joins the West and South
+          Exhibit Halls over Pico Boulevard with new exhibit, meeting, and multipurpose space, rebuilding the
+          heart of downtown LA's event campus while it stays in operation. Webcor is building it. I'm on the
+          concrete: the foundations under everything you just watched rise.
+        </p>
+        <div class="stats-row mt-8 reveal delay-1">
+          <div class="stat-cell"><span class="stat-val">$2B</span><span class="stat-label">Program</span><span class="stat-sub">Expansion &amp; modernization</span></div>
+          <div class="stat-cell"><span class="stat-val"><span data-count="536">0</span></span><span class="stat-label">Footings &amp; beams</span><span class="stat-sub">Live coordinates drive the sheet above</span></div>
+          <div class="stat-cell"><span class="stat-val"><span data-count="79">0</span></span><span class="stat-label">Gridlines</span><span class="stat-sub">Column &amp; row lines · A → Z · W8 → W34</span></div>
+          <div class="stat-cell"><span class="stat-val">AUG 2026</span><span class="stat-label">Foundations complete</span><span class="stat-sub">CUP done 5.29.26 · balance in progress</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C-102 / C-103 — ROLE + MILESTONE LOG (side by side) -->
+<section class="sheet-sec" id="role">
+  <div class="wrap">
+    <div class="sector reveal"><span>Sheet C-102 · Role — Project Engineer</span><span class="sector-right">Webcor · Concrete</span></div>
+    <div class="role-grid reveal delay-1">
+      <div class="role-main case">
+        <div class="head"><span class="num">C-102</span></div>
+        <h2 class="md">Project Engineer — <span class="grad">concrete &amp; foundations.</span></h2>
+        <p class="tagline" data-edit="c102-tag">
+          My scope is the part of the building nobody photographs: footings, embeds, and the Central Utility
+          Plant — the orange zone on the sequence sheet, stamped complete 5.29.26. If it holds the building
+          up or keeps it running, it crossed my desk on the way into the ground.
+        </p>
+        <div class="block">
+          <div class="block-label">Scope</div>
+          <p data-edit="c102-scope">
+            Day-to-day ownership of concrete operations on the CUP and foundation packages: pour planning and
+            tracking across 500+ footings and grade beams, embed and anchor-bolt QC (299 embeds, 75 types, mapped pin by pin),
+            inspection coordination, and the RFI and submittal flow that keeps crews from waiting on answers.
+          </p>
+          <ul>
+            <li data-edit="c102-b1">Pour tracking live on the trailer wall and every phone</li>
+            <li data-edit="c102-b2">Embed verification before concrete, not after</li>
+            <li data-edit="c102-b3">RFI &amp; submittal prep cut from 40 to 6 minutes</li>
+            <li data-edit="c102-b4">Look-ahead schedule: an afternoon of Excel → minutes</li>
+          </ul>
+        </div>
+        <div class="role-facts">
+          <div class="panel">
+            <h4>Project Facts</h4>
+            <div class="kv"><span class="k">Firm</span><span class="v">Webcor Builders</span></div>
+            <div class="kv"><span class="k">Role</span><span class="v">Project Engineer</span></div>
+            <div class="kv"><span class="k">Scope</span><span class="v">Concrete · CUP · Foundations</span></div>
+            <div class="kv"><span class="k">Since</span><span class="v">2025</span></div>
+          </div>
+          <div class="panel">
+            <h4>Systems</h4>
+            <div class="tech-wrap">
+              <span>Procore</span><span>P6</span><span>Bluebeam</span><span>CUP Dashboard</span><span>EmbedYap</span><span>SuperYap</span>
+            </div>
+          </div>
+        </div>
+        <a class="live" href="projects.html#cs" style="margin-top:1rem;"><span class="material-symbols-outlined" style="font-size:15px">rocket_launch</span>See the software side</a>
+      </div>
+
+      <aside class="role-log">
+        <div class="sheet">
+          <div class="sheet-head">
+            <span class="no">C-103</span>
+            <span class="t">Milestone Log</span>
+          </div>
+          <div class="m-log">
+            <div class="row hd"><span>No.</span><span>Milestone</span><span>Status</span></div>
+            <div class="row"><span class="no">.1</span><span class="ml-cell"><span class="t" data-edit="ml-1">Aligned the schedule with the other trades</span><span class="d">2025</span></span><span><span class="pill-primary pill">Complete</span></span></div>
+            <div class="row"><span class="no">.2</span><span class="ml-cell"><span class="t" data-edit="ml-2">Finished layout &amp; pour sequencing</span><span class="d">2025</span></span><span><span class="pill-primary pill">Complete</span></span></div>
+            <div class="row"><span class="no">.3</span><span class="ml-cell"><span class="t" data-edit="ml-3">Performed concrete takeoffs</span><span class="d">2025</span></span><span><span class="pill-primary pill">Complete</span></span></div>
+            <div class="row"><span class="no">.4</span><span class="ml-cell"><span class="t" data-edit="ml-4">Tracked embeds &amp; verified QC standard</span><span class="d">2026</span></span><span><span class="pill-primary pill">Complete</span></span></div>
+            <div class="row"><span class="no">.5</span><span class="ml-cell"><span class="t" data-edit="ml-5">Pouring foundations — CUP complete 5.29.26</span><span class="d">→ AUG 2026</span></span><span><span class="pill-amber pill">In progress</span></span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- C-201 — PROJECT REGISTER -->
+<section class="sheet-sec" id="register">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head">
+        <span class="no">C-201</span>
+        <span class="t">Project Register — Sites I've Walked</span>
+        <span class="meta">Three phases · Bay Area → research walks → Webcor</span>
+      </div>
+      <div class="register">
+        <div class="row hd"><span>No.</span><span>Photo</span><span>Project</span><span>Firm</span><span>Status</span></div>
+
+        <div class="row grp"><span class="gk">2025 – NOW</span><span class="gt">Webcor — Project Engineer</span></div>
+        <div class="row">
+          <span class="no">.1</span>
+          <span class="th"><img src="assets/photos/case-studies/lacc-expansion/render1-slideshow-5f92b5e829.webp" alt="LACC Expansion" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t"><a href="#sequence">LA Convention Center Expansion</a></span><span class="r" data-edit="reg-lacc">Project Engineer — concrete, CUP &amp; foundations, embeds, RFIs</span></span>
+          <span class="y">Webcor</span>
+          <span><span class="pill-amber pill">In progress</span></span>
+        </div>
+
+        <div class="row grp"><span class="gk">2024 – 25</span><span class="gt">AI-in-construction research — jobs walked</span></div>
+        <div class="row">
+          <span class="no">.2</span>
+          <span class="th"><img src="assets/photos/journey/05-interviews/uci-1.jpg" alt="UCI Mesa Court Expansion" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-uci">UCI Mesa Court Expansion</span><span class="r" data-edit="reg-uci-r">Job walk · student housing, structure &amp; MEP coordination</span></span>
+          <span class="y">Webcor</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.3</span>
+          <span class="th"><img src="assets/photos/journey/07-field/olympic-hill-1.jpg" alt="Olympic &amp; Hill" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-olympic">Olympic &amp; Hill</span><span class="r" data-edit="reg-olympic-r">Job walk · excavation &amp; foundations</span></span>
+          <span class="y">Webcor</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.4</span>
+          <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Peak%20Plaza/images.jpeg" alt="Peak Plaza Apartments" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-peak">Peak Plaza Apartments</span><span class="r" data-edit="reg-peak-r">Job walk · residential high-rise</span></span>
+          <span class="y">Webcor</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.5</span>
+          <span class="th"><img src="assets/photos/journey/05-interviews/vegas-gentle-monster.jpg" alt="Gentle Monster" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-gm">Gentle Monster</span><span class="r" data-edit="reg-gm-r">Job walk · high-end retail buildout (completed)</span></span>
+          <span class="y">Shaw Lundquist</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.6</span>
+          <span class="th"><img src="assets/photos/journey/05-interviews/vegas-durango-1.jpg" alt="Durango Resort" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-durango">Durango Resort</span><span class="r" data-edit="reg-durango-r">Job walk · casino interior buildout — learned grade matching</span></span>
+          <span class="y">Las Vegas</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.7</span>
+          <span class="th"><img src="assets/photos/journey/05-interviews/vegas-resorts-world-1.jpg" alt="Resorts World" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-rw">Resorts World</span><span class="r" data-edit="reg-rw-r">Job walk · restaurant fire permits, facade scope (Wynn suit)</span></span>
+          <span class="y">Las Vegas</span>
+          <span><span class="pill">Walked</span></span>
+        </div>
+
+        <div class="row grp"><span class="gk">2024</span><span class="gt">Clune Construction — Project Management Intern · SF Bay Area</span></div>
+        <div class="row">
+          <span class="no">.8</span>
+          <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Winston%20and%20Strawn/WinstonStraw06.jpg" alt="Winston &amp; Strawn" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-ws">Winston &amp; Strawn</span><span class="r" data-edit="reg-ws-r">SF office interior remodel — submittals, first RFIs, demo→framing</span></span>
+          <span class="y">Clune</span>
+          <span><span class="pill">Interned</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.9</span>
+          <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Skadden/MB20210504_SkaddenArps_IMG_4758-scaled.jpg.webp" alt="Skadden Palo Alto" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-skadden">Skadden — Palo Alto</span><span class="r" data-edit="reg-skadden-r">4-story ground-up office — bid leveling (tile &amp; framing), sub walks</span></span>
+          <span class="y">Clune</span>
+          <span><span class="pill">Interned</span></span>
+        </div>
+        <div class="row">
+          <span class="no">.10</span>
+          <span class="th"><img src="assets/photos/case-studies/lacc-expansion/US%20Fertility%20-%20Menlo%20Park/232480_N30-scaled.jpg" alt="Menlo Park Fertility Center" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
+          <span class="pj"><span class="t" data-edit="reg-menlo">Menlo Park Fertility Center</span><span class="r" data-edit="reg-menlo-r">Project closeout — punch, turnover</span></span>
+          <span class="y">Clune</span>
+          <span><span class="pill">Interned</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- half the story → software -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <h2 class="lg mb-6">The building is <span class="grad">half the story.</span></h2>
+    <p class="dim" style="max-width: 580px; margin: 0 auto 2rem;">The other half is the software this jobsite taught me to build — the apps my crew runs every day. See the other side of the build.</p>
+    <button class="btn primary" data-goto="cs" type="button"><span class="material-symbols-outlined" style="font-size:16px">terminal</span>See the software side</button>
+  </div>
+</section>
+
+</div>
+
+<div id="tab-cs" class="tab-panel">
+<!-- ════════ CASE STUDIES (deep dives) ════════ -->
+<section id="case-studies">
+  <div class="wrap">
+    <div class="flex items-center justify-between mb-8 reveal">
+      <div>
+        <div class="sector"><span>Sheet S-202 · Details — Case Studies</span></div>
+        <h2 class="lg">What I have <span class="grad">built</span>.</h2>
+        <p class="dim mt-2" style="max-width: 720px;" data-edit="cs-lede">
+          The Core Five in depth — the pour tracker, the embed map, the tool registry, the schedule builder, and the hub that ties them together — plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
+        </p>
+      </div>
+      <span class="pill pill-primary">5 CORE APPS · 1 AGENT</span>
+    </div>
+
+    <!-- Index -->
+    <div class="cs-index mt-8 reveal delay-1">
+      <a href="#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">Every layer of the jobsite on one role-aware map</span></a>
+      <a href="#cup-dashboard"><span class="no">02 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour-day tracking — footing map, trucks, checklists</span></a>
+      <a href="#embedyap"><span class="no">03 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds pulled from the plans by CV, tracked as live pins</span></a>
+      <a href="#tool-tracker"><span class="no">04 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — stopped the ~65-lost-tools bleed</span></a>
+      <a href="#superyap"><span class="no">05 · Schedule</span><span class="t">SuperYap</span><span class="s">The superintendent's look-ahead builder · Webcor exports</span></a>
+      <a href="#const-agent"><span class="no">06 · The Agent</span><span class="t">Mr. George</span><span class="s">LLM agents · RFI &amp; submittal prep 40&rarr;6 min</span></a>
+      <a href="#formwork"><span class="no">07 · Side Build</span><span class="t">Formwork</span><span class="s">Budget intelligence — Sankey flows + 3D lattice</span></a>
+      <a href="#roadmap"><span class="no">08 · Side Build</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site with a scroll-built skyline</span></a>
+      
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- CASE 01 — COMMAND CENTER -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="command-center">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">01</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs2cc-h">Command Center — the whole jobsite on one sheet.</h2>
+        <p class="tagline" data-edit="cs2cc-tag">
+          The consolidation hub for the LACC concrete team. One role-aware map that unifies CUP footings and EmbedYap pins, plus RFIs, inspections, schedule, tools, and crew — rebuilt in June 2026 from a read-only sheet mirror into the team's operating picture.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2cc-problem">
+            The ecosystem got big. Each tool solved its own problem, but the superintendent's actual question — "what's ready for inspection, where are the embeds on F21, who's on site today" — crossed four apps. And the original Command Center only mirrored spreadsheets; it couldn't answer, only display.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2cc-approach-1">
+            Full rebuild as a consolidation hub. Still a static GitHub Pages SPA, but now reading the live Firebase namespaces of CUP, EmbedYap, Tool Tracker, and SuperYap — writing only to its own. Role-gated by Firebase Auth (Admin › Super › PM › PE, 2FA on Admin) with a global edit lock, so view-only is the default on every field device.
+          </p>
+                              <div class="assembly" data-assembly aria-label="Command Center — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Unified map" data-tech="Canvas|pan/zoom|SVG" data-detail="One canvas where footings, embeds, pours, RFI zones and markups are toggleable layers." data-metric="9 live views" data-connects="Reads every app"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Unified map</span><span class="tech">Canvas · pan/zoom · SVG</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Role gating" data-tech="Auth roles|tab filters" data-detail="Admin, Super, PM, PE — each tab shows only what that role needs to see." data-metric="4 roles" data-connects="Firebase Auth"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Role gating</span><span class="tech">Auth roles · tab filters</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Realtime" data-name="Live layers" data-tech="Firebase RTDB|listeners" data-detail="Tools, crew, pours and RFIs stream in live from the shared database." data-metric="&lt;1s updates" data-connects="CUP · Tools · SuperYap"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Live layers</span><span class="tech">Firebase RTDB · listeners</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Shared truth" data-tech="Firebase RTDB" data-detail="One schema the other four apps write to and this hub reads back." data-metric="5 sources" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Shared truth</span><span class="tech">Firebase RTDB</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Auth &amp; Drive" data-tech="Firebase Auth|2FA|Drive" data-detail="Secure login with 2FA; RFI PDFs link straight into Google Drive." data-metric="2FA" data-connects="Google Workspace"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Auth &amp; Drive</span><span class="tech">Firebase Auth · 2FA · Drive</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>The Map</b> — footings, embeds, pours, RFI zones and markups as toggleable layers.</li>
+                <li><b>RFIs</b> — drag-and-drop a PDF; it links to Drive and pins to its map zone.</li>
+                <li><b>Inspections</b> — Ready → Pass/Fail sign-off that logs who marked ready.</li>
+                <li><b>Live tools &amp; crew</b> — pulled from the shared Firebase, role-filtered per tab.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-label">The workspace</div>
+          <p data-edit="cs2cc-workspace">
+            Nine views behind one login — <span class="mono" style="font-size: 12.5px; letter-spacing: 0.06em; color: var(--primary);">DASHBOARD · THE MAP (LIVE) · SCHEDULE · INVENTORY · RFIS · POURS · SUBMITTALS · ATTENDANCE · ADMIN</span>. It's a true central workplace: the day starts here, and the other apps became its deep-edit tools. Click a footing on the Map and CUP opens to that pour; click an embed and EmbedYap opens to that pin.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/photos/case-studies/command-center/01-dashboard.jpg" alt="Command Center — the unified jobsite map with toggleable layers" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs2cc-result">
+            The featured tile on the launcher and the morning tailgate's one URL. The superintendent sees his layers, the PM sees her RFIs, the PE edits data — same map, different permissions. The original sheet-mirror version is preserved as a legacy tile.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Rebuilt</span><span class="v">2026-06</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Roles</span><span class="v">Admin › Super › PM › PE</span></div>
+          <div class="kv"><span class="k">Map layers</span><span class="v">6 toggleable</span></div>
+          <div class="kv"><span class="k">Reads</span><span class="v">4 app namespaces</span></div>
+        </div>
+        <div class="panel">
+          <h4>Role matrix</h4>
+          <div class="kv"><span class="k">Admin</span><span class="v">Full edit · users · 2FA</span></div>
+          <div class="kv"><span class="k">Super</span><span class="v">Schedule · Tools · Crew</span></div>
+          <div class="kv"><span class="k">PM</span><span class="v">RFIs · Submittals · Inspections</span></div>
+          <div class="kv"><span class="k">PE</span><span class="v">Data · Zones · Pours · Tools</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase RTDB</span><span>Firebase Auth</span><span>SheetJS</span><span>Apps Script</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/command-center/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 02 — CUP DASHBOARD -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="cup-dashboard">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">02</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs2-h">CUP Dashboard — a real-time view of the pour from any device.</h2>
+        <p class="tagline" data-edit="cs2-tag">
+          Real-time concrete-pour platform for the LACC project. Pour plans, embed verification, live trucks, mix designs, inspection ticker, and a camera-driven bulk PDF scanner — all synced across every device in the field.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2-problem">
+            On a pour day you have 50+ moving parts: concrete trucks arriving, rebar placement status, embeds to verify, inspectors to coordinate, and a PM chewing through a printed footing map. The existing tools were: a spreadsheet, a clipboard, and walkie-talkies.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2-approach-1">
+            Static GitHub Pages SPA. Pour ticket indexing now uses Drive as the source of truth (we dropped the Firebase write path for tickets — fewer moving parts, audit trail in the sheet). Foremen drag footing shapes on the map, long-press embeds to step through a checklist, tap a truck arriving to log it live, and a new bulk scanner uses the camera + edge detection to ingest multi-page ticket PDFs.
+          </p>
+                              <div class="assembly" data-assembly aria-label="CUP Dashboard — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Live views" data-tech="SVG|canvas|charts" data-detail="Footing map with status dots, a live pour donut, truck log and inspection ticker." data-metric="3 live tabs" data-connects="The trailer wall"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Live views</span><span class="tech">SVG · canvas · charts</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Field input" data-tech="long-press|tap" data-detail="Long-press checklists and tap-to-update status — glove-friendly at 6 AM." data-metric="1-thumb" data-connects="Every phone"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Field input</span><span class="tech">long-press · tap</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Engine" data-name="Status &amp; math" data-tech="JS|edge detection" data-detail="Status rules, mix-design math, and a bulk scanner with edge detection for PDF ingest." data-metric="10 CUP types" data-connects="Bulk PDF scanner"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Status &amp; math</span><span class="tech">JS · edge detection</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Pour record" data-tech="Firebase|Sheets" data-detail="Footings, pours, embeds and mixes — the auditable record of every placement." data-metric="500+ footings" data-connects="EmbedYap · Command Center"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Pour record</span><span class="tech">Firebase · Sheets</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Apps Script" data-tech="Apps Script|Alfred" data-detail="Sheet write-back for auditability, plus an embedded Alfred chat with pour context." data-metric="Auto-audit" data-connects="Google Sheets"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Apps Script</span><span class="tech">Apps Script · Alfred</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Footing map</b> with drag-edit and status dots (green / amber / red-pulse).</li>
+                <li><b>Live Pour tab</b> — donut chart, truck log and inspection ticker.</li>
+                <li><b>Embed tracker</b> with 10 CUP types and a long-press checklist.</li>
+                <li><b>Mix design panel</b> — PSI, aggregate, slump and LC3 cement.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/photos/case-studies/cup-dashboard/01-dashboard.jpg" alt="CUP Dashboard — live pour day view" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/cup-dashboard/02-footing-map.jpg" alt="CUP footing map with pour status" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs2-ties">
+            SuperYap's look-ahead feeds the pour dates; EmbedYap's install states surface on each footing's pre-pour checklist; Command Center mirrors the whole footing map as the base layer of its unified view.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs2-result">
+            Three sections of pour tracked end-to-end, live on the trailer iPad every morning. Inspectors confirm embed placement without a site visit, and the superintendent and project executive read pour status off the same screen the foremen update.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-02</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Truth</span><span class="v">Drive (tickets)</span></div>
+          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
+          <div class="kv"><span class="k">Embeds</span><span class="v">51A – 90A (10 types)</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Three.js</span><span>Firebase</span><span>PWA</span>
+            <span>Apps Script</span><span>Sheets API</span><span>SVG</span><span>Camera API</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/cup-dashboard/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 03 — EMBEDYAP -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="embedyap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">03</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-ey-h">EmbedYap — <span class="grad">299 embeds</span>, zero guesswork.</h2>
+        <p class="tagline" data-edit="cs-ey-tag">
+          Every anchor bolt and knife plate in the foundation, extracted from the plan PDFs with computer vision and tracked as live pins on a pan/zoom map. Miss an embed before a pour and you're coring concrete; EmbedYap exists so that never happens.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-ey-problem">
+            The embed plan was a PDF, a highlighter, and somebody's memory. 299 embeds across 75 types had to be installed in the right footing before each pour — and a missed one isn't a redo, it's a core drill through cured structural concrete with an engineer's sign-off. Status lived in whoever walked the deck last.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Build</div>
+          <p data-edit="cs-ey-build">
+            A Python + OpenCV pipeline reads the structural plan PDFs — classifying the orange install dots and OCR-ing the red type labels — and seeds Firebase with 299 georeferenced pins across 75 embed types. The front end renders them on a pan/zoom canvas map: green installed, red to-install, amber next in sequence, blue knife plates. Originally React; I later ported it to a tiny vanilla-JS runtime — same UX, no framework, no build step, faster on trailer iPads.
+          </p>
+                              <div class="assembly" data-assembly aria-label="EmbedYap — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Plan canvas" data-tech="Canvas|marquee" data-detail="Canvas-rendered pins with marquee multi-select and manager markup tools." data-metric="299 pins" data-connects="The plan set"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Plan canvas</span><span class="tech">Canvas · marquee</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Pin control" data-tech="drag|long-press" data-detail="Drag pins, long-press for status, filter by type — all directly on the plan." data-metric="75 types" data-connects="Field crews"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Pin control</span><span class="tech">drag · long-press</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · CV / OCR" data-name="Auto-extract" data-tech="OpenCV|OCR" data-detail="Pulls embeds from plan PDFs into classified pins — no hand-plotting." data-metric="299 auto-found" data-connects="Plan PDFs"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Auto-extract</span><span class="tech">OpenCV · OCR</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Embed record" data-tech="Firebase" data-detail="Every embed carries a type, a location, a status and an optional attached RFI." data-metric="299 × 75" data-connects="CUP · Command Center"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Embed record</span><span class="tech">Firebase</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Vanilla runtime" data-tech="nano.js|Firebase" data-detail="A React→vanilla migration cut load time on field devices; Firebase-backed." data-metric="Faster load" data-connects="GitHub Pages"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Vanilla runtime</span><span class="tech">nano.js · Firebase</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>CV/OCR extraction</b> — plan PDF to classified pins, no hand-plotting.</li>
+                <li><b>Canvas pins</b> with marquee multi-select and markup tools.</li>
+                <li><b>RFI on any pin</b> — the drawing question travels with the embed.</li>
+                <li><b>Dashboard &amp; export</b> — Excel/PDF out, plus a crew leaderboard.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-ey-ties">
+            Command Center reads the pin namespace and layers every embed onto the unified map; clicking a pin there deep-links back into EmbedYap for the heavy edits. CUP's pour checklists reference the same install states.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/photos/case-studies/embedyap/01-map.jpg" alt="EmbedYap — plan map with color-coded embed pins" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/embedyap/02-inventory.jpg" alt="EmbedYap inventory view" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-ey-result">
+            Embed status stopped being tribal knowledge. The pre-pour walk is a filter ("show me red pins in F21"), the leaderboard made installs a competition, and no embed has been cored out since it shipped.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Pins tracked</span><span class="v">299 · 75 types</span></div>
+          <div class="kv"><span class="k">Extraction</span><span class="v">OpenCV + OCR from plan PDFs</span></div>
+          <div class="kv"><span class="k">Runtime</span><span class="v">Vanilla JS · no build step</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Python</span><span>OpenCV</span><span>JavaScript</span><span>Canvas API</span><span>Firebase RTDB</span><span>SheetJS</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/embed-tracker/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 04 — TOOL TRACKER -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="tool-tracker">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">04</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-tt-h">Tool Tracker — the conex <span class="grad">stopped lying.</span></h2>
+        <p class="tagline" data-edit="cs-tt-tag">
+          An Assets-as-truth equipment registry for the field: orders, receiving, per-foreman checklists, a lost-tool log, and on-site verification. The workflow it replaced — ToolHound exports stapled to printed count sheets — lost roughly 65 tools in a single cycle.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-tt-problem">
+            Tool accountability ran on printouts taped to the trailer wall: a ToolHound export, re-keyed by hand, out of date the moment it printed. Tools moved between the conex, the deck, and foremen's trucks all day; the paper never followed. Across the previous cycle, about 65 tools simply disappeared — replacement cost plus the PM hours spent hunting them.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Build</div>
+          <p data-edit="cs-tt-build">
+            A Firebase-backed registry where the Assets list is the single source of truth. ToolHound CSV/PDF imports reconcile against it with alias resolution (the same drill has four names in four systems); assignments log who has what; a "verified on site" checklist catches missing or mis-tagged tools before they walk. The same data drives a printable bilingual 11&times;17 count poster for the trailer wall — print catching up to digital instead of fighting it.
+          </p>
+                              <div class="assembly" data-assembly aria-label="Tool Tracker — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Field UI" data-tech="Tailwind|SVG|print" data-detail="Glove-friendly screens and bilingual 11×17 count posters, all rendered from live data." data-metric="EN / ES" data-connects="The trailer wall"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Field UI</span><span class="tech">Tailwind · SVG · print</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="On-site check" data-tech="tap-verify" data-detail="Tap to verify a tool on site; the audit writes back to the registry as you walk." data-metric="1-tap audit" data-connects="Every foreman"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">On-site check</span><span class="tech">tap-verify</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Reconciliation" data-name="Alias resolution" data-tech="JS|parsers" data-detail="Import parsing and alias resolution — one drill, four names — plus verification rules." data-metric="4 names → 1" data-connects="ToolHound CSV/PDF"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Alias resolution</span><span class="tech">JS · parsers</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Assets registry" data-tech="source of truth" data-detail="The Assets list is truth: every tool has a holder, a location and a verification date." data-metric="~65 saved/cycle" data-connects="SuperYap · Command Center"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Assets registry</span><span class="tech">source of truth</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Firebase + Pages" data-tech="Firebase RTDB|GitHub Pages" data-detail="Real-time sync to every phone and the trailer wall; static hosting, no server." data-metric="Real-time" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Firebase + Pages</span><span class="tech">Firebase RTDB · GitHub Pages</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Assets-as-truth registry</b> with alias resolution across import formats.</li>
+                <li><b>Orders &amp; receiving flow</b> — new tools enter the registry, not a spreadsheet.</li>
+                <li><b>Per-foreman 11×17 checklists</b> bilingual EN/ES, printed from live data.</li>
+                <li><b>Lost-tool log</b> with an all-time count and value-on-site rollups.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-tt-ties">
+            Command Center's Inventory view and SuperYap's Tools tab both read this registry live — the superintendent sees the same asset truth next to the schedule that needs it.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/photos/case-studies/tool-tracker/01-tracker.jpg" alt="Tool Tracker — asset registry with live status" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-tt-result">
+            The ~65-tools-per-cycle bleed stopped: every tool now has a holder, a location, and a verification date. The count that used to take a morning of walking with a clipboard is a filter and a printout.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Baseline</span><span class="v">~65 tools lost / cycle</span></div>
+          <div class="kv"><span class="k">Imports</span><span class="v">ToolHound CSV/PDF + alias resolution</span></div>
+          <div class="kv"><span class="k">Output</span><span class="v">Bilingual 11&times;17 posters</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase RTDB</span><span>SheetJS</span><span>pdf.js</span><span>Tailwind</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/tool-tracker/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 05 — SUPERYAP -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="superyap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">05</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs-sy-h">SuperYap — the superintendent's <span class="grad">whole week on one sheet.</span></h2>
+        <p class="tagline" data-edit="cs-sy-tag">
+          The superintendent suite: a three-week look-ahead builder plus live Attendance and Tools tabs, reading the same shared Firebase as the rest of the set. The schedule that used to take an afternoon now regenerates in minutes.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs-sy-problem">
+            The look-ahead is the superintendent's core artifact — the sheet that tells forty people what happens for the next three weeks. Ours was redrawn by hand in Excel every week: chained dates recomputed manually, weekends and holidays skipped by eye, then an hour of formatting to match the Webcor standard before it could go on the wall.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs-sy-approach">
+            A schedule builder that thinks in working days. Activities chain off each other or take manual dates; change one duration and everything downstream recomputes, skipping weekends and holidays automatically. Repeating pour cycles drop in with one Insert Cycle click, and activities link to their CUP pours so schedule and field status agree.
+          </p>
+                              <div class="assembly" data-assembly aria-label="SuperYap — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Schedule builder" data-tech="grid|drag" data-detail="Chained or manual dating on a working-day grid, with Attendance and Tools tabs." data-metric="3 tabs" data-connects="The look-ahead"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Schedule builder</span><span class="tech">grid · drag</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Insert Cycle" data-tech="one-action" data-detail="Add a whole repeating pour sequence in a single action." data-metric="1 click = cycle" data-connects="Pour planners"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Insert Cycle</span><span class="tech">one-action</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Engine" data-name="Working-day math" data-tech="JS calendar" data-detail="Skips weekends and holidays; every date resolves to a real working day." data-metric="0 bad dates" data-connects="Webcor calendar"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Working-day math</span><span class="tech">JS calendar</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Schedule + reads" data-tech="Firebase RTDB" data-detail="Its own schedule plus live reads of Foreman Sign-In and Tool Tracker." data-metric="2 live reads" data-connects="Attendance · Tools"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Schedule + reads</span><span class="tech">Firebase RTDB</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Webcor export" data-tech="PDF|Excel" data-detail="One-click export to the Webcor-format look-ahead: PDF for the wall, Excel for PMs." data-metric="PDF + Excel" data-connects="The PM office"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Webcor export</span><span class="tech">PDF · Excel</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Working-day engine</b> — dating that skips weekends and holidays.</li>
+                <li><b>Insert Cycle</b> — a whole repeating pour sequence in one action.</li>
+                <li><b>Webcor export</b> — PDF for the wall, Excel for the PMs.</li>
+                <li><b>Live tie-ins</b> — reads Foreman Sign-In and Tool Tracker assets.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Ties into the system</div>
+          <p data-edit="cs-sy-ties">
+            Schedule activities link to CUP pours, Command Center syncs the look-ahead as the project's schedule truth, and the Attendance and Tools tabs read Foreman Sign-In and Tool Tracker live.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/photos/case-studies/superyap/01-schedule.jpg" alt="SuperYap — look-ahead schedule builder" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Impact</div>
+          <p data-edit="cs-sy-result">
+            The weekly afternoon of Excel surgery is gone. The look-ahead prints in the Webcor format the office expects, and the superintendent edits dates instead of redrawing sheets.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-06</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Tabs</span><span class="v">Schedule · Attendance · Tools</span></div>
+          <div class="kv"><span class="k">Exports</span><span class="v">PDF + XLSX · Webcor format</span></div>
+          <div class="kv"><span class="k">Links to</span><span class="v">CUP pours · shared Firebase</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase</span><span>SheetJS</span><span>jsPDF</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/look-ahead/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 06 — MR. GEORGE (Const-Agent web UI) -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="const-agent">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">06</span>
+          <span class="pill pill-primary">FLAGSHIP</span>
+        </div>
+        <h2 data-edit="cs1-h">Mr. George — a project-engineer assistant on every channel I work in.</h2>
+        <p class="tagline" data-edit="cs1-tag">
+          Internally codenamed Mr. George. Seventeen AI agents that read my emails, write my submittals, search 200+ drawings, dispatch to a research panel, and page me on Discord when something breaks. The const-agent web UI is the cockpit.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs1-problem">
+            A project engineer on a $2B job spends most of their day shuffling: copying RFI responses into trackers, searching drawings for one detail, drafting submittal cover letters, chasing down inspector confirmations. LLMs are good at every one of these tasks individually. Nobody had wired them together for construction PM yet.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs1-approach-1">
+            Built a multi-channel agent framework in Python. The same 17 agents — submittal coordinator, RFI triager, schedule analyst, drawing indexer, takeoff specialist, tool tracker, foreman roster, advisory panel of five — answer in Discord, Teams, and a dedicated web UI. Each channel routes to the right agent based on the message.
+          </p>
+          <p data-edit="cs1-approach-2">
+            Model providers are hot-swappable: Anthropic (Claude Opus), OpenAI (Codex via ChatGPT OAuth), MiniMax M2.7, Gemini, Ollama for local. If one goes down, the next provider picks up. Vision is enabled — paste an image directly into Alfred and he'll read it.
+          </p>
+                              <div class="assembly" data-assembly aria-label="Mr. George — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Chat + voice" data-tech="Web Speech|ElevenLabs" data-detail="A chat surface with a voice channel and a Web Speech mic." data-metric="Voice + text" data-connects="Discord · Teams · web"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Chat + voice</span><span class="tech">Web Speech · ElevenLabs</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Dispatch" data-name="Intent routing" data-tech="router|17 agents" data-detail="A dispatch agent reads intent and routes to one of 17 specialists." data-metric="17 specialists" data-connects="The advisory panel"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Intent routing</span><span class="tech">router · 17 agents</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Reasoning" data-name="Agent panel" data-tech="5 agents + mgr" data-detail="A 5-agent advisory panel researches, each with Drive folder routing." data-metric="5 + manager" data-connects="Google Drive"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Agent panel</span><span class="tech">5 agents + mgr</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Memory" data-name="Multi-vault" data-tech="192 + 25 notes" data-detail="A personal brain (192 notes) and a project brain (25 LACC notes)." data-metric="217 notes" data-connects="Obsidian vaults"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Multi-vault</span><span class="tech">192 + 25 notes</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Tools + keys" data-tech="Sheets API|Keychain" data-detail="Creates Sheets from chat; keys live in macOS Keychain — zero secrets in git." data-metric="0 secrets in git" data-connects="RFI · Submittal · Tools"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Tools + keys</span><span class="tech">Sheets API · Keychain</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Dispatch</b> routes intent to one of 17 specialists.</li>
+                <li><b>Advisory panel</b> — 5 research agents plus a manager, Drive-routed.</li>
+                <li><b>Multi-vault</b> — personal brain (192 notes) + project brain (25 LACC).</li>
+                <li><b>Sheets from chat</b> — Submittal, RFI, Tools and Embed trackers.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout" data-edit="cs1-callout">
+          Every node in the brain is a <strong>markdown file</strong>. Every connection is a <strong>wikilink</strong>. Alfred reads them, links them, and surfaces the right one when you ask. The user authors the brain by editing <code>.md</code> files in Obsidian — the AI is just the librarian.
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-launcher.png · 02-brain.png · 03-tool-tracker.png · 04-alfred.png in assets/photos/case-studies/mr-george/ -->
+          <img src="assets/photos/case-studies/mr-george/01-launcher.png" alt="Mr. George loading screen" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/02-brain.png" alt="Vault brain visualization" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/03-tool-tracker.png" alt="Tool tracker assets-sync UI" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/mr-george/04-alfred.png" alt="Alfred chat with orbital brain nodes" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs1-result">
+            Cuts a typical RFI/submittal prep from ~40 minutes to ~6. Drawing-search questions that used to take 10 minutes of sheet-flipping get answered in seconds. The Tools tab now ingests a ToolHound asset report and reconciles to the Assets sheet in one click. The full audit trail lives in SQLite — every question, every response, every tool call.
+          </p>
+          <div class="metric-strip">
+            <div><div class="v"><span data-count="17" data-suffix="">0</span></div><div class="k">AI Agents</div></div>
+            <div><div class="v"><span data-count="200" data-suffix="+">0</span></div><div class="k">Drawings Indexed</div></div>
+            <div><div class="v"><span data-count="24000" data-suffix="+">0</span></div><div class="k">Lines of Code</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2025-11</span></div>
+          <div class="kv"><span class="k">Language</span><span class="v">Python 3.14</span></div>
+          <div class="kv"><span class="k">Runtime</span><span class="v">Local macOS · Tailscale</span></div>
+          <div class="kv"><span class="k">Channels</span><span class="v">Discord · Teams · Web</span></div>
+          <div class="kv"><span class="k">Vaults</span><span class="v">2 (personal + project)</span></div>
+          <div class="kv"><span class="k">Lines</span><span class="v">~24,000+</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Python</span><span>FastAPI</span><span>Discord.py</span><span>SQLite</span>
+            <span>Anthropic</span><span>Codex OAuth</span><span>MiniMax M2.7</span><span>Gemini</span>
+            <span>Whisper</span><span>ElevenLabs</span><span>fitz</span><span>Obsidian</span>
+          </div>
+        </div>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 07 — FORMWORK -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="formwork">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">07</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs5-h">Formwork — a budget tool built around the way construction teams already think.</h2>
+        <p class="tagline" data-edit="cs5-tag">
+          OpenYap's own budget tracker. Categories sit inside formwork bays; planned spend reads as concrete pouring into each section; line items show as studs in the form. Underneath the metaphor: a Sankey flow view, a Cmd-K palette, a health gauge for variance against plan, and a 3D lattice for the compare view.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs5-problem">
+            Running a venture means tracking every dollar of the $1.2M seed across LLC / legal / infra / dev / marketing / ops. Spreadsheets work but don't let you think in line items inside each budget, and they don't show the flow of money. I wanted a construction-native UX for money.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs5-approach">
+            Firebase-backed single-file app. Each category drills into line items with statuses (planned / committed / done). The Plan view toggles between a Sankey flow and a Grid; scenarios let you fork the budget for what-ifs; Cmd-K palette hops to anything; a health gauge surfaces variance against plan in one glance. The Nodes view is a 3D formwork lattice — wireframe bays sized by planned total, concrete fill ∝ actual spend.
+          </p>
+                              <div class="assembly" data-assembly aria-label="Formwork — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Budget canvas" data-tech="Sankey|Cmd-K" data-detail="A Sankey Plan view with a Flow/Grid toggle and a Cmd-K command palette." data-metric="Cmd-K" data-connects="The budget"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Budget canvas</span><span class="tech">Sankey · Cmd-K</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Scenarios" data-tech="fork|compare" data-detail="Fork the budget and compare scenarios side-by-side." data-metric="∞ forks" data-connects="Cost planners"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Scenarios</span><span class="tech">fork · compare</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Engine" data-name="Variance" data-tech="variance calc" data-detail="A health gauge shows variance against plan, at a glance." data-metric="1 gauge" data-connects="The plan"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Variance</span><span class="tech">variance calc</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Cost model" data-tech="line items" data-detail="The budget model behind every view, scenario and export." data-metric="Line-item" data-connects="Excel export"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Cost model</span><span class="tech">line items</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="3D + export" data-tech="Three.js|Excel" data-detail="A 3D formwork lattice (Compare view) and Excel export for compliance." data-metric="3D + Excel" data-connects="Compliance"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">3D + export</span><span class="tech">Three.js · Excel</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Sankey Plan view</b> with a Flow / Grid toggle.</li>
+                <li><b>Scenarios</b> — fork the budget and compare side-by-side.</li>
+                <li><b>Health gauge</b> — variance against plan, at a glance.</li>
+                <li><b>3D formwork lattice</b> and Excel export for compliance.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-sankey.png · 02-lattice.png in assets/photos/case-studies/formwork/ -->
+          <img src="assets/photos/case-studies/formwork/01-sankey.png" alt="Formwork Sankey plan view" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/formwork/02-lattice.png" alt="Formwork 3D lattice compare view" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs5-result">
+            Live across devices, with the budget editable by anyone the project gives access to. Renamed from "Lumino" to "Formwork" so the tool's name lines up with the work it's tracking. The board now reviews budget plans the same way they'd review a pour schedule.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
+          <div class="kv"><span class="k">Categories</span><span class="v">8 default</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Three.js</span><span>Firebase</span><span>SheetJS</span><span>Tailwind</span><span>D3-Sankey</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/openyap-budget/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 08 — ROADMAP -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="roadmap">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">08</span>
+          <span class="pill">LIVE</span>
+        </div>
+        <h2 data-edit="cs3-h">OpenYap Roadmap — the investor deck as a building.</h2>
+        <p class="tagline" data-edit="cs3-tag">
+          A scroll-driven 3D construction site that reads as the OpenYap pitch deck. Each section of the page builds a floor of the tower; a lattice crane climbs alongside the scroll position. We deploy two themes so we can match the audience.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs3-problem">
+            A five-phase business plan delivered as slides loses people on slide three. We wanted a version of the same content that an investor or board member could absorb in roughly ninety seconds without giving it their full attention.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs3-approach">
+            Three.js scene locked behind a WebGL shader background. 45 floors of glass assemble as you scroll, a lattice crane climbs with them, 800 particles drift, 13 material stacks tilt and shadow. GPU is auto-detected so the experience scales from a phone to an M3 Max without dropping frames.
+          </p>
+                              <div class="assembly" data-assembly aria-label="OpenYap Roadmap — technical layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">← Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Scroll scene" data-tech="scroll → camera" data-detail="Scroll position drives the camera and the assembly progress." data-metric="Scroll-linked" data-connects="Investors"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Scroll scene</span><span class="tech">scroll → camera</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="Hover panels" data-tech="floor-highlight" data-detail="Glassmorphic panels light up on hover as you move through the scene." data-metric="Glass UI" data-connects="The viewer"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Hover panels</span><span class="tech">floor-highlight</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Render" data-name="GPU tuning" data-tech="GPU detect" data-detail="GPU auto-detection with aggressive performance tuning." data-metric="Auto-tuned" data-connects="Any device"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">GPU tuning</span><span class="tech">GPU detect</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Timeline" data-tech="timeline nodes" data-detail="The roadmap timeline behind the node network and panels." data-metric="80 nodes" data-connects="The pitch"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Timeline</span><span class="tech">timeline nodes</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="WebGL" data-tech="Three.js|shaders" data-detail="An aurora shader background and an 80-node orbital network." data-metric="WebGL" data-connects="GitHub Pages"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">WebGL</span><span class="tech">Three.js · shaders</span><span class="hint">Click ↗</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>Scroll-driven scene</b> — position maps to camera and progress.</li>
+                <li><b>Aurora shader</b> mesh-gradient background.</li>
+                <li><b>Node network</b> — 80 nodes with orbital connections.</li>
+                <li><b>Glass panels + GPU tuning</b> with floor-highlight on hover.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer · ← → to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <!-- DROP: 01-3d-build.png · 02-agreement.png in assets/photos/case-studies/roadmap/ -->
+          <img src="assets/photos/case-studies/roadmap/01-3d-build.png" alt="3D building mid-scroll with crane" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/photos/case-studies/roadmap/02-agreement.png" alt="Glassmorphic agreement panel" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs3-result">
+            Presented to the Webcor board; the scroll-to-build animation got the room engaged in a way the slide version hadn't. Hero stats now reflect the current plan: $1.2M seed, 1,000%+ projected ROI, $432M+ Y5 TAM. Two themes are deployed so we can match the meeting.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Launched</span><span class="v">2026-04</span></div>
+          <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
+          <div class="kv"><span class="k">Floors</span><span class="v">45</span></div>
+          <div class="kv"><span class="k">FPS</span><span class="v">60 · GPU-tuned</span></div>
+          <div class="kv"><span class="k">Themes</span><span class="v">Default + Stitch</span></div>
+        </div>
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>Three.js</span><span>WebGL</span><span>GLSL</span><span>GSAP</span><span>HTML/CSS</span>
+          </div>
+        </div>
+        <a class="live" href="https://dyap123.github.io/openyap-roadmap/" target="_blank">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- half the story → construction -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <h2 class="lg mb-6">The software is <span class="grad">half the story.</span></h2>
+    <p class="dim" style="max-width: 580px; margin: 0 auto 2rem;">The other half is the $2B jobsite it all runs on — the concrete I pour and the building coming out of the ground.</p>
+    <button class="btn primary" data-goto="construction" type="button"><span class="material-symbols-outlined" style="font-size:16px">construction</span>See the construction side</button>
+  </div>
+</section>
+
+</div>
+
+<!-- CTA -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <h2 class="lg mb-6">Want to <span class="grad">work together?</span></h2>
+    <p class="dim" style="max-width: 520px; margin: 0 auto 2rem;">Two sides of the same builder — always up for talking construction, AI, or field-first software.</p>
+    <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
+      <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+      <a href="journey.html" class="btn"><span class="material-symbols-outlined" style="font-size:16px">timeline</span>The journey</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="tb-cell"><span class="k">Project</span><span class="v">LACC EXPANSION — FUTURE VISION 2029</span></div>
+    <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
+    <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
+    <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html">G-001 ABOUT</a> · <a href="projects.html#cs">SOFTWARE</a> · <a href="journey.html">G-100 JOURNEY</a></span></div>
+    <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 0 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
+    <div class="tb-sheet"><span class="k">Sheet</span><span class="v">C-100</span></div>
+  </div>
+</footer>
+
+<button class="edit-toggle" id="editBtn">✎ Edit</button>
+
+<script src="assets/shell.js"></script>
+<script type="module" src="assets/projects.js"></script>
+<script type="module" src="assets/assembly.js"></script>
+<script type="module" src="assets/motion.js"></script>
+<script>
+/* Construction / Software toggle */
+(function () {
+  const btns = Array.from(document.querySelectorAll('.pt-btn'));
+  const panels = { construction: document.getElementById('tab-construction'), cs: document.getElementById('tab-cs') };
+  function show(tab) {
+    btns.forEach(b => { const on = b.dataset.tab === tab; b.classList.toggle('active', on); b.setAttribute('aria-selected', on); });
+    Object.entries(panels).forEach(([k, el]) => { if (el) el.classList.toggle('active', k === tab); });
+    try { history.replaceState(null, '', '#' + tab); } catch (e) {}
+    window.scrollTo({ top: 0 });
+  }
+  btns.forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
+  // cross-link buttons ("See the software side", etc.)
+  document.querySelectorAll('[data-goto]').forEach(el => el.addEventListener('click', () => show(el.dataset.goto)));
+  if (location.hash === '#cs') show('cs');
+})();
+</script>
+</body>
+</html>

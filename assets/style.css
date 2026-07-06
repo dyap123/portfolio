@@ -202,11 +202,14 @@ nav.topnav .inner {
 }
 
 /* ════════════════════ CARDS ════════════════════ */
+/* spring-feel hover motion (motion.dev-style overshoot, CSS approximation) */
+:root { --spring: cubic-bezier(.34, 1.56, .64, 1); }
+
 .card {
   background: var(--surface-0);
   border: 1px solid var(--line-strong);
   border-radius: 0;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
+  transition: border-color .3s, transform .35s var(--spring), box-shadow .3s;
 }
 .card:hover {
   border-color: var(--ink);
@@ -294,8 +297,10 @@ section.sheet-sec { padding: 2.2rem 0; }
 }
 .cover-index a {
   display: flex; align-items: baseline; gap: 14px; padding: 9px 20px;
-  border-top: 1px solid var(--line); color: var(--text); transition: background .15s;
+  border-top: 1px solid var(--line); color: var(--text);
+  transition: background .15s, transform .3s var(--spring);
 }
+.cover-index a:hover { transform: translateX(3px); }
 .cover-index a:first-of-type { border-top: none; }
 .cover-index a:hover { background: var(--accent-soft); color: var(--primary); }
 .cover-index a .no { font-family: var(--mono); font-size: 10.5px; color: var(--primary); font-weight: 600; letter-spacing: 0.06em; min-width: 52px; }
@@ -316,9 +321,11 @@ section.sheet-sec { padding: 2.2rem 0; }
   display: grid; grid-template-columns: 96px 1fr; grid-template-rows: auto auto;
   column-gap: 14px; align-items: baseline;
   padding: 14px 18px; color: var(--text);
-  border-top: 1px solid var(--line); transition: background .15s;
+  border-top: 1px solid var(--line);
+  transition: background .15s, transform .3s var(--spring);
   min-width: 0;
 }
+.cs-index a:hover { transform: translateX(3px); }
 .cs-index a:nth-child(odd) { border-right: 1px solid var(--line); }
 .cs-index a:nth-child(-n+2) { border-top: none; }
 .cs-index a:hover { background: var(--accent-soft); }
@@ -649,9 +656,9 @@ footer.foot .tb-sheet .v {
   text-transform: uppercase;
   padding: 12px 18px; border-radius: 0;
   border: 1.5px solid var(--ink); background: var(--surface-0);
-  color: var(--ink); cursor: pointer; transition: all .2s;
+  color: var(--ink); cursor: pointer; transition: all .2s, transform .35s var(--spring);
 }
-.btn:hover { background: var(--accent-soft); color: var(--primary); border-color: var(--primary); transform: none; box-shadow: 3px 3px 0 rgba(26,25,21,0.14); }
+.btn:hover { background: var(--accent-soft); color: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: 3px 3px 0 rgba(26,25,21,0.14); }
 .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .btn.primary:hover { background: var(--primary-deep); border-color: var(--primary-deep); color: var(--bg); box-shadow: 3px 3px 0 rgba(26,25,21,0.2); }
 
@@ -671,6 +678,8 @@ footer.foot .tb-sheet .v {
 .reveal.delay-3 { transition-delay: 300ms; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .card, .cs-index a, .cover-index a { transition: none; }
+  .btn:hover, .cs-index a:hover, .cover-index a:hover { transform: none; }
 }
 
 /* ════════════════════ EDIT MODE ════════════════════ */
@@ -684,6 +693,103 @@ footer.foot .tb-sheet .v {
 }
 .edit-toggle:hover, .edit-toggle.active { color: var(--primary); border-color: var(--primary); }
 [contenteditable="true"]:focus { outline: 2px solid var(--primary); outline-offset: 3px; background: var(--accent-soft); border-radius: 0; }
+
+/* ════════════════════ LACC FOUNDATION MAP (shared) ════════════════════ */
+/* Linework for the footing-map time-lapse — used by the Projects hero and
+   the About-page embed. Layout/HUD/stamps stay page-scoped. */
+.lacc-plan .gl { stroke: rgba(30,75,143,0.30); stroke-width: 2.5; fill: none; }
+.lacc-plan .gl.mn { stroke: rgba(30,75,143,0.10); stroke-width: 1.5; }
+.lacc-plan .glb { font-family: var(--mono); font-size: 31px; fill: var(--muted); letter-spacing: 0.04em; }
+.lacc-plan .pour-g { fill: rgba(30,75,143,0.72); stroke: rgba(26,25,21,0.5); stroke-width: 2.5; }
+.lacc-plan .pour-g.cupg { fill: rgba(232,84,31,0.78); }
+.lacc-plan .beam-g { fill: rgba(30,75,143,0.5); stroke: rgba(26,25,21,0.45); stroke-width: 1.5; stroke-dasharray: 9 5; }
+.lacc-plan .beam-g.cupg { fill: rgba(232,84,31,0.5); }
+.lacc-plan .fbLine { fill: none; stroke: var(--ink); stroke-width: 7; }
+.lacc-plan .cupLine { fill: none; stroke: var(--secondary); stroke-width: 7; }
+.lacc-plan .cupFill { fill: rgba(232,84,31,0.07); stroke: none; }
+.lacc-plan .cupTag { font-family: var(--mono); font-weight: 600; font-size: 36px; fill: var(--secondary-dim); letter-spacing: 0.22em; }
+.lacc-plan .na-c { fill: none; stroke: var(--ink); stroke-width: 4; }
+.lacc-plan .na-p { fill: var(--ink); }
+
+/* ════════════════════ EXPLODED ASSEMBLY — technical layers ════════════════════ */
+/* Each build broken into its technical layers as big 3D plates: explode on
+   scroll-in, tilt to the pointer, click a layer for an immersive detail overlay.
+   Features live on the right. assembly.js drives it; reduced-motion flattens. */
+.assembly { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); gap: 0; margin-top: 1.4rem; border: 1.5px solid var(--ink); background: var(--surface-0); position: relative; }
+@media (max-width: 760px) { .assembly { grid-template-columns: 1fr; } }
+.assembly-view {
+  position: relative; overflow: hidden; min-height: 460px;
+  perspective: 1250px; perspective-origin: 54% 44%;
+  border-right: 1.5px solid var(--ink);
+  background-image:
+    linear-gradient(rgba(30,75,143,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,75,143,0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+@media (max-width: 760px) { .assembly-view { border-right: none; border-bottom: 1.5px solid var(--ink); min-height: 400px; } }
+.assembly-plates { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-40deg); transition: filter .3s, opacity .3s; }
+.assembly.is-focused .assembly-plates { filter: blur(3px); opacity: 0.22; }
+.plate {
+  position: absolute; width: 300px; height: 182px; left: -150px; top: -91px;
+  transform-style: preserve-3d; will-change: transform;
+  background: var(--surface-0);
+  /* blueprint dot texture so a layer reads as a technical slab, not paper */
+  background-image: radial-gradient(rgba(30,75,143,0.07) 1px, transparent 1.4px);
+  background-size: 13px 13px;
+  border: 1.5px solid var(--ink);
+  /* hard colored edge = slab thickness, then a soft cast shadow */
+  box-shadow: 7px 8px 0 var(--lcd, rgba(26,25,21,0.4)), 0 30px 44px -22px rgba(26,25,21,0.5);
+  padding: 15px 20px; cursor: pointer; opacity: 0;
+  transition: border-color .25s, box-shadow .25s;
+}
+/* per-layer accent — Interface / Logic / Data / Backend */
+.plate[data-i="0"] { --lc: var(--primary);      --lcd: rgba(30,75,143,0.85); }
+.plate[data-i="1"] { --lc: var(--secondary);    --lcd: rgba(232,84,31,0.85); }
+.plate[data-i="2"] { --lc: var(--approve);      --lcd: rgba(46,107,79,0.85); }
+.plate[data-i="3"] { --lc: var(--primary-deep); --lcd: rgba(18,50,95,0.85); }
+.plate[data-i="4"] { --lc: #6B4E9E;             --lcd: rgba(107,78,158,0.85); }
+.plate .edge { position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: var(--lc); }
+.plate .lyr { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; background: var(--lc); padding: 4px 10px; display: inline-block; }
+.plate .pt { display: block; margin-top: 14px; font-family: var(--head); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--ink); line-height: 1.05; }
+.plate .tech { display: block; margin-top: 9px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--lc); font-weight: 500; }
+.plate .hint { position: absolute; right: 14px; bottom: 11px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+/* small technical "node" mark in the layer color */
+.plate::after { content: ""; position: absolute; right: 14px; top: 14px; width: 22px; height: 22px; border: 2px solid var(--lc); border-radius: 50%; opacity: 0.55; }
+.plate.on { border-color: var(--ink); box-shadow: 11px 13px 0 var(--lcd, rgba(26,25,21,0.5)), 0 42px 54px -20px rgba(26,25,21,0.55); }
+
+.assembly-back { position: absolute; left: 16px; top: 14px; z-index: 6; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--surface-0); border: 1.5px solid var(--ink); padding: 8px 13px; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .2s; }
+.assembly.is-focused .assembly-back { opacity: 1; visibility: visible; }
+.assembly-detail { position: absolute; inset: 0; z-index: 5; background: var(--surface-0); padding: 3.5rem 2.5rem 2rem; display: flex; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; }
+.assembly.is-focused .assembly-detail { visibility: visible; }
+.assembly-detail .d-num { font-family: var(--head); font-weight: 700; font-size: 72px; line-height: 1; letter-spacing: -0.04em; color: rgba(30,75,143,0.16); }
+.assembly-detail .d-lyr { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-top: 4px; }
+.assembly-detail .d-name { font-family: var(--head); font-weight: 700; font-size: 32px; letter-spacing: -0.02em; color: var(--ink); margin-top: 10px; line-height: 1.05; }
+.assembly-detail .d-tech { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.assembly-detail .d-tech span { font-family: var(--mono); font-size: 11px; padding: 5px 10px; border: 1px solid var(--line-strong); background: var(--surface-1); color: var(--text-dim); }
+.assembly-detail .d-body { font-size: 15px; line-height: 1.65; color: var(--text); margin-top: 18px; max-width: 44ch; }
+.assembly-detail .d-of { font-family: var(--head); font-size: 26px; color: var(--muted); font-weight: 700; margin-left: 6px; letter-spacing: -0.02em; }
+.assembly-detail .d-progress { display: flex; gap: 7px; margin-bottom: 16px; }
+.assembly-detail .d-progress .dot { width: 28px; height: 5px; background: var(--line-strong); cursor: pointer; transition: background .2s; }
+.assembly-detail .d-progress .dot.on { background: var(--primary); }
+.assembly-detail .d-progress .dot:hover { background: var(--primary-dim); }
+.assembly-detail .d-foot { display: flex; flex-wrap: wrap; gap: 1.75rem; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.assembly-detail .d-meta { display: flex; flex-direction: column; gap: 3px; }
+.assembly-detail .d-meta .dm-k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.assembly-detail .d-meta .dm-v { font-size: 13px; color: var(--ink); font-weight: 600; }
+.assembly-detail .d-nav { display: flex; gap: 10px; margin-top: 22px; }
+.assembly-detail .d-nav button { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 16px; border: 1.5px solid var(--ink); background: var(--surface-0); color: var(--ink); cursor: pointer; transition: background .2s, color .2s; }
+.assembly-detail .d-nav button:hover { background: var(--ink); color: var(--bg); }
+
+.assembly-side { padding: 1.5rem 1.6rem 1.3rem; display: flex; flex-direction: column; }
+@media (max-width: 760px) { .assembly-side { padding: 1.25rem; } }
+.assembly-side .side-head { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); padding-bottom: 0.6rem; border-bottom: 1.5px solid var(--ink); }
+.assembly-features { list-style: none; display: flex; flex-direction: column; }
+.assembly-features li { position: relative; padding: 12px 0 12px 22px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.5; color: var(--text-dim); }
+.assembly-features li:first-child { border-top: none; }
+.assembly-features li::before { content: "\2192"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+.assembly-features li b { color: var(--ink); }
+.assembly-cap { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: 12px; margin-top: auto; border-top: 1.5px solid var(--ink); }
+@media (prefers-reduced-motion: reduce) { .plate { opacity: 1; } .assembly-plates { transition: none; } }
 
 /* ════════════════════ PROJECTS ════════════════════ */
 .project-card {
