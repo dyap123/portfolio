@@ -13,7 +13,10 @@ import { dirname, resolve } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const GEO_SRC = '/Users/jjiii/cup-dashboard/foundation_geo.js';
-const EDITS_URL = 'https://gen-lang-client-0119642855-default-rtdb.firebaseio.com/cup-foundation/footingEdits.json';
+// Live-edits URL is kept OUT of the repo — pass it locally, e.g.:
+//   CUP_RTDB_URL='https://<your-rtdb>/cup-foundation/footingEdits.json' node tools/build_lacc_geo.mjs
+// (no URL → base geometry only, no Firebase exposure in the published site)
+const EDITS_URL = process.env.CUP_RTDB_URL || '';
 const OUT = resolve(HERE, '../assets/lacc-geo.js');
 
 // ── base geometry (window.FOUNDATION_GEO) ──
@@ -21,14 +24,18 @@ const raw = readFileSync(GEO_SRC, 'utf8').trim().replace(/^window\.FOUNDATION_GE
 const geo = JSON.parse(raw);
 geo.precise = true;
 
-// ── live edits ──
+// ── live edits (only if a URL is supplied via env) ──
 let _footEdits = {};
-try {
-  const res = await fetch(EDITS_URL);
-  _footEdits = (await res.json()) || {};
-  console.log('fetched live footingEdits:', Object.keys(_footEdits).length);
-} catch (e) {
-  console.warn('WARN could not fetch live edits, using base only:', e.message);
+if (EDITS_URL) {
+  try {
+    const res = await fetch(EDITS_URL);
+    _footEdits = (await res.json()) || {};
+    console.log('fetched live footingEdits:', Object.keys(_footEdits).length);
+  } catch (e) {
+    console.warn('WARN could not fetch live edits, using base only:', e.message);
+  }
+} else {
+  console.warn('CUP_RTDB_URL not set — using base geometry only (no live edits).');
 }
 
 // ════════════════════════════════════════════════════════════════════════

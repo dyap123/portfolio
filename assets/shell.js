@@ -68,30 +68,7 @@
     counters.forEach(el => co.observe(el));
   }
 
-  // ─── Edit mode ───
-  const STORAGE_KEY = 'portfolio_edits_v2';
-  let edits = {};
-  try { edits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch {}
-
-  document.querySelectorAll('[data-edit]').forEach(el => {
-    const key = el.dataset.edit;
-    if (edits[key] != null) el.textContent = edits[key];
-  });
-
-  const editBtn = document.getElementById('editBtn');
-  let editing = false;
-  if (editBtn) {
-    editBtn.addEventListener('click', () => {
-      editing = !editing;
-      editBtn.classList.toggle('active', editing);
-      editBtn.textContent = editing ? '✓ Save' : '✎ Edit';
-      document.querySelectorAll('[data-edit]').forEach(el => { el.contentEditable = editing; });
-      if (!editing) {
-        document.querySelectorAll('[data-edit]').forEach(el => { edits[el.dataset.edit] = el.textContent.trim(); });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
-      }
-    });
-  }
+  // ─── Edit mode — DISABLED (content is authored in the HTML source) ───
 
   // ─── Three.js ambient shader background (retired with the Drawing Set reskin) ───
   function initShaderBg() {
