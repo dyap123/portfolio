@@ -12,6 +12,30 @@
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // ─── Mobile hamburger menu ───
+    const inner = nav.querySelector('.inner');
+    const navLinks = nav.querySelector('.nav-links');
+    if (inner && navLinks && !nav.querySelector('.nav-burger')) {
+      const burger = document.createElement('button');
+      burger.className = 'nav-burger';
+      burger.type = 'button';
+      burger.setAttribute('aria-label', 'Toggle navigation menu');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.innerHTML = '<span></span><span></span><span></span>';
+      inner.insertBefore(burger, navLinks.nextSibling); // between links and Connect
+      const setOpen = (open) => {
+        nav.classList.toggle('nav-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+      };
+      burger.addEventListener('click', () => setOpen(!nav.classList.contains('nav-open')));
+      // close on link tap, Escape, or tapping outside
+      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+      document.addEventListener('click', (e) => {
+        if (nav.classList.contains('nav-open') && !nav.contains(e.target)) setOpen(false);
+      });
+    }
   }
 
   // ─── Live clock (LA / America/Los_Angeles) ───
