@@ -198,6 +198,55 @@
     .proj-toggle { width: 100%; }
     .pt-btn { flex: 1; justify-content: center; padding: 15px 12px; }
   }
+
+  /* ── C-104 · RFIs & Revit Detailing ── */
+  .detail-block { margin-top: 2.1rem; }
+  .detail-block .dblabel {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 11px;
+  }
+  .detail-block .dblabel::before { content: ""; width: 26px; height: 2px; background: var(--primary); flex: none; }
+  .detail-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 16px; }
+  .dfig { margin: 0; cursor: zoom-in; display: flex; flex-direction: column; }
+  .dfig img {
+    width: 100%; height: 300px; object-fit: contain; object-position: center; background: #fff;
+    border: 1px solid var(--line-strong); border-radius: 3px; padding: 8px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .dfig:hover img { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(26,25,21,0.12); }
+  .dfig figcaption {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--muted);
+    margin-top: 0.6rem; line-height: 1.55;
+  }
+  .dfig figcaption b { color: var(--text); font-weight: 700; }
+  .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.8rem; }
+  .detail-tags span {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-dim); border: 1px solid var(--line-strong); border-radius: 100px; padding: 6px 13px;
+  }
+  .redact-note {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted);
+    margin-top: 1.5rem; display: flex; align-items: center; gap: 8px;
+  }
+  .redact-note .material-symbols-outlined { font-size: 15px; color: var(--primary); }
+
+  /* Lightbox */
+  .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(5,4,10,0.94);
+    backdrop-filter: blur(16px); display: none; align-items: center; justify-content: center; }
+  .lightbox.show { display: flex; }
+  .lightbox > img { max-width: 94vw; max-height: 86vh; object-fit: contain;
+    border: 1px solid var(--line-strong); border-radius: 3px; box-shadow: 0 30px 80px rgba(0,0,0,0.55); }
+  .lb-btn { position: absolute; background: rgba(251,250,247,0.9); backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong); color: var(--ink); width: 48px; height: 48px; border-radius: 50%;
+    font-size: 22px; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; line-height: 1; }
+  .lb-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+  .lb-close { top: 20px; right: 20px; font-size: 20px; }
+  .lb-cap { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; padding: 0 16px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; color: #f5f3ee; }
+  .lb-cap b { color: var(--primary); font-weight: 700; }
+  @media (max-width: 700px) { .dfig img { height: 220px; } .lb-btn { width: 40px; height: 40px; } .lb-prev { left: 8px; } .lb-next { right: 8px; } }
 </style>
 </head>
 <body>
@@ -369,6 +418,70 @@
           </div>
         </div>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- C-104 — RFIs & REVIT DETAILING -->
+<section class="sheet-sec" id="detailing">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head">
+        <span class="no">C-104</span>
+        <span class="t">RFIs &amp; Revit Detailing</span>
+        <span class="meta">ACP verticals vs. pile-cap top steel · Sequence 1</span>
+      </div>
+      <div class="sheet-body">
+        <p class="dim" style="max-width: 74ch; font-size: 15.5px; line-height: 1.7;" data-edit="c104-intro">
+          On the LACC foundations I caught a reinforcing conflict the drawings hadn't resolved: auger-cast-pile
+          (ACP) vertical bars terminating into the same space as the pile-cap top steel — a concrete-coverage
+          problem that would repeat across Sequence 1 and beyond. I mapped where it occurred, modeled and detailed
+          the clash in Revit, and wrote the RFI that got it resolved before the pours.
+        </p>
+
+        <div class="detail-block reveal delay-1">
+          <div class="dblabel">The request — RFI&nbsp;#047</div>
+          <div class="detail-gallery">
+            <figure class="dfig">
+              <img src="assets/detailing/rfi-047.jpg" alt="RFI #047 — ACP vertical bars vs pile cap top bars" loading="lazy" onerror="this.closest('.dfig').style.display='none'">
+              <figcaption><b>RFI&nbsp;#047</b> — the request I authored: the reference detail, the coverage issue, and a proposed fix (shorten pile longitudinals per Table&nbsp;A).</figcaption>
+            </figure>
+            <figure class="dfig">
+              <img src="assets/detailing/rfi-plan.jpg" alt="Marked-up foundation plan with pile-cap locations flagged" loading="lazy" onerror="this.closest('.dfig').style.display='none'">
+              <figcaption><b>Marked-up foundation plan</b> — pile-cap locations flagged for clarification, cross-referenced to the related RFIs.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="detail-block reveal delay-2">
+          <div class="dblabel">The study — Revit clash detection</div>
+          <div class="detail-gallery">
+            <figure class="dfig">
+              <img src="assets/detailing/acp-conflict-plan.jpg" alt="Sequence 1 conflict study — ACP verticals mapped against pile-cap steel" loading="lazy" onerror="this.closest('.dfig').style.display='none'">
+              <figcaption><b>Sequence&nbsp;1 conflict study</b> — every ACP-vs-pile-cap location mapped and color-coded by resolution, with embed dimensions noted.</figcaption>
+            </figure>
+            <figure class="dfig">
+              <img src="assets/detailing/acp-clash-1.jpg" alt="Revit clash detail — ACP verticals against pile-cap top bars at PC2B" loading="lazy" onerror="this.closest('.dfig').style.display='none'">
+              <figcaption><b>Clash detail (Revit)</b> — ACP verticals against pile-cap top bars at PC2B, with the development-length table.</figcaption>
+            </figure>
+            <figure class="dfig">
+              <img src="assets/detailing/acp-clash-2.jpg" alt="Revit clash detail — adjacent pile-cap conditions confirmed clear" loading="lazy" onerror="this.closest('.dfig').style.display='none'">
+              <figcaption><b>Clash detail (Revit)</b> — adjacent pile-cap conditions checked and confirmed clear.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="detail-tags reveal delay-2">
+          <span>RFI #047</span>
+          <span>ACP vs. pile-cap steel</span>
+          <span>Revit clash detection</span>
+          <span>Sequence 1 study</span>
+        </div>
+        <div class="redact-note">
+          <span class="material-symbols-outlined">shield</span>
+          Client and confidential project data redacted. Technical content shown as-authored.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1300,6 +1413,14 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous">‹</button>
+  <img src="" alt="">
+  <button class="lb-btn lb-next" type="button" aria-label="Next">›</button>
+  <div class="lb-cap"></div>
+</div>
+
 <script src="assets/shell.js"></script>
 <script type="module" src="assets/projects.js"></script>
 <script type="module" src="assets/assembly.js"></script>
@@ -1319,6 +1440,63 @@
   // cross-link buttons ("See the software side", etc.)
   document.querySelectorAll('[data-goto]').forEach(el => el.addEventListener('click', () => show(el.dataset.goto)));
   if (location.hash === '#cs') show('cs');
+})();
+
+/* Lightbox — detailing figures + case-study galleries (grouped, prev/next within a group) */
+(function () {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  const lbImg = lb.querySelector('img');
+  const lbCap = lb.querySelector('.lb-cap');
+  const prevBtn = lb.querySelector('.lb-prev');
+  const nextBtn = lb.querySelector('.lb-next');
+  const groups = [];
+  document.querySelectorAll('.detail-gallery').forEach(g => {
+    const items = Array.from(g.querySelectorAll('.dfig')).map(fig => {
+      const img = fig.querySelector('img');
+      const cap = fig.querySelector('figcaption');
+      return img ? { trigger: fig, img, cap: cap ? cap.innerHTML : (img.alt || '') } : null;
+    }).filter(Boolean);
+    if (items.length) groups.push(items);
+  });
+  document.querySelectorAll('.gallery').forEach(g => {
+    const items = Array.from(g.querySelectorAll('img')).map(img => ({ trigger: img, img, cap: img.alt || '' }));
+    if (items.length) groups.push(items);
+  });
+  let cur = null, idx = 0;
+  function render() {
+    const it = cur[idx];
+    lbImg.src = it.img.currentSrc || it.img.src;
+    lbImg.alt = it.img.alt || '';
+    lbCap.innerHTML = it.cap || '';
+    const multi = cur.length > 1;
+    prevBtn.style.display = multi ? 'flex' : 'none';
+    nextBtn.style.display = multi ? 'flex' : 'none';
+  }
+  function open(group, i) {
+    cur = group; idx = i; render();
+    lb.classList.add('show'); lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lb.classList.remove('show'); lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; cur = null;
+  }
+  function go(d) { if (cur) { idx = (idx + d + cur.length) % cur.length; render(); } }
+  groups.forEach(group => group.forEach((it, i) => {
+    it.trigger.style.cursor = 'zoom-in';
+    it.trigger.addEventListener('click', () => open(group, i));
+  }));
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  prevBtn.addEventListener('click', e => { e.stopPropagation(); go(-1); });
+  nextBtn.addEventListener('click', e => { e.stopPropagation(); go(1); });
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('show')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') go(-1);
+    else if (e.key === 'ArrowRight') go(1);
+  });
 })();
 </script>
 </body>
