@@ -522,27 +522,28 @@
   .jrn-header { padding: 2.75rem 2.75rem 0; }
   @media (max-width: 720px) { .jrn-header { padding: 1.5rem 1.25rem 0; } }
   .jrn-lead { max-width: 720px; margin-bottom: 2.5rem; }
-  .jrn-timeline {
-    display: flex; border-top: 2px solid var(--ink); overflow-x: auto;
-    scrollbar-width: thin; scrollbar-color: var(--primary-dim) transparent;
+  /* animated horizontal timeline — line draws in, dots pop, labels rise (anime.js) */
+  .jrn-timeline { position: relative; }
+  @media (max-width: 760px) { .jrn-timeline { overflow-x: auto; padding-bottom: 6px; } .jtl-nodes { min-width: 860px; } }
+  .jtl-line { position: absolute; top: 12px; left: 0; right: 0; height: 3px; background: var(--line-strong); z-index: 0; overflow: hidden; }
+  .jtl-fill { position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+  .jtl-nodes { display: flex; position: relative; z-index: 1; }
+  .jt-node { flex: 1 0 0; min-width: 116px; position: relative; padding: 30px 12px 4px 4px; color: var(--text); }
+  .jt-dot {
+    position: absolute; top: 5px; left: 4px; width: 15px; height: 15px; border-radius: 50%;
+    background: var(--surface-0); border: 3px solid var(--primary); box-sizing: border-box;
+    transform: scale(0); transition: background .2s, border-color .2s, box-shadow .2s;
   }
-  .jrn-timeline::-webkit-scrollbar { height: 5px; }
-  .jrn-timeline::-webkit-scrollbar-thumb { background: var(--primary-dim); }
-  .jt-node {
-    flex: 1 0 auto; min-width: 128px; padding: 1.15rem 1.15rem 1.6rem;
-    border-right: 1px solid var(--line); position: relative; color: var(--text);
-    transition: background .2s;
+  .jt-node.now .jt-dot { border-color: var(--secondary); background: var(--secondary); }
+  .jt-node:hover .jt-dot { background: var(--primary); box-shadow: 0 0 0 4px var(--accent); }
+  .jt-node.now:hover .jt-dot { background: var(--secondary); box-shadow: 0 0 0 4px rgba(232,84,31,0.15); }
+  .jt-yr { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--primary); opacity: 0; }
+  .jt-node.now .jt-yr { color: var(--secondary-dim); }
+  .jt-t { display: block; font-family: var(--head); font-weight: 600; font-size: 14.5px; color: var(--ink); margin-top: 7px; line-height: 1.2; letter-spacing: -0.01em; opacity: 0; }
+  .jt-node:hover .jt-t { color: var(--primary); }
+  @media (prefers-reduced-motion: reduce) {
+    .jtl-fill { transform: scaleX(1); } .jt-dot { transform: scale(1); } .jt-yr, .jt-t { opacity: 1; }
   }
-  .jt-node:last-child { border-right: none; }
-  .jt-node::before {
-    content: ""; position: absolute; top: -8px; left: 1.15rem; width: 13px; height: 13px;
-    background: var(--surface-0); border: 2.5px solid var(--primary); border-radius: 50%; transition: all .2s;
-  }
-  .jt-node.on::before, .jt-node:hover::before { background: var(--secondary); border-color: var(--secondary); }
-  .jt-node:hover { background: var(--accent-soft); }
-  .jt-node .yr { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--primary); }
-  .jt-node .t { display: block; font-family: var(--head); font-weight: 600; font-size: 14.5px; color: var(--ink); margin-top: 7px; line-height: 1.2; letter-spacing: -0.01em; }
-  .jt-node:hover .t { color: var(--primary); }
 
   /* ── Interview stats — clean bordered stat row ── */
   .interview-stats {
@@ -617,15 +618,18 @@
             A wooden robot, a soldering iron, a race car, a five-app suite on a $2B jobsite. The through-line has never changed: find someone whose day is harder than it needs to be, and build until it isn't. Here's how I got here — one chapter at a time.
           </p>
         </div>
-        <div class="jrn-timeline" data-motion-stagger>
-          <a href="#robotics" class="jt-node"><span class="yr">2014</span><span class="t">Robotics</span></a>
-          <a href="#keyboards" class="jt-node"><span class="yr">2018</span><span class="t">Keyboards</span></a>
-          <a href="#fsae" class="jt-node"><span class="yr">2018–22</span><span class="t">CPP FSAE</span></a>
-          <a href="#clune" class="jt-node"><span class="yr">2024</span><span class="t">Clune · AI seed</span></a>
-          <a href="#tour" class="jt-node"><span class="yr">2024–25</span><span class="t">Research walks</span></a>
-          <a href="#webcor" class="jt-node"><span class="yr">2025</span><span class="t">Webcor</span></a>
-          <a href="#field" class="jt-node"><span class="yr">Now</span><span class="t">In the field</span></a>
-          <a href="#future" class="jt-node on"><span class="yr">Next</span><span class="t">Just getting started</span></a>
+        <div class="jrn-timeline" data-jtl>
+          <div class="jtl-line"><div class="jtl-fill"></div></div>
+          <div class="jtl-nodes">
+            <a href="#robotics" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2014</span><span class="jt-t">Robotics</span></a>
+            <a href="#keyboards" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2018</span><span class="jt-t">Keyboards</span></a>
+            <a href="#fsae" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2018–22</span><span class="jt-t">CPP FSAE</span></a>
+            <a href="#clune" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2024</span><span class="jt-t">Clune · AI seed</span></a>
+            <a href="#tour" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2024–25</span><span class="jt-t">Research walks</span></a>
+            <a href="#webcor" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2025</span><span class="jt-t">Webcor</span></a>
+            <a href="#field" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">Now</span><span class="jt-t">In the field</span></a>
+            <a href="#future" class="jt-node now"><span class="jt-dot"></span><span class="jt-yr">Next</span><span class="jt-t">Just getting started</span></a>
+          </div>
         </div>
       </div>
     </div>

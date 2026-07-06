@@ -50,6 +50,18 @@ function init() {
     }), 0.6);
   });
 
+  // ── Journey timeline — line draws in, dots pop, labels rise ──
+  $$('[data-jtl]').forEach(tl => {
+    const fill = tl.querySelector('.jtl-fill');
+    const dots = $$('.jt-dot', tl);
+    const labels = $$('.jt-yr, .jt-t', tl);
+    onView(tl, () => {
+      if (fill) animate(fill, { scaleX: [0, 1], duration: 900, ease: 'inOutCubic' });
+      animate(dots, { scale: [0, 1], delay: stagger(80, { start: 320 }), ease: POP });
+      animate(labels, { opacity: [0, 1], translateY: [8, 0], duration: 480, ease: 'outCubic', delay: stagger(45, { start: 460 }) });
+    }, 0.25);
+  });
+
   // ── Sector eyebrows — the label fades up as its section arrives ──
   $$('[data-motion-stagger]').forEach(group => {
     const kids = Array.from(group.children);
