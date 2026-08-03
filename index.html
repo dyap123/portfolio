@@ -706,9 +706,9 @@
         <div class="mark">CC-22 · The Hub</div>
         <div class="t">Command Center</div>
         <div class="r" data-edit="flow-cc">
-          One role-gated login: the schedule, pour status, every embed pin, tools, and today's crew on a single live map — each layer deep-linking into its app. The superintendent runs the 6&nbsp;AM tailgate from this screen.
+          One role-gated login: the schedule, pour status, every embed pin, tools, and today's crew on a single live map — each layer deep-linking into its app. As of August 2026 the map is derived from the structural model, so every shape on it is a real member. The superintendent runs the 6&nbsp;AM tailgate from this screen.
         </div>
-        <div class="roles">ADMIN &rsaquo; SUPER &rsaquo; PM &rsaquo; PE · FIREBASE AUTH + 2FA</div>
+        <div class="roles">ADMIN &rsaquo; SUPER &rsaquo; PM &rsaquo; PE · GOOGLE SIGN-IN + SERVER-SIDE ALLOWLIST</div>
       </div>
     </div>
 
@@ -770,6 +770,49 @@
       <a href="assets/resume/Danzel-Yap-Resume.docx" class="btn"><span class="material-symbols-outlined" style="font-size:16px">download</span>Résumé · DOCX (ATS)</a>
     </div>
   </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MODEL — what the hub now sits on -->
+<section class="sheet-sec">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head"><span class="no">S-050</span><span class="t">The Model — YapGrid</span><span class="meta">Derived From The IFC &middot; Not Traced</span></div>
+      <div class="sheet-body">
+        <div class="story">
+          <div class="copy">
+            <div class="tag">New &middot; August 2026</div>
+            <h2>Then I stopped drawing the job<br>and modelled it.</h2>
+            <p>
+              Every app above ran on a plan someone traced off a PDF. So I took Webcor's Revit IFC
+              export &mdash; 27 MB, 1,779 concrete elements, zero reinforcing &mdash; and built a
+              browser 3D model of the foundation, generating every bar from the structural schedules
+              and typical details.
+            </p>
+            <p>
+              It takes off <strong>23,550 CY</strong> of concrete and <strong>128,041 SF</strong> of
+              formwork instead of counting by hand, prints region sheets on the Webcor title block,
+              and checks itself: modelled volumes agree with the schedule's own dimensions to within
+              0.1%. It also found <strong>eight grade beam bars running straight through 24&Prime;
+              piles</strong>. The Command Center map is now drawn from this, not from a tracing.
+            </p>
+            <div class="facts">
+              <div class="fact"><div class="v">1,779</div><div class="k">Elements modelled</div></div>
+              <div class="fact"><div class="v">23,550 CY</div><div class="k">Concrete takeoff</div></div>
+              <div class="fact"><div class="v">0.0–0.1%</div><div class="k">Vs. schedule dims</div></div>
+              <div class="fact"><div class="v">8 &rarr; 0</div><div class="k">Bars through piles</div></div>
+            </div>
+            <div class="mt-8 flex gap-3" style="flex-wrap:wrap">
+              <a href="projects.html#yapgrid" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">deployed_code</span>How it was built</a>
+            </div>
+          </div>
+          <div class="visual">
+            <div class="grid-overlay"></div>
+            <img src="assets/yapgrid/model-rebar.png" alt="YapGrid — pile caps, grade beams and piles with generated reinforcing" loading="lazy" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

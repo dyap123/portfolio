@@ -568,7 +568,8 @@
   <a class="dot" href="#tour"        data-ch="05" data-title="AI × Construction Pitch Tour"></a>
   <a class="dot" href="#webcor"      data-ch="06" data-title="Webcor"></a>
   <a class="dot" href="#field"       data-ch="07" data-title="Field Experience"></a>
-  <a class="dot" href="#future"      data-ch="08" data-title="Just Getting Started"></a>
+  <a class="dot" href="#model"       data-ch="08" data-title="The Model"></a>
+  <a class="dot" href="#future"      data-ch="09" data-title="Just Getting Started"></a>
 </nav>
 
 <!-- SCROLL FX: Sticky chapter chip -->
@@ -628,6 +629,7 @@
             <a href="#tour" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2024–25</span><span class="jt-t">Research walks</span></a>
             <a href="#webcor" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2025</span><span class="jt-t">Webcor</span></a>
             <a href="#field" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">Now</span><span class="jt-t">In the field</span></a>
+            <a href="#model" class="jt-node"><span class="jt-dot"></span><span class="jt-yr">2026</span><span class="jt-t">The model</span></a>
             <a href="#future" class="jt-node now"><span class="jt-dot"></span><span class="jt-yr">Next</span><span class="jt-t">Just getting started</span></a>
           </div>
         </div>
@@ -1177,27 +1179,106 @@
   </div>
 </section>
 
-<!-- 08 · JUST GETTING STARTED -->
-<section id="future" class="sheet-sec" data-ch="08" data-title="Where I'm At Now">
+<!-- 08 · THE MODEL -->
+<section id="model" class="sheet-sec" data-ch="08" data-title="The Model">
   <div class="wrap">
     <div class="sheet">
-      <div class="sheet-head"><span class="no">G-108</span><span class="t">Chapter 08 — Where I'm At Now</span><span class="meta">The Suite · 2026</span></div>
+      <div class="sheet-head"><span class="no">G-108</span><span class="t">Chapter 08 — The Model</span><span class="meta">Aug 2026 · LACC</span></div>
+      <div class="sheet-body">
+    <div class="story reveal">
+      <div class="copy">
+        <span class="mag-badge mb-4"><span class="material-symbols-outlined">deployed_code</span>From tracking the work to modelling it</span>
+        <h2>The apps knew <span class="grad">where things were.</span><br>They didn't know what they were.</h2>
+        <p data-edit="model-p1">
+          Every app I had built ran on the same quiet compromise. The footing map was a plan
+          someone traced off a PDF — shapes in the right place, more or less, with no dimensions
+          behind them, no volumes, and no way to prove any of it matched what the structural
+          engineer actually drew. It was good enough to tap a footing and mark it poured. It was
+          not good enough to answer a question.
+        </p>
+        <p data-edit="model-p2">
+          The structural model existed the whole time. It just lived in Revit, on someone
+          else's machine, in a format nobody in the trailer could open. So I took the IFC export
+          and rebuilt the foundation in a browser — every pile cap, grade beam and footing, with
+          its real geometry, at its real elevation.
+        </p>
+        <p data-edit="model-p3">
+          The reinforcing was the part I had not expected. It is not in the model, and it is not
+          in the IFC either, because on this job the bars only ever existed as schedule rows and
+          typical details on paper. Which means to draw them you have to read the details the way
+          a detailer reads them — cover, hook, development, lap, how a bar terminates when it runs
+          into a pile cap — and write that down as rules. That was six weeks of reading drawings
+          and arguing with my own code, and it is the most construction I have ever had to know to
+          make software work.
+        </p>
+        <p data-edit="model-p4">
+          It paid for itself the first time it ran the clash check. Eight grade beam bars were
+          passing straight through 24-inch piles, by as much as eight and a half inches. On paper
+          those are two separate details on two separate sheets and nobody is wrong. In the model
+          they are in the same place at the same time, which is the kind of thing you would
+          otherwise find at 6 AM with a crew standing around.
+        </p>
+        <div class="facts">
+          <div class="fact"><div class="v">1,779</div><div class="k">Elements modelled</div></div>
+          <div class="fact"><div class="v">23,550 CY</div><div class="k">Concrete takeoff</div></div>
+          <div class="fact"><div class="v">8 &rarr; 0</div><div class="k">Bars through piles</div></div>
+          <div class="fact"><div class="v">0.04 ft</div><div class="k">Map registration</div></div>
+        </div>
+      </div>
+      <div class="visual" style="aspect-ratio: 4/3; padding: 0;">
+        <img src="assets/yapgrid/model-rebar.png" alt="YapGrid — pile caps, grade beams and piles with generated reinforcing" loading="lazy" style="width:100%;height:100%;object-fit:cover"/>
+      </div>
+    </div>
+
+    <div class="mini-timeline-wrap reveal">
+      <div class="mini-timeline-head">
+        <div>
+          <div class="eyebrow" data-edit="model-strip-eyebrow">What it changed &middot; August 2026</div>
+          <h3 data-edit="model-strip-h">The map underneath everything got rebuilt.</h3>
+        </div>
+      </div>
+      <p class="dim" style="max-width: 66ch; font-size: 15px; line-height: 1.7; margin-top: .5rem;" data-edit="model-p5">
+        Once the model was trustworthy, the Command Center stopped being a picture of the job and
+        started being derived from it. Everything already logged had to come across, so each old
+        record was matched to a real member and given a receipt: 358 footings and 301 embed pins
+        matched, everything that didn't kept and flagged rather than deleted, and 93 recorded
+        embed installs in with 93 out. The satisfying part is what it now refuses to do — where
+        the hand takeoff and the model disagree, it says so, by mark, instead of picking a winner.
+      </p>
+      <div class="visual trio" style="margin-top: 1.1rem;">
+        <div><span class="tag">Generated sheet</span><img src="assets/yapgrid/sheet.png" alt="A foundation plan generated from the model on the Webcor title block" loading="lazy"/></div>
+        <div><span class="tag">Model-derived map</span><img src="assets/yapgrid/map.png" alt="The Command Center foundation map, drawn from the model" loading="lazy"/></div>
+        <div><span class="tag">Reconciliation</span><img src="assets/yapgrid/reconciliation.png" alt="Embed reconciliation — takeoff against modelled count" loading="lazy"/></div>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · JUST GETTING STARTED -->
+<section id="future" class="sheet-sec" data-ch="09" data-title="Where I'm At Now">
+  <div class="wrap">
+    <div class="sheet">
+      <div class="sheet-head"><span class="no">G-109</span><span class="t">Chapter 09 — Where I'm At Now</span><span class="meta">The Suite · 2026</span></div>
       <div class="sheet-body">
     <div class="reveal">
       <span class="mag-badge mb-4"><span class="material-symbols-outlined">rocket_launch</span>WE ARE JUST GETTING STARTED</span>
       <h2>Where I'm at <span class="grad">now.</span></h2>
       <p data-edit="future-p1" style="max-width: 64ch; font-size: 16px; line-height: 1.65;">
-        Everything above compounded into five apps the crew runs every day. The loop is short enough now that a problem mentioned Friday ships into the trailer Monday — hear it at the tailgate, build it that night, watch a foreman use it at 6 AM. It's the most fun I've ever had building anything, and the thing I want to do at whatever scale comes next.
+        Everything above compounded into a suite the crew runs every day, and a model underneath it that the suite is now derived from. The loop is short enough that a problem mentioned Friday ships into the trailer Monday — hear it at the tailgate, build it that night, watch a foreman use it at 6 AM. It's the most fun I've ever had building anything, and the thing I want to do at whatever scale comes next.
       </p>
     </div>
 
     <!-- The suite — where the journey stands today -->
     <div class="cs-index with-thumbs mt-6 reveal">
-      <a href="index.html#tool-tracker"><span class="no">01 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — the ~65-lost-tools bleed, stopped</span><span class="th"><img src="assets/photos/case-studies/tool-tracker/01-tracker.jpg" alt="Tool Tracker app" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
-      <a href="index.html#embedyap"><span class="no">02 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds as live map pins — the pre-pour walk is a filter</span><span class="th"><img src="assets/photos/case-studies/embedyap/01-map.jpg" alt="EmbedYap pin map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
-      <a href="index.html#superyap"><span class="no">03 · Schedule</span><span class="t">SuperYap</span><span class="s">The superintendent's look-ahead builder, Webcor-format exports</span><span class="th"><img src="assets/photos/case-studies/superyap/01-schedule.jpg" alt="SuperYap schedule builder" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
-      <a href="index.html#cup-dashboard"><span class="no">04 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking — first thing open on the trailer iPad</span><span class="th"><img src="assets/photos/case-studies/cup-dashboard/01-dashboard.jpg" alt="CUP pour dashboard" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
-      <a href="index.html#command-center"><span class="no">05 · The Hub</span><span class="t">Command Center</span><span class="s">All of it on one role-aware map — the day starts here</span><span class="th"><img src="assets/photos/case-studies/command-center/01-dashboard.jpg" alt="Command Center map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#yapgrid"><span class="no">01 · The Model</span><span class="t">YapGrid</span><span class="s">The foundation, modelled from the IFC — with the rebar in it</span><span class="th"><img src="assets/yapgrid/model-rebar.png" alt="YapGrid 3D model" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#command-center"><span class="no">02 · The Hub</span><span class="t">Command Center</span><span class="s">All of it on one role-aware map — the day starts here</span><span class="th"><img src="assets/yapgrid/map.png" alt="Command Center map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#cup-dashboard"><span class="no">03 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking — first thing open on the trailer iPad</span><span class="th"><img src="assets/photos/case-studies/cup-dashboard/01-dashboard.jpg" alt="CUP pour dashboard" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#embedyap"><span class="no">04 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds as live map pins — the pre-pour walk is a filter</span><span class="th"><img src="assets/photos/case-studies/embedyap/01-map.jpg" alt="EmbedYap pin map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#tool-tracker"><span class="no">05 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — the ~65-lost-tools bleed, stopped</span><span class="th"><img src="assets/photos/case-studies/tool-tracker/01-tracker.jpg" alt="Tool Tracker app" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#superyap"><span class="no">06 · Schedule</span><span class="t">SuperYap</span><span class="s">The superintendent's look-ahead builder, Webcor-format exports</span><span class="th"><img src="assets/photos/case-studies/superyap/01-schedule.jpg" alt="SuperYap schedule builder" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
     </div>
 
     <div class="reveal mt-8" style="max-width: 64ch;">
