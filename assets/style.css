@@ -1,40 +1,50 @@
 /* ════════════════════════════════════════════════
    THE DRAWING SET — shared design system
-   Paper, ink, blueprint blue, safety orange.
+   Slate, chalk, blueprint blue, safety orange.
    Sheet chrome borrowed from construction documents.
+
+   SLATE, NOT BOND PAPER. The set was ink-on-paper, which is honest to a drawing and dates
+   the site the moment anything else on a screen is dark. The chrome is unchanged — same
+   1.5px rules, same sheet borders, same stamps — because those are what make it read as a
+   drawing set. Only the ground moved.
+
+   Everything below derives from these tokens, which is why the swap is this small: --ink is
+   the FOREGROUND (it is what borders and text are drawn in), so inverting it and --bg
+   together carries every `background: var(--ink); color: var(--bg)` hover state with it.
    ════════════════════════════════════════════════ */
 
 :root {
-  /* Palette — bond paper + ink */
-  --bg:           #F5F3EE;
-  --surface-0:    #FBFAF7;
-  --surface-1:    #F1EEE6;
-  --surface-2:    #EAE6DC;
-  --surface-3:    #E2DED3;
-  --surface-4:    #DAD5C9;
-  --surface-5:    #D2CDC0;
+  /* Palette — slate + chalk */
+  --bg:           #0E1420;
+  --surface-0:    #131A28;
+  --surface-1:    #18202F;
+  --surface-2:    #1E2737;
+  --surface-3:    #242E40;
+  --surface-4:    #2B3648;
+  --surface-5:    #333F52;
 
-  --primary:      #1E4B8F;   /* blueprint blue */
-  --primary-dim:  #3A66A6;
-  --primary-deep: #12325F;
-  --secondary:    #E8541F;   /* safety orange — markup only */
-  --secondary-dim:#C4451A;
-  --tertiary:     #57544B;
+  /* Blueprint blue, lifted for a dark ground — #1E4B8F on slate is unreadable. */
+  --primary:      #5B9BFF;
+  --primary-dim:  #4278D6;
+  --primary-deep: #8FBCFF;
+  --secondary:    #FF6A34;   /* safety orange — markup only */
+  --secondary-dim:#E8541F;
+  --tertiary:     #8A93A5;
 
-  --ink:          #1A1915;
-  --stamp-red:    #B3261E;
-  --approve:      #2E6B4F;
+  --ink:          #E9EEF7;   /* the drawing hand: borders, rules, headings */
+  --stamp-red:    #FF5C52;
+  --approve:      #4ADE80;
 
-  --text:         #201E19;
-  --text-dim:     #57544B;
-  --muted:        #8A857A;
-  --line:         rgba(26,25,21,0.16);
-  --line-strong:  rgba(26,25,21,0.42);
+  --text:         #DDE4EF;
+  --text-dim:     #9AA5B8;
+  --muted:        #6C7789;
+  --line:         rgba(233,238,247,0.18);
+  --line-strong:  rgba(233,238,247,0.44);
 
-  --accent:       rgba(30,75,143,0.10);
-  --accent-soft:  rgba(30,75,143,0.05);
-  --glow:         rgba(30,75,143,0.16);
-  --glow-soft:    rgba(30,75,143,0.06);
+  --accent:       rgba(91,155,255,0.12);
+  --accent-soft:  rgba(91,155,255,0.06);
+  --glow:         rgba(91,155,255,0.20);
+  --glow-soft:    rgba(91,155,255,0.08);
 
   /* Type */
   --head: 'Space Grotesk', system-ui, sans-serif;
@@ -55,7 +65,7 @@ body {
 }
 a { color: var(--primary); text-decoration: none; transition: color .2s; }
 a:hover { color: var(--secondary); }
-::selection { background: rgba(30,75,143,0.22); color: var(--ink); }
+::selection { background: rgba(91,155,255,0.30); color: var(--ink); }
 
 img { max-width: 100%; display: block; }
 /* photos sit on paper like mounted figures — no moody dimming */
@@ -75,8 +85,8 @@ img { max-width: 100%; display: block; }
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    linear-gradient(rgba(26,25,21,0.035) 1px, transparent 1px) 0 0 / 48px 48px,
-    linear-gradient(90deg, rgba(26,25,21,0.035) 1px, transparent 1px) 0 0 / 48px 48px;
+    linear-gradient(rgba(0,0,0,0.09) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, rgba(0,0,0,0.09) 1px, transparent 1px) 0 0 / 48px 48px;
 }
 /* Sheet border — double margin line like a plotted sheet */
 body::after {
@@ -111,12 +121,12 @@ section { padding: 6rem 0; position: relative; }
 /* ════════════════════ NAV ════════════════════ */
 nav.topnav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  background: rgba(245,243,238,0.9); backdrop-filter: blur(8px);
+  background: rgba(14,20,32,0.90); backdrop-filter: blur(8px);   /* --bg at alpha; a token cannot carry the alpha, so it is written out */
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1.5px solid var(--ink);
   transition: background .3s;
 }
-nav.topnav.scrolled { background: rgba(245,243,238,0.97); }
+nav.topnav.scrolled { background: rgba(14,20,32,0.97); }
 nav.topnav .inner {
   max-width: var(--max); margin: 0 auto; padding: 18px var(--gutter);
   display: flex; align-items: center; justify-content: space-between; gap: 2rem;
@@ -162,7 +172,7 @@ nav.topnav .inner {
     display: flex; flex-direction: column; gap: 0; align-items: stretch;
     position: absolute; top: 100%; left: 0; right: 0; margin: 0;
     background: var(--surface-0); border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink);
-    padding: 6px 12px; box-shadow: 0 10px 24px -10px rgba(26,25,21,0.25);
+    padding: 6px 12px; box-shadow: 0 10px 24px -10px rgba(0,0,0,0.55);
     transform: translateY(-10px); opacity: 0; visibility: hidden; pointer-events: none;
     transition: transform .22s ease, opacity .22s ease, visibility .22s;
   }
@@ -191,7 +201,7 @@ nav.topnav .inner {
   position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
   display: flex; flex-direction: column; min-width: 232px; padding: 6px;
   border: 1.5px solid var(--ink); border-radius: 0;
-  background: var(--surface-0); box-shadow: 4px 4px 0 rgba(26,25,21,0.12);
+  background: var(--surface-0); box-shadow: 4px 4px 0 rgba(0,0,0,0.31);
 }
 .connect-menu a {
   display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 0;
@@ -239,7 +249,7 @@ nav.topnav .inner {
 }
 .card:hover {
   border-color: var(--ink);
-  box-shadow: 4px 4px 0 rgba(26,25,21,0.10);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.26);
 }
 .card-lift:hover { transform: translateY(-3px); }
 
@@ -274,7 +284,7 @@ nav.topnav .inner {
 /* ════════════════════ SHEETS — every section is a drawing ════════════════════ */
 .sheet {
   border: 1.5px solid var(--ink); background: var(--surface-0);
-  box-shadow: 6px 6px 0 rgba(26,25,21,0.06);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
 }
 .sheet-head {
   display: flex; align-items: center; gap: 0;
@@ -399,7 +409,7 @@ section.sheet-sec { padding: 2.2rem 0; }
 /* ecosystem case studies read as framed detail sheets */
 .case {
   border: 1.5px solid var(--ink); background: var(--surface-0); padding: 2.5rem;
-  box-shadow: 6px 6px 0 rgba(26,25,21,0.06);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
   display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 2.75rem;
 }
 @media (max-width: 960px) { .case { grid-template-columns: 1fr; gap: 1.5rem; } }
@@ -668,7 +678,7 @@ footer.foot .tb-sheet {
 }
 footer.foot .tb-sheet .k {
   font-family: var(--mono); font-size: 8px; letter-spacing: 0.24em;
-  text-transform: uppercase; color: rgba(245,243,238,0.6);
+  text-transform: uppercase; color: rgba(233,238,247,0.6);
 }
 footer.foot .tb-sheet .v {
   font-family: var(--head); font-weight: 700; font-size: 22px; letter-spacing: 0.02em;
@@ -684,9 +694,9 @@ footer.foot .tb-sheet .v {
   border: 1.5px solid var(--ink); background: var(--surface-0);
   color: var(--ink); cursor: pointer; transition: all .2s, transform .35s var(--spring);
 }
-.btn:hover { background: var(--accent-soft); color: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: 3px 3px 0 rgba(26,25,21,0.14); }
+.btn:hover { background: var(--accent-soft); color: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: 3px 3px 0 rgba(0,0,0,0.36); }
 .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.btn.primary:hover { background: var(--primary-deep); border-color: var(--primary-deep); color: var(--bg); box-shadow: 3px 3px 0 rgba(26,25,21,0.2); }
+.btn.primary:hover { background: var(--primary-deep); border-color: var(--primary-deep); color: var(--bg); box-shadow: 3px 3px 0 rgba(0,0,0,0.52); }
 
 .arrow-link {
   display: inline-flex; align-items: center; gap: 6px;
@@ -726,9 +736,9 @@ footer.foot .tb-sheet .v {
 .lacc-plan .gl { stroke: rgba(30,75,143,0.30); stroke-width: 2.5; fill: none; }
 .lacc-plan .gl.mn { stroke: rgba(30,75,143,0.10); stroke-width: 1.5; }
 .lacc-plan .glb { font-family: var(--mono); font-size: 31px; fill: var(--muted); letter-spacing: 0.04em; }
-.lacc-plan .pour-g { fill: rgba(30,75,143,0.72); stroke: rgba(26,25,21,0.5); stroke-width: 2.5; }
+.lacc-plan .pour-g { fill: rgba(30,75,143,0.72); stroke: rgba(0,0,0,0.55); stroke-width: 2.5; }
 .lacc-plan .pour-g.cupg { fill: rgba(232,84,31,0.78); }
-.lacc-plan .beam-g { fill: rgba(30,75,143,0.5); stroke: rgba(26,25,21,0.45); stroke-width: 1.5; stroke-dasharray: 9 5; }
+.lacc-plan .beam-g { fill: rgba(30,75,143,0.5); stroke: rgba(0,0,0,0.55); stroke-width: 1.5; stroke-dasharray: 9 5; }
 .lacc-plan .beam-g.cupg { fill: rgba(232,84,31,0.5); }
 .lacc-plan .fbLine { fill: none; stroke: var(--ink); stroke-width: 7; }
 .lacc-plan .cupLine { fill: none; stroke: var(--secondary); stroke-width: 7; }
@@ -764,7 +774,7 @@ footer.foot .tb-sheet .v {
   background-size: 13px 13px;
   border: 1.5px solid var(--ink);
   /* hard colored edge = slab thickness, then a soft cast shadow */
-  box-shadow: 7px 8px 0 var(--lcd, rgba(26,25,21,0.4)), 0 30px 44px -22px rgba(26,25,21,0.5);
+  box-shadow: 7px 8px 0 var(--lcd, rgba(0,0,0,0.55)), 0 30px 44px -22px rgba(0,0,0,0.55);
   padding: 15px 20px; cursor: pointer; opacity: 0;
   transition: border-color .25s, box-shadow .25s;
 }
@@ -781,7 +791,7 @@ footer.foot .tb-sheet .v {
 .plate .hint { position: absolute; right: 14px; bottom: 11px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 /* small technical "node" mark in the layer color */
 .plate::after { content: ""; position: absolute; right: 14px; top: 14px; width: 22px; height: 22px; border: 2px solid var(--lc); border-radius: 50%; opacity: 0.55; }
-.plate.on { border-color: var(--ink); box-shadow: 11px 13px 0 var(--lcd, rgba(26,25,21,0.5)), 0 42px 54px -20px rgba(26,25,21,0.55); }
+.plate.on { border-color: var(--ink); box-shadow: 11px 13px 0 var(--lcd, rgba(0,0,0,0.55)), 0 42px 54px -20px rgba(0,0,0,0.55); }
 
 .assembly-back { position: absolute; left: 16px; top: 14px; z-index: 6; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--surface-0); border: 1.5px solid var(--ink); padding: 8px 13px; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity .2s; }
 .assembly.is-focused .assembly-back { opacity: 1; visibility: visible; }
@@ -943,7 +953,7 @@ footer.foot .tb-sheet .v {
 .mt-card:hover {
   border-color: var(--ink);
   transform: translateY(-3px);
-  box-shadow: 4px 4px 0 rgba(26,25,21,0.12);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.31);
 }
 .mt-card .thumb {
   width: 100%;
@@ -1079,7 +1089,7 @@ footer.foot .tb-sheet .v {
   background: var(--surface-0);
   transition: all .25s;
 }
-.tier2-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 4px 4px 0 rgba(26,25,21,0.10); }
+.tier2-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 4px 4px 0 rgba(0,0,0,0.26); }
 .tier2-card .head { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
 .tier2-card .num {
   font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em;
@@ -1149,7 +1159,7 @@ footer.foot .tb-sheet .v {
   background: var(--surface-0);
   transition: all .25s;
 }
-.rapid-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 3px 3px 0 rgba(26,25,21,0.10); }
+.rapid-card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 3px 3px 0 rgba(0,0,0,0.26); }
 .rapid-card .top { display: flex; justify-content: space-between; align-items: center; }
 .rapid-card .top .t { font-family: var(--head); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
 .rapid-card .img-slot img {
