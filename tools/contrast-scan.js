@@ -53,6 +53,14 @@
     return base;
   }
 
+  /* True if this element, or anything it inherits colour through, has a running animation. */
+  function animating(el) {
+    for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+      if (n.getAnimations && n.getAnimations().some((a) => a.playState === 'running')) return true;
+    }
+    return false;
+  }
+
   window.contrastScan = function contrastScan(opts) {
     opts = opts || {};
     const ground = opts.ground ||
@@ -82,7 +90,9 @@
        *
        * So: skip anything mid-animation and say so, rather than reporting a number that a
        * pixel would contradict. Pause the animation and re-run if you need the real value. */
-      if (el.getAnimations && el.getAnimations().some((a) => a.playState === 'running')) {
+      /* Descendants too: the icon inside an animating button is not itself animating, but it
+         INHERITS the colour the parent is lying about, so it reports the same false number. */
+      if (el.closest && el.closest('*') && animating(el)) {
         skipped.push(el.tagName.toLowerCase() + '.' + (typeof el.className === 'string' ? el.className.trim().split(/\s+/)[0] : ''));
         return;
       }

@@ -780,7 +780,9 @@
           The operating picture for the LACC concrete team: RFIs, inspections, schedule, tools and
           crew behind one role-aware login. Rebuilt in June 2026 from a read-only sheet mirror, and
           rebuilt again in August on top of the structural model &mdash; so the map is no longer a
-          drawing of the job, it is the job&rsquo;s actual members.
+          drawing of the job, it is the job&rsquo;s actual members. It now issues the documents the job
+          runs on: a plotted status drawing, the weekly report a PM takes into coordination,
+          and the quantity register behind both.
         </p>
 
         <div class="block">
@@ -812,7 +814,7 @@
                 <div class="plate" data-i="1" data-lyr="Layer 02 &middot; Identity" data-name="Model keys" data-tech="IFC globalId" data-detail="Status hangs off the element's IFC identity, not a row number — so a pour date follows the member even when the drawing is reissued." data-metric="1,779 elements" data-connects="Revit IFC export"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Model keys</span><span class="tech">IFC globalId</span><span class="hint">Click &nearr;</span></div>
                 <div class="plate" data-i="2" data-lyr="Layer 03 &middot; Interaction" data-name="Role gating" data-tech="Auth claims|rules" data-detail="Admin, Super, PM, PE — enforced in database rules, not just hidden in the UI. 34 rules tests run offline against the emulator." data-metric="4 roles" data-connects="Firebase Auth"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Role gating</span><span class="tech">Auth claims &middot; rules</span><span class="hint">Click &nearr;</span></div>
                 <div class="plate" data-i="3" data-lyr="Layer 04 &middot; Realtime" data-name="Live layers" data-tech="Firebase RTDB|listeners" data-detail="Tools, crew, pours and RFIs stream in live. One schema, one database, one source of truth." data-metric="&lt;1s updates" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Live layers</span><span class="tech">Firebase RTDB</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; Backend" data-name="Auth &amp; Drive" data-tech="Blocking function|allowlist|Drive" data-detail="Sign-in is checked server-side against an allowlist before a token is ever issued; RFI PDFs link straight into Google Drive." data-metric="allowlisted" data-connects="Google Workspace"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Auth &amp; Drive</span><span class="tech">Blocking fn &middot; allowlist</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; Output" data-name="The drawing engine" data-tech="SVG|true scale|print" data-detail="The same generator that plots the 3D viewer&rsquo;s shop drawings is imported by the hub and fed the tracking status, so a status plan is a real drawing rather than a screenshot of the app: ANSI E at 1&quot;=30&rsquo;-0&quot;, sheet border, grid bubbles on four sides, dimension chains to grid, title block and sheet number. Two documents, one generator &mdash; only the paper differs, and each gets the size it is printed on." data-metric="48&times;36 at 1&quot;=30&rsquo;" data-connects="The 3D model viewer"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">The drawing engine</span><span class="tech">SVG &middot; true scale</span><span class="hint">Click &nearr;</span></div>
               </div>
               <div class="assembly-detail"></div>
             </div>
@@ -887,6 +889,40 @@
         </div>
 
         <div class="block">
+          <div class="block-label">What it issues</div>
+          <p data-edit="cs2cc-issue">
+            The step that changed what it is for. The hub had one job &mdash; be the operating
+            picture &mdash; and the picture was only useful to whoever was looking at it. In August
+            it started producing the paperwork the job already runs on.
+          </p>
+          <p>
+            <strong>The drawing.</strong> A real plot, not a screenshot: ANSI E at
+            1&quot;=30&rsquo;-0&quot;, which is the sheet size and very nearly the scale of the
+            structural drawing it sits beside in the trailer. Sheet border, grid bubbles on all four
+            sides, dimension chains to grid, title block, its own sheet number. It reuses the
+            generator that plots the model viewer&rsquo;s shop drawings rather than carrying a second
+            one, because two drawing generators drift and the one printed on 48&times;36 paper is the
+            one nobody re-checks. Status is the fill; outstanding work is washed back so it reads as
+            the ground the progress sits on.
+          </p>
+          <p>
+            <strong>The weekly report.</strong> Seventeen by eleven, ink on white, opening on that
+            same drawing at the paper it is printed on. You pick what it answers &mdash; the week,
+            what is blocking, piles, productivity, yardage &mdash; and it prints the sections it
+            carried <em>and</em> the ones it left out, because a reader cannot otherwise tell a
+            section that was switched off from a section that had nothing in it. Ask for the whole
+            project and it renders one sheet per week of a single chosen metric, so the excavation
+            advancing week by week reads as a progression rather than ten unrelated pictures.
+          </p>
+          <p>
+            <strong>The register.</strong> Nine spreadsheets behind both &mdash; every member, embed,
+            pile and week &mdash; written by a hand-rolled xlsx writer rather than a library, because
+            this is read in a trailer on bad LTE and a CDN fetch is a failed export. &ldquo;Of which
+            inferred&rdquo; is a column, not a footnote: a stage that is complete because there is
+            concrete on top of it is a different fact from a crew reporting a date, and the sheet
+            says which.
+          </p>
+
           <div class="block-label">What it is not</div>
           <p>
             Two of the six apps still write to the older shared database; moving the rest across is
@@ -905,7 +941,26 @@
           <div class="kv"><span class="k">Roles</span><span class="v">Admin &rsaquo; Super &rsaquo; PM &rsaquo; PE</span></div>
           <div class="kv"><span class="k">Keyed by</span><span class="v">IFC globalId</span></div>
           <div class="kv"><span class="k">Members drawn</span><span class="v">890</span></div>
-          <div class="kv"><span class="k">Views</span><span class="v">9, one login</span></div>
+          <div class="kv"><span class="k">Piles</span><span class="v">575 under 191 caps</span></div>
+          <div class="kv"><span class="k">Stages tracked</span><span class="v">9, per member</span></div>
+          <div class="kv"><span class="k">Views</span><span class="v">10, one login</span></div>
+        </div>
+
+        <div class="panel">
+          <h4>What it issues</h4>
+          <div class="kv"><span class="k">Drawing</span><span class="v">ANSI E &middot; 1&quot;=30&rsquo;-0&quot;</span></div>
+          <div class="kv"><span class="k">Report</span><span class="v">ANSI B &middot; sections chosen</span></div>
+          <div class="kv"><span class="k">Register</span><span class="v">9 sheets, no CDN</span></div>
+          <div class="kv"><span class="k">Plan output</span><span class="v">vector, 297 KB</span></div>
+          <div class="kv"><span class="k">Week by week</span><span class="v">a sheet each</span></div>
+        </div>
+
+        <div class="panel">
+          <h4>Held up by tests</h4>
+          <div class="kv"><span class="k">Suites</span><span class="v">18, no browser</span></div>
+          <div class="kv"><span class="k">Assertions</span><span class="v">701</span></div>
+          <div class="kv"><span class="k">Database rules</span><span class="v">141, on the emulator</span></div>
+          <div class="kv"><span class="k">Run against</span><span class="v">the shipped file</span></div>
         </div>
         <div class="panel">
           <h4>Migration</h4>
