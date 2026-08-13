@@ -35,9 +35,16 @@
   --stamp-red:    #FF5C52;
   --approve:      #4ADE80;
 
+  /* THREE STEPS OF TEXT, ALL OF WHICH HAVE TO PASS.
+   *
+   * --muted carries nearly every small mono label on the site — sheet meta, stat captions,
+   * key/value keys — at 9.5-10px. At #6C7789 that was 3.6:1 on --surface-1, under the 4.5
+   * WCAG asks for at this size, which is most of what "hard to read throughout" was once the
+   * baked paper panels were gone. Both steps lift together so the hierarchy survives: muted
+   * clears 4.5 on every surface here, dim stays visibly a step above it. */
   --text:         #DDE4EF;
-  --text-dim:     #9AA5B8;
-  --muted:        #6C7789;
+  --text-dim:     #AEB8C8;
+  --muted:        #8D98AB;
   --line:         rgba(233,238,247,0.18);
   --line-strong:  rgba(233,238,247,0.44);
 
@@ -45,6 +52,26 @@
   --accent-soft:  rgba(91,155,255,0.06);
   --glow:         rgba(91,155,255,0.20);
   --glow-soft:    rgba(91,155,255,0.08);
+
+  /* PANELS AND SCRIMS — a raise level, not a colour.
+   *
+   * These exist because the bond-paper set wrote its panels as literal paper,
+   * `rgba(251,250,247,α)`, and thirty-eight of them lived in per-page <style> blocks where
+   * the move to slate could not reach them. A paper panel over slate composites to mid-grey,
+   * and `--primary` — which was lifted specifically FOR a dark ground — then sits on it at
+   * 1.02:1. That is the "blue on white is hard to read" everywhere on the site.
+   *
+   * Split by what the surface is FOR, because the two want opposite things:
+   *   --panel   a card raised off the sheet. Light ink at low alpha: it lifts, and the text
+   *             on it stays the ordinary light text.
+   *   --scrim   a label sitting ON a photograph. Must go DARK whatever the ground is doing,
+   *             because the thing behind it is a jobsite photo, not the sheet.
+   *
+   * Named by role so the next time the ground moves this is a token edit again. */
+  --panel:        rgba(233,238,247,0.045);
+  --panel-strong: rgba(233,238,247,0.075);
+  --scrim:        rgba(9,14,23,0.72);
+  --scrim-strong: rgba(9,14,23,0.88);
 
   /* Type */
   --head: 'Space Grotesk', system-ui, sans-serif;
@@ -259,7 +286,9 @@ nav.topnav .inner {
   background: var(--surface-0); color: var(--primary); border: 1px solid var(--line-strong);
 }
 .pill-primary { background: var(--accent-soft); color: var(--primary); border-color: rgba(30,75,143,0.4); }
-.pill-amber   { background: rgba(232,84,31,0.07); color: var(--secondary-dim); border-color: rgba(232,84,31,0.4); }
+/* --secondary, not --secondary-dim. The dim orange was mixed for cream stock; on the slate
+   ground plus its own 7% wash it lands at 4.45:1 for 10px text, just under. */
+.pill-amber   { background: rgba(232,84,31,0.07); color: var(--secondary); border-color: rgba(232,84,31,0.4); }
 
 /* ════════════════════ HERO ════════════════════ */
 .hero { padding-top: 9rem; padding-bottom: 6rem; }
@@ -678,7 +707,12 @@ footer.foot .tb-sheet {
 }
 footer.foot .tb-sheet .k {
   font-family: var(--mono); font-size: 8px; letter-spacing: 0.24em;
-  text-transform: uppercase; color: rgba(233,238,247,0.6);
+  /* REVERSE VIDEO — the block is `background: var(--ink); color: var(--bg)`, so a dimmed
+     label here has to dim toward the BACKGROUND, not toward the ink it is printed on.
+     As ink-at-60% it was ink on ink: a 1.0:1 contrast ratio, i.e. the word "SHEET" was
+     simply not there. Inverting --ink and --bg for the slate ground carried the block with
+     it and left this one literal behind. */
+  text-transform: uppercase; color: rgba(14,20,32,0.66);
 }
 footer.foot .tb-sheet .v {
   font-family: var(--head); font-weight: 700; font-size: 22px; letter-spacing: 0.02em;
@@ -783,11 +817,21 @@ footer.foot .tb-sheet .v {
 .plate[data-i="1"] { --lc: var(--secondary);    --lcd: rgba(232,84,31,0.85); }
 .plate[data-i="2"] { --lc: var(--approve);      --lcd: rgba(46,107,79,0.85); }
 .plate[data-i="3"] { --lc: var(--primary-deep); --lcd: rgba(18,50,95,0.85); }
-.plate[data-i="4"] { --lc: #6B4E9E;             --lcd: rgba(107,78,158,0.85); }
+/* The purple is the one fill dark enough that dark ink fails on it — 2.5:1 — so it is the
+   one that keeps white. Stated here next to the fill it belongs to. */
+.plate[data-i="4"] { --lc: #6B4E9E;             --lcd: rgba(107,78,158,0.85); --lct: #fff; --lcx: #A98BE0; }
 .plate .edge { position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: var(--lc); }
-.plate .lyr { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; background: var(--lc); padding: 4px 10px; display: inline-block; }
+/* THE BADGE TEXT FOLLOWS THE BADGE COLOUR.
+ * These five fills were picked to read as layer identities against a dark stack, so four of
+ * them are BRIGHT — white on the green was 1.74:1 and on the pale blue 1.94:1, both of them
+ * effectively unlabelled. Dark ink carries on all four; only the purple is dark enough to
+ * need white back. So the text is a token set beside --lc rather than a constant. */
+.plate .lyr { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lct, var(--bg)); background: var(--lc); padding: 4px 10px; display: inline-block; }
 .plate .pt { display: block; margin-top: 14px; font-family: var(--head); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--ink); line-height: 1.05; }
-.plate .tech { display: block; margin-top: 9px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--lc); font-weight: 500; }
+/* --lcx: the layer colour WHEN IT IS TEXT. --lc is a fill, chosen to hold a badge; four of
+   the five are bright enough to double as text on the dark card, but the purple lands at
+   2.66:1 at 11.5px. One token, defaulting to the fill, overridden only where it has to be. */
+.plate .tech { display: block; margin-top: 9px; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.02em; color: var(--lcx, var(--lc)); font-weight: 500; }
 .plate .hint { position: absolute; right: 14px; bottom: 11px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 /* small technical "node" mark in the layer color */
 .plate::after { content: ""; position: absolute; right: 14px; top: 14px; width: 22px; height: 22px; border: 2px solid var(--lc); border-radius: 50%; opacity: 0.55; }

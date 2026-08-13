@@ -36,7 +36,7 @@
   .chapter-chip {
     padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--text-dim); background: rgba(251,250,247,0.5); cursor: pointer; transition: all .2s;
+    color: var(--text-dim); background: var(--panel); cursor: pointer; transition: all .2s;
     display: inline-flex; align-items: center; gap: 8px;
   }
   .chapter-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
@@ -69,12 +69,16 @@
     gap: 1px; background: var(--line); border-radius: 3px; overflow: hidden;
     margin-top: 1.5rem; max-width: 640px;
   }
-  .story .copy .fact { padding: 0.9rem 1rem; background: rgba(251,250,247,0.5); }
+  /* An OPAQUE surface, not a translucent panel. .facts paints var(--line) as the 1px grid
+     gap, and a translucent child composites over that layer as well as the sheet — two ink
+     washes stacking to a mid-grey the small mono labels could not sit on. The gaps still
+     show the line; the cell no longer inherits it. */
+  .story .copy .fact { padding: 0.9rem 1rem; background: var(--surface-1); }
   .story .copy .fact .v { font-family: var(--head); font-size: 20px; font-weight: 700; color: var(--primary); letter-spacing: -0.02em; }
   .story .copy .fact .k { font-family: var(--mono); font-size: 9.5px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
 
   .story .visual {
-    background: rgba(251,250,247,0.55); backdrop-filter: blur(14px);
+    background: var(--panel); backdrop-filter: blur(14px);
     border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
     aspect-ratio: 4/3; position: relative;
     display: flex; align-items: center; justify-content: center;
@@ -103,14 +107,14 @@
   .story .visual.quad .tag {
     position: absolute; left: 8px; top: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
-    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
+    padding: 3px 7px; background: var(--scrim-strong); backdrop-filter: blur(8px);
+    color: var(--primary-deep); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
   }
 
   .visual.trio {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
     aspect-ratio: 12/5; padding: 0;
-    background: rgba(251,250,247,0.55); border: 1px solid var(--line); border-radius: 4px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 4px;
     overflow: hidden;
   }
   .visual.trio > div { position: relative; overflow: hidden; background: var(--surface-0); }
@@ -123,8 +127,8 @@
   .visual.trio .tag {
     position: absolute; left: 8px; top: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 3px 7px; background: rgba(251,250,247,0.72); backdrop-filter: blur(8px);
-    color: var(--primary); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
+    padding: 3px 7px; background: var(--scrim-strong); backdrop-filter: blur(8px);
+    color: var(--primary-deep); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
   }
   @media (max-width: 700px) {
     .visual.trio { grid-template-columns: 1fr 1fr; aspect-ratio: 4/3; }
@@ -188,8 +192,8 @@
     position: absolute; bottom: 8px; left: 8px; z-index: 2;
     font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
     text-transform: uppercase; font-weight: 700;
-    padding: 4px 8px; background: rgba(251,250,247,0.82);
-    color: var(--primary); border: 1px solid rgba(30,75,143,0.25);
+    padding: 4px 8px; background: var(--scrim-strong);
+    color: var(--primary-deep); border: 1px solid rgba(30,75,143,0.25);
     border-radius: 3px; backdrop-filter: blur(8px);
   }
   /* Tile placement — 6 cols × 6 rows */
@@ -206,7 +210,7 @@
   .proj-collage .t-cc,
   .proj-collage .t-thermal,
   .proj-collage .t-tools {
-    background: linear-gradient(135deg, rgba(30,75,143,0.06), rgba(251,250,247,0.55));
+    background: linear-gradient(135deg, rgba(30,75,143,0.06), var(--panel));
   }
   .proj-collage .t-trip img { object-position: center top; }
 
@@ -240,7 +244,7 @@
   .poster-frame {
     aspect-ratio: 11 / 17; overflow: hidden;
     border: 1px solid var(--line); border-radius: 4px;
-    background: linear-gradient(135deg, rgba(30,75,143,0.05), rgba(251,250,247,0.55));
+    background: linear-gradient(135deg, rgba(30,75,143,0.05), var(--panel));
     padding: 12px 10px;
     box-shadow: 0 16px 44px rgba(26,25,21,0.15), inset 0 0 0 1px rgba(30,75,143,0.06);
   }
@@ -276,7 +280,7 @@
   .site-strip .s .t {
     position: absolute; inset: auto 0 0 0; padding: 5px 7px;
     font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--text); background: linear-gradient(to top, rgba(251,250,247,0.92), transparent);
+    color: var(--text); background: linear-gradient(to top, var(--scrim-strong), transparent);
     opacity: 0; transition: opacity .25s;
   }
   .site-strip .s:hover .t { opacity: 1; }
@@ -338,7 +342,7 @@
   /* ════════════════ SCROLL FX #2: STICKY CHAPTER CHIP ════════════════ */
   .chapter-chip-float {
     position: fixed; top: 96px; right: 24px; z-index: 36;
-    padding: 10px 16px; background: rgba(251,250,247,0.88);
+    padding: 10px 16px; background: var(--panel-strong);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--line-strong); border-radius: 999px;
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
@@ -384,7 +388,7 @@
 
   .progress-rail {
     margin-top: 1.75rem;
-    padding: 1.25rem; background: rgba(251,250,247,0.55); border: 1px solid var(--line);
+    padding: 1.25rem; background: var(--panel); border: 1px solid var(--line);
     border-radius: 4px; max-width: 640px;
   }
   .progress-rail .pr-head {
@@ -410,7 +414,7 @@
   }
   .pill-grid .p {
     font-family: var(--mono); font-size: 11px; padding: 5px 10px; border-radius: 3px;
-    background: rgba(251,250,247,0.6); border: 1px solid var(--line); color: var(--text-dim);
+    background: var(--panel); border: 1px solid var(--line); color: var(--text-dim);
     transition: all .2s;
   }
   .pill-grid .p:hover { border-color: rgba(30,75,143,0.25); color: var(--primary); }
@@ -428,7 +432,7 @@
   }
   .insight {
     display: grid; grid-template-columns: auto 1fr; gap: 14px; padding: 14px 16px;
-    background: rgba(251,250,247,0.5); border: 1px solid var(--line); border-left: 3px solid var(--primary);
+    background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--primary);
     border-radius: 3px; transition: all .25s;
   }
   .insight:hover { border-color: rgba(30,75,143,0.25); border-left-color: var(--primary); transform: translateX(3px); }
@@ -442,7 +446,7 @@
 
   .interview-tile {
     display: flex; gap: 1rem; padding: 1.25rem;
-    background: rgba(251,250,247,0.5); backdrop-filter: blur(14px);
+    background: var(--panel); backdrop-filter: blur(14px);
     border: 1px solid var(--line); border-radius: 4px;
     transition: all .25s;
   }
@@ -494,7 +498,7 @@
   }
   .lightbox-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(251,250,247,0.6); backdrop-filter: blur(10px);
+    background: var(--scrim-strong); backdrop-filter: blur(10px);
     border: 1px solid var(--line-strong); color: var(--text);
     width: 48px; height: 48px; border-radius: 50%;
     font-size: 20px; cursor: pointer; transition: all .2s;
@@ -909,7 +913,7 @@
           <div class="s" style="aspect-ratio: 4/3;"><img src="assets/photos/journey/05-interviews/uci-2.jpg" alt="UC Irvine site walk" loading="lazy" data-edit-img="uci-new-2"/><div class="t">UCI · site</div></div>
         </div>
 
-        <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: rgba(251,250,247,0.4);">
+        <div class="mt-4" style="padding: 0.8rem 1rem; border: 1px dashed var(--line); border-radius: 4px; background: var(--panel);">
           <div class="eyebrow mb-1" style="color: var(--muted); font-size: 9px;">CPP office award</div>
           <p class="dim" style="font-size: 11.5px; line-height: 1.5;" data-edit="cpp-office-note">
             CPP awarded me an office on campus to keep building. The buildout never completed, but the offer was the signal — the idea had legs. Soon after, I joined Webcor.
