@@ -1,6 +1,8 @@
 # Command Center photos
 
-Drop screenshots of dyap123.github.io/openyap-cc named:
+The case study currently renders `assets/yapgrid/map.png` (redacted). This folder holds
+older captures and is not wired into the page.
 
-- **01-dashboard.png** — Hero view: full dashboard with charts + carbon-fiber background
-- **02-drill.png** — A drill-down view (Embeds detail, Tools section, or Submittals/RFIs panel)
+Before committing any new screenshot here, redact on-screen project data first —
+takeoff quantities, level elevations, member marks, per-layer counts, file names and
+title-block information. See `tools/` for the redaction pass used on the yapgrid images.

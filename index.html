@@ -612,7 +612,7 @@
             It started in the backyard, doing yard work with my mom. That was my first taste of building something with my hands — and of doing it <strong>together, as a team</strong>. That feeling never left me. What draws me to construction isn't the concrete or the scale; it's watching a massive project come together through sheer <strong>community</strong> — hundreds of people, every trade and every crew, all pulling in the same direction until a building stands where there was nothing but dirt. Getting to be part of that is the whole reason I'm here.
           </p>
           <p class="journey-intro mt-4" data-edit="why-2">
-            So I build for them — <strong>five live apps</strong> my crew runs every day on the <strong>$2B</strong> LA Convention Center, from tool tracking to pour tracking, unified in one command center. <strong style="color: var(--text);">We're just getting started.</strong>
+            So I build for them — <strong>six live apps</strong> my crew runs every day on the <strong>$2B</strong> LA Convention Center, from tool tracking to pour tracking, unified in one command center. <strong style="color: var(--text);">We're just getting started.</strong>
           </p>
           <div class="cover-byline">
             <span class="cb-avatar"><img src="assets/photos/danzel-headshot.jpg" alt="Danzel Yap" onerror="this.closest('.cb-avatar').style.display='none'"></span>
@@ -635,14 +635,14 @@
           <a href="#how"><span class="no">A-100</span><span class="t">How I Build</span><span class="yr">Process</span></a>
           <a href="#system"><span class="no">S-000</span><span class="t">The System</span><span class="yr">Apps + hub</span></a>
           <a href="projects.html"><span class="no">C-000</span><span class="t">Construction</span><span class="yr">LACC</span></a>
-          <a href="projects.html#cs"><span class="no">S-200</span><span class="t">Software</span><span class="yr">8 apps</span></a>
+          <a href="projects.html#cs"><span class="no">S-200</span><span class="t">Software</span><span class="yr">9 builds</span></a>
           <a href="journey.html"><span class="no">G-100</span><span class="t">The Journey</span><span class="yr">2014 → Now</span></a>
         </aside>
       </div>
       <div class="cover-data">
         <div class="cd"><span class="v"><span data-count="75" data-prefix="$" data-suffix="K">$0</span></span><span class="k">Annual cost avoided</span><span class="s">Vendor evaluation · board review</span></div>
         <div class="cd"><span class="v">~1 day/wk</span><span class="k">Saved per project engineer</span><span class="s">Across the whole suite</span></div>
-        <div class="cd"><span class="v"><span data-count="5">0</span></span><span class="k">Core field apps</span><span class="s">Used daily on a $2B jobsite</span></div>
+        <div class="cd"><span class="v"><span data-count="6">0</span></span><span class="k">Core field apps</span><span class="s">Used daily on a $2B jobsite</span></div>
         <div class="cd"><span class="v">40&rarr;6 min</span><span class="k">RFI &amp; submittal prep</span><span class="s">Mr. George — the agent</span></div>
       </div>
     </div>
@@ -670,16 +670,17 @@
   </div>
 </section>
 
-<!-- THE SYSTEM — four apps, one hub -->
+<!-- THE SYSTEM — five apps, one hub -->
 <section id="system" class="sheet-sec">
   <div class="wrap">
     <div class="sheet">
-      <div class="sheet-head"><span class="no">S-000</span><span class="t">The System — Four Apps, One Hub</span><span class="meta">Field-Measured · Not Modeled</span></div>
+      <div class="sheet-head"><span class="no">S-000</span><span class="t">The System — Five Apps, One Hub</span><span class="meta">Model-Derived · One Login</span></div>
       <div class="sheet-body">
     <h2 class="lg reveal delay-1">The <span class="grad">Command Center.</span></h2>
     <p class="dim mt-4 reveal delay-2" style="max-width: 68ch; font-size: 16px; line-height: 1.65;" data-edit="system-intro">
-      Concrete work runs on four questions: what's scheduled, what's poured, what's installed, and where the tools went.
-      I built one production app for each — then a hub that answers all four on a single screen.
+      Concrete work runs on a handful of questions: what is scheduled, what is poured, what is installed,
+      where the tools went — and whether any of it matches the structure on the drawings. I built a
+      production app for each one, then the hub that answers all of them on a single screen.
     </p>
 
     <div class="flow reveal delay-2">
@@ -687,7 +688,7 @@
         <div class="flow-node">
           <div class="mark">SY-20 · Schedule</div>
           <div class="t">SuperYap</div>
-          <div class="r" data-edit="flow-sy">Look-ahead builder with a working-day engine and Webcor-format PDF/Excel export. Replaced an afternoon of weekly Excel surgery.</div>
+          <div class="r" data-edit="flow-sy">Look-ahead builder with a working-day engine and company-format PDF/Excel export. Replaced an afternoon of weekly spreadsheet surgery.</div>
         </div>
         <div class="flow-node">
           <div class="mark">CUP-02 · Pours</div>
@@ -697,12 +698,17 @@
         <div class="flow-node">
           <div class="mark">EY-18 · Embeds</div>
           <div class="t">EmbedYap</div>
-          <div class="r" data-edit="flow-ey">299 embeds, 75 types, extracted from plan PDFs with OpenCV and tracked as live pins on the map. Replaced a highlighter and a memory.</div>
+          <div class="r" data-edit="flow-ey">299 embeds, 75 types, extracted from plan PDFs with computer vision and tracked as live pins on the map. Replaced a highlighter and a memory.</div>
         </div>
         <div class="flow-node">
           <div class="mark">TT-00 · Tools</div>
           <div class="t">Tool Tracker</div>
-          <div class="r" data-edit="flow-tt">Assets-as-truth registry with on-site verification. The old way — ToolHound printouts — lost ~65 tools in one cycle.</div>
+          <div class="r" data-edit="flow-tt">Assets-as-truth registry with on-site verification. The old way — printouts from the legacy system — lost roughly 65 tools in a single cycle.</div>
+        </div>
+        <div class="flow-node">
+          <div class="mark">YG-24 · The Model</div>
+          <div class="t">YapGrid</div>
+          <div class="r" data-edit="flow-yg">The foundation modelled in the browser from the project's own IFC, with the reinforcing generated from the structural schedules. The hub's map is drawn from this.</div>
         </div>
       </div>
       <div class="flow-mid"></div>
@@ -710,36 +716,40 @@
         <div class="mark">CC-22 · The Hub</div>
         <div class="t">Command Center</div>
         <div class="r" data-edit="flow-cc">
-          One role-gated login: the schedule, pour status, every embed pin, tools, and today's crew on a single live map — each layer deep-linking into its app. As of August 2026 the map is derived from the structural model, so every shape on it is a real member. The superintendent runs the 6&nbsp;AM tailgate from this screen.
+          One role-aware login: the schedule, pour status, every embed, RFIs, submittals, inspections, tools and today's crew on a single live map — each layer deep-linking into its app. Since August 2026 that map is generated from the structural model, so every shape on it is a real member. And it issues the paperwork the job runs on. The superintendent runs the 6&nbsp;AM tailgate from this screen.
         </div>
-        <div class="roles">ADMIN &rsaquo; SUPER &rsaquo; PM &rsaquo; PE · GOOGLE SIGN-IN + SERVER-SIDE ALLOWLIST</div>
+        <div class="roles">ADMIN &rsaquo; SUPER &rsaquo; PM &rsaquo; PE · APPROVED ACCOUNTS ONLY</div>
       </div>
     </div>
 
     <div class="reveal" style="margin-top: 2.75rem;">
       <div class="sector"><span>Command Center · The hub, in layers</span></div>
-<div class="assembly" data-assembly aria-label="Command Center — technical layers">
+      <div class="assembly" data-assembly aria-label="Command Center — what it does, in layers">
             <div class="assembly-view">
               <button class="assembly-back" type="button">← Layers</button>
               <div class="assembly-plates">
-                <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Unified map" data-tech="Canvas|pan/zoom|SVG" data-detail="One pan/zoom canvas where footings, embeds, pours, RFI zones and markups are toggleable layers."><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Unified map</span><span class="tech">Canvas · pan/zoom · SVG</span><span class="hint">Click ↗</span></div>
-                <div class="plate" data-i="1" data-lyr="Layer 02 · Logic" data-name="Role gating" data-tech="Auth roles|tab filters" data-detail="Role-gated views (Admin, Super, PM, PE); each tab shows only what that role needs."><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Role gating</span><span class="tech">Auth roles · tab filters</span><span class="hint">Click ↗</span></div>
-                <div class="plate" data-i="2" data-lyr="Layer 03 · Data" data-name="Shared model" data-tech="Firebase RTDB" data-detail="Reads the same live tools, crew, pours and RFIs that the other four apps write."><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Shared model</span><span class="tech">Firebase RTDB</span><span class="hint">Click ↗</span></div>
-                <div class="plate" data-i="3" data-lyr="Layer 04 · Backend" data-name="Auth &amp; Drive" data-tech="Firebase Auth|2FA|Google Drive" data-detail="Firebase Auth with 2FA; RFI PDFs link straight into Google Drive."><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Auth &amp; Drive</span><span class="tech">Firebase Auth · 2FA · Google Drive</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="0" data-lyr="Layer 01 · The map" data-name="Plan and model" data-tech="Canvas|Three.js" data-detail="One map, two views. The plan draws from the model; flip to 3D and the same thing is still selected. Members, embeds, pours, zones and markups are layers you turn on and off." data-metric="2D + 3D" data-connects="YapGrid"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Plan and model</span><span class="tech">Canvas · Three.js</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 · The record" data-name="Status per member" data-tech="One source of truth" data-detail="Every member carries its own construction stages. Because each view reads that same record, progress on the map and progress in the report are one fact rather than two counts that quietly drift apart." data-metric="Stage by stage" data-connects="Every view"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Status per member</span><span class="tech">One source of truth</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · The gate" data-name="Role-aware access" data-tech="Google sign-in" data-detail="Four tiers, from project engineer up to admin, enforced on the server rather than hidden in the interface. Approved accounts only, and view-only is the default on a field device." data-metric="4 tiers" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Role-aware access</span><span class="tech">Google sign-in</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 · The feed" data-name="Everything current" data-tech="Realtime database" data-detail="Pours, tools, crew, RFIs and inspections arrive as they happen. Nobody refreshes anything, and nobody has to ask whether the number on the screen is this morning's." data-metric="Live" data-connects="Five apps"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Everything current</span><span class="tech">Realtime database</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 · The output" data-name="It issues paperwork" data-tech="SVG|true scale|print" data-detail="The hub does not stop at a screen. It plots a full-size status drawing at true scale, prints the weekly report a PM takes into coordination, and writes the quantity register behind both — so what the field marked becomes a document the job can actually use." data-metric="Real plots" data-connects="The trailer wall"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">It issues paperwork</span><span class="tech">SVG · true scale</span><span class="hint">Click ↗</span></div>
               </div>
               <div class="assembly-detail"></div>
             </div>
             <div class="assembly-side">
               <div class="side-head">Features</div>
               <ol class="assembly-features">
-                <li><b>The Map</b> — footings, embeds, pours, RFI zones and markups as toggleable layers.</li>
-                <li><b>RFIs</b> — drag-and-drop a PDF; it links to Drive and pins to its map zone.</li>
-                <li><b>Inspections</b> — Ready → Pass/Fail sign-off that logs who marked ready.</li>
-                <li><b>Live tools &amp; crew</b> — pulled from the shared Firebase, role-filtered per tab.</li>
+                <li><b>The map</b> — members, embeds, pours, zones and markups as toggleable layers, in 2D or 3D.</li>
+                <li><b>RFIs &amp; submittals</b> — the project registers, searchable, tied to the area they affect.</li>
+                <li><b>Inspections</b> — Ready → Pass/Fail sign-off that records who signed and when.</li>
+                <li><b>The paperwork</b> — a plotted status drawing, a weekly report, a quantity register.</li>
               </ol>
               <div class="assembly-cap">Click a layer to open it</div>
             </div>
           </div>
+      <div class="mt-8 flex gap-3" style="flex-wrap:wrap">
+        <a href="projects.html#command-center" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">hub</span>The full case study</a>
+      </div>
     </div>
 
     <!-- COST AVOIDANCE — the $75K vendor decision -->
@@ -782,30 +792,30 @@
 <section class="sheet-sec">
   <div class="wrap">
     <div class="sheet reveal">
-      <div class="sheet-head"><span class="no">S-050</span><span class="t">The Model — YapGrid</span><span class="meta">Derived From The IFC &middot; Not Traced</span></div>
+      <div class="sheet-head"><span class="no">S-050</span><span class="t">The Model — YapGrid</span><span class="meta">Derived From The Model · Not Traced</span></div>
       <div class="sheet-body">
         <div class="story">
           <div class="copy">
             <div class="tag">New &middot; August 2026</div>
-            <h2>Then I stopped drawing the job<br>and modelled it.</h2>
+            <h2>Maximizing value<br>from a 3D model.</h2>
             <p>
-              Every app above ran on a plan someone traced off a PDF. So I took Webcor's Revit IFC
-              export &mdash; 27 MB, 1,779 concrete elements, zero reinforcing &mdash; and built a
-              browser 3D model of the foundation, generating every bar from the structural schedules
-              and typical details.
+              Every app above ran on a plan someone had traced off a PDF. So I took the project's own
+              Revit IFC export &mdash; all of the concrete, and not one reinforcing bar &mdash; and
+              built a browser 3D model of the foundation, generating every bar from the structural
+              schedules and the typical details.
             </p>
             <p>
-              It takes off <strong>23,550 CY</strong> of concrete and <strong>128,041 SF</strong> of
-              formwork instead of counting by hand, prints region sheets on the Webcor title block,
-              and checks itself: modelled volumes agree with the schedule's own dimensions to within
-              0.1%. It also found <strong>eight grade beam bars running straight through 24&Prime;
-              piles</strong>. The Command Center map is now drawn from this, not from a tracing.
+              It takes off concrete, formwork and a bar schedule instead of counting by hand, prints
+              region sheets on the company title block, and checks itself: modelled volumes agree
+              with the schedules' own dimensions to within 0.1%. It also found grade beam bars
+              running straight through piles, before anyone had to find them in the field. The
+              Command Center map is now drawn from this, not from a tracing.
             </p>
             <div class="facts">
-              <div class="fact"><div class="v">1,779</div><div class="k">Elements modelled</div></div>
-              <div class="fact"><div class="v">23,550 CY</div><div class="k">Concrete takeoff</div></div>
-              <div class="fact"><div class="v">0.0–0.1%</div><div class="k">Vs. schedule dims</div></div>
-              <div class="fact"><div class="v">8 &rarr; 0</div><div class="k">Bars through piles</div></div>
+              <div class="fact"><div class="v">One model</div><div class="k">Four sources reconciled</div></div>
+              <div class="fact"><div class="v">Takeoff</div><div class="k">Concrete, formwork, bar</div></div>
+              <div class="fact"><div class="v">0.1%</div><div class="k">Vs. schedule dims</div></div>
+              <div class="fact"><div class="v">Clashes</div><div class="k">Found, then resolved</div></div>
             </div>
             <div class="mt-8 flex gap-3" style="flex-wrap:wrap">
               <a href="projects.html#yapgrid" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">deployed_code</span>How it was built</a>
@@ -828,7 +838,7 @@
       <div class="sheet-head"><span class="no">S-200</span><span class="t">The Work — Two Sides</span><span class="meta">Construction + Software</span></div>
       <div class="sheet-body" style="text-align:center; padding: 3rem 2.5rem;">
         <h2 class="lg">See what I've <span class="grad">built</span>.</h2>
-        <p class="dim mt-4" style="max-width: 58ch; margin: 0 auto; font-size: 16px;">Eight production apps my crew runs every day, and the $2B jobsite they run on — the concrete I pour and the software I ship. Two sides of the same builder.</p>
+        <p class="dim mt-4" style="max-width: 58ch; margin: 0 auto; font-size: 16px;">Nine builds — six of them my crew runs every day — and the $2B jobsite they run on — the concrete I pour and the software I ship. Two sides of the same builder.</p>
         <div class="mt-8 flex gap-3" style="justify-content:center; flex-wrap:wrap;">
           <a href="projects.html" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">construction</span>Construction projects</a>
           <a href="projects.html#cs" class="btn"><span class="material-symbols-outlined" style="font-size:16px">terminal</span>Software projects</a>

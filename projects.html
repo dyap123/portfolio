@@ -349,7 +349,7 @@
         <div class="stats-row mt-8 reveal delay-1">
           <div class="stat-cell"><span class="stat-val">$2B</span><span class="stat-label">Program</span><span class="stat-sub">Expansion &amp; modernization</span></div>
           <div class="stat-cell"><span class="stat-val"><span data-count="536">0</span></span><span class="stat-label">Footings &amp; beams</span><span class="stat-sub">Live coordinates drive the sheet above</span></div>
-          <div class="stat-cell"><span class="stat-val"><span data-count="79">0</span></span><span class="stat-label">Gridlines</span><span class="stat-sub">Column &amp; row lines · A → Z · W8 → W34</span></div>
+          <div class="stat-cell"><span class="stat-val"><span data-count="79">0</span></span><span class="stat-label">Gridlines</span><span class="stat-sub">Column &amp; row lines across the foundation</span></div>
           <div class="stat-cell"><span class="stat-val">AUG 2026</span><span class="stat-label">Foundations complete</span><span class="stat-sub">CUP done 5.29.26 · balance in progress</span></div>
         </div>
       </div>
@@ -598,16 +598,16 @@
         <div class="sector"><span>Sheet S-202 · Details — Case Studies</span></div>
         <h2 class="lg">What I have <span class="grad">built</span>.</h2>
         <p class="dim mt-2" style="max-width: 720px;" data-edit="cs-lede">
-          The Core Five in depth — the pour tracker, the embed map, the tool registry, the schedule builder, and the hub that ties them together — plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
+          Starting with the hub that ties it all together — then the model underneath it, the pour tracker, the embed map, the tool registry and the schedule builder, plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
         </p>
       </div>
-      <span class="pill pill-primary">5 CORE APPS · 1 AGENT</span>
+      <span class="pill pill-primary">6 CORE APPS · 1 AGENT</span>
     </div>
 
     <!-- Index -->
     <div class="cs-index mt-8 reveal delay-1">
-      <a href="#yapgrid"><span class="no">01 · The Model</span><span class="t">YapGrid</span><span class="s">3D structural model from the IFC &middot; quantities, clashes, sheets</span></a>
-      <a href="#command-center"><span class="no">02 · The Hub</span><span class="t">Command Center</span><span class="s">Every layer of the jobsite on one role-aware map</span></a>
+      <a href="#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">The whole jobsite on one role-aware screen &mdash; and the paperwork it issues</span></a>
+      <a href="#yapgrid"><span class="no">02 · The Model</span><span class="t">YapGrid</span><span class="s">The foundation modelled in the browser &middot; quantities, clashes, sheets</span></a>
       <a href="#cup-dashboard"><span class="no">03 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour-day tracking — footing map, trucks, checklists</span></a>
       <a href="#embedyap"><span class="no">04 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds pulled from the plans by CV, tracked as live pins</span></a>
       <a href="#tool-tracker"><span class="no">05 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — stopped the ~65-lost-tools bleed</span></a>
@@ -622,28 +622,177 @@
   </div>
 </section>
 
-<!-- CASE 01 — YAPGRID -->
+<!-- CASE 01 — COMMAND CENTER (the centerpiece) -->
+<section>
+  <div class="wrap">
+    <article class="case reveal" id="command-center">
+      <div class="lhs">
+        <div class="head">
+          <span class="num">01</span>
+          <span class="pill">LIVE</span>
+          <span class="pill pill-primary">THE HUB</span>
+        </div>
+        <h2 data-edit="cs2cc-h">Command Center &mdash; the whole jobsite on one screen.</h2>
+        <p class="tagline" data-edit="cs2cc-tag">
+          The operating picture for a concrete team on a $2B convention center expansion. Schedule,
+          pours, embeds, RFIs, submittals, inspections, tools and crew &mdash; behind one role-aware
+          login, on a map generated from the structural model rather than traced from a drawing of
+          it. Five field apps became one platform. It is the screen the superintendent runs the
+          6&nbsp;AM tailgate from.
+        </p>
+
+        <div class="block">
+          <div class="block-label">Problem</div>
+          <p data-edit="cs2cc-problem">
+            The suite working was the problem. Each app answered its own question well, but the
+            superintendent&rsquo;s real question crossed four of them at once &mdash; what is ready
+            for inspection, what is holding up tomorrow&rsquo;s pour, who is on site today.
+            Answering it meant four logins, four maps and four versions of the truth. And the plan
+            underneath all of them had been traced by hand off a PDF: shapes with no dimensions, no
+            volumes, and no way to prove any of it matched the structure actually being built.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Approach</div>
+          <p data-edit="cs2cc-approach-1">
+            One platform, one sign-in, one record. The map is generated from the project&rsquo;s own
+            structural model, so every shape on it is a real member carrying its real dimensions
+            instead of an outline somebody drew over a drawing. Progress is tracked against those
+            members, stage by stage, which means the map, the dashboard and the printed report
+            cannot disagree &mdash; they are all reading the same thing. Access is role-based and
+            enforced on the server rather than hidden in the interface, so view-only is what a
+            phone in the field gets by default.
+          </p>
+          <div class="assembly" data-assembly aria-label="Command Center — what it does, in layers">
+            <div class="assembly-view">
+              <button class="assembly-back" type="button">&larr; Layers</button>
+              <div class="assembly-plates">
+                <div class="plate" data-i="0" data-lyr="Layer 01 &middot; The map" data-name="Plan and model" data-tech="Canvas|Three.js" data-detail="One map, two views. The plan draws from the model; flip to 3D and the same thing is still selected. Members, embeds, pours, zones and markups are layers you turn on and off." data-metric="2D + 3D" data-connects="The model viewer"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Plan and model</span><span class="tech">Canvas &middot; Three.js</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 &middot; The record" data-name="Status per member" data-tech="One source of truth" data-detail="Every member carries its own construction stages. Because each view reads that same record, progress on the map and progress in the report are one fact rather than two counts that quietly drift apart." data-metric="Stage by stage" data-connects="Every view"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Status per member</span><span class="tech">One source of truth</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 &middot; The gate" data-name="Role-aware access" data-tech="Google sign-in" data-detail="Four tiers, from project engineer up to admin, enforced on the server rather than hidden in the interface. Approved accounts only, and view-only is the default on a field device." data-metric="4 tiers" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Role-aware access</span><span class="tech">Google sign-in</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="3" data-lyr="Layer 04 &middot; The feed" data-name="Everything current" data-tech="Realtime database" data-detail="Pours, tools, crew, RFIs and inspections arrive as they happen. Nobody refreshes anything, and nobody has to ask whether the number on the screen is this morning&rsquo;s." data-metric="Live" data-connects="Five apps"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Everything current</span><span class="tech">Realtime database</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; The output" data-name="It issues paperwork" data-tech="SVG|true scale|print" data-detail="The hub does not stop at a screen. It plots a full-size status drawing at true scale, prints the weekly report a PM takes into coordination, and writes the quantity register behind both &mdash; so what the field marked becomes a document the job can actually use." data-metric="Real plots" data-connects="The trailer wall"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">It issues paperwork</span><span class="tech">SVG &middot; true scale</span><span class="hint">Click &nearr;</span></div>
+              </div>
+              <div class="assembly-detail"></div>
+            </div>
+            <div class="assembly-side">
+              <div class="side-head">Features</div>
+              <ol class="assembly-features">
+                <li><b>The map</b> &mdash; members, embeds, pours, zones and markups as toggleable layers, in 2D or 3D.</li>
+                <li><b>RFIs &amp; submittals</b> &mdash; the project registers, searchable, tied to the area they affect.</li>
+                <li><b>Inspections</b> &mdash; Ready &rarr; Pass/Fail sign-off that records who signed and when.</li>
+                <li><b>The paperwork</b> &mdash; a plotted status drawing, a weekly report, a quantity register.</li>
+              </ol>
+              <div class="assembly-cap">Click a layer &middot; &larr; &rarr; to explore</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <img src="assets/yapgrid/map.png" alt="Command Center — the model-derived foundation map, with project data redacted" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:-4px;letter-spacing:.04em">Client and project data redacted.</p>
+
+        <div class="block">
+          <div class="block-label">The way in</div>
+          <p>
+            A tool people are told to use gets opened once. So the sign-in is a terminal that greets
+            you by time of day, and the mark above it is a merlion, drawn once as geometry and
+            reused everywhere the app needs a logo. It took five rejections to find the rule
+            underneath it: repetition plus regularity reads as decoration, not as an animal. A
+            flower, a sun and a star are the same construction, so restyling the petal was never
+            going to fix it. Every change that stuck was structural, and three of them were deleting
+            a feature rather than redrawing it.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">Result</div>
+          <p data-edit="cs2cc-result">
+            Ten views behind one login, and six separate apps retired into one. The number that
+            matters is not on the screen. It is that the argument about what actually got built
+            &mdash; the one that used to happen in the field on pour morning, at the worst possible
+            moment &mdash; now happens weeks earlier, on a screen, with everyone looking at the same
+            picture.
+          </p>
+        </div>
+
+        <div class="block">
+          <div class="block-label">What it is not</div>
+          <p>
+            It covers the foundation scope, not the whole structure. It is an internal tool behind a
+            company sign-in, so there is no public demo &mdash; the screenshots here are the tour,
+            and the project data on them is redacted. And moving the last of the older apps onto the
+            platform is still in progress.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rhs">
+        <div class="panel">
+          <h4>Facts</h4>
+          <div class="kv"><span class="k">Built</span><span class="v">2026-06 &rarr; 08</span></div>
+          <div class="kv"><span class="k">Platform</span><span class="v">Firebase</span></div>
+          <div class="kv"><span class="k">Front end</span><span class="v">Vanilla JS, no build</span></div>
+          <div class="kv"><span class="k">Views</span><span class="v">10, one login</span></div>
+          <div class="kv"><span class="k">Roles</span><span class="v">4 tiers, server-side</span></div>
+          <div class="kv"><span class="k">Apps folded in</span><span class="v">5</span></div>
+          <div class="kv"><span class="k">Map source</span><span class="v">the structural model</span></div>
+        </div>
+
+        <div class="panel">
+          <h4>What it issues</h4>
+          <div class="kv"><span class="k">Drawing</span><span class="v">full size, true scale</span></div>
+          <div class="kv"><span class="k">Report</span><span class="v">weekly, sections chosen</span></div>
+          <div class="kv"><span class="k">Register</span><span class="v">multi-sheet workbook</span></div>
+        </div>
+
+        <div class="panel">
+          <h4>Held up by tests</h4>
+          <div class="kv"><span class="k">Suites</span><span class="v">19, no browser</span></div>
+          <div class="kv"><span class="k">Assertions</span><span class="v">840+</span></div>
+          <div class="kv"><span class="k">Run</span><span class="v">before every deploy</span></div>
+        </div>
+
+        <div class="panel">
+          <h4>Stack</h4>
+          <div class="tech-wrap">
+            <span>JavaScript</span><span>Firebase</span><span>Three.js</span><span>Node</span><span>Python</span>
+          </div>
+        </div>
+        <a class="live" href="https://openyap-prod.web.app/command-center/" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+          View Live
+        </a>
+        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.04em">Sign-in required &mdash; approved accounts only.</p>
+      </aside>
+    </article>
+  </div>
+</section>
+
+<!-- CASE 02 — YAPGRID -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="yapgrid">
       <div class="lhs">
         <div class="head">
-          <span class="num">01</span>
+          <span class="num">02</span>
           <span class="pill">LIVE</span>
         </div>
         <h2>YapGrid &mdash; the foundation, modelled, with the rebar in it.</h2>
         <p class="tagline">
-          A browser 3D model of the LACC Pico Hall foundation, built from Webcor&rsquo;s Revit IFC
-          export. 23,550 CY of concrete and 128,041 SF of formwork, taken off the model instead of
-          counted by hand. Eight grade beam bars were running through piles. They aren&rsquo;t now.
+          A browser 3D model of the LACC foundation, built from the project&rsquo;s own Revit IFC
+          export. Concrete and formwork taken off the model instead of counted by hand off PDFs. And
+          grade beam bars were running straight through piles. They are not now.
         </p>
 
         <div class="block">
           <div class="block-label">Problem</div>
           <p>
             The reinforcing is not in the model. It is not in the IFC either &mdash; the export
-            carries 1,779 concrete elements and zero reinforcing bars, because the bars only ever
-            existed as schedule rows and typical details on paper. So quantities got counted by
+            carries the concrete and not one reinforcing bar, because the bars only ever existed as
+            schedule rows and typical details on paper. So quantities got counted by
             hand off PDFs, and nothing anywhere could answer the question that actually costs money
             on a pour day: is a bar and a pile trying to occupy the same space?
           </p>
@@ -656,7 +805,7 @@
             concrete is and what shape. The <strong>schedules</strong> say what steel goes in it.
             The <strong>details</strong> say how that steel is arranged and terminated &mdash; and
             that third one is in neither of the first two. A grade beam bar running through to the
-            far face of a pile cap and hooking there is a sentence on S4-1-1, nowhere else.
+            far face of a pile cap and hooking there is a sentence on a typical detail, nowhere else.
           </p>
           <p>
             Geometry is imported <em>analytically</em> wherever it can be. 99% of the solids are
@@ -669,11 +818,11 @@
             <div class="assembly-view">
               <button class="assembly-back" type="button">&larr; Layers</button>
               <div class="assembly-plates">
-                <div class="plate" data-i="0" data-lyr="Layer 01 &middot; Source" data-name="IFC import" data-tech="IfcOpenShell|Python" data-detail="27 MB Revit IFC export. Storeys resolved, placements walked to building space, solids classified: analytic where prismatic, tessellated where not." data-metric="1,779 elements" data-connects="Webcor Revit"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">IFC import</span><span class="tech">IfcOpenShell &middot; Python</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="1" data-lyr="Layer 02 &middot; Data" data-name="Schedules" data-tech="Transcribed tables|cited" data-detail="Grade beams, pile caps, footings, piles, piers, micropile caps — every row carrying the sheet it came from, so any bar can be traced back to its table." data-metric="6 schedules" data-connects="MKA structural set"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Schedules</span><span class="tech">Transcribed &middot; cited</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="2" data-lyr="Layer 03 &middot; Generation" data-name="Reinforcing" data-tech="Mark&rarr;generator registry" data-detail="Each member class has a generator that applies the typical detail: cover, hook type, development, lap, termination. Marks wire themselves up through a registry." data-metric="~50k bars" data-connects="Schedules + details"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Reinforcing</span><span class="tech">Mark &rarr; generator</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="0" data-lyr="Layer 01 &middot; Source" data-name="IFC import" data-tech="IfcOpenShell|Python" data-detail="The project&rsquo;s Revit IFC export. Storeys resolved, placements walked to building space, solids classified: analytic where prismatic, tessellated where not." data-metric="Analytic import" data-connects="The project model"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">IFC import</span><span class="tech">IfcOpenShell &middot; Python</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="1" data-lyr="Layer 02 &middot; Data" data-name="Schedules" data-tech="Transcribed tables|cited" data-detail="Grade beams, pile caps, footings, piles, piers, micropile caps — every row carrying the sheet it came from, so any bar can be traced back to its table." data-metric="6 schedules" data-connects="The structural set"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Schedules</span><span class="tech">Transcribed &middot; cited</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 &middot; Generation" data-name="Reinforcing" data-tech="Mark&rarr;generator registry" data-detail="Each member class has a generator that applies the typical detail: cover, hook type, development, lap, termination. Marks wire themselves up through a registry." data-metric="Tens of thousands" data-connects="Schedules + details"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Reinforcing</span><span class="tech">Mark &rarr; generator</span><span class="hint">Click &nearr;</span></div>
                 <div class="plate" data-i="3" data-lyr="Layer 04 &middot; Render" data-name="Draw-call budget" data-tech="Three.js|InstancedMesh" data-detail="One merged geometry per layer with triangle ranges kept for picking; one instanced mesh per bar size. A live triangle meter reports what is actually drawn." data-metric="7 draw calls" data-connects="Runs on an iPad"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Draw-call budget</span><span class="tech">Three.js &middot; instancing</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; Output" data-name="Takeoff &amp; sheets" data-tech="SVG sheets|CSV" data-detail="Quantities by mark, by class and as a bar schedule; region sheets on the WCG title block with dimension chains referenced to the real grid." data-metric="128,041 SF" data-connects="Command Center"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Takeoff &amp; sheets</span><span class="tech">SVG &middot; CSV</span><span class="hint">Click &nearr;</span></div>
+                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; Output" data-name="Takeoff &amp; sheets" data-tech="SVG sheets|CSV" data-detail="Quantities by mark, by class and as a bar schedule; region sheets on the company title block, with dimension chains referenced to the real structural grid." data-metric="Ordered by mark" data-connects="Command Center"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Takeoff &amp; sheets</span><span class="tech">SVG &middot; CSV</span><span class="hint">Click &nearr;</span></div>
               </div>
               <div class="assembly-detail"></div>
             </div>
@@ -682,7 +831,7 @@
               <ol class="assembly-features">
                 <li><b>Reinforcing</b> &mdash; generated from the schedules, layer by layer, on or off.</li>
                 <li><b>Takeoff</b> &mdash; concrete, formwork and a bar schedule, rolled up by mark.</li>
-                <li><b>Sheets</b> &mdash; region plans on the WCG title block, dimensioned to the grid.</li>
+                <li><b>Sheets</b> &mdash; region plans on the company title block, dimensioned to the grid.</li>
                 <li><b>Clash</b> &mdash; bars against piles, reported rather than silently moved.</li>
               </ol>
               <div class="assembly-cap">Click a layer &middot; &larr; &rarr; to explore</div>
@@ -691,25 +840,26 @@
         </div>
 
         <div class="gallery">
-          <img src="assets/yapgrid/model-rebar.png" alt="YapGrid — Level 223 pile caps, grade beams and augercast piles with reinforcing layers on" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/yapgrid/model-rebar.png" alt="YapGrid — pile caps, grade beams and piles with the generated reinforcing layers on" loading="lazy" onerror="this.style.display='none'">
         </div>
+        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:-4px;letter-spacing:.04em">Client and project data redacted.</p>
 
         <div class="block">
           <div class="block-label">Does it agree with the drawings?</div>
           <p>
             The check that matters is against a source the model never saw. Modelled volumes were
-            compared with the dimensions the schedule itself prints, and they agree to
-            <strong>0.0&ndash;0.1%</strong> on every dominant mark &mdash; F8 across 66 instances,
-            F7 across 30, PC2C across 21. When Addendum 006 landed, all six foundation schedules
-            were re-checked row by row against the model and came back unchanged; what the addendum
-            actually brought was a sheet that had never been issued before, carrying the micropile
-            cap schedule for members that had no reinforcing at all until then.
+            compared with the dimensions the schedules themselves print, and they agree to within
+            <strong>0.1%</strong> on every dominant mark. When a design addendum landed, all six
+            foundation schedules were re-checked row by row against the model and came back
+            unchanged &mdash; what the addendum actually brought was a schedule that had never been
+            issued before, for members that had carried no reinforcing at all until then.
           </p>
         </div>
 
         <div class="gallery">
-          <img src="assets/yapgrid/sheet.png" alt="An enlarged foundation plan generated from the model, on the Webcor Concrete Group title block" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/yapgrid/sheet.png" alt="An enlarged foundation plan generated from the model, on the company title block" loading="lazy" onerror="this.style.display='none'">
         </div>
+        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:-4px;letter-spacing:.04em">Client and project data redacted.</p>
 
         <div class="block">
           <div class="block-label">Result</div>
@@ -717,10 +867,9 @@
             Quantities you can order from &mdash; concrete, formwork contact area, and a bar
             schedule by size &mdash; rolled up by mark rather than one row per element. Enlarged
             plans generate onto the real title block with dimension chains referenced to the
-            structural grid. And the coordination catch: <strong>eight grade beam bars were passing
-            straight through 24&Prime; piles</strong>, by up to 8.5&Prime;. They now step over them,
-            and where there genuinely is not room, the model says so instead of quietly moving the
-            steel.
+            structural grid. And the coordination catch: <strong>grade beam bars were passing
+            straight through piles</strong>. They now step over them, and where there genuinely is
+            not room, the model says so instead of quietly moving the steel.
           </p>
         </div>
 
@@ -728,10 +877,10 @@
           <div class="block-label">What it is not</div>
           <p>
             The reinforcing is a typical-detail interpretation, not a placing drawing, and the model
-            says so on every sheet it prints. It covers levels 223 to 250. Where the imported
-            geometry and a schedule disagree &mdash; three micropile cap marks do &mdash; it refuses
-            to generate rather than guess, and lists them. Every one of those caveats is in the app,
-            not just here.
+            says so on every sheet it prints. It covers the foundation levels, not the structure
+            above. Where the imported geometry and a schedule disagree, it refuses to generate
+            rather than guess, and lists the marks. Every one of those caveats is in the app, not
+            just here.
           </p>
         </div>
       </div>
@@ -740,18 +889,18 @@
         <div class="panel">
           <h4>Facts</h4>
           <div class="kv"><span class="k">Built</span><span class="v">2026-07 &rarr; 08</span></div>
-          <div class="kv"><span class="k">Source</span><span class="v">27 MB Revit IFC</span></div>
-          <div class="kv"><span class="k">Elements</span><span class="v">1,779 + 401 embeds</span></div>
-          <div class="kv"><span class="k">Levels</span><span class="v">223 / 230 / 235 / 250</span></div>
-          <div class="kv"><span class="k">Concrete</span><span class="v">23,550 CY</span></div>
-          <div class="kv"><span class="k">Formwork</span><span class="v">128,041 SF</span></div>
+          <div class="kv"><span class="k">Source</span><span class="v">the project Revit IFC</span></div>
+          <div class="kv"><span class="k">Scope</span><span class="v">foundation, four levels</span></div>
+          <div class="kv"><span class="k">Reinforcing</span><span class="v">generated from schedules</span></div>
+          <div class="kv"><span class="k">Takeoff</span><span class="v">concrete, formwork, bar</span></div>
+          <div class="kv"><span class="k">Runs on</span><span class="v">an iPad in the trailer</span></div>
         </div>
         <div class="panel">
           <h4>Verified against</h4>
-          <div class="kv"><span class="k">Volumes</span><span class="v">0.0&ndash;0.1% vs schedule</span></div>
+          <div class="kv"><span class="k">Volumes</span><span class="v">within 0.1% of schedule</span></div>
           <div class="kv"><span class="k">Geometry</span><span class="v">18/18 checks</span></div>
-          <div class="kv"><span class="k">Addendum 006</span><span class="v">6 schedules, unchanged</span></div>
-          <div class="kv"><span class="k">Clashes</span><span class="v">8 bars &rarr; 0</span></div>
+          <div class="kv"><span class="k">Addendum</span><span class="v">re-checked, unchanged</span></div>
+          <div class="kv"><span class="k">Clashes</span><span class="v">found, then resolved</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
@@ -759,241 +908,14 @@
             <span>Three.js</span><span>IfcOpenShell</span><span>Python</span><span>JavaScript</span><span>SVG</span><span>Firebase Auth</span>
           </div>
         </div>
-        <a class="live" href="https://openyap-prod.firebaseapp.com/detailing-3d/" target="_blank" rel="noopener">View live &nearr;</a>
+        <a class="live" href="https://openyap-prod.web.app/detailing-3d/" target="_blank" rel="noopener">View live &nearr;</a>
         <p class="mono" style="font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.04em">Sign-in required &mdash; approved accounts only.</p>
       </aside>
     </article>
   </div>
 </section>
 
-<!-- CASE 02 — COMMAND CENTER -->
-<section>
-  <div class="wrap">
-    <article class="case reveal" id="command-center">
-      <div class="lhs">
-        <div class="head">
-          <span class="num">02</span>
-          <span class="pill">LIVE</span>
-        </div>
-        <h2 data-edit="cs2cc-h">Command Center &mdash; the whole jobsite on one sheet.</h2>
-        <p class="tagline" data-edit="cs2cc-tag">
-          The operating picture for the LACC concrete team: RFIs, inspections, schedule, tools and
-          crew behind one role-aware login. Rebuilt in June 2026 from a read-only sheet mirror, and
-          rebuilt again in August on top of the structural model &mdash; so the map is no longer a
-          drawing of the job, it is the job&rsquo;s actual members. It now issues the documents the job
-          runs on: a plotted status drawing, the weekly report a PM takes into coordination,
-          and the quantity register behind both.
-        </p>
-
-        <div class="block">
-          <div class="block-label">Problem</div>
-          <p data-edit="cs2cc-problem">
-            The ecosystem got big. Each tool solved its own problem, but the superintendent&rsquo;s
-            actual question &mdash; &ldquo;what&rsquo;s ready for inspection, where are the embeds on
-            F21, who&rsquo;s on site today&rdquo; &mdash; crossed four apps. Worse, the map underneath
-            all of it was a <em>traced</em> plan: shapes digitized off a PDF, with no dimensions, no
-            volumes, and no way to prove any of it matched the structure being built.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">Approach</div>
-          <p data-edit="cs2cc-approach-1">
-            Rebuilt on Firebase Hosting behind Google sign-in, against one database instead of five
-            app namespaces &mdash; and re-founded on the IFC. Every footing, pile cap and grade beam
-            on the map is now a real member carrying its own <span class="mono">globalId</span>, its
-            true dimensions and its modelled volume. Role-gated by Firebase Auth (Admin &rsaquo;
-            Super &rsaquo; PM &rsaquo; PE) with a global edit lock, so view-only is the default on
-            every field device. The Google Sheets scrape is gone.
-          </p>
-          <div class="assembly" data-assembly aria-label="Command Center — technical layers">
-            <div class="assembly-view">
-              <button class="assembly-back" type="button">&larr; Layers</button>
-              <div class="assembly-plates">
-                <div class="plate" data-i="0" data-lyr="Layer 01 &middot; Interface" data-name="2D / 3D map" data-tech="Canvas|Three.js|toggle" data-detail="One map with two panes. 2D draws the plan from the model outlines; flip the toggle and the same selection opens in the 3D model." data-metric="890 members" data-connects="YapGrid"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">2D / 3D map</span><span class="tech">Canvas &middot; Three.js</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="1" data-lyr="Layer 02 &middot; Identity" data-name="Model keys" data-tech="IFC globalId" data-detail="Status hangs off the element's IFC identity, not a row number — so a pour date follows the member even when the drawing is reissued." data-metric="1,779 elements" data-connects="Revit IFC export"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">Model keys</span><span class="tech">IFC globalId</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="2" data-lyr="Layer 03 &middot; Interaction" data-name="Role gating" data-tech="Auth claims|rules" data-detail="Admin, Super, PM, PE — enforced in database rules, not just hidden in the UI. 34 rules tests run offline against the emulator." data-metric="4 roles" data-connects="Firebase Auth"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Role gating</span><span class="tech">Auth claims &middot; rules</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="3" data-lyr="Layer 04 &middot; Realtime" data-name="Live layers" data-tech="Firebase RTDB|listeners" data-detail="Tools, crew, pours and RFIs stream in live. One schema, one database, one source of truth." data-metric="&lt;1s updates" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Live layers</span><span class="tech">Firebase RTDB</span><span class="hint">Click &nearr;</span></div>
-                <div class="plate" data-i="4" data-lyr="Layer 05 &middot; Output" data-name="The drawing engine" data-tech="SVG|true scale|print" data-detail="The same generator that plots the 3D viewer&rsquo;s shop drawings is imported by the hub and fed the tracking status, so a status plan is a real drawing rather than a screenshot of the app: ANSI E at 1&quot;=30&rsquo;-0&quot;, sheet border, grid bubbles on four sides, dimension chains to grid, title block and sheet number. Two documents, one generator &mdash; only the paper differs, and each gets the size it is printed on." data-metric="48&times;36 at 1&quot;=30&rsquo;" data-connects="The 3D model viewer"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">The drawing engine</span><span class="tech">SVG &middot; true scale</span><span class="hint">Click &nearr;</span></div>
-              </div>
-              <div class="assembly-detail"></div>
-            </div>
-            <div class="assembly-side">
-              <div class="side-head">Features</div>
-              <ol class="assembly-features">
-                <li><b>The Map</b> &mdash; model members, embeds, pours, RFI zones and markups as toggleable layers, in 2D or 3D.</li>
-                <li><b>RFIs</b> &mdash; drag-and-drop a PDF; it links to Drive and pins to its map zone.</li>
-                <li><b>Inspections</b> &mdash; Ready &rarr; Pass/Fail sign-off that logs who marked ready.</li>
-                <li><b>Reconciliation</b> &mdash; embed takeoff against modelled count, mark by mark.</li>
-              </ol>
-              <div class="assembly-cap">Click a layer &middot; &larr; &rarr; to explore</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="block">
-          <div class="block-label">The foundation map, redrawn</div>
-          <p>
-            The old map was drawn to a <strong>4,393 &times; 2,305 ft</strong> extent for a building
-            that is <strong>1,770 &times; 1,228 ft</strong>. The cause was five geometry fragments
-            totalling <strong>0.54 CY</strong> &mdash; rounding debris in the export &mdash; sitting
-            2,600 ft off site and quadrupling the sheet, squeezing the actual structure into a
-            corner. Discarding a cluster needs it to be <em>both</em> negligible in volume
-            <em>and</em> far from everything else; an earlier, looser rule cut a real 24 CY slab, so
-            it was tightened. The drawn set went from 1,659 shapes to <strong>890</strong> real
-            members, with level and class filters instead of one flat pile.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <img src="assets/yapgrid/map.png" alt="Command Center — the model-derived foundation map with level and class chips" loading="lazy" onerror="this.style.display='none'">
-        </div>
-
-        <div class="block">
-          <div class="block-label">Carrying the history across</div>
-          <p>
-            None of the work already logged could be thrown away, so the migration matched old
-            records to model members and kept a receipt for each one. Footings matched on distance
-            to the member&rsquo;s <em>edge</em>, not its centroid &mdash; a 40 ft footing has a
-            centroid 20 ft from where a superintendent taps it. That single change matched more
-            records at a 3 ft tolerance than the old rule did at 6 ft:
-            <strong>358 of 536 footings</strong> and <strong>301 of 378 embed pins</strong>. The 178
-            and 77 that matched nothing are kept and flagged as off-model rather than deleted, and
-            <strong>93 recorded embed installs went in and 93 came out</strong> &mdash; the number
-            the whole migration was checked against.
-          </p>
-          <p>
-            Registering the traced plan onto the model is a lookup, not a curve fit: gridlines are
-            labelled on both, so <strong>51 of 52</strong> east&ndash;west and 26 of 27
-            north&ndash;south labels pair up directly, interpolating linearly between. Leave-one-out
-            error is <strong>0.04 ft</strong> median east&ndash;west &mdash; half an inch, on a
-            drawing traced by hand.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <img src="assets/yapgrid/reconciliation.png" alt="Embed reconciliation — takeoff count against modelled count, mark by mark" loading="lazy" onerror="this.style.display='none'">
-        </div>
-
-        <div class="block">
-          <div class="block-label">Result</div>
-          <p data-edit="cs2cc-result">
-            Nine views behind one login, and a map that can now be argued with. Reconciliation puts
-            the hand takeoff against the model side by side and says where they disagree:
-            <strong>80 of 111 embed marks agree</strong>, and the 31 that don&rsquo;t are named
-            &mdash; mark 201A is 43 pieces taken off against 34 modelled, mark 221A is 24 against
-            31. That list is the point. It is not a failure of either count; it is the conversation
-            that used to happen in the field at the worst possible moment, moved to a screen weeks
-            earlier.
-          </p>
-        </div>
-
-        <div class="block">
-          <div class="block-label">What it issues</div>
-          <p data-edit="cs2cc-issue">
-            The step that changed what it is for. The hub had one job &mdash; be the operating
-            picture &mdash; and the picture was only useful to whoever was looking at it. In August
-            it started producing the paperwork the job already runs on.
-          </p>
-          <p>
-            <strong>The drawing.</strong> A real plot, not a screenshot: ANSI E at
-            1&quot;=30&rsquo;-0&quot;, which is the sheet size and very nearly the scale of the
-            structural drawing it sits beside in the trailer. Sheet border, grid bubbles on all four
-            sides, dimension chains to grid, title block, its own sheet number. It reuses the
-            generator that plots the model viewer&rsquo;s shop drawings rather than carrying a second
-            one, because two drawing generators drift and the one printed on 48&times;36 paper is the
-            one nobody re-checks. Status is the fill; outstanding work is washed back so it reads as
-            the ground the progress sits on.
-          </p>
-          <p>
-            <strong>The weekly report.</strong> Seventeen by eleven, ink on white, opening on that
-            same drawing at the paper it is printed on. You pick what it answers &mdash; the week,
-            what is blocking, piles, productivity, yardage &mdash; and it prints the sections it
-            carried <em>and</em> the ones it left out, because a reader cannot otherwise tell a
-            section that was switched off from a section that had nothing in it. Ask for the whole
-            project and it renders one sheet per week of a single chosen metric, so the excavation
-            advancing week by week reads as a progression rather than ten unrelated pictures.
-          </p>
-          <p>
-            <strong>The register.</strong> Nine spreadsheets behind both &mdash; every member, embed,
-            pile and week &mdash; written by a hand-rolled xlsx writer rather than a library, because
-            this is read in a trailer on bad LTE and a CDN fetch is a failed export. &ldquo;Of which
-            inferred&rdquo; is a column, not a footnote: a stage that is complete because there is
-            concrete on top of it is a different fact from a crew reporting a date, and the sheet
-            says which.
-          </p>
-
-          <div class="block-label">What it is not</div>
-          <p>
-            Two of the six apps still write to the older shared database; moving the rest across is
-            in progress. The reconciliation figures are a snapshot and move as either the takeoff or
-            the model is corrected. And the map covers the foundation levels &mdash; 223 through
-            250 &mdash; not the whole structure.
-          </p>
-        </div>
-      </div>
-
-      <aside class="rhs">
-        <div class="panel">
-          <h4>Facts</h4>
-          <div class="kv"><span class="k">Rebuilt</span><span class="v">2026-06, 2026-08</span></div>
-          <div class="kv"><span class="k">Hosting</span><span class="v">Firebase</span></div>
-          <div class="kv"><span class="k">Roles</span><span class="v">Admin &rsaquo; Super &rsaquo; PM &rsaquo; PE</span></div>
-          <div class="kv"><span class="k">Keyed by</span><span class="v">IFC globalId</span></div>
-          <div class="kv"><span class="k">Members drawn</span><span class="v">890</span></div>
-          <div class="kv"><span class="k">Piles</span><span class="v">575 under 191 caps</span></div>
-          <div class="kv"><span class="k">Stages tracked</span><span class="v">9, per member</span></div>
-          <div class="kv"><span class="k">Views</span><span class="v">10, one login</span></div>
-        </div>
-
-        <div class="panel">
-          <h4>What it issues</h4>
-          <div class="kv"><span class="k">Drawing</span><span class="v">ANSI E &middot; 1&quot;=30&rsquo;-0&quot;</span></div>
-          <div class="kv"><span class="k">Report</span><span class="v">ANSI B &middot; sections chosen</span></div>
-          <div class="kv"><span class="k">Register</span><span class="v">9 sheets, no CDN</span></div>
-          <div class="kv"><span class="k">Plan output</span><span class="v">vector, 297 KB</span></div>
-          <div class="kv"><span class="k">Week by week</span><span class="v">a sheet each</span></div>
-        </div>
-
-        <div class="panel">
-          <h4>Held up by tests</h4>
-          <div class="kv"><span class="k">Suites</span><span class="v">18, no browser</span></div>
-          <div class="kv"><span class="k">Assertions</span><span class="v">701</span></div>
-          <div class="kv"><span class="k">Database rules</span><span class="v">141, on the emulator</span></div>
-          <div class="kv"><span class="k">Run against</span><span class="v">the shipped file</span></div>
-        </div>
-        <div class="panel">
-          <h4>Migration</h4>
-          <div class="kv"><span class="k">Footings</span><span class="v">358 / 536 matched</span></div>
-          <div class="kv"><span class="k">Embed pins</span><span class="v">301 / 378 matched</span></div>
-          <div class="kv"><span class="k">Installs</span><span class="v">93 in &rarr; 93 out</span></div>
-          <div class="kv"><span class="k">Registration</span><span class="v">0.04 ft median</span></div>
-          <div class="kv"><span class="k">Off-model</span><span class="v">kept &amp; flagged</span></div>
-        </div>
-        <div class="panel">
-          <h4>Role matrix</h4>
-          <div class="kv"><span class="k">Admin</span><span class="v">Full edit &middot; users &middot; allowlist</span></div>
-          <div class="kv"><span class="k">Super</span><span class="v">Schedule &middot; Tools &middot; Crew</span></div>
-          <div class="kv"><span class="k">PM</span><span class="v">RFIs &middot; Submittals &middot; Inspections</span></div>
-          <div class="kv"><span class="k">PE</span><span class="v">Data &middot; Zones &middot; Pours &middot; Tools</span></div>
-        </div>
-        <div class="panel">
-          <h4>Stack</h4>
-          <div class="tech-wrap">
-            <span>JavaScript</span><span>Firebase RTDB</span><span>Firebase Auth</span><span>Cloud Functions</span><span>Three.js</span><span>Node</span>
-          </div>
-        </div>
-        <a class="live" href="https://openyap-prod.firebaseapp.com/command-center/" target="_blank" rel="noopener">
-          <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
-          View Live
-        </a>
-        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.04em">Sign-in required &mdash; approved accounts only.</p>
-      </aside>
-    </article>
-  </div>
-</section>
-
-<!-- CASE 02 — CUP DASHBOARD -->
+<!-- CASE 03 — CUP DASHBOARD -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="cup-dashboard">
@@ -1071,7 +993,7 @@
           <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages</span></div>
           <div class="kv"><span class="k">Truth</span><span class="v">Drive (tickets)</span></div>
           <div class="kv"><span class="k">Sync</span><span class="v">Firebase RTDB</span></div>
-          <div class="kv"><span class="k">Embeds</span><span class="v">51A – 90A (10 types)</span></div>
+          <div class="kv"><span class="k">Embeds</span><span class="v">10 types tracked</span></div>
         </div>
         <div class="panel">
           <h4>Stack</h4>
@@ -1089,7 +1011,7 @@
   </div>
 </section>
 
-<!-- CASE 03 — EMBEDYAP -->
+<!-- CASE 04 — EMBEDYAP -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="embedyap">
@@ -1183,7 +1105,7 @@
   </div>
 </section>
 
-<!-- CASE 04 — TOOL TRACKER -->
+<!-- CASE 05 — TOOL TRACKER -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="tool-tracker">
@@ -1194,20 +1116,20 @@
         </div>
         <h2 data-edit="cs-tt-h">Tool Tracker — the conex <span class="grad">stopped lying.</span></h2>
         <p class="tagline" data-edit="cs-tt-tag">
-          An Assets-as-truth equipment registry for the field: orders, receiving, per-foreman checklists, a lost-tool log, and on-site verification. The workflow it replaced — ToolHound exports stapled to printed count sheets — lost roughly 65 tools in a single cycle.
+          An Assets-as-truth equipment registry for the field: orders, receiving, per-foreman checklists, a lost-tool log, and on-site verification. The workflow it replaced — legacy-system exports stapled to printed count sheets — lost roughly 65 tools in a single cycle.
         </p>
 
         <div class="block">
           <div class="block-label">Problem</div>
           <p data-edit="cs-tt-problem">
-            Tool accountability ran on printouts taped to the trailer wall: a ToolHound export, re-keyed by hand, out of date the moment it printed. Tools moved between the conex, the deck, and foremen's trucks all day; the paper never followed. Across the previous cycle, about 65 tools simply disappeared — replacement cost plus the PM hours spent hunting them.
+            Tool accountability ran on printouts taped to the trailer wall: an export from the legacy asset system, re-keyed by hand, out of date the moment it printed. Tools moved between the conex, the deck, and foremen's trucks all day; the paper never followed. Across the previous cycle, about 65 tools simply disappeared — replacement cost plus the PM hours spent hunting them.
           </p>
         </div>
 
         <div class="block">
           <div class="block-label">Build</div>
           <p data-edit="cs-tt-build">
-            A Firebase-backed registry where the Assets list is the single source of truth. ToolHound CSV/PDF imports reconcile against it with alias resolution (the same drill has four names in four systems); assignments log who has what; a "verified on site" checklist catches missing or mis-tagged tools before they walk. The same data drives a printable bilingual 11&times;17 count poster for the trailer wall — print catching up to digital instead of fighting it.
+            A Firebase-backed registry where the Assets list is the single source of truth. Legacy CSV/PDF exports reconcile against it with alias resolution (the same drill has four names in four systems); assignments log who has what; a "verified on site" checklist catches missing or mis-tagged tools before they walk. The same data drives a printable bilingual 11&times;17 count poster for the trailer wall — print catching up to digital instead of fighting it.
           </p>
                               <div class="assembly" data-assembly aria-label="Tool Tracker — technical layers">
             <div class="assembly-view">
@@ -1215,7 +1137,7 @@
               <div class="assembly-plates">
                 <div class="plate" data-i="0" data-lyr="Layer 01 · Interface" data-name="Field UI" data-tech="Tailwind|SVG|print" data-detail="Glove-friendly screens and bilingual 11×17 count posters, all rendered from live data." data-metric="EN / ES" data-connects="The trailer wall"><span class="edge"></span><span class="lyr">Layer 01</span><span class="pt">Field UI</span><span class="tech">Tailwind · SVG · print</span><span class="hint">Click ↗</span></div>
                 <div class="plate" data-i="1" data-lyr="Layer 02 · Interaction" data-name="On-site check" data-tech="tap-verify" data-detail="Tap to verify a tool on site; the audit writes back to the registry as you walk." data-metric="1-tap audit" data-connects="Every foreman"><span class="edge"></span><span class="lyr">Layer 02</span><span class="pt">On-site check</span><span class="tech">tap-verify</span><span class="hint">Click ↗</span></div>
-                <div class="plate" data-i="2" data-lyr="Layer 03 · Reconciliation" data-name="Alias resolution" data-tech="JS|parsers" data-detail="Import parsing and alias resolution — one drill, four names — plus verification rules." data-metric="4 names → 1" data-connects="ToolHound CSV/PDF"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Alias resolution</span><span class="tech">JS · parsers</span><span class="hint">Click ↗</span></div>
+                <div class="plate" data-i="2" data-lyr="Layer 03 · Reconciliation" data-name="Alias resolution" data-tech="JS|parsers" data-detail="Import parsing and alias resolution — one drill, four names — plus verification rules." data-metric="4 names → 1" data-connects="Legacy asset exports"><span class="edge"></span><span class="lyr">Layer 03</span><span class="pt">Alias resolution</span><span class="tech">JS · parsers</span><span class="hint">Click ↗</span></div>
                 <div class="plate" data-i="3" data-lyr="Layer 04 · Data" data-name="Assets registry" data-tech="source of truth" data-detail="The Assets list is truth: every tool has a holder, a location and a verification date." data-metric="~65 saved/cycle" data-connects="SuperYap · Command Center"><span class="edge"></span><span class="lyr">Layer 04</span><span class="pt">Assets registry</span><span class="tech">source of truth</span><span class="hint">Click ↗</span></div>
                 <div class="plate" data-i="4" data-lyr="Layer 05 · Backend" data-name="Firebase + Pages" data-tech="Firebase RTDB|GitHub Pages" data-detail="Real-time sync to every phone and the trailer wall; static hosting, no server." data-metric="Real-time" data-connects="The whole suite"><span class="edge"></span><span class="lyr">Layer 05</span><span class="pt">Firebase + Pages</span><span class="tech">Firebase RTDB · GitHub Pages</span><span class="hint">Click ↗</span></div>
               </div>
@@ -1257,7 +1179,7 @@
         <div class="panel">
           <h4>Facts</h4>
           <div class="kv"><span class="k">Baseline</span><span class="v">~65 tools lost / cycle</span></div>
-          <div class="kv"><span class="k">Imports</span><span class="v">ToolHound CSV/PDF + alias resolution</span></div>
+          <div class="kv"><span class="k">Imports</span><span class="v">Legacy CSV/PDF + alias resolution</span></div>
           <div class="kv"><span class="k">Output</span><span class="v">Bilingual 11&times;17 posters</span></div>
           <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Firebase</span></div>
         </div>
@@ -1276,7 +1198,7 @@
   </div>
 </section>
 
-<!-- CASE 05 — SUPERYAP -->
+<!-- CASE 06 — SUPERYAP -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="superyap">
@@ -1370,7 +1292,7 @@
   </div>
 </section>
 
-<!-- CASE 06 — MR. GEORGE (Const-Agent web UI) -->
+<!-- CASE 07 — MR. GEORGE (Const-Agent web UI) -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="const-agent">
@@ -1439,7 +1361,7 @@
         <div class="block">
           <div class="block-label">Result</div>
           <p data-edit="cs1-result">
-            Cuts a typical RFI/submittal prep from ~40 minutes to ~6. Drawing-search questions that used to take 10 minutes of sheet-flipping get answered in seconds. The Tools tab now ingests a ToolHound asset report and reconciles to the Assets sheet in one click. The full audit trail lives in SQLite — every question, every response, every tool call.
+            Cuts a typical RFI/submittal prep from ~40 minutes to ~6. Drawing-search questions that used to take 10 minutes of sheet-flipping get answered in seconds. The Tools tab now ingests a legacy asset report and reconciles to the Assets sheet in one click. The full audit trail lives in SQLite — every question, every response, every tool call.
           </p>
           <div class="metric-strip">
             <div><div class="v"><span data-count="17" data-suffix="">0</span></div><div class="k">AI Agents</div></div>
@@ -1472,7 +1394,7 @@
   </div>
 </section>
 
-<!-- CASE 07 — FORMWORK -->
+<!-- CASE 08 — FORMWORK -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="formwork">
@@ -1560,7 +1482,7 @@
   </div>
 </section>
 
-<!-- CASE 08 — ROADMAP -->
+<!-- CASE 09 — ROADMAP -->
 <section>
   <div class="wrap">
     <article class="case reveal" id="roadmap">
@@ -1701,16 +1623,33 @@
 (function () {
   const btns = Array.from(document.querySelectorAll('.pt-btn'));
   const panels = { construction: document.getElementById('tab-construction'), cs: document.getElementById('tab-cs') };
-  function show(tab) {
+  function show(tab, keepPlace) {
     btns.forEach(b => { const on = b.dataset.tab === tab; b.classList.toggle('active', on); b.setAttribute('aria-selected', on); });
     Object.entries(panels).forEach(([k, el]) => { if (el) el.classList.toggle('active', k === tab); });
+    if (keepPlace) return;                       // deep link: keep the hash and the target scroll
     try { history.replaceState(null, '', '#' + tab); } catch (e) {}
     window.scrollTo({ top: 0 });
   }
   btns.forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
   // cross-link buttons ("See the software side", etc.)
   document.querySelectorAll('[data-goto]').forEach(el => el.addEventListener('click', () => show(el.dataset.goto)));
-  if (location.hash === '#cs') show('cs');
+
+  // Open the right tab for a deep link. A bare #cs opens the Software tab; any
+  // anchor that lives inside a panel opens that panel and scrolls to it — without
+  // this, projects.html#command-center landed on Construction with the case hidden.
+  function route() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    if (panels[id]) { show(id); return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    const owner = Object.keys(panels).find(k => panels[k] && panels[k].contains(target));
+    if (!owner) return;
+    show(owner, true);
+    requestAnimationFrame(() => requestAnimationFrame(() => target.scrollIntoView({ block: 'start' })));
+  }
+  route();
+  window.addEventListener('hashchange', route);
 })();
 
 /* Lightbox — detailing figures + case-study galleries (grouped, prev/next within a group) */

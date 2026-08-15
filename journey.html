@@ -130,6 +130,7 @@
     padding: 3px 7px; background: var(--scrim-strong); backdrop-filter: blur(8px);
     color: var(--primary-deep); border: 1px solid rgba(30,75,143,0.25); border-radius: 3px;
   }
+  .visual.trio.duo { grid-template-columns: repeat(2, 1fr); }
   @media (max-width: 700px) {
     .visual.trio { grid-template-columns: 1fr 1fr; aspect-ratio: 4/3; }
     .visual.trio > div:nth-child(3) { display: none; }
@@ -1007,7 +1008,7 @@
           Full-time Project Engineer at <strong>Webcor Builders</strong> on the <strong>LACC Convention Center Upgrade Program</strong> — a $2 billion modernization of the Los Angeles Convention Center. I run concrete operations across four sections: foundation pours, embed tracking, inspection coordination, takeoff, QC.
         </p>
         <p data-edit="webcor-p2">
-          On top of the day job, OpenYap. It started with a single Telegram bot nobody asked for, grew through a Discord agent and <strong>Mr. George</strong> (the construction agent), and has settled into the five apps the crew runs today — tool tracking, embed maps, scheduling, pour tracking, and <strong>Command Center</strong> tying them together on one screen. Every tool ships against the same constraint: a foreman has to be able to operate it during a 6 AM tailgate meeting, gloves on, with the sun in his eyes. The suite now saves each project engineer about a day a week.
+          On top of the day job, OpenYap. It started with a single Telegram bot nobody asked for, grew through a Discord agent and <strong>Mr. George</strong> (the construction agent), and has settled into the six apps the crew runs today — tool tracking, embed maps, scheduling, pour tracking, the 3D model of the foundation, and <strong>Command Center</strong> tying them together on one screen. Every tool ships against the same constraint: a foreman has to be able to operate it during a 6 AM tailgate meeting, gloves on, with the sun in his eyes. The suite now saves each project engineer about a day a week.
         </p>
         <p data-edit="webcor-p3">
           The jobsite is unforgiving in a way office software never is. There are no rollbacks once a pour has started. The wrong reading at the wrong moment can cost six figures. That pressure is what keeps these tools honest.
@@ -1216,17 +1217,16 @@
           make software work.
         </p>
         <p data-edit="model-p4">
-          It paid for itself the first time it ran the clash check. Eight grade beam bars were
-          passing straight through 24-inch piles, by as much as eight and a half inches. On paper
-          those are two separate details on two separate sheets and nobody is wrong. In the model
-          they are in the same place at the same time, which is the kind of thing you would
-          otherwise find at 6 AM with a crew standing around.
+          It paid for itself the first time it ran the clash check. Grade beam bars were passing
+          straight through piles. On paper those are two separate details on two separate sheets and
+          nobody is wrong. In the model they are in the same place at the same time, which is the
+          kind of thing you would otherwise find at 6 AM with a crew standing around.
         </p>
         <div class="facts">
-          <div class="fact"><div class="v">1,779</div><div class="k">Elements modelled</div></div>
-          <div class="fact"><div class="v">23,550 CY</div><div class="k">Concrete takeoff</div></div>
-          <div class="fact"><div class="v">8 &rarr; 0</div><div class="k">Bars through piles</div></div>
-          <div class="fact"><div class="v">0.04 ft</div><div class="k">Map registration</div></div>
+          <div class="fact"><div class="v">One model</div><div class="k">The whole foundation</div></div>
+          <div class="fact"><div class="v">Takeoff</div><div class="k">Concrete, formwork, bar</div></div>
+          <div class="fact"><div class="v">Clashes</div><div class="k">Found, then resolved</div></div>
+          <div class="fact"><div class="v">6 weeks</div><div class="k">Reading the details</div></div>
         </div>
       </div>
       <div class="visual" style="aspect-ratio: 4/3; padding: 0;">
@@ -1243,16 +1243,15 @@
       </div>
       <p class="dim" style="max-width: 66ch; font-size: 15px; line-height: 1.7; margin-top: .5rem;" data-edit="model-p5">
         Once the model was trustworthy, the Command Center stopped being a picture of the job and
-        started being derived from it. Everything already logged had to come across, so each old
-        record was matched to a real member and given a receipt: 358 footings and 301 embed pins
-        matched, everything that didn't kept and flagged rather than deleted, and 93 recorded
-        embed installs in with 93 out. The satisfying part is what it now refuses to do — where
-        the hand takeoff and the model disagree, it says so, by mark, instead of picking a winner.
+        started being derived from it. Everything already logged had to come across, so every old
+        record was matched to a real member and given a receipt, and anything that matched nothing
+        was kept and flagged rather than quietly deleted. The satisfying part is what it now refuses
+        to do — where the hand takeoff and the model disagree, it says so instead of picking a
+        winner.
       </p>
-      <div class="visual trio" style="margin-top: 1.1rem;">
-        <div><span class="tag">Generated sheet</span><img src="assets/yapgrid/sheet.png" alt="A foundation plan generated from the model on the Webcor title block" loading="lazy"/></div>
-        <div><span class="tag">Model-derived map</span><img src="assets/yapgrid/map.png" alt="The Command Center foundation map, drawn from the model" loading="lazy"/></div>
-        <div><span class="tag">Reconciliation</span><img src="assets/yapgrid/reconciliation.png" alt="Embed reconciliation — takeoff against modelled count" loading="lazy"/></div>
+      <div class="visual trio duo" style="margin-top: 1.1rem;">
+        <div><span class="tag">Generated sheet</span><img src="assets/yapgrid/sheet.png" alt="A foundation plan generated from the model on the company title block" loading="lazy" onerror="this.closest('div').style.display='none'"/></div>
+        <div><span class="tag">Model-derived map</span><img src="assets/yapgrid/map.png" alt="The Command Center foundation map, drawn from the model" loading="lazy" onerror="this.closest('div').style.display='none'"/></div>
       </div>
     </div>
 
@@ -1277,8 +1276,8 @@
 
     <!-- The suite — where the journey stands today -->
     <div class="cs-index with-thumbs mt-6 reveal">
-      <a href="projects.html#yapgrid"><span class="no">01 · The Model</span><span class="t">YapGrid</span><span class="s">The foundation, modelled from the IFC — with the rebar in it</span><span class="th"><img src="assets/yapgrid/model-rebar.png" alt="YapGrid 3D model" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
-      <a href="projects.html#command-center"><span class="no">02 · The Hub</span><span class="t">Command Center</span><span class="s">All of it on one role-aware map — the day starts here</span><span class="th"><img src="assets/yapgrid/map.png" alt="Command Center map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#command-center"><span class="no">01 · The Hub</span><span class="t">Command Center</span><span class="s">All of it on one role-aware screen — the day starts here</span><span class="th"><img src="assets/yapgrid/map.png" alt="Command Center map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
+      <a href="projects.html#yapgrid"><span class="no">02 · The Model</span><span class="t">YapGrid</span><span class="s">The foundation, modelled in the browser — with the rebar in it</span><span class="th"><img src="assets/yapgrid/model-rebar.png" alt="YapGrid 3D model" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
       <a href="projects.html#cup-dashboard"><span class="no">03 · Pours</span><span class="t">CUP Dashboard</span><span class="s">Live pour tracking — first thing open on the trailer iPad</span><span class="th"><img src="assets/photos/case-studies/cup-dashboard/01-dashboard.jpg" alt="CUP pour dashboard" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
       <a href="projects.html#embedyap"><span class="no">04 · Embeds</span><span class="t">EmbedYap</span><span class="s">299 embeds as live map pins — the pre-pour walk is a filter</span><span class="th"><img src="assets/photos/case-studies/embedyap/01-map.jpg" alt="EmbedYap pin map" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
       <a href="projects.html#tool-tracker"><span class="no">05 · Tools</span><span class="t">Tool Tracker</span><span class="s">Assets-as-truth registry — the ~65-lost-tools bleed, stopped</span><span class="th"><img src="assets/photos/case-studies/tool-tracker/01-tracker.jpg" alt="Tool Tracker app" loading="lazy" onerror="this.parentElement.style.display='none'"></span></a>
