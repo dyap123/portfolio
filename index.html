@@ -571,6 +571,17 @@
   .principle .n { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--bg); background: var(--primary); width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .principle h4 { font-family: var(--head); font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--ink); letter-spacing: -0.01em; }
   .principle p { font-size: 13.5px; color: var(--text-dim); line-height: 1.55; }
+
+  /* Inside the hub — captured screens from the production app. Full width rather
+     than side by side: at half width the interface text stops being readable, and
+     an unreadable screenshot is decoration. */
+  .shots { display: grid; gap: 1.4rem; margin-top: 1.5rem; }
+  .shot { border: 1.5px solid var(--ink); background: var(--surface-0); box-shadow: 6px 6px 0 rgba(0,0,0,0.16); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { border-top: 1.5px solid var(--ink); padding: 13px 18px; display: flex; gap: 6px 16px; align-items: baseline; flex-wrap: wrap; }
+  .shot .sc-n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--primary); white-space: nowrap; }
+  .shot .sc-t { font-family: var(--head); font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .shot .sc-d { flex: 1 1 300px; min-width: 0; font-size: 13px; line-height: 1.55; color: var(--text-dim); }
 </style>
 </head>
 <body>
@@ -581,6 +592,7 @@
     <div class="nav-links">
       <a href="index.html" class="active">About</a>
       <a href="projects.html">Projects</a>
+      <a href="projects.html#roadmap">Roadmap</a>
       <a href="journey.html">Journey</a>
       <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
     </div>
@@ -636,13 +648,14 @@
           <a href="#system"><span class="no">S-000</span><span class="t">The System</span><span class="yr">Apps + hub</span></a>
           <a href="projects.html"><span class="no">C-000</span><span class="t">Construction</span><span class="yr">LACC</span></a>
           <a href="projects.html#cs"><span class="no">S-200</span><span class="t">Software</span><span class="yr">9 builds</span></a>
+          <a href="projects.html#roadmap"><span class="no">A-300</span><span class="t">Roadmap</span><span class="yr">What's next</span></a>
           <a href="journey.html"><span class="no">G-100</span><span class="t">The Journey</span><span class="yr">2014 → Now</span></a>
         </aside>
       </div>
       <div class="cover-data">
         <div class="cd"><span class="v"><span data-count="75" data-prefix="$" data-suffix="K">$0</span></span><span class="k">Annual cost avoided</span><span class="s">Vendor evaluation · board review</span></div>
         <div class="cd"><span class="v">~1 day/wk</span><span class="k">Saved per project engineer</span><span class="s">Across the whole suite</span></div>
-        <div class="cd"><span class="v"><span data-count="6">0</span></span><span class="k">Core field apps</span><span class="s">Used daily on a $2B jobsite</span></div>
+        <div class="cd"><span class="v"><span data-count="6">0</span></span><span class="k">Core field apps</span><span class="s">Used daily &mdash; now across two jobs</span></div>
         <div class="cd"><span class="v">40&rarr;6 min</span><span class="k">RFI &amp; submittal prep</span><span class="s">Mr. George — the agent</span></div>
       </div>
     </div>
@@ -674,7 +687,7 @@
 <section id="system" class="sheet-sec">
   <div class="wrap">
     <div class="sheet">
-      <div class="sheet-head"><span class="no">S-000</span><span class="t">The System — Five Apps, One Hub</span><span class="meta">Model-Derived · One Login</span></div>
+      <div class="sheet-head"><span class="no">S-000</span><span class="t">The System — Five Apps, One Hub</span><span class="meta">Model-Derived · One Login · Two Jobs</span></div>
       <div class="sheet-body">
     <h2 class="lg reveal delay-1">The <span class="grad">Command Center.</span></h2>
     <p class="dim mt-4 reveal delay-2" style="max-width: 68ch; font-size: 16px; line-height: 1.65;" data-edit="system-intro">
@@ -747,6 +760,29 @@
               <div class="assembly-cap">Click a layer to open it</div>
             </div>
           </div>
+      <div class="reveal" style="margin-top: 2.75rem;">
+        <div class="sector"><span>Inside the hub</span></div>
+        <div class="shots">
+          <figure class="shot">
+            <img src="assets/command-center/plan.jpg" alt="The Command Center plan view — the foundation drawn from the structural model and coloured by status" loading="lazy" onerror="this.closest('.shot').style.display='none'">
+            <figcaption>
+              <span class="sc-n">01 · The plan</span>
+              <span class="sc-t">The screen the day starts on</span>
+              <span class="sc-d">Every member is drawn from the structural model rather than traced, and coloured by how far it has actually got. Levels, trades and layers turn on and off, and the same selection opens in 3D.</span>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/command-center/report.jpg" alt="The status sheet generator — choosing what the printed drawing and the weekly report carry" loading="lazy" onerror="this.closest('.shot').style.display='none'">
+            <figcaption>
+              <span class="sc-n">02 · The paperwork</span>
+              <span class="sc-t">What it prints, and what it left out</span>
+              <span class="sc-d">Pick the week, the members and the questions, and it plots a full-size drawing at true scale with the weekly report behind it. It prints the sections it carried <em>and</em> the ones it did not, because a missing page otherwise reads as a zero.</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="mono" style="font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:.04em">Live screens from the production app &mdash; client and project data redacted.</p>
+      </div>
+
       <div class="mt-8 flex gap-3" style="flex-wrap:wrap">
         <a href="projects.html#command-center" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">hub</span>The full case study</a>
       </div>
@@ -838,10 +874,11 @@
       <div class="sheet-head"><span class="no">S-200</span><span class="t">The Work — Two Sides</span><span class="meta">Construction + Software</span></div>
       <div class="sheet-body" style="text-align:center; padding: 3rem 2.5rem;">
         <h2 class="lg">See what I've <span class="grad">built</span>.</h2>
-        <p class="dim mt-4" style="max-width: 58ch; margin: 0 auto; font-size: 16px;">Nine builds — six of them my crew runs every day — and the $2B jobsite they run on — the concrete I pour and the software I ship. Two sides of the same builder.</p>
+        <p class="dim mt-4" style="max-width: 60ch; margin: 0 auto; font-size: 16px;">Nine builds &mdash; six of them my crew runs every day &mdash; and the $2B jobsite they run on. The concrete I pour, the software I ship, and the sheet that says where both are going next.</p>
         <div class="mt-8 flex gap-3" style="justify-content:center; flex-wrap:wrap;">
           <a href="projects.html" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">construction</span>Construction projects</a>
           <a href="projects.html#cs" class="btn"><span class="material-symbols-outlined" style="font-size:16px">terminal</span>Software projects</a>
+          <a href="projects.html#roadmap" class="btn"><span class="material-symbols-outlined" style="font-size:16px">timeline</span>The roadmap</a>
         </div>
       </div>
     </div>
@@ -904,6 +941,7 @@
     </p>
     <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
       <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+      <a href="projects.html#roadmap" class="btn"><span class="material-symbols-outlined" style="font-size:16px">timeline</span>Where it goes next</a>
       <a href="https://dyap123.github.io/openyap-launcher/" target="_blank" class="btn"><span class="material-symbols-outlined" style="font-size:16px">grid_view</span>Launcher</a>
       <a href="projects.html#cs" class="btn"><span class="material-symbols-outlined" style="font-size:16px">rocket_launch</span>Case Studies</a>
     </div>
@@ -916,7 +954,7 @@
     <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
     <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
     <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
-    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="projects.html">C-000 CONSTRUCTION</a> · <a href="projects.html#cs">SOFTWARE</a> · <a href="journey.html">G-100 JOURNEY</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="projects.html">C-000 CONSTRUCTION</a> · <a href="projects.html#cs">SOFTWARE</a> · <a href="projects.html#roadmap">A-300 ROADMAP</a> · <a href="journey.html">G-100 JOURNEY</a></span></div>
     <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 2 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
     <div class="tb-sheet"><span class="k">Sheet</span><span class="v">G-001</span></div>
   </div>

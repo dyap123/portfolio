@@ -196,7 +196,111 @@
     .proj-header { flex-direction: column; align-items: stretch; gap: 1.25rem; }
     .proj-toggle-wrap { align-items: stretch; }
     .proj-toggle { width: 100%; }
-    .pt-btn { flex: 1; justify-content: center; padding: 15px 12px; }
+    .pt-btn { flex: 1; justify-content: center; padding: 15px 8px; }
+  }
+  /* Three tabs, not two — below ~460px the labels and their icons cannot both fit
+     on one row, so the icon goes and the label stays. The label is the wayfinding. */
+  @media (max-width: 460px) {
+    .pt-btn { font-size: 11.5px; letter-spacing: 0.04em; padding: 14px 6px; gap: 0; }
+    .pt-btn .material-symbols-outlined { display: none; }
+  }
+
+
+  /* ── A-300 · Roadmap (the forward set) ──────────────────────────────
+     A roadmap is a revision sequence, so it is drawn as one: a rev log of
+     what has just been issued, then phase sheets for what is on the board.
+     Status is a pill, and the four statuses are deliberately honest —
+     RELEASED / ON DEV / DRAWN / SKETCH. Nothing here claims to be finished
+     that is not. */
+  .rm-pill-dev    { background: rgba(255,106,52,0.09); color: var(--secondary); border-color: rgba(255,106,52,0.42); }
+  .rm-pill-drawn  { background: rgba(141,152,171,0.10); color: var(--text-dim); border-color: var(--line-strong); }
+  .rm-pill-sketch { background: transparent; color: var(--muted); border-style: dashed; border-color: var(--line-strong); }
+
+  .rm-legend { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  /* The pill is a label, not a paragraph — it must never wrap ("ON DEV" broke in two). */
+  .rm-legend .rm-lg-item { display: flex; align-items: flex-start; gap: 10px; max-width: 250px; }
+  .rm-legend .rm-lg-item > .pill { flex: none; white-space: nowrap; }
+  .rm-legend .rm-lg-item p { font-size: 12px; color: var(--muted); line-height: 1.45; margin: 0; }
+
+  /* Rev log — the △ column is a revision triangle, same as a drawing set */
+  .rm-revlog { border: 1.5px solid var(--ink); background: var(--surface-0); margin-top: 2rem; }
+  .rm-revlog .row {
+    display: grid; grid-template-columns: 46px 74px minmax(0, 1fr) 108px;
+    gap: 16px; align-items: start; padding: 14px 18px; border-top: 1px solid var(--line);
+  }
+  .rm-revlog .row:first-child { border-top: none; background: var(--surface-1); border-bottom: 1.5px solid var(--ink); align-items: center; }
+  .rm-revlog .row.hd span { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .rm-revlog .rv { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--primary); }
+  .rm-revlog .dt { font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); letter-spacing: 0.04em; }
+  .rm-revlog .ds b { font-family: var(--head); font-weight: 600; font-size: 14.5px; color: var(--ink); display: block; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .rm-revlog .ds p { font-size: 13px; color: var(--text-dim); line-height: 1.55; margin: 0; max-width: 74ch; }
+  .rm-revlog .row > :last-child { justify-self: start; }
+  @media (max-width: 760px) {
+    .rm-revlog .row { grid-template-columns: 40px minmax(0, 1fr); gap: 6px 12px; }
+    .rm-revlog .row > .dt { grid-column: 2; font-size: 9.5px; }
+    .rm-revlog .row > .ds { grid-column: 2; }
+    .rm-revlog .row > .pill { grid-column: 2; margin-top: 6px; }
+    .rm-revlog .row.hd { display: none; }
+  }
+
+  /* Phase sheets — each is one move, with why it is next */
+  .rm-phases { display: grid; gap: 1.25rem; margin-top: 2rem; }
+  .rm-phase {
+    border: 1.5px solid var(--ink); background: var(--surface-0);
+    display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: stretch;
+  }
+  .rm-phase .rm-ph-no {
+    background: var(--surface-2); border-right: 1.5px solid var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 1.4rem 0.75rem;
+  }
+  .rm-phase .rm-ph-no .n { font-family: var(--head); font-size: 30px; font-weight: 700; color: var(--primary); line-height: 1; letter-spacing: -0.03em; }
+  .rm-phase .rm-ph-no .k { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  /* On a wide sheet the prose caps at ~76ch and leaves a third of the card empty.
+     The "why" note moves into that space as a margin note, the way a detail sheet
+     puts its general notes beside the drawing rather than under it. */
+  /* column-gap only — a row gap here would stack on top of the margins the head,
+     paragraph and list already carry, and open a 28px hole under every heading. */
+  .rm-phase .rm-ph-body { padding: 1.5rem 1.75rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); column-gap: 1.75rem; align-items: start; }
+  .rm-phase .rm-ph-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 0.65rem; }
+  .rm-phase h3 { font-family: var(--head); font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
+  .rm-phase p { font-size: 14px; color: var(--text-dim); line-height: 1.65; max-width: 76ch; margin: 0; }
+  .rm-phase ul { list-style: none; margin-top: 0.85rem; display: grid; gap: 7px; }
+  .rm-phase li { font-size: 13px; color: var(--text-dim); line-height: 1.5; display: flex; gap: 10px; }
+  .rm-phase li::before { content: "→"; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+  .rm-phase .rm-ph-why {
+    align-self: stretch;
+    padding-left: 1.5rem; border-left: 1px dashed var(--line-strong);
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 1.6;
+  }
+  .rm-phase .rm-ph-why b { color: var(--secondary); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 9.5px; display: block; margin-bottom: 4px; }
+  /* Below the breakpoint the margin note goes back under the copy, with the rule
+     on top of it instead of beside it. */
+  @media (max-width: 900px) {
+    .rm-phase .rm-ph-body { grid-template-columns: 1fr; column-gap: 0; }
+    .rm-phase .rm-ph-why {
+      margin-top: 1rem; padding-left: 0; border-left: none;
+      padding-top: 0.9rem; border-top: 1px dashed var(--line-strong);
+    }
+  }
+  @media (max-width: 700px) {
+    .rm-phase { grid-template-columns: 1fr; }
+    .rm-phase .rm-ph-no { flex-direction: row; gap: 10px; border-right: none; border-bottom: 1.5px solid var(--ink); padding: 0.75rem; justify-content: flex-start; padding-left: 1.5rem; }
+    .rm-phase .rm-ph-no .n { font-size: 22px; }
+    .rm-phase .rm-ph-body { padding: 1.25rem 1.5rem; }
+  }
+
+  /* Further builds — the ones that are not the jobsite */
+  .rm-builds { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+  .rm-build { border: 1.5px solid var(--ink); background: var(--surface-0); padding: 1.5rem 1.6rem; display: flex; flex-direction: column; }
+  .rm-build .rm-b-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 0.75rem; }
+  .rm-build .rm-b-kind { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .rm-build h3 { font-family: var(--head); font-size: 21px; font-weight: 700; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 0.6rem; }
+  .rm-build p { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin: 0; }
+  .rm-build .rm-b-stack { margin-top: auto; padding-top: 1.1rem; }
+  .rm-build .rm-b-stack .tech-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
+  .rm-build .rm-b-stack .tech-wrap span {
+    font-family: var(--mono); font-size: 11px; padding: 4px 9px;
+    border: 1px solid var(--line-strong); background: var(--surface-1); color: var(--text-dim);
   }
 
   /* ── C-104 · RFIs & Revit Detailing ── */
@@ -257,6 +361,7 @@
     <div class="nav-links">
       <a href="index.html">About</a>
       <a href="projects.html" class="active">Projects</a>
+      <a href="projects.html#roadmap">Roadmap</a>
       <a href="journey.html">Journey</a>
       <a href="assets/resume/Danzel-Yap-Resume.pdf" target="_blank" rel="noopener" style="color: var(--secondary-dim);">Résumé</a>
     </div>
@@ -278,13 +383,14 @@
       <div>
         <div class="sector"><span>Projects · Two Sides of the Build</span></div>
         <h1 class="lg">The <span class="grad">work</span>.</h1>
-        <p class="dim mt-2" style="max-width: 60ch;">Two sides of the same builder — the concrete I pour on a $2B jobsite, and the software I ship for the crews who build it.</p>
+        <p class="dim mt-2" style="max-width: 62ch;">The concrete I pour on a $2B jobsite, the software I ship for the crews who build it — and the sheet that says where both are going next.</p>
       </div>
       <div class="proj-toggle-wrap">
-        <span class="proj-toggle-hint"><span class="material-symbols-outlined">touch_app</span> Two sides of me — switch anytime</span>
+        <span class="proj-toggle-hint"><span class="material-symbols-outlined">touch_app</span> Three sheets — switch anytime</span>
         <div class="proj-toggle" role="tablist" aria-label="Project type">
           <button class="pt-btn active" data-tab="construction" role="tab" aria-selected="true"><span class="material-symbols-outlined">construction</span>Construction</button>
           <button class="pt-btn" data-tab="cs" role="tab" aria-selected="false"><span class="material-symbols-outlined">terminal</span>Software</button>
+          <button class="pt-btn" data-tab="roadmap" role="tab" aria-selected="false"><span class="material-symbols-outlined">timeline</span>Roadmap</button>
         </div>
       </div>
     </div>
@@ -493,7 +599,7 @@
       <div class="sheet-head">
         <span class="no">C-201</span>
         <span class="t">Project Register — Sites I've Walked</span>
-        <span class="meta">Three phases · Bay Area → research walks → Webcor</span>
+        <span class="meta">Three phases · Bay Area → research walks → Webcor (2 live)</span>
       </div>
       <div class="register">
         <div class="row hd"><span>No.</span><span>Photo</span><span>Project</span><span>Firm</span><span>Status</span></div>
@@ -506,45 +612,52 @@
           <span class="y">Webcor</span>
           <span><span class="pill-amber pill">In progress</span></span>
         </div>
+        <div class="row">
+          <span class="no">.2</span>
+          <span class="th ph"><span class="ph-ico material-symbols-outlined">apartment</span></span>
+          <span class="pj"><span class="t" data-edit="reg-marina">Marina Shores &mdash; Long Beach</span><span class="r" data-edit="reg-marina-r">Column formwork takeoff &mdash; and the second project running on the Command Center</span></span>
+          <span class="y">Webcor</span>
+          <span><span class="pill-amber pill">In progress</span></span>
+        </div>
 
         <div class="row grp"><span class="gk">2024 – 25</span><span class="gt">AI-in-construction research — jobs walked</span></div>
         <div class="row">
-          <span class="no">.2</span>
+          <span class="no">.3</span>
           <span class="th"><img src="assets/photos/journey/05-interviews/uci-1.jpg" alt="UCI Mesa Court Expansion" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-uci">UCI Mesa Court Expansion</span><span class="r" data-edit="reg-uci-r">Job walk · student housing, structure &amp; MEP coordination</span></span>
           <span class="y">Webcor</span>
           <span><span class="pill">Walked</span></span>
         </div>
         <div class="row">
-          <span class="no">.3</span>
+          <span class="no">.4</span>
           <span class="th"><img src="assets/photos/journey/07-field/olympic-hill-1.jpg" alt="Olympic &amp; Hill" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-olympic">Olympic &amp; Hill</span><span class="r" data-edit="reg-olympic-r">Job walk · excavation &amp; foundations</span></span>
           <span class="y">Webcor</span>
           <span><span class="pill">Walked</span></span>
         </div>
         <div class="row">
-          <span class="no">.4</span>
+          <span class="no">.5</span>
           <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Peak%20Plaza/images.jpeg" alt="Peak Plaza Apartments" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-peak">Peak Plaza Apartments</span><span class="r" data-edit="reg-peak-r">Job walk · residential high-rise</span></span>
           <span class="y">Webcor</span>
           <span><span class="pill">Walked</span></span>
         </div>
         <div class="row">
-          <span class="no">.5</span>
+          <span class="no">.6</span>
           <span class="th"><img src="assets/photos/journey/05-interviews/vegas-gentle-monster.jpg" alt="Gentle Monster" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-gm">Gentle Monster</span><span class="r" data-edit="reg-gm-r">Job walk · high-end retail buildout (completed)</span></span>
           <span class="y">Shaw Lundquist</span>
           <span><span class="pill">Walked</span></span>
         </div>
         <div class="row">
-          <span class="no">.6</span>
+          <span class="no">.7</span>
           <span class="th"><img src="assets/photos/journey/05-interviews/vegas-durango-1.jpg" alt="Durango Resort" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-durango">Durango Resort</span><span class="r" data-edit="reg-durango-r">Job walk · casino interior buildout — learned grade matching</span></span>
           <span class="y">Las Vegas</span>
           <span><span class="pill">Walked</span></span>
         </div>
         <div class="row">
-          <span class="no">.7</span>
+          <span class="no">.8</span>
           <span class="th"><img src="assets/photos/journey/05-interviews/vegas-resorts-world-1.jpg" alt="Resorts World" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-rw">Resorts World</span><span class="r" data-edit="reg-rw-r">Job walk · restaurant fire permits, facade scope (Wynn suit)</span></span>
           <span class="y">Las Vegas</span>
@@ -553,21 +666,21 @@
 
         <div class="row grp"><span class="gk">2024</span><span class="gt">Clune Construction — Project Management Intern · SF Bay Area</span></div>
         <div class="row">
-          <span class="no">.8</span>
+          <span class="no">.9</span>
           <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Winston%20and%20Strawn/WinstonStraw06.jpg" alt="Winston &amp; Strawn" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-ws">Winston &amp; Strawn</span><span class="r" data-edit="reg-ws-r">SF office interior remodel — submittals, first RFIs, demo→framing</span></span>
           <span class="y">Clune</span>
           <span><span class="pill">Interned</span></span>
         </div>
         <div class="row">
-          <span class="no">.9</span>
+          <span class="no">.10</span>
           <span class="th"><img src="assets/photos/case-studies/lacc-expansion/Skadden/MB20210504_SkaddenArps_IMG_4758-scaled.jpg.webp" alt="Skadden Palo Alto" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-skadden">Skadden — Palo Alto</span><span class="r" data-edit="reg-skadden-r">4-story ground-up office — bid leveling (tile &amp; framing), sub walks</span></span>
           <span class="y">Clune</span>
           <span><span class="pill">Interned</span></span>
         </div>
         <div class="row">
-          <span class="no">.10</span>
+          <span class="no">.11</span>
           <span class="th"><img src="assets/photos/case-studies/lacc-expansion/US%20Fertility%20-%20Menlo%20Park/232480_N30-scaled.jpg" alt="Menlo Park Fertility Center" loading="lazy" onerror="this.remove()"><span class="ph-ico material-symbols-outlined">image</span></span>
           <span class="pj"><span class="t" data-edit="reg-menlo">Menlo Park Fertility Center</span><span class="r" data-edit="reg-menlo-r">Project closeout — punch, turnover</span></span>
           <span class="y">Clune</span>
@@ -598,10 +711,10 @@
         <div class="sector"><span>Sheet S-202 · Details — Case Studies</span></div>
         <h2 class="lg">What I have <span class="grad">built</span>.</h2>
         <p class="dim mt-2" style="max-width: 720px;" data-edit="cs-lede">
-          Starting with the hub that ties it all together — then the model underneath it, the pour tracker, the embed map, the tool registry and the schedule builder, plus the agent that started it all. Full journey on its own sheet: <a href="journey.html">G-100</a>.
+          Starting with the hub that ties it all together — then the model underneath it, the pour tracker, the embed map, the tool registry and the schedule builder, plus the agent that started it all. Where all of it is heading is its own sheet: <a href="#roadmap">A-300 Roadmap</a>. Full journey on <a href="journey.html">G-100</a>.
         </p>
       </div>
-      <span class="pill pill-primary">6 CORE APPS · 1 AGENT</span>
+      <span class="pill pill-primary">6 CORE APPS · 1 AGENT · 2 PROJECTS</span>
     </div>
 
     <!-- Index -->
@@ -614,7 +727,8 @@
       <a href="#superyap"><span class="no">06 · Schedule</span><span class="t">SuperYap</span><span class="s">The superintendent's look-ahead builder · Webcor exports</span></a>
       <a href="#const-agent"><span class="no">07 · The Agent</span><span class="t">Mr. George</span><span class="s">LLM agents · RFI &amp; submittal prep 40&rarr;6 min</span></a>
       <a href="#formwork"><span class="no">08 · Side Build</span><span class="t">Formwork</span><span class="s">Budget intelligence — Sankey flows + 3D lattice</span></a>
-      <a href="#roadmap"><span class="no">09 · Side Build</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site with a scroll-built skyline</span></a>
+      <a href="#openyap-roadmap"><span class="no">09 · Side Build</span><span class="t">OpenYap Roadmap</span><span class="s">3D investor site with a scroll-built skyline</span></a>
+      <a href="#roadmap"><span class="no">10 · Forward</span><span class="t">What is next &rarr;</span><span class="s">The roadmap sheet — what just shipped, what is on the board, and what is still a sketch</span></a>
       
       
       
@@ -635,10 +749,11 @@
         <h2 data-edit="cs2cc-h">Command Center &mdash; the whole jobsite on one screen.</h2>
         <p class="tagline" data-edit="cs2cc-tag">
           The operating picture for a concrete team on a $2B convention center expansion. Schedule,
-          pours, embeds, RFIs, submittals, inspections, tools and crew &mdash; behind one role-aware
-          login, on a map generated from the structural model rather than traced from a drawing of
-          it. Five field apps became one platform. It is the screen the superintendent runs the
-          6&nbsp;AM tailgate from.
+          pours, embeds, RFIs, submittals, inspections, steel receiving, tools and crew &mdash;
+          behind one role-aware login, on a map generated from the structural model rather than
+          traced from a drawing of it. Five field apps became one platform. It is the screen the
+          superintendent runs the 6&nbsp;AM tailgate from &mdash; and as of this summer it runs a
+          second Webcor project, Marina Shores in Long Beach, out of the same code.
         </p>
 
         <div class="block">
@@ -708,6 +823,36 @@
         </div>
 
         <div class="block">
+          <div class="block-label">Since &mdash; what a second project forced</div>
+          <p>
+            An app that has only ever seen one job encodes that job everywhere, and the encoding is
+            invisible until a second one arrives. The importer matched six hard-coded storey names
+            and a ladder of keywords from the first project; on the second, the loud failure was an
+            exit code, and the quiet one was a whole trade&rsquo;s masonry silently classified as
+            structural concrete with no error anywhere. The fix was to stop guessing: a profile
+            reads the model&rsquo;s own vocabulary in a fraction of a second, drafts a mapping that
+            proposes <i>nothing</i> where it is unsure, and a person decides. Rebuilding the first
+            project with no profile produces byte-identical output &mdash; proof rather than claim.
+          </p>
+          <ul>
+            <li><b>Importing a model is a person now.</b> Drag the IFC in, a census diffs it against
+              what is live, and a build that moves the quantities too far refuses to stage at all.
+              A planned hourly auto-import was deliberately deleted &mdash; a structural model going
+              live is a decision, and a decision needs a name on it.</li>
+            <li><b>Embeds got a QC screen you can sign</b> &mdash; projection, plate and anchor rods,
+              checked against the foundation the embed is cast into rather than the column above it,
+              on a section drawing generated from the model and the shop drawings together.</li>
+            <li><b>Steel receiving at the gate</b> &mdash; sign against the bill of lading. The
+              tickets are scans with no text layer, so the parser reconciles its OCR against the
+              totals printed on the ticket itself and rejects any repair that does not move the sum
+              toward them.</li>
+            <li><b>A pour claims area, not members</b> &mdash; construction joints cut a large mat,
+              and each section takes an exact clipped share of a member&rsquo;s own volume. The test
+              fixture is the shop drawing&rsquo;s own printed answer.</li>
+          </ul>
+        </div>
+
+        <div class="block">
           <div class="block-label">Result</div>
           <p data-edit="cs2cc-result">
             Ten views behind one login, and six separate apps retired into one. The number that
@@ -723,8 +868,10 @@
           <p>
             It covers the foundation scope, not the whole structure. It is an internal tool behind a
             company sign-in, so there is no public demo &mdash; the screenshots here are the tour,
-            and the project data on them is redacted. And moving the last of the older apps onto the
-            platform is still in progress.
+            and the project data on them is redacted. Moving the last of the older apps onto the
+            platform is still in progress, and the newest work &mdash; the QC screen, the model
+            import and the second project &mdash; is running on the staging site rather than in
+            production. It is tracked honestly on the <a href="#roadmap">roadmap sheet</a>.
           </p>
         </div>
       </div>
@@ -732,12 +879,13 @@
       <aside class="rhs">
         <div class="panel">
           <h4>Facts</h4>
-          <div class="kv"><span class="k">Built</span><span class="v">2026-06 &rarr; 08</span></div>
-          <div class="kv"><span class="k">Platform</span><span class="v">Firebase</span></div>
+          <div class="kv"><span class="k">Built</span><span class="v">2026-06 &rarr; ongoing</span></div>
+          <div class="kv"><span class="k">Platform</span><span class="v">Firebase + a compute tier</span></div>
           <div class="kv"><span class="k">Front end</span><span class="v">Vanilla JS, no build</span></div>
-          <div class="kv"><span class="k">Views</span><span class="v">10, one login</span></div>
+          <div class="kv"><span class="k">Views</span><span class="v">11, one login</span></div>
           <div class="kv"><span class="k">Roles</span><span class="v">4 tiers, server-side</span></div>
           <div class="kv"><span class="k">Apps folded in</span><span class="v">5</span></div>
+          <div class="kv"><span class="k">Projects</span><span class="v">2, one codebase</span></div>
           <div class="kv"><span class="k">Map source</span><span class="v">the structural model</span></div>
         </div>
 
@@ -1485,7 +1633,7 @@
 <!-- CASE 09 — ROADMAP -->
 <section>
   <div class="wrap">
-    <article class="case reveal" id="roadmap">
+    <article class="case reveal" id="openyap-roadmap">
       <div class="lhs">
         <div class="head">
           <span class="num">09</span>
@@ -1582,6 +1730,363 @@
 
 </div>
 
+<div id="tab-roadmap" class="tab-panel">
+
+<!-- A-300 — THE FORWARD SET -->
+<section class="sheet-sec" id="roadmap-cover">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-head">
+        <span class="no">A-300</span>
+        <span class="t">Roadmap — The Forward Set</span>
+        <span class="meta">Issued for review · Rev △14</span>
+      </div>
+      <div class="sheet-body">
+        <h2 class="lg">A drawing set is never finished. It is <span class="grad">revised.</span></h2>
+        <p class="dim mt-4" style="max-width: 74ch; font-size: 16px; line-height: 1.7;">
+          The two sheets before this one are what exists. This one is what is next — the work that has
+          just been issued, the moves on the board behind it, and the builds that are not the jobsite
+          at all. It is drawn the way a revision sequence is drawn, because that is what a roadmap
+          actually is.
+        </p>
+        <p class="dim mt-4" style="max-width: 74ch; font-size: 15px; line-height: 1.7;">
+          Every line carries an honest status. <b style="color:var(--ink)">Released</b> means it is in
+          production and somebody used it on a jobsite today. <b style="color:var(--ink)">On dev</b>
+          means it runs, and nobody's day depends on it yet. Shipping to a staging site is not shipping.
+        </p>
+
+        <div class="rm-legend">
+          <div class="rm-lg-item"><span class="pill pill-primary">Released</span><p>Live in production. In someone's hands.</p></div>
+          <div class="rm-lg-item"><span class="pill rm-pill-dev">On dev</span><p>Built, tested, running — not yet promoted.</p></div>
+          <div class="rm-lg-item"><span class="pill rm-pill-drawn">Drawn</span><p>Designed and specified. Not built.</p></div>
+          <div class="rm-lg-item"><span class="pill rm-pill-sketch">Sketch</span><p>A direction, not a commitment.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A-301 — REVISION LOG -->
+<section class="sheet-sec" id="revlog">
+  <div class="wrap">
+    <div class="sector reveal"><span>Sheet A-301 · Revision Log — Last Issue</span><span class="sector-right">Aug → Sep 2026</span></div>
+    <p class="dim mt-4 reveal" style="max-width: 72ch; font-size: 15px; line-height: 1.7;">
+      Two weeks of the current issue, newest last. Most of it is the Command Center growing the parts a
+      second job forced it to grow.
+    </p>
+
+    <div class="rm-revlog reveal delay-1">
+      <div class="row hd"><span>Rev</span><span>Date</span><span>Description</span><span>Status</span></div>
+
+      <div class="row">
+        <span class="rv">&#9651;5</span><span class="dt">08.17.26</span>
+        <span class="ds"><b>An identity, drawn once and generated everywhere</b>
+          <p>A two-tier merlion mark built from one drawing and regenerated by script rather than maintained as
+          six exported files, a loader that ignites while the model is being fetched instead of after it, and a
+          sign-in screen that reads like a terminal.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;6</span><span class="dt">08.17.26</span>
+        <span class="ds"><b>Embed plan export</b>
+          <p>Select embeds on the map, get a full-size sheet back — plates drawn to scale, leadered callouts,
+          adjustable type. The drawing the field actually wanted was a drawing, not a table.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;7</span><span class="dt">08.19.26</span>
+        <span class="ds"><b>The field sheet</b>
+          <p>An 11&times;17 of what is still outstanding, bilingual, printed for the crew doing the installing.
+          One page, no login, no battery.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;8</span><span class="dt">08.26.26</span>
+        <span class="ds"><b>Excavation sheets, and a building filter</b>
+          <p>Yardage tags in both cubic yards and cubic metres, a pickable shade for what is already complete,
+          and a filter so one building's totals stop quietly including its neighbours'. The site index covers
+          more than one structure; the numbers were not saying which.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;9</span><span class="dt">08.28.26</span>
+        <span class="ds"><b>The steel model, on machines with no GPU</b>
+          <p>Measured before touching anything: the slow machines fall back to a software rasteriser, and at
+          roughly 146&nbsp;nanoseconds per triangle the viewer is geometry-bound, not fill-bound — so every
+          pixel trick already in it was never going to help. Spatial buckets, level-of-detail and an
+          off-thread geometry bake instead.</p></span>
+        <span class="pill rm-pill-dev">On dev</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;10</span><span class="dt">08.29.26</span>
+        <span class="ds"><b>Embeds becomes its own tab, with a QC screen you can sign</b>
+          <p>Projection, plate and anchor rods checked one at a time against the foundation the embed is cast
+          into — not against the column above it. The section drawing is generated from the model and the shop
+          drawings together, the plate and rod sizes come from the released model rather than a bounding box,
+          and the whole thing works on an iPad with one thumb.</p></span>
+        <span class="pill rm-pill-dev">On dev</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;11</span><span class="dt">08.30.26</span>
+        <span class="ds"><b>Receiving at the gate</b>
+          <p>Sign for a steel delivery against its bill of lading. Every ticket arrives as a scan with no text
+          layer, so the parser trusts the totals printed on the ticket itself as a repair oracle for the OCR,
+          and refuses any correction that does not move the sum toward them. The damage-claim window runs from
+          the moment the truck arrives, never from whenever somebody got round to typing it in.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;12</span><span class="dt">08.31.26</span>
+        <span class="ds"><b>A model is imported by a person, and released by a second one</b>
+          <p>Drag an IFC into the app; a census diffs it against what is live; a build that moves the quantities
+          past a threshold refuses to stage at all. The automatic hourly import that had been planned was
+          deliberately deleted — a structural model going live is a decision, and a decision needs a name on it.</p></span>
+        <span class="pill rm-pill-dev">On dev</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;13</span><span class="dt">08.31.26</span>
+        <span class="ds"><b>The platform stops being a one-project platform</b>
+          <p>The importer used to match six hard-coded storey names and a ladder of keywords from a single job.
+          It now reads a model's own vocabulary — its storeys, its type strings, its grids — in a fraction of a
+          second and drafts a mapping a person reviews. The draft proposes nothing it is unsure of, because a
+          guess and a decision are indistinguishable downstream. <b style="color:var(--ink)">Marina Shores</b>
+          in Long Beach is the second job in the same app.</p></span>
+        <span class="pill rm-pill-dev">On dev</span>
+      </div>
+
+      <div class="row">
+        <span class="rv">&#9651;14</span><span class="dt">09.01.26</span>
+        <span class="ds"><b>A pour claims area, not members</b>
+          <p>A large mat is poured in several goes, so a pour section takes an exact clipped share of each
+          member's own volume rather than the whole member. Construction joints are stored as site
+          measurements in feet so they survive a recalibration or a model reissue, and the geometry is done
+          exactly — a joint that leaves two disconnected pieces still measures right, and a chain that doubles
+          back is refused rather than measured. The test fixture is the shop drawing's own printed answer.</p></span>
+        <span class="pill pill-primary">Released</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A-302 — PHASE PLAN -->
+<section class="sheet-sec" id="phases">
+  <div class="wrap">
+    <div class="sector reveal"><span>Sheet A-302 · Phase Plan — The Platform</span><span class="sector-right">Next moves</span></div>
+    <h2 class="lg mt-4 reveal">Where the <span class="grad">platform</span> goes next.</h2>
+    <p class="dim mt-2 reveal" style="max-width: 72ch; font-size: 15px; line-height: 1.7;">
+      Five moves, in the order they unblock each other. The first two are about finishing what is already
+      built rather than starting anything.
+    </p>
+
+    <div class="rm-phases reveal delay-1">
+
+      <div class="rm-phase">
+        <div class="rm-ph-no"><span class="n">01</span><span class="k">Now</span></div>
+        <div class="rm-ph-body">
+          <div class="rm-ph-main">
+          <div class="rm-ph-head"><h3>Promote it, then prove it.</h3><span class="pill rm-pill-dev">In progress</span></div>
+          <p>
+            Four of the last ten revisions are sitting on a staging site. The model import, the QC screen, the
+            multi-project work and the viewer performance pass all run — none of them has had a real day yet.
+          </p>
+          <ul>
+            <li>Run a real structural model end to end through the new upload, review and release path.</li>
+            <li>Put the QC screen in front of the people who sign for embeds, on the tablet they carry.</li>
+            <li>Re-measure the steel viewer on the machine that was slow in the first place.</li>
+          </ul>
+          </div>
+          <div class="rm-ph-why"><b>Why it is first</b>
+            The optimisation is live; the measurement that justified it has not been taken again. Until it has,
+            it is a hypothesis with a commit hash. The same is true of everything else on dev.</div>
+        </div>
+      </div>
+
+      <div class="rm-phase">
+        <div class="rm-ph-no"><span class="n">02</span><span class="k">Next</span></div>
+        <div class="rm-ph-body">
+          <div class="rm-ph-main">
+          <div class="rm-ph-head"><h3>Finish the project profile.</h3><span class="pill rm-pill-drawn">Drawn</span></div>
+          <p>
+            The importer speaks more than one job's language now, but the app around it does not. Excavation
+            and formwork still carry elevation constants from the first job, hard-coded where the profile
+            should hold them.
+          </p>
+          <ul>
+            <li>Move the remaining per-job constants out of the code and into the reviewed profile.</li>
+            <li>Onboard a third project with a mapping file and no code change at all.</li>
+          </ul>
+          </div>
+          <div class="rm-ph-why"><b>The test</b>
+            A third job that needs a reviewed mapping file and nothing else. If it needs a pull request, the
+            mechanism did not work.</div>
+        </div>
+      </div>
+
+      <div class="rm-phase">
+        <div class="rm-ph-no"><span class="n">03</span><span class="k">Next</span></div>
+        <div class="rm-ph-body">
+          <div class="rm-ph-main">
+          <div class="rm-ph-head"><h3>Let the mix drive the pour.</h3><span class="pill rm-pill-drawn">Drawn</span></div>
+          <p>
+            Approved mix designs already exist as a record in the system, but nothing reads them at the moment
+            a pour is planned — so which mixes are actually orderable lives in somebody's memory.
+          </p>
+          <ul>
+            <li>Pull the mix data out of the submittal PDFs instead of retyping it.</li>
+            <li>A pour picks from what is approved today, and says so when nothing is.</li>
+          </ul>
+          </div>
+          <div class="rm-ph-why"><b>The pattern</b>
+            Same as the embeds: the approval record already existed and nothing read it. Most of this work is
+            connecting two things that are already true.</div>
+        </div>
+      </div>
+
+      <div class="rm-phase">
+        <div class="rm-ph-no"><span class="n">04</span><span class="k">Later</span></div>
+        <div class="rm-ph-body">
+          <div class="rm-ph-main">
+          <div class="rm-ph-head"><h3>The compute tier grows an assistant.</h3><span class="pill rm-pill-dev">Partly live</span></div>
+          <p>
+            The architecture is a deliberate hybrid: the managed backend stays the system of record for auth,
+            data and hosting, and a small always-on Linux box beside it takes the jobs serverless functions
+            cannot — model parsing that needs real memory and native libraries, and the scheduled work that
+            should not depend on a laptop being open. That part runs today.
+          </p>
+          <ul>
+            <li>The interactive half: an assistant that answers against the job's own data, in the trailer.</li>
+            <li>Streamed rather than batched, which is the reason the box was placed where it was.</li>
+          </ul>
+          </div>
+          <div class="rm-ph-why"><b>Chosen on numbers</b>
+            Region was picked from measured round-trip times, not from a region name — one "nearby" region
+            measured worse than one two states away. The box is already faster than the database it talks to,
+            so it is never the interactive bottleneck.</div>
+        </div>
+      </div>
+
+      <div class="rm-phase">
+        <div class="rm-ph-no"><span class="n">05</span><span class="k">Open</span></div>
+        <div class="rm-ph-body">
+          <div class="rm-ph-main">
+          <div class="rm-ph-head"><h3>Off this job entirely.</h3><span class="pill rm-pill-sketch">Sketch</span></div>
+          <p>
+            Everything above is one general contractor's concrete and steel scope. The open question is whether
+            the same set works on somebody else's job, run by somebody who did not build it — which is what the
+            profile mechanism is quietly for.
+          </p>
+          </div>
+          <div class="rm-ph-why"><b>Honest position</b>
+            Two projects is not a product. It is the first evidence that the second one costs less than the
+            first, which is the only number that matters before there is a third.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- A-303 — FURTHER BUILDS -->
+<section class="sheet-sec" id="further">
+  <div class="wrap">
+    <div class="sector reveal"><span>Sheet A-303 · Further Builds — Off the Jobsite</span><span class="sector-right">Not construction software</span></div>
+    <h2 class="lg mt-4 reveal">The <span class="grad">builds</span> that are not the jobsite.</h2>
+    <p class="dim mt-2 reveal" style="max-width: 72ch; font-size: 15px; line-height: 1.7;">
+      Different problems on purpose. A game engine, a small product business, and a piece of infrastructure —
+      each one teaching something the field tools were never going to.
+    </p>
+
+    <div class="rm-builds reveal delay-1">
+
+      <div class="rm-build">
+        <div class="rm-b-head"><span class="rm-b-kind">Game · Unreal 5.8</span><span class="pill rm-pill-dev">In build</span></div>
+        <h3>FLOAT</h3>
+        <p>
+          A third-person brawler about documenting a building into existence. Health is schedule float,
+          measured in working days. The core verb is <i>reclaim</i>: every hostile figure is a tradesman whose
+          focus collapsed under sustained pressure, not a villain — the fixation that makes them dangerous is
+          the same one stopping them working.
+        </p>
+        <p style="margin-top:0.8rem;">
+          The engineering interest is the ability system, which separates three things that are usually
+          conflated: what an action <i>means</i>, the <i>mechanism</i> that runs it, and the <i>content</i> it
+          acts on. That separation is what lets one implementation carry fourteen different structural layers.
+          Mutable state lives on the actor, never on the shared data asset — a lesson learned by getting it
+          exactly wrong in an earlier prototype, where four weapons quietly shared one ammo pool.
+        </p>
+        <div class="rm-b-stack">
+          <div class="rm-b-kind">Stack</div>
+          <div class="tech-wrap"><span>Unreal 5.8</span><span>C++</span><span>Gameplay abilities</span><span>Editor tooling</span></div>
+        </div>
+      </div>
+
+      <div class="rm-build">
+        <div class="rm-b-head"><span class="rm-b-kind">Product · Ops app</span><span class="pill rm-pill-drawn">Staged</span></div>
+        <h3>A label, and the app under it</h3>
+        <p>
+          A small apparel brand of my own — brand system, sourcing, and the drop plan behind it — plus the
+          operations app that runs it: inventory, orders and fulfilment behind one login.
+        </p>
+        <p style="margin-top:0.8rem;">
+          The app is the same shape as the field tools, which is the point. One register that is the truth, a
+          throwaway prototype that gets deliberately retired the day real data arrives rather than growing
+          into the product, and rules on the database rather than in the client. Running green against
+          emulators; commercial detail stays off a public page.
+        </p>
+        <div class="rm-b-stack">
+          <div class="rm-b-kind">Stack</div>
+          <div class="tech-wrap"><span>Firebase</span><span>Cloud Functions</span><span>Security rules</span><span>Brand system</span></div>
+        </div>
+      </div>
+
+      <div class="rm-build">
+        <div class="rm-b-head"><span class="rm-b-kind">Infrastructure</span><span class="pill pill-primary">Running</span></div>
+        <h3>The compute tier</h3>
+        <p>
+          A single always-on Linux box that exists because two jobs did not fit anywhere else: parsing large
+          structural models, which needs real memory and native libraries, and scheduled work that should not
+          live on a laptop. It sits beside the managed backend rather than replacing it.
+        </p>
+        <p style="margin-top:0.8rem;">
+          Built with the rollback priced in — nothing on the disk is authoritative, and moving providers is a
+          short script plus a DNS change. Admin credentials are pinned so a background worker is subject to
+          the same database rules as a person, which is the failure mode that would otherwise be invisible.
+        </p>
+        <div class="rm-b-stack">
+          <div class="rm-b-kind">Stack</div>
+          <div class="tech-wrap"><span>Linux</span><span>Python</span><span>Cron</span><span>IfcOpenShell</span><span>Tailscale</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- back to the work -->
+<section>
+  <div class="wrap reveal" style="text-align: center;">
+    <h2 class="lg mb-6">A roadmap is only worth the <span class="grad">last one you delivered.</span></h2>
+    <p class="dim" style="max-width: 600px; margin: 0 auto 2rem;">
+      The two sheets behind this one are the record: the concrete going into the ground, and the software the
+      crews open every morning.
+    </p>
+    <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
+      <button class="btn primary" data-goto="construction" type="button"><span class="material-symbols-outlined" style="font-size:16px">construction</span>The construction side</button>
+      <button class="btn" data-goto="cs" type="button"><span class="material-symbols-outlined" style="font-size:16px">terminal</span>The software side</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
 <!-- CTA -->
 <section>
   <div class="wrap reveal" style="text-align: center;">
@@ -1589,6 +2094,7 @@
     <p class="dim" style="max-width: 520px; margin: 0 auto 2rem;">Two sides of the same builder — always up for talking construction, AI, or field-first software.</p>
     <div class="flex gap-3" style="justify-content: center; flex-wrap: wrap;">
       <a href="mailto:dyap123@gmail.com" class="btn primary"><span class="material-symbols-outlined" style="font-size:16px">mail</span>Email</a>
+      <button class="btn" data-goto="roadmap" type="button"><span class="material-symbols-outlined" style="font-size:16px">timeline</span>What's next</button>
       <a href="journey.html" class="btn"><span class="material-symbols-outlined" style="font-size:16px">timeline</span>The journey</a>
     </div>
   </div>
@@ -1600,7 +2106,7 @@
     <div class="tb-cell"><span class="k">Drawn by</span><span class="v">D. YAP · LOS ANGELES</span></div>
     <div class="tb-cell"><span class="k">Write</span><span class="v"><a href="mailto:dyap123@gmail.com">dyap123@gmail.com</a></span></div>
     <div class="tb-cell"><span class="k">Call</span><span class="v"><a href="tel:+14083353615">(408) 335-3615</a></span></div>
-    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html">G-001 ABOUT</a> · <a href="projects.html#cs">SOFTWARE</a> · <a href="journey.html">G-100 JOURNEY</a></span></div>
+    <div class="tb-cell"><span class="k">Index</span><span class="v"><a href="index.html">G-001 ABOUT</a> · <a href="projects.html#cs">SOFTWARE</a> · <a href="projects.html#roadmap">A-300 ROADMAP</a> · <a href="journey.html">G-100 JOURNEY</a></span></div>
     <div class="tb-cell"><span class="k">Rev</span><span class="v">△ 0 · © 2026 · <a href="https://github.com/dyap123" target="_blank">GITHUB</a> · <a href="https://www.linkedin.com/in/danzel-yap-3ab435243/" target="_blank">LINKEDIN</a></span></div>
     <div class="tb-sheet"><span class="k">Sheet</span><span class="v">C-100</span></div>
   </div>
@@ -1622,7 +2128,11 @@
 /* Construction / Software toggle */
 (function () {
   const btns = Array.from(document.querySelectorAll('.pt-btn'));
-  const panels = { construction: document.getElementById('tab-construction'), cs: document.getElementById('tab-cs') };
+  const panels = {
+    construction: document.getElementById('tab-construction'),
+    cs: document.getElementById('tab-cs'),
+    roadmap: document.getElementById('tab-roadmap'),
+  };
   function show(tab, keepPlace) {
     btns.forEach(b => { const on = b.dataset.tab === tab; b.classList.toggle('active', on); b.setAttribute('aria-selected', on); });
     Object.entries(panels).forEach(([k, el]) => { if (el) el.classList.toggle('active', k === tab); });
