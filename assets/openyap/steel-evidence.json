@@ -1,0 +1,23 @@
+{
+  "inventory_date": "2026-11-01",
+  "archive": {
+    "source": "User-provided steel Drive folder",
+    "files": 467,
+    "pdfs": 405,
+    "workbooks": 41,
+    "bytes": 984876165,
+    "method": "Recursive live folder inventory; counts include revisions and derived files, not unique ingested sources"
+  },
+  "model": {
+    "source": "Archived site-steel.json, matching IFC filename in source archive",
+    "assemblies": 23179,
+    "marks": 13876
+  },
+  "interpretation": "Archive counts and model counts describe distinct datasets. No measured time or monetary savings claimed.",
+  "motion": {
+    "library": "Anime.js 4.1.4",
+    "license": "MIT",
+    "source": "Existing portfolio assets/vendor/anime.esm.min.js",
+    "behavior": "Selective first-entry still-image motion; respects reduced motion and data saving; native scrolling"
+  }
+}

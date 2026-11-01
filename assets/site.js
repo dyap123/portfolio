@@ -75,3 +75,10 @@ document.querySelectorAll('video[controls]').forEach(video => {
     document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
   });
 });
+
+// Motion is optional: failed loading, reduced motion, or data saving leaves the page intact.
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+if (!motionPreference.matches && !navigator.connection?.saveData &&
+    'IntersectionObserver' in window && document.querySelector('[data-motion]')) {
+  import('./motion.mjs').then(({ initMotion }) => initMotion(motionPreference)).catch(() => {});
+}
