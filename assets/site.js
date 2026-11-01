@@ -79,6 +79,8 @@ document.querySelectorAll('video[controls]').forEach(video => {
 // Motion is optional: failed loading, reduced motion, or data saving leaves the page intact.
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
 if (!motionPreference.matches && !navigator.connection?.saveData &&
-    'IntersectionObserver' in window && document.querySelector('[data-motion]')) {
-  import('./motion.mjs').then(({ initMotion }) => initMotion(motionPreference)).catch(() => {});
+    'IntersectionObserver' in window && document.querySelector('[data-motion], [data-motion-hero]')) {
+  import('./motion.mjs?v=dy2').then(({ initMotion }) => initMotion(motionPreference)).catch(() => {});
 }
+
+if (document.querySelector('[data-carousel]')) import('./carousels.mjs?v=dy2').then(({ initCarousels }) => initCarousels()).catch(() => {});

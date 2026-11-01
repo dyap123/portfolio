@@ -12,9 +12,11 @@
         2592.0
       ],
       "source_sha256": "0b9cf109546fbd2775c9c54852234e99f8ddcd900076c3fc5a5654420219971b",
-      "published_sha256": "0b9cf109546fbd2775c9c54852234e99f8ddcd900076c3fc5a5654420219971b",
+      "published_sha256": "ed31c28b3705ff37e4b662349dc9cea44eea4689da0d093239d38d1ed7787254",
       "preview_width": 1600,
-      "preview_height": 1200
+      "preview_height": 1200,
+      "bytes": 288658,
+      "branding_redacted": true
     },
     {
       "file": "northwest-excavation-embeds.pdf",
@@ -27,9 +29,11 @@
         2592.0
       ],
       "source_sha256": "77ac8a8959585555c158e28935895bf5dfcbb34f0bed6f09dbc4fa24348a8a2c",
-      "published_sha256": "77ac8a8959585555c158e28935895bf5dfcbb34f0bed6f09dbc4fa24348a8a2c",
+      "published_sha256": "cfbc93b21f473c8c17813ac53a3a057bed01995a3ed71bd10326ec8a0f4838a3",
       "preview_width": 1600,
-      "preview_height": 1200
+      "preview_height": 1200,
+      "bytes": 2828742,
+      "branding_redacted": true
     },
     {
       "file": "elevator-pit-details.pdf",
@@ -42,9 +46,16 @@
         2592.0
       ],
       "source_sha256": "58edeed4432b70aa72079ebf1d3614e0cf53b704d366a87887e24bb22ff7a5b2",
-      "published_sha256": "58edeed4432b70aa72079ebf1d3614e0cf53b704d366a87887e24bb22ff7a5b2",
+      "published_sha256": "79c17b85672822bdafb2a1a8f786127db6c9fef1f189c583c88c0522fc4a17f7",
       "preview_width": 1600,
-      "preview_height": 1200
+      "preview_height": 1200,
+      "bytes": 228830,
+      "branding_redacted": true
     }
-  ]
+  ],
+  "branding_redaction": {
+    "date": "2026-11-01",
+    "scope": "Webcor Concrete branding removed from portfolio copies; original source documents unchanged.",
+    "method": "Actual PDF content/image redaction for authored sheets; company annotation text and appearance streams cleared for exported sheets. Existing annotations and optional-content layers retained."
+  }
 }

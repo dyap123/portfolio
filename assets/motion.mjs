@@ -16,7 +16,7 @@ export function initMotion(preference) {
       if (preference.matches || document.hidden) continue;
       try {
         const animation = animate(node, {
-          translateY: [10, 0], opacity: [0.88, 1], duration: 650,
+          translateY: [24, 0], opacity: [0.3, 1], duration: 850,
           ease: 'outCubic',
           onComplete: () => { active.delete(node); restore(node); }
         });
@@ -24,7 +24,7 @@ export function initMotion(preference) {
       } catch (_) { restore(node); }
     }
   }, { threshold: 0.12 });
-  document.querySelectorAll('[data-motion]').forEach(node => observer.observe(node));
+  document.querySelectorAll('[data-motion], [data-motion-hero]').forEach(node => observer.observe(node));
   const stop = () => {
     observer.disconnect();
     for (const [node, animation] of active) {

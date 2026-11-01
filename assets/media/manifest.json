@@ -121,5 +121,47 @@
       "faststart": true,
       "background": "#ffffff"
     }
+  },
+  "grid-seven": {
+    "description": "Single-stream seven-panel overview. Top row left to right: pile-cap exit, knife-plate crane setting, night pour1, grade beam. Bottom row: night pour2, recreational excavator driving for fun, future concept. All whole native frames, contain/pad with white gutters; no cropping. Native speed, silent10-second loop.",
+    "sources": [
+      "../field-details/pile-cap-exit.mp4",
+      "../field-details/knife-plate-setting.mp4",
+      "night-pour-1.mp4",
+      "grade-beam.mp4",
+      "night-pour-2.mp4",
+      "../photos/journey/07-field/excavator.mp4",
+      "future-concept.mp4"
+    ],
+    "start_seconds": [
+      0,
+      6,
+      0,
+      22,
+      0,
+      0,
+      12
+    ],
+    "poster": "grid-seven-poster.jpg",
+    "poster_second": 2,
+    "output": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1008,
+          "height": 880,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "24/1"
+        }
+      ],
+      "format": {
+        "duration": "10.000000",
+        "size": "2672259"
+      }
+    },
+    "faststart": true
   }
 }

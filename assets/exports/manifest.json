@@ -57,7 +57,7 @@
     {
       "file": "concrete-quantities.pdf",
       "preview": "concrete-quantities.jpg",
-      "bytes": 937532,
+      "bytes": 937374,
       "pages": 1,
       "annotations": 704,
       "measurement_dicts": 693,
@@ -72,12 +72,14 @@
         "Sheet linework"
       ],
       "layer_toggle_changes_render": true,
-      "scale_viewport_present": true
+      "scale_viewport_present": true,
+      "published_sha256": "9d259b8b8b7082746724638c89d0cc0dfdca2bae8b3b25ef2e58341f2f77e0ec",
+      "branding_redacted": true
     },
     {
       "file": "excavation-reference.pdf",
       "preview": "excavation-reference.jpg",
-      "bytes": 746880,
+      "bytes": 746722,
       "pages": 1,
       "annotations": 704,
       "measurement_dicts": 0,
@@ -92,12 +94,14 @@
         "Sheet linework"
       ],
       "layer_toggle_changes_render": true,
-      "scale_viewport_present": true
+      "scale_viewport_present": true,
+      "published_sha256": "378e8e945d7d82d6d7c2ee07315817281d86bfc02bd43e6cd6bc12e73eea5141",
+      "branding_redacted": true
     },
     {
       "file": "embed-counts.pdf",
       "preview": "embed-counts.jpg",
-      "bytes": 404101,
+      "bytes": 403943,
       "pages": 1,
       "annotations": 418,
       "measurement_dicts": 0,
@@ -107,12 +111,14 @@
         "Sheet linework"
       ],
       "layer_toggle_changes_render": true,
-      "scale_viewport_present": true
+      "scale_viewport_present": true,
+      "published_sha256": "948e609e88e7344d45a2f5fafefde9d16676c65208ded90fd9c8da80673dfdcc",
+      "branding_redacted": true
     },
     {
       "file": "drone-model-sheet.pdf",
       "preview": "drone-model-sheet.jpg",
-      "bytes": 4073816,
+      "bytes": 4073658,
       "pages": 1,
       "annotations": 704,
       "measurement_dicts": 693,
@@ -128,7 +134,14 @@
         "Site image"
       ],
       "layer_toggle_changes_render": true,
-      "scale_viewport_present": true
+      "scale_viewport_present": true,
+      "published_sha256": "d27b7a75cd2a724805ccef705dcfcf74cb43a95476b04775908834a46dbda24f",
+      "branding_redacted": true
     }
-  ]
+  ],
+  "branding_redaction": {
+    "date": "2026-11-01",
+    "scope": "Webcor Concrete branding removed from portfolio copies; original source documents unchanged.",
+    "method": "Actual PDF content/image redaction for authored sheets; company annotation text and appearance streams cleared for exported sheets. Existing annotations and optional-content layers retained."
+  }
 }

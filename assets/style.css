@@ -7,13 +7,13 @@
 
 .model-detail-shot{margin-top:45px}.model-detail-shot+ .workflow-list{margin-top:55px}
 /* A single composite keeps all five films synchronized without five decoders. */
-.grid-film{aspect-ratio:1008/892;background:#fff;border-radius:20px}
+.grid-film{aspect-ratio:1008/880;background:#fff;border-radius:20px}
 .grid-film video{object-fit:contain;object-position:center}
 .grid-film-toolbar{align-items:center;padding-block:16px;min-height:72px}
 .grid-film-toolbar>div{display:flex;align-items:center;gap:28px}
 .grid-film-toolbar .plain-link{font-size:12px}
 .grid-film-toolbar .film-toggle{position:static;background:var(--ink);border-color:var(--ink);color:white;flex-shrink:0;backdrop-filter:none}
-@media(max-width:700px){.grid-film{aspect-ratio:1008/892;border-radius:12px}.grid-film-toolbar{gap:12px}.grid-film-toolbar>div{display:flex;align-items:flex-start;flex-direction:column;gap:3px}.grid-film-toolbar span{text-align:left!important;max-width:none!important}.grid-film-toolbar .film-toggle{padding:10px 13px}.grid-film-toolbar .plain-link{font-size:11px}.hero h1{font-size:clamp(36px,8.6vw,60px)}}
+@media(max-width:700px){.grid-film{aspect-ratio:1008/880;border-radius:12px}.grid-film-toolbar{gap:12px}.grid-film-toolbar>div{display:flex;align-items:flex-start;flex-direction:column;gap:3px}.grid-film-toolbar span{text-align:left!important;max-width:none!important}.grid-film-toolbar .film-toggle{padding:10px 13px}.grid-film-toolbar .plain-link{font-size:11px}.hero h1{font-size:clamp(36px,8.6vw,60px)}}
 
 .hero-film:has(.grid-film){max-width:1100px}.module-gallery{padding-bottom:100px}.module-gallery .app-shot{margin-top:36px}.capture-provenance{font-size:12px;text-align:center;margin:10px 0 48px}.module-gallery .app-shot a{display:block}.module-gallery .app-shot a:focus-visible{outline-offset:8px}@media(max-width:700px){.module-gallery{padding-bottom:60px}.capture-provenance{font-size:11px;margin-bottom:32px}}
 
@@ -36,3 +36,12 @@
 
 /* Evidence follows the actual steel view; no additional dashboard cards. */
 .steel-evidence{padding:56px 0 72px}.steel-evidence .detail-heading{margin:0 0 40px}.steel-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;border-top:1px solid var(--line,#d2d2d7);padding-top:28px}.steel-steps h3{font-size:22px;letter-spacing:-.025em;margin:0 0 12px}.steel-steps p,.steel-summary{color:var(--secondary);line-height:1.6}.steel-summary{max-width:740px;margin:22px auto 0;text-align:center}.steel-summary .plain-link{display:inline-block;margin-left:8px}.steel-evidence>.capture-provenance{margin-top:30px;max-width:900px}@media(max-width:700px){.steel-steps{grid-template-columns:1fr;gap:24px}.steel-evidence{padding:36px 0 48px}.steel-summary{text-align:left}.steel-summary .plain-link{margin-left:0}}
+
+.dy-mark{width:28px;height:35px;flex:none;object-fit:contain}
+
+/* Wider execution films keep the actual work readable beside its drawing. */
+.detail-film{max-width:520px}.detail-film video{max-height:760px}.portrait-pair{max-width:1120px;gap:40px}.portfolio-carousel{max-width:100%;margin:auto}.portfolio-carousel figure{margin:0}.portfolio-carousel figcaption{font-size:14px;margin-top:16px;color:var(--secondary)}.sheet-carousel img{width:100%;height:auto;border:1px solid var(--line)}.field-carousel{max-width:760px}.field-carousel video{width:100%;height:min(76vh,780px);object-fit:contain;background:#fff;border-radius:16px}.carousel-controls{display:flex;align-items:center;gap:18px;margin-top:20px}.carousel-controls button{border:1px solid var(--line);border-radius:999px;background:white;color:var(--ink);min-width:44px;min-height:44px;padding:8px 15px;cursor:pointer}.carousel-controls [data-auto]{margin-left:auto;font-size:13px}.carousel-controls [data-position]{font-size:13px;color:var(--secondary)}@media(max-width:700px){.detail-film{max-width:100%}.detail-film video{max-height:80vh}.portrait-pair{max-width:100%;gap:38px}.field-carousel video{height:70vh}.carousel-controls{gap:10px}}
+
+@media(min-width:701px){.drawing-video-pair{grid-template-columns:1fr 1fr;gap:36px}}
+
+.statement>.field-carousel{grid-column:1/-1;width:100%;margin-top:36px}
