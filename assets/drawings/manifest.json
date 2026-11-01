@@ -1,0 +1,50 @@
+{
+  "source": "User-supplied shop drawing PDFs, November 1, 2026",
+  "documents": [
+    {
+      "file": "knife-plate-supports.pdf",
+      "preview": "knife-plate-supports.jpg",
+      "title": "Knife plate support details",
+      "original_name": "SK-KPLSUPPORTS.X.5.21(WCG 7.29 KNIFE PLATE REVISION)_2026-11-01_01-13-06am.pdf",
+      "pages": 1,
+      "page_points": [
+        3456.0,
+        2592.0
+      ],
+      "source_sha256": "0b9cf109546fbd2775c9c54852234e99f8ddcd900076c3fc5a5654420219971b",
+      "published_sha256": "0b9cf109546fbd2775c9c54852234e99f8ddcd900076c3fc5a5654420219971b",
+      "preview_width": 1600,
+      "preview_height": 1200
+    },
+    {
+      "file": "northwest-excavation-embeds.pdf",
+      "preview": "northwest-excavation-embeds.jpg",
+      "title": "Northwest excavation and embeds",
+      "original_name": "Z-L0.2.NW.1(NW Excavation and Embed Update 10.21)_2026-11-01_01-14-33am.pdf",
+      "pages": 1,
+      "page_points": [
+        3456.0,
+        2592.0
+      ],
+      "source_sha256": "77ac8a8959585555c158e28935895bf5dfcbb34f0bed6f09dbc4fa24348a8a2c",
+      "published_sha256": "77ac8a8959585555c158e28935895bf5dfcbb34f0bed6f09dbc4fa24348a8a2c",
+      "preview_width": 1600,
+      "preview_height": 1200
+    },
+    {
+      "file": "elevator-pit-details.pdf",
+      "preview": "elevator-pit-details.jpg",
+      "title": "Elevator pit shop drawing",
+      "original_name": "Z-230.OV.FE12(WCG Elevators 10-6)_2026-11-01_01-18-55am.pdf",
+      "pages": 1,
+      "page_points": [
+        3456.0,
+        2592.0
+      ],
+      "source_sha256": "58edeed4432b70aa72079ebf1d3614e0cf53b704d366a87887e24bb22ff7a5b2",
+      "published_sha256": "58edeed4432b70aa72079ebf1d3614e0cf53b704d366a87887e24bb22ff7a5b2",
+      "preview_width": 1600,
+      "preview_height": 1200
+    }
+  ]
+}

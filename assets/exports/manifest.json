@@ -1,0 +1,134 @@
+{
+  "generated": "2026-11-01",
+  "model_source": "Archived August 2026 LACC model from OpenYap public/model",
+  "source_hashes": [
+    {
+      "file": "site-index.json",
+      "sha256": "7234cb95d8b78dd328a14e90b570acc9ddb27a3ca1fc4407712d05fbf830a28a"
+    },
+    {
+      "file": "site-embeds.json",
+      "sha256": "8248287a5bc393262eafcb486ab72d65c639df1e218711de987491dab746ba39"
+    },
+    {
+      "file": "site-grids.json",
+      "sha256": "6ed25211dbc44bc37edf65d8ef924283bdd34bff7492d5fe79019f3890da4262"
+    }
+  ],
+  "scope": "693 foundation members without openings; 407 actual embed records. Neutral model quantities, no field-progress states.",
+  "method": "Official OpenYap planSheet and siteMembers renderers plus official bluebeamPdf annotation bridge. Offline adapter converts vector SVG backgrounds and merges them without flattening official annotations or OCG layers.",
+  "concrete_model_cy": 7872.18,
+  "footprint_area_sum_sf": 46773.61,
+  "excavation_limitation": "Footprint reference areas only; overlaps not deducted. No ground elevation, benching, cut-volume, or working-space assumptions.",
+  "drone_record": {
+    "date": "2026-10-14",
+    "name": "Drone Shot 10.9.png",
+    "w": 1075,
+    "h": 1114,
+    "xf": {
+      "m": [
+        0.7586301,
+        0.0056631,
+        -0.0056631,
+        0.7586301
+      ],
+      "t": [
+        -162.1674,
+        -985.3052
+      ]
+    },
+    "pairs": [
+      {
+        "u": 797.07,
+        "v": 737.68,
+        "x": 446.69,
+        "z": -430.191
+      },
+      {
+        "u": 874.28,
+        "v": 803.21,
+        "x": 505.635,
+        "z": -380.916
+      }
+    ],
+    "sourcePath": "siteimg/lacc/simg_2026-10-14_mv8bz5u3/display/0_0.webp"
+  },
+  "outputs": [
+    {
+      "file": "concrete-quantities.pdf",
+      "preview": "concrete-quantities.jpg",
+      "bytes": 937532,
+      "pages": 1,
+      "annotations": 704,
+      "measurement_dicts": 693,
+      "polygon_volume_markups": 693,
+      "ocg_layers": [
+        "Micropile caps",
+        "Pit slabs",
+        "Footings",
+        "Grade beams",
+        "Pile caps",
+        "Mat foundations",
+        "Sheet linework"
+      ],
+      "layer_toggle_changes_render": true,
+      "scale_viewport_present": true
+    },
+    {
+      "file": "excavation-reference.pdf",
+      "preview": "excavation-reference.jpg",
+      "bytes": 746880,
+      "pages": 1,
+      "annotations": 704,
+      "measurement_dicts": 0,
+      "polygon_volume_markups": 0,
+      "ocg_layers": [
+        "Micropile caps footprints",
+        "Pit slabs footprints",
+        "Footings footprints",
+        "Grade beams footprints",
+        "Pile caps footprints",
+        "Mat foundations footprints",
+        "Sheet linework"
+      ],
+      "layer_toggle_changes_render": true,
+      "scale_viewport_present": true
+    },
+    {
+      "file": "embed-counts.pdf",
+      "preview": "embed-counts.jpg",
+      "bytes": 404101,
+      "pages": 1,
+      "annotations": 418,
+      "measurement_dicts": 0,
+      "polygon_volume_markups": 0,
+      "ocg_layers": [
+        "Embed count markups",
+        "Sheet linework"
+      ],
+      "layer_toggle_changes_render": true,
+      "scale_viewport_present": true
+    },
+    {
+      "file": "drone-model-sheet.pdf",
+      "preview": "drone-model-sheet.jpg",
+      "bytes": 4073816,
+      "pages": 1,
+      "annotations": 704,
+      "measurement_dicts": 693,
+      "polygon_volume_markups": 693,
+      "ocg_layers": [
+        "Micropile caps",
+        "Pit slabs",
+        "Footings",
+        "Grade beams",
+        "Pile caps",
+        "Mat foundations",
+        "Sheet linework",
+        "Site image"
+      ],
+      "layer_toggle_changes_render": true,
+      "scale_viewport_present": true
+    }
+  ]
+}

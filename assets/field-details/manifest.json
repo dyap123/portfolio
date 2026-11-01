@@ -1,0 +1,125 @@
+{
+  "created": "2026-11-01",
+  "source_preservation": "Original files unchanged.",
+  "assets": [
+    {
+      "file": "elevator-pit.mp4",
+      "source": "/Users/jjiii/Downloads/video-16770_singular_display.MOV",
+      "description": "Elevator pit view; identity confirmed by manager/user.",
+      "processing": "Entire native frame; scaled576px wide,24fps,H264/yuv420p,faststart. Native speed; full AAC audio.",
+      "poster": "elevator-pit.jpg",
+      "poster_second": 1,
+      "output": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 576,
+            "height": 770,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "2.583333",
+          "size": "486902"
+        }
+      }
+    },
+    {
+      "file": "elevator-pit-half-speed.mp4",
+      "source": "/Users/jjiii/Downloads/video-16770_singular_display.MOV",
+      "description": "Elevator pit view; identity confirmed by manager/user.",
+      "processing": "Entire native frame; scaled576px wide,24fps,H264/yuv420p,faststart. Half speed, silent.",
+      "poster": "elevator-pit-half-speed.jpg",
+      "poster_second": 1,
+      "output": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 576,
+            "height": 770,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "5.125000",
+          "size": "744072"
+        }
+      }
+    },
+    {
+      "file": "pile-cap-exit.mp4",
+      "source": "/Users/jjiii/Downloads/video-16648_singular_display.MOV",
+      "description": "POV climbing out of a pile cap; identity confirmed by manager/user.",
+      "processing": "Entire native frame; scaled576px wide,24fps,H264/yuv420p,faststart. Native speed; full AAC audio.",
+      "poster": "pile-cap-exit.jpg",
+      "poster_second": 28,
+      "output": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 576,
+            "height": 770,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "45.375000",
+          "size": "6822724"
+        }
+      }
+    },
+    {
+      "file": "knife-plate-setting.mp4",
+      "source": "/Users/jjiii/Downloads/IMG_5012.MOV",
+      "description": "Crane setting knife-plate assembly with the installation crew. Identity visually confirmed by manager; footage does not imply Danzel alone performed installation.",
+      "processing": "Entire native frame, orientation normalized; native speed;576px wide24fps H264/yuv420p, AAC audio,faststart.",
+      "poster": "knife-plate-setting.jpg",
+      "poster_second": 12,
+      "output": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 576,
+            "height": 1024,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "16.638000",
+          "size": "2043603"
+        }
+      }
+    }
+  ]
+}
