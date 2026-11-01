@@ -1,0 +1,125 @@
+{
+  "retrieved": "2026-11-01",
+  "drive_root_id": "1-4F0XRVaHSoWlBB5Cl4YIGDOX7cLVu3y",
+  "source_note": "Drive inventory successfully read. New download blocked by Google API403 per-minute shared quota. Images restored read-only from existing portfolio git HEAD archive, not newly downloaded. Named journey assets establish site context; exact Drive IDs provided only where ID-named archive images match inventory.",
+  "assets": [
+    {
+      "file": "olympic-hill-site.jpg",
+      "description": "Olympic & Hill site visit: interior glazing and city view.",
+      "source_archive": "assets/photos/webcor-skyscraper/1it9tpIMqlDgzUfw1YkMdpn_ws3Omp8Zi.jpg",
+      "source_drive_path_or_folder": "Webcor Skyscraper/mcp_photo-1470_singular_display_fullPicture.heic",
+      "source_drive_id": "1it9tpIMqlDgzUfw1YkMdpn_ws3Omp8Zi",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 324952,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "durango-site.jpg",
+      "description": "Durango visit: exterior entrance.",
+      "source_archive": "assets/photos/journey/05-interviews/vegas-durango-1.jpg",
+      "source_drive_path_or_folder": "Las Vegas /Durango Job Walk",
+      "source_drive_id": null,
+      "width": 1600,
+      "height": 1200,
+      "bytes": 366005,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "resorts-world-site.jpg",
+      "description": "Resorts World visit: group photo in the interior.",
+      "source_archive": "assets/photos/journey/05-interviews/vegas-resorts-world-2.jpg",
+      "source_drive_path_or_folder": "Las Vegas /Resorts World",
+      "source_drive_id": null,
+      "width": 1200,
+      "height": 1600,
+      "bytes": 347261,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "gentle-monster-site.jpg",
+      "description": "Gentle Monster visit: group photo at the storefront.",
+      "source_archive": "assets/photos/journey/05-interviews/vegas-gentle-monster.jpg",
+      "source_drive_path_or_folder": "Las Vegas /Gentle Monster",
+      "source_drive_id": null,
+      "width": 1600,
+      "height": 1200,
+      "bytes": 394028,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "uc-irvine-site.jpg",
+      "description": "UC Irvine site visit: walking toward an active building under construction.",
+      "source_archive": "assets/photos/journey/05-interviews/uci-1.jpg",
+      "source_drive_path_or_folder": "UC Irvine",
+      "source_drive_id": null,
+      "width": 1600,
+      "height": 1200,
+      "bytes": 425799,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "construction-interview.jpg",
+      "description": "Construction project interview",
+      "source_archive": "assets/photos/webcor-skyscraper/1y8aY1R4T2p3b6baxg2XTI0HOnO7PGatJ.jpg",
+      "source_drive_path_or_folder": "Webcor Skyscraper/2025-10-17 11-02-41.mp4",
+      "source_drive_id": "1y8aY1R4T2p3b6baxg2XTI0HOnO7PGatJ",
+      "width": 1280,
+      "height": 720,
+      "bytes": 100857,
+      "processing": "EXIF orientation normalized; scaled only to max1600px; full frame retained; metadata omitted."
+    },
+    {
+      "file": "olympic-hill-walk.mp4",
+      "description": "Olympic & Hill tower walk, existing portfolio film. Exterior construction view.",
+      "source_local": "/Users/jjiii/portfolio-refresh-20261031/assets/photos/journey/07-field/olympic-hill-walk.mp4",
+      "source_drive_id": null,
+      "source_note": "Existing local named film reused; exact Drive original not independently matched.",
+      "processing": "Entire40.4s native-speed film; full frame scaled to576px wide;24fps H264/yuv420p;AAC80kbps audio;faststart.",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 576,
+            "height": 764,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "24/1"
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "40.416667",
+          "size": "5797533"
+        }
+      }
+    },
+    {
+      "file": "olympic-hill-walk.jpg",
+      "description": "Olympic & Hill tower exterior",
+      "source": "olympic-hill-walk.mp4",
+      "poster_second": 4,
+      "width": 720,
+      "height": 954,
+      "bytes": 85258
+    }
+  ],
+  "research_copy_sources": [
+    {
+      "name": "Interview Transcript with Dixie.txt",
+      "folder": "Interview Transcripts/Las Vegas/Audio/Dixie",
+      "use": "Paraphrased themes only: repeated data entry, system interoperability, project size."
+    },
+    {
+      "name": "Katrina Interview Shaw Lundquist.txt",
+      "folder": "Interview Transcripts/Las Vegas/Audio/Kathrina",
+      "use": "Paraphrased themes only: repetitive information transfer, software complexity, checks and human judgment."
+    }
+  ]
+}

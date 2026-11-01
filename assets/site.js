@@ -22,7 +22,7 @@ document.addEventListener('keydown', event => {
     menuButton.focus();
   }
 });
-const mobileQuery = matchMedia('(max-width: 700px)');
+const mobileQuery = matchMedia('(max-width: 900px)');
 mobileQuery.addEventListener('change', closeMenu);
 
 const hero = document.querySelector('#hero-video');
