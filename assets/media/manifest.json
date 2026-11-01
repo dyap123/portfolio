@@ -1,0 +1,125 @@
+{
+  "night-pour-1": {
+    "source": "video-17982_singular_display.MOV",
+    "poster_second": 2,
+    "description": "Concrete pump boom over foundation reinforcement during a night pour.",
+    "output": {
+      "duration": 4.541667,
+      "bytes": 628512,
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 576,
+          "height": 770,
+          "r_frame_rate": "24/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "faststart": true
+    }
+  },
+  "night-pour-2": {
+    "source": "video-18040_singular_display.MOV",
+    "poster_second": 1,
+    "description": "Workers coordinating around reinforcement during a night pour.",
+    "output": {
+      "duration": 9.625,
+      "bytes": 1469575,
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 576,
+          "height": 770,
+          "r_frame_rate": "24/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "faststart": true
+    }
+  },
+  "grade-beam": {
+    "source": "video-17115_singular_display.MOV",
+    "poster_second": 30,
+    "description": "First-person movement inside a reinforced grade beam; rebar coordination and sensor installation context supplied by Danzel.",
+    "output": {
+      "duration": 33.706,
+      "bytes": 5308630,
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 576,
+          "height": 770,
+          "r_frame_rate": "24/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "faststart": true
+    }
+  },
+  "future-concept": {
+    "source": "OpenYap_Schedule_Day_final.mp4",
+    "poster_second": 12,
+    "description": "Danzel\u2019s future workflow concept film. Illustrative vision, not a claim of current product capability.",
+    "output": {
+      "duration": 108.16,
+      "bytes": 14091631,
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 576,
+          "height": 1024,
+          "r_frame_rate": "24/1"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0"
+        }
+      ],
+      "faststart": true
+    }
+  },
+  "grid-loop": {
+    "sources": [
+      "video-17982_singular_display.MOV",
+      "video-18040_singular_display.MOV",
+      "video-17115_singular_display.MOV",
+      "excavator.mp4",
+      "OpenYap_Schedule_Day_final.mp4"
+    ],
+    "description": "Single-stream five-panel grid; every native frame fits by scaling and white (#ffffff) padding, never cropping; native speed, silent 10-second loop. Top: night pour 1, night pour 2, grade beam. Bottom: recreational excavator driving for fun (not excavation work), future concept. Grade beam begins at 22s; concept at 12s. Short clips repeat at natural duration.",
+    "poster_second": 2,
+    "output": {
+      "duration": 10.0,
+      "bytes": 2389357,
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1008,
+          "height": 892,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "24/1"
+        }
+      ],
+      "faststart": true,
+      "background": "#ffffff"
+    }
+  }
+}
