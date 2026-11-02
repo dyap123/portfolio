@@ -4,12 +4,18 @@ const sheets = [
   ['embed-counts','Embed count sheet'],
   ['drone-model-sheet','Drone overlay sheet']
 ];
+const drawing = (file, alt, caption) => ({ src: 'assets/drawings/' + file + '.jpg?v=redacted2', href: 'assets/drawings/' + file + '.pdf?v=redacted2', alt, caption });
 const films = [
-  ['assets/field-details/knife-plate-setting','Knife plate crane setting','knife-plate'],
-  ['assets/field-details/pile-cap-exit','Climbing from pile cap','pile-cap'],
-  ['assets/media/night-pour-1','Night rebar coordination','night-pours'],
-  ['assets/media/night-pour-2','Mass concrete coordination','night-pours'],
-  ['assets/media/grade-beam','Grade beam inspection','grade-beam']
+  ['assets/field-details/knife-plate-setting','Knife plate crane setting','knife-plate',
+    drawing('knife-plate-supports','Knife plate support shop drawing with plan, section, plate dimensions, and bracing details','Knife plate support details')],
+  ['assets/field-details/elevator-pit-half-speed','Elevator pit, half speed','elevator-pit',
+    drawing('elevator-pit-details','Elevator pit shop drawing showing foundation plan, pit slab, grade beams, plinths, and sections','Elevator pit shop drawing')],
+  ['assets/field-details/pile-cap-exit','Exiting a pile cap','pile-cap',
+    { src: 'assets/openyap/model-rebar.png', alt: 'YapGrid foundation model showing pile caps, grade beams, piles, and embeds', caption: 'YapGrid foundation model' }],
+  // Clips with no matching drawing of the same element stand alone.
+  ['assets/media/night-pour-1','Night rebar coordination','night-pours',null],
+  ['assets/media/night-pour-2','Mass concrete coordination','night-pours',null],
+  ['assets/media/grade-beam','Grade beam inspection','grade-beam',null]
 ];
 export function initCarousels() {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -44,6 +50,21 @@ export function initCarousels() {
         video.src = item[0] + '.mp4';
         video.setAttribute('aria-label', item[1]);
         root.querySelector('[data-detail]').href = 'fieldwork.html#' + item[2];
+        const pair = root.querySelector('[data-field-pair]');
+        const fig = root.querySelector('[data-detail-fig]');
+        const detail = item[3];
+        if (pair && fig) {
+          pair.classList.toggle('is-solo', !detail);
+          fig.hidden = !detail;
+          if (detail) {
+            root.querySelector('[data-detail-img]').src = detail.src;
+            root.querySelector('[data-detail-img]').alt = detail.alt;
+            root.querySelector('[data-detail-caption]').textContent = detail.caption;
+            const open = root.querySelector('[data-detail-open]');
+            if (detail.href) { open.href = detail.href; open.setAttribute('aria-label', 'Open ' + detail.caption.toLowerCase()); }
+            else { open.removeAttribute('href'); open.removeAttribute('aria-label'); }
+          }
+        }
       } else {
         root.querySelector('[data-sheet]').src = 'assets/exports/' + item[0] + '.jpg?v=redacted2';
         root.querySelector('[data-sheet]').alt = item[1];

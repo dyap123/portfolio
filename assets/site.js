@@ -83,4 +83,4 @@ if (!motionPreference.matches && !navigator.connection?.saveData &&
   import('./motion.mjs?v=dy2').then(({ initMotion }) => initMotion(motionPreference)).catch(() => {});
 }
 
-if (document.querySelector('[data-carousel]')) import('./carousels.mjs?v=dy2').then(({ initCarousels }) => initCarousels()).catch(() => {});
+if (document.querySelector('[data-carousel]')) import('./carousels.mjs?v=dy3').then(({ initCarousels }) => initCarousels()).catch(() => {});
