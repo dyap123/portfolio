@@ -62,3 +62,23 @@
 .evidence-card .evidence-source{font-size:12px;line-height:1.5;color:var(--secondary);margin:16px 0 0}
 .module-gallery>.evidence-pair{margin-bottom:56px}
 @media(max-width:700px){.evidence-pair{grid-template-columns:1fr;gap:32px;margin-top:40px}}
+
+/* The overview brings the visit archive into view before the longer field notes. */
+.overview-visits{padding-bottom:85px;border-top:1px solid var(--line)}
+.overview-visits .visits-link{border:0;padding-block:65px 35px}
+.overview-visit-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;align-items:start}
+.overview-visit-gallery figure:first-child{grid-row:span 2}
+.overview-visit-gallery a{display:block}
+.overview-visit-gallery img{display:block;width:100%;height:240px;object-fit:cover;border-radius:14px}
+.overview-visit-gallery figure:first-child img{height:540px}
+.overview-visit-gallery figcaption{font-size:13px;line-height:1.5;color:var(--secondary);margin-top:12px}
+@media(max-width:1000px){.overview-visit-gallery img{height:190px}.overview-visit-gallery figure:first-child img{height:440px}}
+@media(max-width:700px){.overview-visits{padding-bottom:60px}.overview-visits .visits-link{padding-block:50px 30px}.overview-visit-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.overview-visit-gallery figure:first-child{grid-row:auto;grid-column:1/-1}.overview-visit-gallery figure:first-child img{height:auto;max-height:480px;object-fit:contain;background:white}.overview-visit-gallery img{height:180px}.overview-visit-gallery figcaption{font-size:12px}}
+@media(max-width:400px){.overview-visit-gallery img{height:145px}}
+
+.grid-film.overview-montage{aspect-ratio:1200/1140}
+.prototype-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:40px 0;scroll-margin-top:100px;text-align:left}
+.prototype-films video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:12px;background:#fff}
+.prototype-films figcaption{font-size:15px;margin-top:14px;font-weight:600}
+.prototype-films p{font-size:12px;line-height:1.5;color:var(--secondary);margin-top:6px}
+@media(max-width:700px){.prototype-films{grid-template-columns:1fr;gap:30px}}

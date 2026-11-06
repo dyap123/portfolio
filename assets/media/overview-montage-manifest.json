@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-05",
+  "overview": {
+    "file": "overview-montage.mp4",
+    "poster": "overview-montage-poster.jpg",
+    "build": "tools/build_overview_montage.py",
+    "description": "One silent stream: two software demonstrations above eight field and site-visit films. Whole source frames fit within white gutters. Future concept and recreational driving remain labeled.",
+    "duration_seconds": 12,
+    "width": 1200,
+    "height": 1140,
+    "fps": 24,
+    "audio": false,
+    "bytes": 4788654,
+    "encoding": "H.264 CRF27 / yuv420p / faststart"
+  },
+  "schedule_comparison": {
+    "file": "schedule-changes-prototype.mp4",
+    "source_filename": "LACC-Pico-Hall-schedule-changes-2026-10-08.mp4",
+    "source_sha256": "bc5f56d6d23063637420c1cb90a29eb92afe357e6d55bd9bdc8b5fc562e2921f",
+    "source_context": "Existing October 2026 OpenYap schedule comparison export supplied in the local Downloads archive.",
+    "excerpt_seconds": [
+      3,
+      15
+    ],
+    "processing": "Scaled to 1280x720 at 24fps, silent H.264, faststart. No fabricated UI or data."
+  },
+  "field_and_visits": {
+    "sources": [
+      "assets/field-details/pile-cap-exit.mp4",
+      "assets/field-details/knife-plate-setting.mp4",
+      "assets/media/night-pour-1.mp4",
+      "assets/research-media/olympic-hill-walk.mp4",
+      "assets/media/night-pour-2.mp4",
+      "assets/media/grade-beam.mp4",
+      "assets/photos/journey/07-field/excavator.mp4",
+      "assets/media/future-concept.mp4"
+    ],
+    "provenance": [
+      "assets/field-details/manifest.json",
+      "assets/research-media/manifest.json",
+      "assets/media/manifest.json"
+    ],
+    "note": "Previously published portfolio sources. Start offsets and tile layout are defined in the build script."
+  },
+  "jobsite_photos": {
+    "source_manifest": "assets/research-media/manifest.json",
+    "images": [
+      "olympic-hill-site.jpg",
+      "uc-irvine-site.jpg",
+      "durango-site.jpg",
+      "resorts-world-site.jpg",
+      "gentle-monster-site.jpg"
+    ],
+    "processing": "Existing published files reused unchanged; responsive gallery crops presentation only."
+  },
+  "steel_schedule": {
+    "file": "steel-schedule-prototype.mp4",
+    "source_project": "OpenYap GC schedule and steel viewer",
+    "source_commit": "8bd590e227cf0656ea94d15871ee4d3d2ed2f313",
+    "geometry_source_sha256": "3b07ad8a7d11d154aa8349e27ef047963d67e741aaaa1922145a18ca616844fb",
+    "capture": "Actual schedules.js UI, model-link.js date coloring, steel-3d renderer and schedule command bridge. Local v4 geometry, isolated from live services.",
+    "data_note": "Illustrative January 2030 sequence dates; not reported field progress. Gray elements remain unlinked.",
+    "processing": "120 browser frames sampled across dates January1\u201323, encoded as a 12-second 1280x720 H.264 clip at 24fps, silent faststart. Actual UI shows a persistent prototype / illustrative dates badge."
+  }
+}
