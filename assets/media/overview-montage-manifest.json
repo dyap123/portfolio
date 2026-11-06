@@ -4,25 +4,15 @@
     "file": "overview-montage.mp4",
     "poster": "overview-montage-poster.jpg",
     "build": "tools/build_overview_montage.py",
-    "description": "One silent stream: two software demonstrations above eight field and site-visit films. Whole source frames fit within white gutters. Future concept and recreational driving remain labeled.",
+    "description": "Construction-only first row, then enlarged steel and foundation model timelines on alternating sides among field clips. No baked montage captions. Whole video frames fit with white gutters; illustrative-date and concept provenance appears outside the montage.",
     "duration_seconds": 12,
-    "width": 1200,
-    "height": 1140,
+    "width": 1600,
+    "height": 1500,
     "fps": 24,
     "audio": false,
-    "bytes": 4788654,
-    "encoding": "H.264 CRF27 / yuv420p / faststart"
-  },
-  "schedule_comparison": {
-    "file": "schedule-changes-prototype.mp4",
-    "source_filename": "LACC-Pico-Hall-schedule-changes-2026-10-08.mp4",
-    "source_sha256": "bc5f56d6d23063637420c1cb90a29eb92afe357e6d55bd9bdc8b5fc562e2921f",
-    "source_context": "Existing October 2026 OpenYap schedule comparison export supplied in the local Downloads archive.",
-    "excerpt_seconds": [
-      3,
-      15
-    ],
-    "processing": "Scaled to 1280x720 at 24fps, silent H.264, faststart. No fabricated UI or data."
+    "encoding": "H.264 CRF27 / yuv420p / faststart",
+    "version": "models2",
+    "bytes": 6197433
   },
   "field_and_visits": {
     "sources": [
@@ -58,8 +48,28 @@
     "source_project": "OpenYap GC schedule and steel viewer",
     "source_commit": "8bd590e227cf0656ea94d15871ee4d3d2ed2f313",
     "geometry_source_sha256": "3b07ad8a7d11d154aa8349e27ef047963d67e741aaaa1922145a18ca616844fb",
-    "capture": "Actual schedules.js UI, model-link.js date coloring, steel-3d renderer and schedule command bridge. Local v4 geometry, isolated from live services.",
+    "capture": "Actual schedules.js UI, model-link.js date coloring, steel-3d renderer and schedule command bridge. Local v4 geometry, isolated from live services. Recaptured with actual zoom gestures to enlarge the model.",
     "data_note": "Illustrative January 2030 sequence dates; not reported field progress. Gray elements remain unlinked.",
-    "processing": "120 browser frames sampled across dates January1\u201323, encoded as a 12-second 1280x720 H.264 clip at 24fps, silent faststart. Actual UI shows a persistent prototype / illustrative dates badge."
+    "processing": "120 browser frames across illustrative January 2030 dates, 12-second 1280x720 silent H.264 faststart clip at 24fps. No added caption badge."
+  },
+  "foundation_schedule": {
+    "file": "foundation-schedule-prototype.mp4",
+    "source_project": "OpenYap GC schedule with YapGrid foundation viewer",
+    "source_commit": "8bd590e227cf0656ea94d15871ee4d3d2ed2f313",
+    "geometry_sha256": "3d12256f9bb7b7fd831ff1057e5a258e17029c6001bbfe5e61595379ef185ae5",
+    "geometry_source": "LACC_CONC_WCG.08.17.ifc, level223",
+    "capture": "Actual OYGcs Model mode, YapGrid iframe, model-link.js paint function and tintLayers API; 734 concrete ranges. Model framed closely; statistics and grid bubbles hidden.",
+    "data_note": "Illustrative January 2030 spatial pour zones, not reported completion or actual planned pour sequencing.",
+    "processing": "12-second 1280x720 silent H.264 faststart, 24fps. No added caption badge."
+  },
+  "mep_interface": {
+    "file": "../openyap/mep-interface.png",
+    "source_commit": "8bd590e227cf0656ea94d15871ee4d3d2ed2f313",
+    "archive_generated": "2026-10-27",
+    "archive_sha256": "b59163abf7526508d40cdfe9e0dc0994d2a678d609a28ef8006ca7d71da2131a",
+    "capture": "Actual mep.js, mep.css, and host CSS: Where interface with level filters, equipment map and building grids; archived data, no live services or writes.",
+    "scope": "391 equipment overall; L250 selected, 144 equipment. Archive has no drawing background, so this is not a drawing-overlay capture.",
+    "width": 1600,
+    "height": 1000
   }
 }

@@ -57,6 +57,8 @@ export function initCarousels() {
           pair.classList.toggle('is-solo', !detail);
           fig.hidden = !detail;
           if (detail) {
+            const drawingScroll = fig.querySelector('.drawing-scroll');
+            if (drawingScroll) drawingScroll.scrollLeft = 0;
             root.querySelector('[data-detail-img]').src = detail.src;
             root.querySelector('[data-detail-img]').alt = detail.alt;
             root.querySelector('[data-detail-caption]').textContent = detail.caption;

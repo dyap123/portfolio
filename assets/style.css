@@ -82,3 +82,40 @@
 .prototype-films figcaption{font-size:15px;margin-top:14px;font-weight:600}
 .prototype-films p{font-size:12px;line-height:1.5;color:var(--secondary);margin-top:6px}
 @media(max-width:700px){.prototype-films{grid-template-columns:1fr;gap:30px}}
+
+/* Field evidence leads; broad drawings keep the actual details legible. */
+.hero-film:has(.overview-montage){max-width:1300px}
+.grid-film.overview-montage{aspect-ratio:1600/1500}
+.field-experience,.export-feature{width:min(1300px,calc(100% - 64px))}
+.field-experience .field-carousel{max-width:none}
+.field-experience .field-pair{grid-template-columns:minmax(240px,3fr) minmax(0,9fr);gap:36px}
+.field-experience .field-pair.is-solo{grid-template-columns:minmax(0,420px)}
+.field-experience .field-pair video{height:min(65vh,580px)}
+.field-experience .field-detail-fig img{height:auto;aspect-ratio:auto;border-radius:8px}
+.drawing-scroll{min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.drawing-scroll a{display:block}
+.drawing-scroll:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+.drawing-scroll-hint{display:none}
+.export-feature{padding-bottom:90px}
+.overview-mep{margin-top:70px;text-align:left}
+.overview-mep .section-heading{margin-bottom:24px;align-items:center}
+.overview-mep h3{font-size:34px}
+.overview-mep .section-label{margin-bottom:10px}
+.overview-mep .capture-provenance{margin:15px 0 0}
+@media(max-width:700px){
+  .field-experience,.export-feature{width:calc(100% - 24px)}
+  .field-experience>div:not(.field-carousel),.export-feature>.section-heading{margin-inline:8px}
+  .field-experience .field-pair{grid-template-columns:minmax(0,1fr);gap:28px}
+  .field-experience .field-pair.is-solo{grid-template-columns:minmax(0,1fr)}
+  .field-experience .field-pair video{height:min(55vh,430px)}
+  .field-experience .drawing-scroll a{min-width:760px}
+  .sheet-carousel .drawing-scroll a{min-width:900px}
+  .field-experience .field-detail-fig img{height:auto;aspect-ratio:auto}
+  .drawing-scroll-hint{display:block;font-size:12px!important;margin:8px 0 0;color:var(--secondary)}
+  .export-feature{padding-bottom:60px}
+  .overview-mep{margin-top:45px}
+  .overview-mep h3{font-size:29px}
+  .overview-mep .app-shot{margin-inline:-8px}
+}
+
+.field-detail-fig,.sheet-carousel figure{min-width:0}
