@@ -6,6 +6,80 @@ then `git log`, then the harness task files named below.
 
 ---
 
+## 2026-11-11 — Wrap-up of this session (work performed 2026-11-05)
+
+**Scope and release.** This session and its workers changed application code only in
+`~/portfolio`. Three reviewed releases were published on November 5:
+`5a7e1d7` (site visits and software montage), `bbac5b7` (minimal abstract mark), and
+`a6a048e` (construction-first layout, model timelines, larger sheets and MEP).
+The later Legacy apps commit `e7ed04a` belongs to another session and is not part
+of this wrap-up. This November 11 entry and WHY comments are documentation only;
+they are prepared on `docs/codex-wrapup-1111`, with no deployment.
+
+**What was built and where.**
+- `index.html` now leads with field experience/detailing, jobsite photographs and
+  drawing exports, followed by OpenYap. Five existing visit photographs appear in
+  “Across different jobsites.” The montage includes Olympic and Hill site footage.
+- `tools/build_overview_montage.py` composes one silent 12-second, 1600×1500,
+  24 fps H.264 stream (6,197,433 bytes at the final release), with whole source
+  frames and white gutters. Construction occupies the first row; larger steel and
+  foundation model tiles alternate sides farther down. Caption strips were removed
+  to give the videos more space. One decoded stream limits simultaneous-player
+  overhead on phones; faststart supports progressive playback.
+- `assets/media/steel-schedule-prototype.*` and
+  `assets/media/foundation-schedule-prototype.*` show the actual schedule UI,
+  model-link date colouring and local steel/YapGrid geometry. The foundation model
+  replaced the Gantt comparison on the overview. Full-size manual-play demos remain
+  below the montage for inspection. Provenance, source commits/hashes, dimensions
+  and illustrative-date caveats are in
+  `assets/media/overview-montage-manifest.json`.
+- `assets/openyap/mep-interface.png` shows the actual MEP Where interface with L250,
+  equipment and level filters, using archived October 27 data. The overview links
+  to the full-size capture. It is an equipment/grid map; its archive contained no
+  drawing background.
+- `assets/style.css` gives detailing roughly 950 px on a 1440 px desktop, with
+  760 px drawings and 900 px exported sheets pannable within the phone viewport.
+  `assets/carousels.mjs` resets the drawing's horizontal pan when `show()` changes
+  the paired sheet, so a new sheet does not inherit the previous inspection offset.
+  Solo field clips hide the drawing and hint. `assets/site.js` and page cache keys
+  were updated for the changed assets/module.
+- `assets/dy-mark.svg`, `assets/favicon-dy.svg` and `assets/favicon.svg` share two
+  monochrome, opposing right-angle forms. The user rejected the earlier calligraphic
+  DY as too elaborate; the open frame stays clear at favicon size. Header sizing and
+  asset references were updated across the rendered pages.
+
+**Decisions and limits.** Model dates and spatial pour zones are illustrative
+January 2030 data, not actual project sequencing or reported completion. Gray
+geometry is unlinked. Captures ran against local application code/geometry with
+live services blocked; no live records were written. The future concept and
+recreational excavator clip are identified by text outside the caption-free montage.
+The old schedule-comparison clip remains in the assets archive but is no longer
+shown in the overview. A signed-in capture of live project progress and an MEP
+view with a drawing background were not part of the delivered work. Capture/QA
+scripts and screenshots were temporary `/tmp/portfolio-*` artifacts, not application
+source; the portable evidence is the checked-in media/provenance, not those scratch
+paths. No source changes were made to the OpenYap application repos. Its harness
+received task/handoff Markdown only.
+
+**Run and verify.** Serve this static repo with `python3 -m http.server 8080`, then
+open `http://localhost:8080/`. Rebuild the montage, only when intentionally updating
+media, with `python3 tools/build_overview_montage.py` (requires `ffmpeg` with H.264
+encoding); rebuilding overwrites the montage and poster. Run
+`node tools/check_refs.mjs`, `node --check assets/site.js`,
+`node --check assets/carousels.mjs`, and `git diff --check`. Inspect desktop and
+390 px layouts, enlarged/pannable sheets, carousel next/reset/solo behavior,
+reduced-motion paused/unloaded montage, play/pause/offscreen pause, and individual
+model playback. November 5 independent full harness gates passed 188/0; final
+browser QA reported no runtime errors. All 18 files in the final release were
+verified byte-for-byte over public HTTPS. The November 11 wrap-up adds only this
+entry and explanatory code comments; no media is rebuilt or republished.
+Wrap-up checks on November 11: local references passed for all 10 current pages,
+JavaScript syntax and whitespace checks passed, Python AST and JavaScript
+non-comment text matched the branch base, and the independent full `oy check`
+passed 188 tests with zero failures (local emulators only).
+
+---
+
 ## 2026-11-02 — Break automation, steel spreadsheets, detailing beside the field notes (Claude)
 
 **Asked (verbatim):** "pick up on fixing my website since we ran out of codex credits - also i don't see
